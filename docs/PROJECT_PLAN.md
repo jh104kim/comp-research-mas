@@ -405,16 +405,27 @@ STEP 5 이메일 발송 전에는 아래 조건을 만족해야 한다.
 
 ## 11. 바로 다음 작업
 
-STEP 1은 구현 완료되었다. 다음 작업은 STEP 2 Search Agent 추가다.
+STEP 2는 구현 완료되었다. 다음 작업은 STEP 3 Analyst Agent 추가다.
 
-STEP 2 우선순위:
-1. `query_planner.py` 추가: 타입 × 경쟁사 × 카테고리 query plan 생성
-2. `research_adapter.py` 추가: Hermes 리서치 위임 interface/stub 구현
-3. `evidence_normalizer.py` 추가: raw result → EvidenceItem 변환
-4. `config/monitors.yaml`을 ★ 최우선 경쟁사 중심으로 정리
-5. `cli.py`에 `run-step2-sample` 추가
-6. `outputs/search/*` 산출물 저장
-7. STEP 2 결과를 STEP 1 Writer/Critic으로 연결
-8. pytest로 query planner, normalizer, pipeline 검증
+STEP 2 완료 반영:
+- `EvidenceItem` 확장: 복수 냉매, source_type, trust_score, threat_level, week_id, raw_text, dynamic_tags
+- `ReportMetadata` 추가
+- `WorkflowState` 확장: query_plan, raw_results, week_id, report_meta
+- `query_planner.py`, `research_adapter.py`, `evidence_normalizer.py` 추가
+- STEP 2 graph: source_planner → research_adapter → evidence_normalizer → writer → critic → output
+- `AGENTS.md` 추가로 repo 작업 규칙 고정
 
-상세 계획: `docs/STEP2_SEARCH_AGENT_PLAN.md`
+STEP 3 우선순위:
+1. `analyst.py` 추가: EvidenceItem[] → AnalysisBundle 변환
+2. 삼성 비교 상태 기반 Gap Matrix 고도화
+3. Re: 냉매 × MBP/LBP/HBP 조건별 mapping
+4. Ro: 냉매 × fixed/inverter 커버리지 mapping
+5. Sc: 냉매 × 용량 구간 × Fixed/Variable/Two-Stage mapping
+6. 이상 신호 감지: high threat, 신규 냉매, 최우선 경쟁사 신규 진입
+7. Writer가 AnalysisBundle을 우선 사용하도록 확장
+8. pytest로 analyst와 STEP 3 graph E2E 검증
+
+STEP 3 전 확인 필요:
+- 가격·유통 카테고리 사용 범위
+- 특허·인증 지역 우선순위
+- 내부 삼성 매핑 레이어 도입 여부와 저장 위치

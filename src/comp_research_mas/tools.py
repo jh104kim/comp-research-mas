@@ -2,20 +2,10 @@ from __future__ import annotations
 
 import re
 
-from .models import (
-    CATEGORIES,
-    COMPETITOR_ALIASES,
-    EvidenceItem,
-    PRIMARY_COMPETITORS,
-    SAMSUNG_STATUSES,
-)
+from .evidence_normalizer import extract_refrigerants, normalize_competitor, normalize_samsung_status, threat_level, trust_score
+from .models import CATEGORIES, EvidenceItem, PRIMARY_COMPETITORS
 
 HEADER_RE = re.compile(r"^\[(?P<ctype>Re|Ro|Sc)\s*-\s*(?P<competitor>[^\]]+?)\]\s*(?P<star>★)?\s*$")
-
-
-def normalize_competitor(name: str) -> str:
-    clean = name.strip()
-    return COMPETITOR_ALIASES.get(clean, clean)
 
 
 def infer_category(text: str) -> str:
@@ -27,42 +17,24 @@ def infer_category(text: str) -> str:
     if any(k in text for k in ["COP", "EER", "효율", "냉동능력"]):
         return "성능·효율"
     if any(k in text for k in ["R290", "R600a", "R134a", "R1234yf", "R32", "R454B", "R454C", "R410A", "R466A", "냉매"]):
-        return "신냉매·냉매 전환"
+        return "신냉매·냉매전환"
     if any(k in lowered for k in ["expo", "ahr", "chillventa", "전시회", "발표"]):
         return "전시회·발표"
     return "신제품·라인업"
 
 
-def infer_samsung_status(text: str) -> str:
-    # Order matters: "미보유" contains "보유" as a substring.
-    for status in ("미보유", "대응 중", "확인 필요", "보유"):
-        if status in text:
-            return status
-    if "미대응" in text or "부재" in text:
-        return "미보유"
-    return "확인 필요"
-
-
-def infer_refrigerant(text: str) -> str:
-    found = []
-    for ref in ["R290", "R600a", "R134a", "R1234yf", "R32", "R454B", "R454C", "R410A", "R466A"]:
-        if ref in text:
-            found.append(ref)
-    return "/".join(found) if found else "확인 필요"
-
-
-def infer_source(block: str) -> tuple[str, str, str]:
+def infer_source(block: str) -> tuple[str, str, str, str]:
     for line in block.splitlines():
         if line.strip().startswith("출처:"):
             raw = line.split(":", 1)[1].strip()
             parts = [p.strip() for p in raw.rsplit(",", 1)]
-            if len(parts) == 2:
-                return parts[0], "manual://" + parts[0].replace(" ", "-"), parts[1]
-            return raw, "manual://" + raw.replace(" ", "-"), "확인 필요"
-    return "수동 입력", "manual://step1", "확인 필요"
+            name = parts[0]
+            date = parts[1] if len(parts) == 2 else "확인필요"
+            return name, "manual://" + name.replace(" ", "-"), date, "trade_media"
+    return "수동 입력", "manual://step1", "확인필요", "news"
 
 
-def parse_step1_raw_data(raw_data: str) -> list[EvidenceItem]:
+def parse_step1_raw_data(raw_data: str, week_id: str = "2026-26") -> list[EvidenceItem]:
     items: list[EvidenceItem] = []
     current_header: re.Match[str] | None = None
     current_lines: list[str] = []
@@ -74,24 +46,31 @@ def parse_step1_raw_data(raw_data: str) -> list[EvidenceItem]:
         ctype = current_header.group("ctype")
         competitor = normalize_competitor(current_header.group("competitor"))
         block = "\n".join(current_lines).strip()
-        source_name, source_url, source_date = infer_source(block)
+        source_name, source_url, source_date, source_type = infer_source(block)
         summary_lines = [line.strip() for line in current_lines if line.strip() and not line.strip().startswith("출처:")]
         summary = " ".join(summary_lines)
         is_primary = competitor in PRIMARY_COMPETITORS.get(ctype, []) or bool(current_header.group("star"))
+        status = normalize_samsung_status(None, block)
+        score = trust_score(source_type)
         items.append(
             EvidenceItem(
                 compressor_type=ctype,
                 competitor=competitor,
-                summary=summary,
-                samsung_status=infer_samsung_status(block),
+                raw_text=summary,
+                samsung_status=status,
                 category=infer_category(block),
-                product_or_series=summary_lines[0].split(".")[0] if summary_lines else "확인 필요",
-                refrigerant=infer_refrigerant(block),
+                product_or_series=summary_lines[0].split(".")[0] if summary_lines else "확인필요",
+                refrigerant=extract_refrigerants(None, block),
                 source_name=source_name,
                 source_url=source_url,
                 source_date=source_date,
-                trust_score=4 if source_name != "수동 입력" else 3,
+                source_type=source_type,
+                trust_score=score,
+                threat_level=threat_level(status, score),
+                week_id=week_id,
                 is_primary=is_primary,
+                low_confidence=score < 3,
+                dynamic_tags=[ctype, infer_category(block), *(r for r in extract_refrigerants(None, block) if r != "확인필요")],
             )
         )
         current_header = None

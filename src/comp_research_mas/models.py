@@ -4,10 +4,22 @@ from dataclasses import asdict, dataclass, field
 from typing import Any, Literal, TypedDict
 
 CompressorType = Literal["Re", "Ro", "Sc"]
-SamsungStatus = Literal["보유", "미보유", "대응 중", "확인 필요"]
+SamsungStatus = Literal["보유", "미보유", "대응중", "확인필요"]
+Category = Literal[
+    "신냉매·냉매전환",
+    "성능·효율",
+    "신제품·라인업",
+    "신뢰성·내구성",
+    "특허·기술",
+    "규격·인증",
+    "가격·유통",
+    "전시회·발표",
+]
+SourceType = Literal["official", "exhibition", "patent", "academic", "trade_media", "news"]
+ThreatLevel = Literal["high", "medium", "low", "none"]
 
 CATEGORIES: tuple[str, ...] = (
-    "신냉매·냉매 전환",
+    "신냉매·냉매전환",
     "성능·효율",
     "신제품·라인업",
     "신뢰성·내구성",
@@ -16,6 +28,12 @@ CATEGORIES: tuple[str, ...] = (
     "가격·유통",
     "전시회·발표",
 )
+
+CATEGORY_ALIASES: dict[str, str] = {
+    "신냉매·냉매 전환": "신냉매·냉매전환",
+    "냉매전환": "신냉매·냉매전환",
+    "냉매 전환": "신냉매·냉매전환",
+}
 
 TYPE_LABELS: dict[str, str] = {
     "Re": "Reciprocating",
@@ -45,14 +63,27 @@ SECONDARY_COMPETITORS: dict[str, list[str]] = {
 COMPETITOR_ALIASES: dict[str, str] = {
     "GMCC": "GMCC/Midea",
     "Midea": "GMCC/Midea",
+    "GMCC Midea": "GMCC/Midea",
     "Copeland": "Copeland/Emerson",
     "Emerson": "Copeland/Emerson",
+    "Copeland Emerson": "Copeland/Emerson",
     "Embraco": "Embraco/Nidec",
     "Nidec": "Embraco/Nidec",
+    "Embraco Nidec": "Embraco/Nidec",
 }
 
 NO_EVIDENCE_TEXT = "해당 없음 — 이번 주 확인된 고신뢰 근거 없음"
-SAMSUNG_STATUSES = ("보유", "미보유", "대응 중", "확인 필요")
+SAMSUNG_STATUSES = ("보유", "미보유", "대응중", "확인필요")
+SOURCE_TYPES = ("official", "exhibition", "patent", "academic", "trade_media", "news")
+THREAT_LEVELS = ("high", "medium", "low", "none")
+SOURCE_TRUST_SCORE = {
+    "official": 5,
+    "exhibition": 5,
+    "patent": 5,
+    "academic": 4,
+    "trade_media": 3,
+    "news": 2,
+}
 
 
 @dataclass(frozen=True)
@@ -86,33 +117,47 @@ class CriticReview:
     iteration: int = 0
 
     def to_dict(self) -> dict[str, Any]:
-        return {
-            "score": self.score,
-            "passed": self.passed,
-            "findings": self.findings,
-            "required_fixes": self.required_fixes,
-            "hard_fail": self.hard_fail,
-            "hard_fail_reasons": self.hard_fail_reasons,
-            "iteration": self.iteration,
-        }
+        return asdict(self)
 
 
 @dataclass(frozen=True)
 class EvidenceItem:
-    compressor_type: str
-    competitor: str
-    summary: str
-    samsung_status: str
-    category: str = "신제품·라인업"
-    product_or_series: str = "확인 필요"
-    refrigerant: str = "확인 필요"
-    condition_or_capacity: str = "확인 필요"
+    compressor_type: CompressorType = "Re"
+    competitor: str = "확인필요"
+    refrigerant: list[str] = field(default_factory=lambda: ["확인필요"])
+    category: Category = "신제품·라인업"
+    samsung_status: SamsungStatus = "확인필요"
+    trust_score: int = 3
+    source_type: SourceType = "trade_media"
+    threat_level: ThreatLevel = "none"
+    week_id: str = "2026-26"
+    source_url: str = "manual://step1"
+    source_date: str = "확인필요"
+    raw_text: str = ""
+    summary: str = ""
+    product_or_series: str = "확인필요"
+    condition_or_capacity: str = "확인필요"
     application: str = "Residential/Unitary/Heat pump"
     source_name: str = "수동 입력"
-    source_url: str = "manual://step1"
-    source_date: str = "확인 필요"
-    trust_score: int = 3
     is_primary: bool = False
+    low_confidence: bool = False
+    dynamic_tags: list[str] = field(default_factory=list)
+
+    def to_dict(self) -> dict[str, Any]:
+        return asdict(self)
+
+
+@dataclass(frozen=True)
+class ReportMetadata:
+    week_id: str
+    run_date: str
+    total_evidence_count: int
+    type_coverage: list[str]
+    competitor_coverage: list[str]
+    primary_missing: list[str]
+    high_threat_count: int
+    critic_score: int
+    hard_fail: bool
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)
@@ -131,3 +176,7 @@ class WorkflowState(TypedDict, total=False):
     error_log: list[str]
     hard_fail: bool
     output_paths: dict[str, str]
+    query_plan: dict[str, Any]
+    raw_results: dict[str, Any]
+    week_id: str
+    report_meta: dict[str, Any] | None

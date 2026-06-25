@@ -4,23 +4,19 @@ from collections import defaultdict
 from typing import Any
 
 from .config import MAX_ITERATIONS, PASS_SCORE, REPORT_TITLE
-from .models import (
-    CATEGORIES,
-    NO_EVIDENCE_TEXT,
-    PRIMARY_COMPETITORS,
-    SECONDARY_COMPETITORS,
-    TYPE_LABELS,
-    EvidenceItem,
-    WorkflowState,
-)
+from .models import CATEGORIES, NO_EVIDENCE_TEXT, PRIMARY_COMPETITORS, TYPE_LABELS, EvidenceItem, ReportMetadata, WorkflowState
 from .tools import evidence_to_dicts, parse_step1_raw_data
+
+DISPLAY_STATUS = {"보유": "보유", "미보유": "미보유", "대응중": "대응 중", "확인필요": "확인 필요"}
 
 
 def load_raw_data_node(state: WorkflowState) -> WorkflowState:
     raw_data = state.get("raw_data", "")
-    evidence = parse_step1_raw_data(raw_data)
+    week_id = state.get("week_id", "2026-26")
+    evidence = parse_step1_raw_data(raw_data, week_id=week_id)
     return {
         **state,
+        "week_id": week_id,
         "evidence": evidence_to_dicts(evidence),
         "sources": _sources(evidence),
         "gap_table": _gap_rows(evidence),
@@ -73,13 +69,14 @@ def write_step1_report(evidence: list[EvidenceItem], *, feedback: dict[str, Any]
 
     lines: list[str] = []
     lines.append(f"# {REPORT_TITLE}")
-    lines.append("날짜: STEP 1 SAMPLE")
+    lines.append(f"날짜: {evidence[0].week_id if evidence else 'STEP SAMPLE'}")
     lines.append("")
     lines.append("## 이번 주 핵심 동향 요약")
-    top = evidence[:3]
-    if top:
-        for item in top:
-            lines.append(f"- [{item.compressor_type}] {item.competitor}: {item.summary} / 삼성 비교: {item.samsung_status}")
+    high_first = sorted(evidence, key=lambda x: (x.threat_level != "high", not x.is_primary, -x.trust_score))[:3]
+    if high_first:
+        for item in high_first:
+            low_note = " / 저신뢰 근거" if item.low_confidence else ""
+            lines.append(f"- [{item.compressor_type}] {item.competitor}: {item.raw_text or item.summary} / 삼성 비교: {DISPLAY_STATUS[item.samsung_status]} / 위협도: {item.threat_level}{low_note}")
     else:
         lines.append("- 이번 주 확인된 고신뢰 근거 없음")
     lines.append("")
@@ -92,18 +89,11 @@ def write_step1_report(evidence: list[EvidenceItem], *, feedback: dict[str, Any]
         lines.append(f"### 삼성 {ctype} 경쟁 현황 스냅샷")
         ctype_items = [item for item in evidence if item.compressor_type == ctype]
         if ctype_items:
-            summary = "; ".join(f"{item.competitor} {item.samsung_status}" for item in ctype_items[:3])
+            summary = "; ".join(f"{item.competitor} {DISPLAY_STATUS[item.samsung_status]}" for item in ctype_items[:3])
             lines.append(f"- 이번 주 확인 사항: {summary}")
         else:
             lines.append("- 해당 없음 — 이번 주 확인된 고신뢰 근거 없음")
         lines.append("")
-
-        competitors_to_show = list(PRIMARY_COMPETITORS[ctype])
-        for item in ctype_items:
-            if item.competitor not in competitors_to_show:
-                competitors_to_show.append(item.competitor)
-        # Secondary competitors are shown only when evidence exists.
-        competitors_to_show = [c for c in competitors_to_show if c in PRIMARY_COMPETITORS[ctype] or any(i.competitor == c for i in ctype_items)]
 
         for category in CATEGORIES:
             lines.append(f"### {category}")
@@ -116,8 +106,11 @@ def write_step1_report(evidence: list[EvidenceItem], *, feedback: dict[str, Any]
                 lines.append(f"#### {competitor}")
                 if items:
                     for item in items:
-                        lines.append(f"- 내용: {item.summary}")
-                        lines.append(f"  - 삼성 비교 관점: {item.samsung_status}")
+                        low_note = "저신뢰 근거 — 단정 금지" if item.low_confidence else ""
+                        lines.append(f"- 내용: {item.raw_text or item.summary}")
+                        lines.append(f"  - 삼성 비교 관점: {DISPLAY_STATUS[item.samsung_status]}")
+                        lines.append(f"  - 위협도/신뢰도: {item.threat_level} / {item.trust_score}{(' / ' + low_note) if low_note else ''}")
+                        lines.append(f"  - 동적 태그: {', '.join(item.dynamic_tags)}")
                         lines.append(f"  - 출처: {item.source_name} / {item.source_date}")
                 else:
                     lines.append(f"- 내용: {NO_EVIDENCE_TEXT}")
@@ -132,22 +125,20 @@ def write_step1_report(evidence: list[EvidenceItem], *, feedback: dict[str, Any]
     lines.append("| 타입 | 조건/구간 | 냉매 | 경쟁사 보유 | 삼성 현황 | 위협도 |")
     lines.append("|---|---|---|---|---|---|")
     for row in _gap_rows(evidence):
-        lines.append(
-            f"| {row['compressor_type']} | {row['condition_or_capacity']} | {row['refrigerant']} | {row['competitor']} {row['product_or_series']} | {row['samsung_status']} | {row['threat_level']} |"
-        )
+        lines.append(f"| {row['compressor_type']} | {row['condition_or_capacity']} | {row['refrigerant']} | {row['competitor']} {row['product_or_series']} | {DISPLAY_STATUS.get(row['samsung_status'], row['samsung_status'])} | {row['threat_level']} |")
     if not evidence:
-        lines.append("| - | - | - | - | 확인 필요 | 낮음 |")
+        lines.append("| - | - | - | - | 확인 필요 | none |")
     lines.append("")
     lines.append("## 다음 주 모니터링 포인트")
     lines.append("- ★ 최우선 경쟁사 중 `해당 없음`으로 남은 항목의 공식 출처 확인")
-    lines.append("- 삼성 비교 상태가 `확인 필요`인 항목을 내부 매핑 없이 공개 정보 기준으로 재검증")
-    lines.append("- STEP 2에서 Source Planner/Search Agent가 수집할 query registry로 전환")
+    lines.append("- high/medium threat evidence의 공식 출처 재검증")
+    lines.append("- STEP 3에서 삼성 내부 매핑 레이어 도입 여부 검토")
     if feedback and feedback.get("required_fixes"):
         lines.append("- Critic 피드백 반영: " + "; ".join(feedback["required_fixes"]))
     lines.append("")
     lines.append("## 출처 목록")
     for source in _sources(evidence):
-        lines.append(f"- [{source['source_name']}] {source['source_url']} / {source['source_date']}")
+        lines.append(f"- [{source['source_name']}] {source['source_url']} / {source['source_date']} / {source['source_type']}")
     if not evidence:
         lines.append("- 해당 없음")
     lines.append("")
@@ -182,7 +173,7 @@ def critique_step1_report(draft: str, evidence_dicts: list[dict[str, Any]], iter
     else:
         fixes.append("삼성 Gap 종합 현황 표를 생성하세요.")
 
-    if "## 출처 목록" in draft and ("manual://" in draft or "출처:" in draft or " / 202" in draft):
+    if "## 출처 목록" in draft and ("manual://" in draft or "https://" in draft):
         score += 1
         findings.append("출처 목록 포함")
     else:
@@ -210,15 +201,30 @@ def critique_step1_report(draft: str, evidence_dicts: list[dict[str, Any]], iter
         hard_fail_reasons.append("★ 최우선 경쟁사 전체 누락")
 
     hard_fail = bool(hard_fail_reasons)
-    return {
-        "score": score,
-        "passed": score >= PASS_SCORE and not hard_fail,
-        "findings": findings,
-        "required_fixes": fixes,
-        "hard_fail": hard_fail,
-        "hard_fail_reasons": hard_fail_reasons,
-        "iteration": iteration,
-    }
+    return {"score": score, "passed": score >= PASS_SCORE and not hard_fail, "findings": findings, "required_fixes": fixes, "hard_fail": hard_fail, "hard_fail_reasons": hard_fail_reasons, "iteration": iteration}
+
+
+def build_report_metadata(state: WorkflowState) -> ReportMetadata:
+    evidence = [EvidenceItem(**item) for item in state.get("evidence", [])]
+    week_id = state.get("week_id", evidence[0].week_id if evidence else "unknown")
+    type_coverage = sorted({item.compressor_type for item in evidence})
+    competitor_coverage = sorted({item.competitor for item in evidence})
+    primary_missing = []
+    for ctype, competitors in PRIMARY_COMPETITORS.items():
+        for competitor in competitors:
+            if not any(item.compressor_type == ctype and item.competitor == competitor for item in evidence):
+                primary_missing.append(f"{ctype}:{competitor}")
+    return ReportMetadata(
+        week_id=week_id,
+        run_date=state.get("run_date", "2026-06-25"),
+        total_evidence_count=len(evidence),
+        type_coverage=type_coverage,
+        competitor_coverage=competitor_coverage,
+        primary_missing=primary_missing,
+        high_threat_count=sum(1 for item in evidence if item.threat_level == "high"),
+        critic_score=int(state.get("score", 0)),
+        hard_fail=bool(state.get("hard_fail", False)),
+    )
 
 
 def _sources(evidence: list[EvidenceItem]) -> list[dict[str, str]]:
@@ -229,23 +235,12 @@ def _sources(evidence: list[EvidenceItem]) -> list[dict[str, str]]:
         if key in seen:
             continue
         seen.add(key)
-        sources.append({"source_name": item.source_name, "source_url": item.source_url, "source_date": item.source_date})
+        sources.append({"source_name": item.source_name, "source_url": item.source_url, "source_date": item.source_date, "source_type": item.source_type})
     return sources
 
 
 def _gap_rows(evidence: list[EvidenceItem]) -> list[dict[str, str]]:
     rows = []
     for item in evidence:
-        threat = "높음" if item.samsung_status == "미보유" and item.is_primary else "중간" if item.samsung_status in {"미보유", "확인 필요"} else "낮음"
-        rows.append(
-            {
-                "compressor_type": item.compressor_type,
-                "condition_or_capacity": item.condition_or_capacity,
-                "refrigerant": item.refrigerant,
-                "competitor": item.competitor,
-                "product_or_series": item.product_or_series,
-                "samsung_status": item.samsung_status,
-                "threat_level": threat,
-            }
-        )
+        rows.append({"compressor_type": item.compressor_type, "condition_or_capacity": item.condition_or_capacity, "refrigerant": "/".join(item.refrigerant), "competitor": item.competitor, "product_or_series": item.product_or_series, "samsung_status": item.samsung_status, "threat_level": item.threat_level})
     return rows

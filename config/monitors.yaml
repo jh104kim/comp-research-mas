@@ -1,17 +1,38 @@
-# Phase 2 Search Agent query registry draft
-monitors:
-  - group: R290 Re 핵심
-    competitors: [Embraco/Nidec, Secop, GMCC]
-    products: [EM, NEK, NT, KL, NL, DL, PA, KA]
-    refrigerant: R290
-    type: Reciprocating
-  - group: R454B Sc 핵심
-    competitors: [GMCC, Danfoss, LG, Copeland]
-    products: [DSH, YPH, YBH, YHV, ZO]
-    refrigerant: R454B
-    type: Scroll
-  - group: Rotary 별도 관리
-    competitors: [Highly, LG, Panasonic]
-    products: [CMA, E-Series]
-    refrigerant: R290/R454B
-    type: Rotary
+# STEP 2 Search Agent query registry
+# 전체 크롤링 금지. 고신뢰/고멘션 소스 중심 선별 검색.
+primary_competitors:
+  Re:
+    - GMCC/Midea
+    - LG
+  Ro:
+    - GMCC/Midea
+    - LG
+  Sc:
+    - Copeland/Emerson
+secondary_competitors:
+  Re:
+    - Embraco/Nidec
+    - Secop
+    - Panasonic
+  Ro:
+    - Highly
+    - Panasonic
+  Sc:
+    - GMCC/Midea
+    - Danfoss
+    - LG
+source_priority:
+  tier1:
+    - NaturalRefrigerants.com
+    - Cooling Post
+    - Chillventa
+  tier2:
+    - ACHR News
+    - AHR Expo
+    - ASHRAE
+  tier3:
+    - JARN
+    - China Refrigeration Expo
+  academic:
+    - International Journal of Refrigeration
+    - Applied Thermal Engineering

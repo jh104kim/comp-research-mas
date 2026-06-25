@@ -47,20 +47,25 @@
 ### Evidence Normalizer
 
 - 수집 결과를 `EvidenceItem` schema로 변환한다.
-- 필드 예시:
+- 필수 필드:
   - compressor_type: Re/Ro/Sc
-  - category: 8개 카테고리 중 하나
-  - competitor
+  - competitor: 정규화된 이름
+  - refrigerant: 복수 list
+  - category: 8개 canonical 카테고리
+  - samsung_status: 보유/미보유/대응중/확인필요
+  - trust_score: 1~5
+  - source_type: official/exhibition/patent/academic/trade_media/news
+  - threat_level: high/medium/low/none
+  - week_id, source_url, source_date, raw_text
+- 확장 필드:
   - product_or_series
-  - refrigerant
+  - condition_or_capacity
   - application
-  - source_url
-  - source_date
-  - source_type
-  - trust_score
-  - summary
-  - samsung_comparison
-  - gap_signal
+  - source_name
+  - is_primary
+  - low_confidence
+  - dynamic_tags
+- 수집 데이터에 따라 `dynamic_tags`를 부여하고, 반복적으로 중요해지는 태그는 STEP 3에서 정식 필드로 승격 검토한다.
 
 ### Analyst Agent
 
