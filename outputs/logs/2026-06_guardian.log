@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "block_hits": [],
+  "warn_hits": [],
+  "scanned_fields": [
+    "raw_results",
+    "evidence",
+    "draft",
+    "feedback",
+    "analysis_bundle",
+    "output_paths"
+  ],
+  "severity": "pass"
+}

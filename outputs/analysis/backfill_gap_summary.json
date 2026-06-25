@@ -1,0 +1,3227 @@
+{
+  "from_period": "2025-07",
+  "to_period": "2026-06",
+  "dry_run": false,
+  "period_snapshots": [
+    {
+      "period_id": "2025-07",
+      "evidence_count": 11,
+      "evidence_quality": "sufficient",
+      "data_insufficient": false,
+      "period_context": "backfill",
+      "evidence_threshold_used": 4,
+      "gap_matrix": {
+        "Re": {
+          "R290": {
+            "MBP": {
+              "samsung": "미보유",
+              "note": "초기값",
+              "samsung_status": "미보유",
+              "threat_level": "high",
+              "competitors": [
+                {
+                  "name": "GMCC/Midea",
+                  "model": "GMCC compressor official monitoring 2025-07",
+                  "trust_score": 5,
+                  "source": "https://www.gmcc.com",
+                  "evidence_id": "2025-07:Re:GMCC/Midea:신냉매·냉매전환:https://www.gmcc.com"
+                },
+                {
+                  "name": "LG",
+                  "model": "LG Compressor official monitoring 2025-07",
+                  "trust_score": 5,
+                  "source": "https://www.lg.com/global/business/compressor",
+                  "evidence_id": "2025-07:Re:LG:신제품·라인업:https://www.lg.com/global/business/compressor"
+                },
+                {
+                  "name": "Embraco/Nidec",
+                  "model": "Embraco official R290 monitoring 2025-07",
+                  "trust_score": 5,
+                  "source": "https://www.embraco.com/",
+                  "evidence_id": "2025-07:Re:Embraco/Nidec:신냉매·냉매전환:https://www.embraco.com/"
+                },
+                {
+                  "name": "Secop",
+                  "model": "Secop official sustainable compressor monitoring 2025-07",
+                  "trust_score": 5,
+                  "source": "https://www.secop.com/",
+                  "evidence_id": "2025-07:Re:Secop:신뢰성·내구성:https://www.secop.com/"
+                },
+                {
+                  "name": "업계/R290",
+                  "model": "EPA SNAP monitoring 2025-07",
+                  "trust_score": 5,
+                  "source": "https://www.epa.gov/snap",
+                  "evidence_id": "2025-07:Re:업계/R290:규격·인증:https://www.epa.gov/snap"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            },
+            "LBP": {
+              "samsung": "미보유",
+              "note": "초기값",
+              "period_evidence_quality": "sufficient"
+            },
+            "HBP": {
+              "samsung": "확인필요",
+              "note": "초기값",
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R600a": {
+            "MBP": {
+              "samsung": "보유",
+              "note": "초기값",
+              "samsung_status": "보유",
+              "threat_level": "low",
+              "competitors": [
+                {
+                  "name": "Secop",
+                  "model": "Secop official sustainable compressor monitoring 2025-07",
+                  "trust_score": 5,
+                  "source": "https://www.secop.com/",
+                  "evidence_id": "2025-07:Re:Secop:신뢰성·내구성:https://www.secop.com/"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R134a": {
+            "MBP": {
+              "samsung": "보유",
+              "note": "초기값",
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R1234yf": {
+            "MBP": {
+              "samsung": "미보유",
+              "note": "초기값",
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R32": {
+            "MBP": {
+              "samsung": "확인필요",
+              "note": "evidence 기반 추론",
+              "samsung_status": "확인필요",
+              "threat_level": "none",
+              "competitors": [
+                {
+                  "name": "LG",
+                  "model": "LG Compressor official monitoring 2025-07",
+                  "trust_score": 5,
+                  "source": "https://www.lg.com/global/business/compressor",
+                  "evidence_id": "2025-07:Re:LG:신제품·라인업:https://www.lg.com/global/business/compressor"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            }
+          }
+        },
+        "Ro": {
+          "R290": {
+            "samsung": "보유",
+            "note": "초기값",
+            "samsung_status": "보유",
+            "threat_level": "low",
+            "competitors": [
+              {
+                "name": "GMCC/Midea",
+                "model": "Google Patents GMCC Midea rotary compressor R290 2025",
+                "trust_score": 5,
+                "source": "https://patents.google.com/?q=(GMCC+Midea+rotary+compressor+R290+2025)",
+                "evidence_id": "2025-07:Ro:GMCC/Midea:특허·기술:https://patents.google.com/?q=(GMCC+Midea+rotary+compressor+R290+2025)"
+              }
+            ],
+            "period_evidence_quality": "sufficient"
+          },
+          "R32": {
+            "samsung": "보유",
+            "note": "초기값",
+            "samsung_status": "보유",
+            "threat_level": "low",
+            "competitors": [
+              {
+                "name": "LG",
+                "model": "LG Rotary Compressor official monitoring 2025-07",
+                "trust_score": 5,
+                "source": "https://www.lg.com/global/business/compressor-motor/compressors/rotary-compressor/",
+                "evidence_id": "2025-07:Ro:LG:신제품·라인업:https://www.lg.com/global/business/compressor-motor/compressors/rotary-compressor/"
+              }
+            ],
+            "period_evidence_quality": "sufficient"
+          },
+          "R454C": {
+            "samsung": "미보유",
+            "note": "초기값",
+            "period_evidence_quality": "sufficient"
+          }
+        },
+        "Sc": {
+          "R454B": {
+            "Fixed": {
+              "samsung": "보유",
+              "note": "초기값",
+              "samsung_status": "보유",
+              "threat_level": "low",
+              "competitors": [
+                {
+                  "name": "Copeland/Emerson",
+                  "model": "Copeland official R454B scroll monitoring 2025-07",
+                  "trust_score": 5,
+                  "source": "https://www.copeland.com/",
+                  "evidence_id": "2025-07:Sc:Copeland/Emerson:신냉매·냉매전환:https://www.copeland.com/"
+                },
+                {
+                  "name": "Danfoss",
+                  "model": "Danfoss compressors official monitoring 2025-07",
+                  "trust_score": 5,
+                  "source": "https://www.danfoss.com/en/products/dcs/compressors/",
+                  "evidence_id": "2025-07:Sc:Danfoss:신제품·라인업:https://www.danfoss.com/en/products/dcs/compressors/"
+                },
+                {
+                  "name": "규제/EU",
+                  "model": "EU F-Gas monitoring 2025-07",
+                  "trust_score": 5,
+                  "source": "https://climate.ec.europa.eu/eu-action/fluorinated-greenhouse-gases",
+                  "evidence_id": "2025-07:Sc:규제/EU:규격·인증:https://climate.ec.europa.eu/eu-action/fluorinated-greenhouse-gases"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            },
+            "Variable": {
+              "samsung": "대응중",
+              "note": "초기값",
+              "samsung_status": "대응중",
+              "threat_level": "low",
+              "competitors": [
+                {
+                  "name": "Copeland/Emerson",
+                  "model": "Copeland scroll heat pump applications reference 2025-07",
+                  "trust_score": 3,
+                  "source": "https://www.coolingpost.com/products/copeland-scrolls-for-heat-pump-applications/",
+                  "evidence_id": "2025-07:Sc:Copeland/Emerson:성능·효율:https://www.coolingpost.com/products/copeland-scrolls-for-heat-pump-applications/"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            },
+            "TwoStage": {
+              "samsung": "대응중",
+              "note": "초기값",
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R410A": {
+            "Fixed": {
+              "samsung": "보유",
+              "note": "evidence 기반 추론",
+              "samsung_status": "보유",
+              "threat_level": "low",
+              "competitors": [
+                {
+                  "name": "Danfoss",
+                  "model": "Danfoss compressors official monitoring 2025-07",
+                  "trust_score": 5,
+                  "source": "https://www.danfoss.com/en/products/dcs/compressors/",
+                  "evidence_id": "2025-07:Sc:Danfoss:신제품·라인업:https://www.danfoss.com/en/products/dcs/compressors/"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R32": {
+            "samsung": "보유",
+            "note": "초기값",
+            "period_evidence_quality": "sufficient"
+          },
+          "R466A": {
+            "samsung": "확인필요",
+            "note": "초기값",
+            "period_evidence_quality": "sufficient"
+          }
+        }
+      },
+      "threat_count": 13,
+      "signal_count": 8,
+      "critic_score": 10,
+      "hard_fail": false
+    },
+    {
+      "period_id": "2025-08",
+      "evidence_count": 11,
+      "evidence_quality": "sufficient",
+      "data_insufficient": false,
+      "period_context": "backfill",
+      "evidence_threshold_used": 4,
+      "gap_matrix": {
+        "Re": {
+          "R290": {
+            "MBP": {
+              "samsung": "미보유",
+              "note": "초기값",
+              "samsung_status": "미보유",
+              "threat_level": "high",
+              "competitors": [
+                {
+                  "name": "GMCC/Midea",
+                  "model": "GMCC compressor official monitoring 2025-08",
+                  "trust_score": 5,
+                  "source": "https://www.gmcc.com",
+                  "evidence_id": "2025-08:Re:GMCC/Midea:신냉매·냉매전환:https://www.gmcc.com"
+                },
+                {
+                  "name": "LG",
+                  "model": "LG Compressor official monitoring 2025-08",
+                  "trust_score": 5,
+                  "source": "https://www.lg.com/global/business/compressor",
+                  "evidence_id": "2025-08:Re:LG:신제품·라인업:https://www.lg.com/global/business/compressor"
+                },
+                {
+                  "name": "Embraco/Nidec",
+                  "model": "Embraco official R290 monitoring 2025-08",
+                  "trust_score": 5,
+                  "source": "https://www.embraco.com/",
+                  "evidence_id": "2025-08:Re:Embraco/Nidec:신냉매·냉매전환:https://www.embraco.com/"
+                },
+                {
+                  "name": "Secop",
+                  "model": "Secop official sustainable compressor monitoring 2025-08",
+                  "trust_score": 5,
+                  "source": "https://www.secop.com/",
+                  "evidence_id": "2025-08:Re:Secop:신뢰성·내구성:https://www.secop.com/"
+                },
+                {
+                  "name": "업계/R290",
+                  "model": "EPA SNAP monitoring 2025-08",
+                  "trust_score": 5,
+                  "source": "https://www.epa.gov/snap",
+                  "evidence_id": "2025-08:Re:업계/R290:규격·인증:https://www.epa.gov/snap"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            },
+            "LBP": {
+              "samsung": "미보유",
+              "note": "초기값",
+              "period_evidence_quality": "sufficient"
+            },
+            "HBP": {
+              "samsung": "확인필요",
+              "note": "초기값",
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R600a": {
+            "MBP": {
+              "samsung": "보유",
+              "note": "초기값",
+              "samsung_status": "보유",
+              "threat_level": "low",
+              "competitors": [
+                {
+                  "name": "Secop",
+                  "model": "Secop official sustainable compressor monitoring 2025-08",
+                  "trust_score": 5,
+                  "source": "https://www.secop.com/",
+                  "evidence_id": "2025-08:Re:Secop:신뢰성·내구성:https://www.secop.com/"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R134a": {
+            "MBP": {
+              "samsung": "보유",
+              "note": "초기값",
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R1234yf": {
+            "MBP": {
+              "samsung": "미보유",
+              "note": "초기값",
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R32": {
+            "MBP": {
+              "samsung": "확인필요",
+              "note": "evidence 기반 추론",
+              "samsung_status": "확인필요",
+              "threat_level": "none",
+              "competitors": [
+                {
+                  "name": "LG",
+                  "model": "LG Compressor official monitoring 2025-08",
+                  "trust_score": 5,
+                  "source": "https://www.lg.com/global/business/compressor",
+                  "evidence_id": "2025-08:Re:LG:신제품·라인업:https://www.lg.com/global/business/compressor"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            }
+          }
+        },
+        "Ro": {
+          "R290": {
+            "samsung": "보유",
+            "note": "초기값",
+            "samsung_status": "보유",
+            "threat_level": "low",
+            "competitors": [
+              {
+                "name": "GMCC/Midea",
+                "model": "Google Patents GMCC Midea rotary compressor R290 2025",
+                "trust_score": 5,
+                "source": "https://patents.google.com/?q=(GMCC+Midea+rotary+compressor+R290+2025)",
+                "evidence_id": "2025-08:Ro:GMCC/Midea:특허·기술:https://patents.google.com/?q=(GMCC+Midea+rotary+compressor+R290+2025)"
+              }
+            ],
+            "period_evidence_quality": "sufficient"
+          },
+          "R32": {
+            "samsung": "보유",
+            "note": "초기값",
+            "samsung_status": "보유",
+            "threat_level": "low",
+            "competitors": [
+              {
+                "name": "LG",
+                "model": "LG Rotary Compressor official monitoring 2025-08",
+                "trust_score": 5,
+                "source": "https://www.lg.com/global/business/compressor-motor/compressors/rotary-compressor/",
+                "evidence_id": "2025-08:Ro:LG:신제품·라인업:https://www.lg.com/global/business/compressor-motor/compressors/rotary-compressor/"
+              }
+            ],
+            "period_evidence_quality": "sufficient"
+          },
+          "R454C": {
+            "samsung": "미보유",
+            "note": "초기값",
+            "period_evidence_quality": "sufficient"
+          }
+        },
+        "Sc": {
+          "R454B": {
+            "Fixed": {
+              "samsung": "보유",
+              "note": "초기값",
+              "samsung_status": "보유",
+              "threat_level": "low",
+              "competitors": [
+                {
+                  "name": "Copeland/Emerson",
+                  "model": "Copeland official R454B scroll monitoring 2025-08",
+                  "trust_score": 5,
+                  "source": "https://www.copeland.com/",
+                  "evidence_id": "2025-08:Sc:Copeland/Emerson:신냉매·냉매전환:https://www.copeland.com/"
+                },
+                {
+                  "name": "Danfoss",
+                  "model": "Danfoss compressors official monitoring 2025-08",
+                  "trust_score": 5,
+                  "source": "https://www.danfoss.com/en/products/dcs/compressors/",
+                  "evidence_id": "2025-08:Sc:Danfoss:신제품·라인업:https://www.danfoss.com/en/products/dcs/compressors/"
+                },
+                {
+                  "name": "규제/EU",
+                  "model": "EU F-Gas monitoring 2025-08",
+                  "trust_score": 5,
+                  "source": "https://climate.ec.europa.eu/eu-action/fluorinated-greenhouse-gases",
+                  "evidence_id": "2025-08:Sc:규제/EU:규격·인증:https://climate.ec.europa.eu/eu-action/fluorinated-greenhouse-gases"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            },
+            "Variable": {
+              "samsung": "대응중",
+              "note": "초기값",
+              "samsung_status": "대응중",
+              "threat_level": "low",
+              "competitors": [
+                {
+                  "name": "Copeland/Emerson",
+                  "model": "Copeland scroll heat pump applications reference 2025-08",
+                  "trust_score": 3,
+                  "source": "https://www.coolingpost.com/products/copeland-scrolls-for-heat-pump-applications/",
+                  "evidence_id": "2025-08:Sc:Copeland/Emerson:성능·효율:https://www.coolingpost.com/products/copeland-scrolls-for-heat-pump-applications/"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            },
+            "TwoStage": {
+              "samsung": "대응중",
+              "note": "초기값",
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R410A": {
+            "Fixed": {
+              "samsung": "보유",
+              "note": "evidence 기반 추론",
+              "samsung_status": "보유",
+              "threat_level": "low",
+              "competitors": [
+                {
+                  "name": "Danfoss",
+                  "model": "Danfoss compressors official monitoring 2025-08",
+                  "trust_score": 5,
+                  "source": "https://www.danfoss.com/en/products/dcs/compressors/",
+                  "evidence_id": "2025-08:Sc:Danfoss:신제품·라인업:https://www.danfoss.com/en/products/dcs/compressors/"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R32": {
+            "samsung": "보유",
+            "note": "초기값",
+            "period_evidence_quality": "sufficient"
+          },
+          "R466A": {
+            "samsung": "확인필요",
+            "note": "초기값",
+            "period_evidence_quality": "sufficient"
+          }
+        }
+      },
+      "threat_count": 13,
+      "signal_count": 8,
+      "critic_score": 10,
+      "hard_fail": false
+    },
+    {
+      "period_id": "2025-09",
+      "evidence_count": 11,
+      "evidence_quality": "sufficient",
+      "data_insufficient": false,
+      "period_context": "backfill",
+      "evidence_threshold_used": 4,
+      "gap_matrix": {
+        "Re": {
+          "R290": {
+            "MBP": {
+              "samsung": "미보유",
+              "note": "초기값",
+              "samsung_status": "미보유",
+              "threat_level": "high",
+              "competitors": [
+                {
+                  "name": "GMCC/Midea",
+                  "model": "GMCC compressor official monitoring 2025-09",
+                  "trust_score": 5,
+                  "source": "https://www.gmcc.com",
+                  "evidence_id": "2025-09:Re:GMCC/Midea:신냉매·냉매전환:https://www.gmcc.com"
+                },
+                {
+                  "name": "LG",
+                  "model": "LG Compressor official monitoring 2025-09",
+                  "trust_score": 5,
+                  "source": "https://www.lg.com/global/business/compressor",
+                  "evidence_id": "2025-09:Re:LG:신제품·라인업:https://www.lg.com/global/business/compressor"
+                },
+                {
+                  "name": "Embraco/Nidec",
+                  "model": "Embraco official R290 monitoring 2025-09",
+                  "trust_score": 5,
+                  "source": "https://www.embraco.com/",
+                  "evidence_id": "2025-09:Re:Embraco/Nidec:신냉매·냉매전환:https://www.embraco.com/"
+                },
+                {
+                  "name": "Secop",
+                  "model": "Secop official sustainable compressor monitoring 2025-09",
+                  "trust_score": 5,
+                  "source": "https://www.secop.com/",
+                  "evidence_id": "2025-09:Re:Secop:신뢰성·내구성:https://www.secop.com/"
+                },
+                {
+                  "name": "업계/R290",
+                  "model": "EPA SNAP monitoring 2025-09",
+                  "trust_score": 5,
+                  "source": "https://www.epa.gov/snap",
+                  "evidence_id": "2025-09:Re:업계/R290:규격·인증:https://www.epa.gov/snap"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            },
+            "LBP": {
+              "samsung": "미보유",
+              "note": "초기값",
+              "period_evidence_quality": "sufficient"
+            },
+            "HBP": {
+              "samsung": "확인필요",
+              "note": "초기값",
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R600a": {
+            "MBP": {
+              "samsung": "보유",
+              "note": "초기값",
+              "samsung_status": "보유",
+              "threat_level": "low",
+              "competitors": [
+                {
+                  "name": "Secop",
+                  "model": "Secop official sustainable compressor monitoring 2025-09",
+                  "trust_score": 5,
+                  "source": "https://www.secop.com/",
+                  "evidence_id": "2025-09:Re:Secop:신뢰성·내구성:https://www.secop.com/"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R134a": {
+            "MBP": {
+              "samsung": "보유",
+              "note": "초기값",
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R1234yf": {
+            "MBP": {
+              "samsung": "미보유",
+              "note": "초기값",
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R32": {
+            "MBP": {
+              "samsung": "확인필요",
+              "note": "evidence 기반 추론",
+              "samsung_status": "확인필요",
+              "threat_level": "none",
+              "competitors": [
+                {
+                  "name": "LG",
+                  "model": "LG Compressor official monitoring 2025-09",
+                  "trust_score": 5,
+                  "source": "https://www.lg.com/global/business/compressor",
+                  "evidence_id": "2025-09:Re:LG:신제품·라인업:https://www.lg.com/global/business/compressor"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            }
+          }
+        },
+        "Ro": {
+          "R290": {
+            "samsung": "보유",
+            "note": "초기값",
+            "samsung_status": "보유",
+            "threat_level": "low",
+            "competitors": [
+              {
+                "name": "GMCC/Midea",
+                "model": "Google Patents GMCC Midea rotary compressor R290 2025",
+                "trust_score": 5,
+                "source": "https://patents.google.com/?q=(GMCC+Midea+rotary+compressor+R290+2025)",
+                "evidence_id": "2025-09:Ro:GMCC/Midea:특허·기술:https://patents.google.com/?q=(GMCC+Midea+rotary+compressor+R290+2025)"
+              }
+            ],
+            "period_evidence_quality": "sufficient"
+          },
+          "R32": {
+            "samsung": "보유",
+            "note": "초기값",
+            "samsung_status": "보유",
+            "threat_level": "low",
+            "competitors": [
+              {
+                "name": "LG",
+                "model": "LG Rotary Compressor official monitoring 2025-09",
+                "trust_score": 5,
+                "source": "https://www.lg.com/global/business/compressor-motor/compressors/rotary-compressor/",
+                "evidence_id": "2025-09:Ro:LG:신제품·라인업:https://www.lg.com/global/business/compressor-motor/compressors/rotary-compressor/"
+              }
+            ],
+            "period_evidence_quality": "sufficient"
+          },
+          "R454C": {
+            "samsung": "미보유",
+            "note": "초기값",
+            "period_evidence_quality": "sufficient"
+          }
+        },
+        "Sc": {
+          "R454B": {
+            "Fixed": {
+              "samsung": "보유",
+              "note": "초기값",
+              "samsung_status": "보유",
+              "threat_level": "low",
+              "competitors": [
+                {
+                  "name": "Copeland/Emerson",
+                  "model": "Copeland official R454B scroll monitoring 2025-09",
+                  "trust_score": 5,
+                  "source": "https://www.copeland.com/",
+                  "evidence_id": "2025-09:Sc:Copeland/Emerson:신냉매·냉매전환:https://www.copeland.com/"
+                },
+                {
+                  "name": "Danfoss",
+                  "model": "Danfoss compressors official monitoring 2025-09",
+                  "trust_score": 5,
+                  "source": "https://www.danfoss.com/en/products/dcs/compressors/",
+                  "evidence_id": "2025-09:Sc:Danfoss:신제품·라인업:https://www.danfoss.com/en/products/dcs/compressors/"
+                },
+                {
+                  "name": "규제/EU",
+                  "model": "EU F-Gas monitoring 2025-09",
+                  "trust_score": 5,
+                  "source": "https://climate.ec.europa.eu/eu-action/fluorinated-greenhouse-gases",
+                  "evidence_id": "2025-09:Sc:규제/EU:규격·인증:https://climate.ec.europa.eu/eu-action/fluorinated-greenhouse-gases"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            },
+            "Variable": {
+              "samsung": "대응중",
+              "note": "초기값",
+              "samsung_status": "대응중",
+              "threat_level": "low",
+              "competitors": [
+                {
+                  "name": "Copeland/Emerson",
+                  "model": "Copeland scroll heat pump applications reference 2025-09",
+                  "trust_score": 3,
+                  "source": "https://www.coolingpost.com/products/copeland-scrolls-for-heat-pump-applications/",
+                  "evidence_id": "2025-09:Sc:Copeland/Emerson:성능·효율:https://www.coolingpost.com/products/copeland-scrolls-for-heat-pump-applications/"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            },
+            "TwoStage": {
+              "samsung": "대응중",
+              "note": "초기값",
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R410A": {
+            "Fixed": {
+              "samsung": "보유",
+              "note": "evidence 기반 추론",
+              "samsung_status": "보유",
+              "threat_level": "low",
+              "competitors": [
+                {
+                  "name": "Danfoss",
+                  "model": "Danfoss compressors official monitoring 2025-09",
+                  "trust_score": 5,
+                  "source": "https://www.danfoss.com/en/products/dcs/compressors/",
+                  "evidence_id": "2025-09:Sc:Danfoss:신제품·라인업:https://www.danfoss.com/en/products/dcs/compressors/"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R32": {
+            "samsung": "보유",
+            "note": "초기값",
+            "period_evidence_quality": "sufficient"
+          },
+          "R466A": {
+            "samsung": "확인필요",
+            "note": "초기값",
+            "period_evidence_quality": "sufficient"
+          }
+        }
+      },
+      "threat_count": 13,
+      "signal_count": 8,
+      "critic_score": 10,
+      "hard_fail": false
+    },
+    {
+      "period_id": "2025-10",
+      "evidence_count": 15,
+      "evidence_quality": "sufficient",
+      "data_insufficient": false,
+      "period_context": "exhibition",
+      "evidence_threshold_used": 8,
+      "gap_matrix": {
+        "Re": {
+          "R290": {
+            "MBP": {
+              "samsung": "미보유",
+              "note": "초기값",
+              "samsung_status": "미보유",
+              "threat_level": "high",
+              "competitors": [
+                {
+                  "name": "GMCC/Midea",
+                  "model": "GMCC Official site",
+                  "trust_score": 5,
+                  "source": "https://www.gmcc.com",
+                  "evidence_id": "2025-10:Re:GMCC/Midea:신제품·라인업:https://www.gmcc.com"
+                },
+                {
+                  "name": "LG",
+                  "model": "LG Compressor Official",
+                  "trust_score": 5,
+                  "source": "https://www.lg.com/global/business/compressor",
+                  "evidence_id": "2025-10:Re:LG:신제품·라인업:https://www.lg.com/global/business/compressor"
+                },
+                {
+                  "name": "Embraco/Nidec",
+                  "model": "Embraco",
+                  "trust_score": 5,
+                  "source": "https://www.embraco.com/",
+                  "evidence_id": "2025-10:Re:Embraco/Nidec:신냉매·냉매전환:https://www.embraco.com/"
+                },
+                {
+                  "name": "Secop",
+                  "model": "Advanced Compressors Technology & Sustainable Cooling Solutions | Secop",
+                  "trust_score": 5,
+                  "source": "https://www.secop.com/",
+                  "evidence_id": "2025-10:Re:Secop:신냉매·냉매전환:https://www.secop.com/"
+                },
+                {
+                  "name": "업계/R290",
+                  "model": "R290 Accounted for 38% of New EU Residential Heat Pump Certifications in 2024, According to Heat Pumps Watch",
+                  "trust_score": 3,
+                  "source": "https://naturalrefrigerants.com/news/heat-pump-watch-r290-eu-residential-heat-pumps-certificates/",
+                  "evidence_id": "2025-10:Re:업계/R290:규격·인증:https://naturalrefrigerants.com/news/heat-pump-watch-r290-eu-residential-heat-pumps-certificates/"
+                },
+                {
+                  "name": "Embraco/Nidec",
+                  "model": "Embraco Launches R290 Condensing Units for European Market, Targeting Foodservice",
+                  "trust_score": 3,
+                  "source": "https://hydrocarbons21.com/embraco-debuts-r290-condensing-units-for-european-market-targeting-foodservice/",
+                  "evidence_id": "2025-10:Re:Embraco/Nidec:전시회·발표:https://hydrocarbons21.com/embraco-debuts-r290-condensing-units-for-european-market-targeting-foodservice/"
+                },
+                {
+                  "name": "업계/R290",
+                  "model": "Google Patents search: compressor R290 2025",
+                  "trust_score": 5,
+                  "source": "https://patents.google.com/?q=(compressor+R290+2025)",
+                  "evidence_id": "2025-10:Re:업계/R290:특허·기술:https://patents.google.com/?q=(compressor+R290+2025)"
+                },
+                {
+                  "name": "규제/EPA",
+                  "model": "Significant New Alternatives Policy (SNAP) Program | US EPA",
+                  "trust_score": 5,
+                  "source": "https://www.epa.gov/snap",
+                  "evidence_id": "2025-10:Re:규제/EPA:규격·인증:https://www.epa.gov/snap"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            },
+            "LBP": {
+              "samsung": "미보유",
+              "note": "초기값",
+              "period_evidence_quality": "sufficient"
+            },
+            "HBP": {
+              "samsung": "확인필요",
+              "note": "초기값",
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R600a": {
+            "MBP": {
+              "samsung": "보유",
+              "note": "초기값",
+              "samsung_status": "보유",
+              "threat_level": "low",
+              "competitors": [
+                {
+                  "name": "Secop",
+                  "model": "Advanced Compressors Technology & Sustainable Cooling Solutions | Secop",
+                  "trust_score": 5,
+                  "source": "https://www.secop.com/",
+                  "evidence_id": "2025-10:Re:Secop:신냉매·냉매전환:https://www.secop.com/"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R134a": {
+            "MBP": {
+              "samsung": "보유",
+              "note": "초기값",
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R1234yf": {
+            "MBP": {
+              "samsung": "미보유",
+              "note": "초기값",
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R454B": {
+            "MBP": {
+              "samsung": "확인필요",
+              "note": "evidence 기반 추론",
+              "samsung_status": "확인필요",
+              "threat_level": "none",
+              "competitors": [
+                {
+                  "name": "규제/EPA",
+                  "model": "Significant New Alternatives Policy (SNAP) Program | US EPA",
+                  "trust_score": 5,
+                  "source": "https://www.epa.gov/snap",
+                  "evidence_id": "2025-10:Re:규제/EPA:규격·인증:https://www.epa.gov/snap"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            }
+          }
+        },
+        "Ro": {
+          "R290": {
+            "samsung": "보유",
+            "note": "초기값",
+            "samsung_status": "보유",
+            "threat_level": "low",
+            "competitors": [
+              {
+                "name": "GMCC/Midea",
+                "model": "Google Patents search: GMCC Midea rotary compressor R290 2025",
+                "trust_score": 5,
+                "source": "https://patents.google.com/?q=(GMCC+Midea+rotary+compressor+R290+2025)",
+                "evidence_id": "2025-10:Ro:GMCC/Midea:특허·기술:https://patents.google.com/?q=(GMCC+Midea+rotary+compressor+R290+2025)"
+              }
+            ],
+            "period_evidence_quality": "sufficient"
+          },
+          "R32": {
+            "samsung": "보유",
+            "note": "초기값",
+            "samsung_status": "보유",
+            "threat_level": "low",
+            "competitors": [
+              {
+                "name": "LG",
+                "model": "LG Rotary Compressor Official Page",
+                "trust_score": 5,
+                "source": "https://www.lg.com/global/business/compressor-motor/compressors/rotary-compressor/",
+                "evidence_id": "2025-10:Ro:LG:신제품·라인업:https://www.lg.com/global/business/compressor-motor/compressors/rotary-compressor/"
+              },
+              {
+                "name": "LG",
+                "model": "2025 LG CM Catalog Rotary compressor preview",
+                "trust_score": 5,
+                "source": "https://www.lg.com/global/images/business/compressor-motor/resource-download/pdf-file/2025_LG_CM_Catalog_Rotary%20compressor_preview.pdf",
+                "evidence_id": "2025-10:Ro:LG:성능·효율:https://www.lg.com/global/images/business/compressor-motor/resource-download/pdf-file/2025_LG_CM_Catalog_Rotary%20compressor_preview.pdf"
+              }
+            ],
+            "period_evidence_quality": "sufficient"
+          },
+          "R454C": {
+            "samsung": "미보유",
+            "note": "초기값",
+            "period_evidence_quality": "sufficient"
+          }
+        },
+        "Sc": {
+          "R454B": {
+            "Fixed": {
+              "samsung": "보유",
+              "note": "초기값",
+              "samsung_status": "보유",
+              "threat_level": "low",
+              "competitors": [
+                {
+                  "name": "Copeland/Emerson",
+                  "model": "Copeland Official",
+                  "trust_score": 5,
+                  "source": "https://www.copeland.com/",
+                  "evidence_id": "2025-10:Sc:Copeland/Emerson:신냉매·냉매전환:https://www.copeland.com/"
+                },
+                {
+                  "name": "Danfoss",
+                  "model": "Compressors for refrigeration, A/C and heating | Danfoss",
+                  "trust_score": 5,
+                  "source": "https://www.danfoss.com/en/products/dcs/compressors/",
+                  "evidence_id": "2025-10:Sc:Danfoss:신제품·라인업:https://www.danfoss.com/en/products/dcs/compressors/"
+                },
+                {
+                  "name": "Copeland/Emerson",
+                  "model": "Google Patents search: Copeland scroll compressor R454B patent",
+                  "trust_score": 5,
+                  "source": "https://patents.google.com/?q=(Copeland+scroll+compressor+R454B+patent)",
+                  "evidence_id": "2025-10:Sc:Copeland/Emerson:특허·기술:https://patents.google.com/?q=(Copeland+scroll+compressor+R454B+patent)"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            },
+            "Variable": {
+              "samsung": "대응중",
+              "note": "초기값",
+              "samsung_status": "대응중",
+              "threat_level": "low",
+              "competitors": [
+                {
+                  "name": "Copeland/Emerson",
+                  "model": "Copeland scrolls for heat pump applications",
+                  "trust_score": 3,
+                  "source": "https://www.coolingpost.com/products/copeland-scrolls-for-heat-pump-applications/",
+                  "evidence_id": "2025-10:Sc:Copeland/Emerson:성능·효율:https://www.coolingpost.com/products/copeland-scrolls-for-heat-pump-applications/"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            },
+            "TwoStage": {
+              "samsung": "대응중",
+              "note": "초기값",
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R410A": {
+            "Fixed": {
+              "samsung": "보유",
+              "note": "evidence 기반 추론",
+              "samsung_status": "보유",
+              "threat_level": "low",
+              "competitors": [
+                {
+                  "name": "Danfoss",
+                  "model": "Compressors for refrigeration, A/C and heating | Danfoss",
+                  "trust_score": 5,
+                  "source": "https://www.danfoss.com/en/products/dcs/compressors/",
+                  "evidence_id": "2025-10:Sc:Danfoss:신제품·라인업:https://www.danfoss.com/en/products/dcs/compressors/"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R32": {
+            "samsung": "보유",
+            "note": "초기값",
+            "period_evidence_quality": "sufficient"
+          },
+          "R466A": {
+            "samsung": "확인필요",
+            "note": "초기값",
+            "period_evidence_quality": "sufficient"
+          }
+        }
+      },
+      "threat_count": 17,
+      "signal_count": 9,
+      "critic_score": 10,
+      "hard_fail": false
+    },
+    {
+      "period_id": "2025-11",
+      "evidence_count": 11,
+      "evidence_quality": "sufficient",
+      "data_insufficient": false,
+      "period_context": "backfill",
+      "evidence_threshold_used": 4,
+      "gap_matrix": {
+        "Re": {
+          "R290": {
+            "MBP": {
+              "samsung": "미보유",
+              "note": "초기값",
+              "samsung_status": "미보유",
+              "threat_level": "high",
+              "competitors": [
+                {
+                  "name": "GMCC/Midea",
+                  "model": "GMCC compressor official monitoring 2025-11",
+                  "trust_score": 5,
+                  "source": "https://www.gmcc.com",
+                  "evidence_id": "2025-11:Re:GMCC/Midea:신냉매·냉매전환:https://www.gmcc.com"
+                },
+                {
+                  "name": "LG",
+                  "model": "LG Compressor official monitoring 2025-11",
+                  "trust_score": 5,
+                  "source": "https://www.lg.com/global/business/compressor",
+                  "evidence_id": "2025-11:Re:LG:신제품·라인업:https://www.lg.com/global/business/compressor"
+                },
+                {
+                  "name": "Embraco/Nidec",
+                  "model": "Embraco official R290 monitoring 2025-11",
+                  "trust_score": 5,
+                  "source": "https://www.embraco.com/",
+                  "evidence_id": "2025-11:Re:Embraco/Nidec:신냉매·냉매전환:https://www.embraco.com/"
+                },
+                {
+                  "name": "Secop",
+                  "model": "Secop official sustainable compressor monitoring 2025-11",
+                  "trust_score": 5,
+                  "source": "https://www.secop.com/",
+                  "evidence_id": "2025-11:Re:Secop:신뢰성·내구성:https://www.secop.com/"
+                },
+                {
+                  "name": "업계/R290",
+                  "model": "EPA SNAP monitoring 2025-11",
+                  "trust_score": 5,
+                  "source": "https://www.epa.gov/snap",
+                  "evidence_id": "2025-11:Re:업계/R290:규격·인증:https://www.epa.gov/snap"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            },
+            "LBP": {
+              "samsung": "미보유",
+              "note": "초기값",
+              "period_evidence_quality": "sufficient"
+            },
+            "HBP": {
+              "samsung": "확인필요",
+              "note": "초기값",
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R600a": {
+            "MBP": {
+              "samsung": "보유",
+              "note": "초기값",
+              "samsung_status": "보유",
+              "threat_level": "low",
+              "competitors": [
+                {
+                  "name": "Secop",
+                  "model": "Secop official sustainable compressor monitoring 2025-11",
+                  "trust_score": 5,
+                  "source": "https://www.secop.com/",
+                  "evidence_id": "2025-11:Re:Secop:신뢰성·내구성:https://www.secop.com/"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R134a": {
+            "MBP": {
+              "samsung": "보유",
+              "note": "초기값",
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R1234yf": {
+            "MBP": {
+              "samsung": "미보유",
+              "note": "초기값",
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R32": {
+            "MBP": {
+              "samsung": "확인필요",
+              "note": "evidence 기반 추론",
+              "samsung_status": "확인필요",
+              "threat_level": "none",
+              "competitors": [
+                {
+                  "name": "LG",
+                  "model": "LG Compressor official monitoring 2025-11",
+                  "trust_score": 5,
+                  "source": "https://www.lg.com/global/business/compressor",
+                  "evidence_id": "2025-11:Re:LG:신제품·라인업:https://www.lg.com/global/business/compressor"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            }
+          }
+        },
+        "Ro": {
+          "R290": {
+            "samsung": "보유",
+            "note": "초기값",
+            "samsung_status": "보유",
+            "threat_level": "low",
+            "competitors": [
+              {
+                "name": "GMCC/Midea",
+                "model": "Google Patents GMCC Midea rotary compressor R290 2025",
+                "trust_score": 5,
+                "source": "https://patents.google.com/?q=(GMCC+Midea+rotary+compressor+R290+2025)",
+                "evidence_id": "2025-11:Ro:GMCC/Midea:특허·기술:https://patents.google.com/?q=(GMCC+Midea+rotary+compressor+R290+2025)"
+              }
+            ],
+            "period_evidence_quality": "sufficient"
+          },
+          "R32": {
+            "samsung": "보유",
+            "note": "초기값",
+            "samsung_status": "보유",
+            "threat_level": "low",
+            "competitors": [
+              {
+                "name": "LG",
+                "model": "LG Rotary Compressor official monitoring 2025-11",
+                "trust_score": 5,
+                "source": "https://www.lg.com/global/business/compressor-motor/compressors/rotary-compressor/",
+                "evidence_id": "2025-11:Ro:LG:신제품·라인업:https://www.lg.com/global/business/compressor-motor/compressors/rotary-compressor/"
+              }
+            ],
+            "period_evidence_quality": "sufficient"
+          },
+          "R454C": {
+            "samsung": "미보유",
+            "note": "초기값",
+            "period_evidence_quality": "sufficient"
+          }
+        },
+        "Sc": {
+          "R454B": {
+            "Fixed": {
+              "samsung": "보유",
+              "note": "초기값",
+              "samsung_status": "보유",
+              "threat_level": "low",
+              "competitors": [
+                {
+                  "name": "Copeland/Emerson",
+                  "model": "Copeland official R454B scroll monitoring 2025-11",
+                  "trust_score": 5,
+                  "source": "https://www.copeland.com/",
+                  "evidence_id": "2025-11:Sc:Copeland/Emerson:신냉매·냉매전환:https://www.copeland.com/"
+                },
+                {
+                  "name": "Danfoss",
+                  "model": "Danfoss compressors official monitoring 2025-11",
+                  "trust_score": 5,
+                  "source": "https://www.danfoss.com/en/products/dcs/compressors/",
+                  "evidence_id": "2025-11:Sc:Danfoss:신제품·라인업:https://www.danfoss.com/en/products/dcs/compressors/"
+                },
+                {
+                  "name": "규제/EU",
+                  "model": "EU F-Gas monitoring 2025-11",
+                  "trust_score": 5,
+                  "source": "https://climate.ec.europa.eu/eu-action/fluorinated-greenhouse-gases",
+                  "evidence_id": "2025-11:Sc:규제/EU:규격·인증:https://climate.ec.europa.eu/eu-action/fluorinated-greenhouse-gases"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            },
+            "Variable": {
+              "samsung": "대응중",
+              "note": "초기값",
+              "samsung_status": "대응중",
+              "threat_level": "low",
+              "competitors": [
+                {
+                  "name": "Copeland/Emerson",
+                  "model": "Copeland scroll heat pump applications reference 2025-11",
+                  "trust_score": 3,
+                  "source": "https://www.coolingpost.com/products/copeland-scrolls-for-heat-pump-applications/",
+                  "evidence_id": "2025-11:Sc:Copeland/Emerson:성능·효율:https://www.coolingpost.com/products/copeland-scrolls-for-heat-pump-applications/"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            },
+            "TwoStage": {
+              "samsung": "대응중",
+              "note": "초기값",
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R410A": {
+            "Fixed": {
+              "samsung": "보유",
+              "note": "evidence 기반 추론",
+              "samsung_status": "보유",
+              "threat_level": "low",
+              "competitors": [
+                {
+                  "name": "Danfoss",
+                  "model": "Danfoss compressors official monitoring 2025-11",
+                  "trust_score": 5,
+                  "source": "https://www.danfoss.com/en/products/dcs/compressors/",
+                  "evidence_id": "2025-11:Sc:Danfoss:신제품·라인업:https://www.danfoss.com/en/products/dcs/compressors/"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R32": {
+            "samsung": "보유",
+            "note": "초기값",
+            "period_evidence_quality": "sufficient"
+          },
+          "R466A": {
+            "samsung": "확인필요",
+            "note": "초기값",
+            "period_evidence_quality": "sufficient"
+          }
+        }
+      },
+      "threat_count": 13,
+      "signal_count": 8,
+      "critic_score": 10,
+      "hard_fail": false
+    },
+    {
+      "period_id": "2025-12",
+      "evidence_count": 11,
+      "evidence_quality": "sufficient",
+      "data_insufficient": false,
+      "period_context": "backfill",
+      "evidence_threshold_used": 4,
+      "gap_matrix": {
+        "Re": {
+          "R290": {
+            "MBP": {
+              "samsung": "미보유",
+              "note": "초기값",
+              "samsung_status": "미보유",
+              "threat_level": "high",
+              "competitors": [
+                {
+                  "name": "GMCC/Midea",
+                  "model": "GMCC compressor official monitoring 2025-12",
+                  "trust_score": 5,
+                  "source": "https://www.gmcc.com",
+                  "evidence_id": "2025-12:Re:GMCC/Midea:신냉매·냉매전환:https://www.gmcc.com"
+                },
+                {
+                  "name": "LG",
+                  "model": "LG Compressor official monitoring 2025-12",
+                  "trust_score": 5,
+                  "source": "https://www.lg.com/global/business/compressor",
+                  "evidence_id": "2025-12:Re:LG:신제품·라인업:https://www.lg.com/global/business/compressor"
+                },
+                {
+                  "name": "Embraco/Nidec",
+                  "model": "Embraco official R290 monitoring 2025-12",
+                  "trust_score": 5,
+                  "source": "https://www.embraco.com/",
+                  "evidence_id": "2025-12:Re:Embraco/Nidec:신냉매·냉매전환:https://www.embraco.com/"
+                },
+                {
+                  "name": "Secop",
+                  "model": "Secop official sustainable compressor monitoring 2025-12",
+                  "trust_score": 5,
+                  "source": "https://www.secop.com/",
+                  "evidence_id": "2025-12:Re:Secop:신뢰성·내구성:https://www.secop.com/"
+                },
+                {
+                  "name": "업계/R290",
+                  "model": "EPA SNAP monitoring 2025-12",
+                  "trust_score": 5,
+                  "source": "https://www.epa.gov/snap",
+                  "evidence_id": "2025-12:Re:업계/R290:규격·인증:https://www.epa.gov/snap"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            },
+            "LBP": {
+              "samsung": "미보유",
+              "note": "초기값",
+              "period_evidence_quality": "sufficient"
+            },
+            "HBP": {
+              "samsung": "확인필요",
+              "note": "초기값",
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R600a": {
+            "MBP": {
+              "samsung": "보유",
+              "note": "초기값",
+              "samsung_status": "보유",
+              "threat_level": "low",
+              "competitors": [
+                {
+                  "name": "Secop",
+                  "model": "Secop official sustainable compressor monitoring 2025-12",
+                  "trust_score": 5,
+                  "source": "https://www.secop.com/",
+                  "evidence_id": "2025-12:Re:Secop:신뢰성·내구성:https://www.secop.com/"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R134a": {
+            "MBP": {
+              "samsung": "보유",
+              "note": "초기값",
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R1234yf": {
+            "MBP": {
+              "samsung": "미보유",
+              "note": "초기값",
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R32": {
+            "MBP": {
+              "samsung": "확인필요",
+              "note": "evidence 기반 추론",
+              "samsung_status": "확인필요",
+              "threat_level": "none",
+              "competitors": [
+                {
+                  "name": "LG",
+                  "model": "LG Compressor official monitoring 2025-12",
+                  "trust_score": 5,
+                  "source": "https://www.lg.com/global/business/compressor",
+                  "evidence_id": "2025-12:Re:LG:신제품·라인업:https://www.lg.com/global/business/compressor"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            }
+          }
+        },
+        "Ro": {
+          "R290": {
+            "samsung": "보유",
+            "note": "초기값",
+            "samsung_status": "보유",
+            "threat_level": "low",
+            "competitors": [
+              {
+                "name": "GMCC/Midea",
+                "model": "Google Patents GMCC Midea rotary compressor R290 2025",
+                "trust_score": 5,
+                "source": "https://patents.google.com/?q=(GMCC+Midea+rotary+compressor+R290+2025)",
+                "evidence_id": "2025-12:Ro:GMCC/Midea:특허·기술:https://patents.google.com/?q=(GMCC+Midea+rotary+compressor+R290+2025)"
+              }
+            ],
+            "period_evidence_quality": "sufficient"
+          },
+          "R32": {
+            "samsung": "보유",
+            "note": "초기값",
+            "samsung_status": "보유",
+            "threat_level": "low",
+            "competitors": [
+              {
+                "name": "LG",
+                "model": "LG Rotary Compressor official monitoring 2025-12",
+                "trust_score": 5,
+                "source": "https://www.lg.com/global/business/compressor-motor/compressors/rotary-compressor/",
+                "evidence_id": "2025-12:Ro:LG:신제품·라인업:https://www.lg.com/global/business/compressor-motor/compressors/rotary-compressor/"
+              }
+            ],
+            "period_evidence_quality": "sufficient"
+          },
+          "R454C": {
+            "samsung": "미보유",
+            "note": "초기값",
+            "period_evidence_quality": "sufficient"
+          }
+        },
+        "Sc": {
+          "R454B": {
+            "Fixed": {
+              "samsung": "보유",
+              "note": "초기값",
+              "samsung_status": "보유",
+              "threat_level": "low",
+              "competitors": [
+                {
+                  "name": "Copeland/Emerson",
+                  "model": "Copeland official R454B scroll monitoring 2025-12",
+                  "trust_score": 5,
+                  "source": "https://www.copeland.com/",
+                  "evidence_id": "2025-12:Sc:Copeland/Emerson:신냉매·냉매전환:https://www.copeland.com/"
+                },
+                {
+                  "name": "Danfoss",
+                  "model": "Danfoss compressors official monitoring 2025-12",
+                  "trust_score": 5,
+                  "source": "https://www.danfoss.com/en/products/dcs/compressors/",
+                  "evidence_id": "2025-12:Sc:Danfoss:신제품·라인업:https://www.danfoss.com/en/products/dcs/compressors/"
+                },
+                {
+                  "name": "규제/EU",
+                  "model": "EU F-Gas monitoring 2025-12",
+                  "trust_score": 5,
+                  "source": "https://climate.ec.europa.eu/eu-action/fluorinated-greenhouse-gases",
+                  "evidence_id": "2025-12:Sc:규제/EU:규격·인증:https://climate.ec.europa.eu/eu-action/fluorinated-greenhouse-gases"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            },
+            "Variable": {
+              "samsung": "대응중",
+              "note": "초기값",
+              "samsung_status": "대응중",
+              "threat_level": "low",
+              "competitors": [
+                {
+                  "name": "Copeland/Emerson",
+                  "model": "Copeland scroll heat pump applications reference 2025-12",
+                  "trust_score": 3,
+                  "source": "https://www.coolingpost.com/products/copeland-scrolls-for-heat-pump-applications/",
+                  "evidence_id": "2025-12:Sc:Copeland/Emerson:성능·효율:https://www.coolingpost.com/products/copeland-scrolls-for-heat-pump-applications/"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            },
+            "TwoStage": {
+              "samsung": "대응중",
+              "note": "초기값",
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R410A": {
+            "Fixed": {
+              "samsung": "보유",
+              "note": "evidence 기반 추론",
+              "samsung_status": "보유",
+              "threat_level": "low",
+              "competitors": [
+                {
+                  "name": "Danfoss",
+                  "model": "Danfoss compressors official monitoring 2025-12",
+                  "trust_score": 5,
+                  "source": "https://www.danfoss.com/en/products/dcs/compressors/",
+                  "evidence_id": "2025-12:Sc:Danfoss:신제품·라인업:https://www.danfoss.com/en/products/dcs/compressors/"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R32": {
+            "samsung": "보유",
+            "note": "초기값",
+            "period_evidence_quality": "sufficient"
+          },
+          "R466A": {
+            "samsung": "확인필요",
+            "note": "초기값",
+            "period_evidence_quality": "sufficient"
+          }
+        }
+      },
+      "threat_count": 13,
+      "signal_count": 8,
+      "critic_score": 10,
+      "hard_fail": false
+    },
+    {
+      "period_id": "2026-01",
+      "evidence_count": 11,
+      "evidence_quality": "sufficient",
+      "data_insufficient": false,
+      "period_context": "exhibition",
+      "evidence_threshold_used": 8,
+      "gap_matrix": {
+        "Re": {
+          "R290": {
+            "MBP": {
+              "samsung": "미보유",
+              "note": "초기값",
+              "samsung_status": "미보유",
+              "threat_level": "high",
+              "competitors": [
+                {
+                  "name": "GMCC/Midea",
+                  "model": "GMCC compressor official monitoring 2026-01",
+                  "trust_score": 5,
+                  "source": "https://www.gmcc.com",
+                  "evidence_id": "2026-01:Re:GMCC/Midea:신냉매·냉매전환:https://www.gmcc.com"
+                },
+                {
+                  "name": "LG",
+                  "model": "LG Compressor official monitoring 2026-01",
+                  "trust_score": 5,
+                  "source": "https://www.lg.com/global/business/compressor",
+                  "evidence_id": "2026-01:Re:LG:신제품·라인업:https://www.lg.com/global/business/compressor"
+                },
+                {
+                  "name": "Embraco/Nidec",
+                  "model": "Embraco official R290 monitoring 2026-01",
+                  "trust_score": 5,
+                  "source": "https://www.embraco.com/",
+                  "evidence_id": "2026-01:Re:Embraco/Nidec:신냉매·냉매전환:https://www.embraco.com/"
+                },
+                {
+                  "name": "Secop",
+                  "model": "Secop official sustainable compressor monitoring 2026-01",
+                  "trust_score": 5,
+                  "source": "https://www.secop.com/",
+                  "evidence_id": "2026-01:Re:Secop:신뢰성·내구성:https://www.secop.com/"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            },
+            "LBP": {
+              "samsung": "미보유",
+              "note": "초기값",
+              "period_evidence_quality": "sufficient"
+            },
+            "HBP": {
+              "samsung": "확인필요",
+              "note": "초기값",
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R600a": {
+            "MBP": {
+              "samsung": "보유",
+              "note": "초기값",
+              "samsung_status": "보유",
+              "threat_level": "low",
+              "competitors": [
+                {
+                  "name": "Secop",
+                  "model": "Secop official sustainable compressor monitoring 2026-01",
+                  "trust_score": 5,
+                  "source": "https://www.secop.com/",
+                  "evidence_id": "2026-01:Re:Secop:신뢰성·내구성:https://www.secop.com/"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R134a": {
+            "MBP": {
+              "samsung": "보유",
+              "note": "초기값",
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R1234yf": {
+            "MBP": {
+              "samsung": "미보유",
+              "note": "초기값",
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R32": {
+            "MBP": {
+              "samsung": "확인필요",
+              "note": "evidence 기반 추론",
+              "samsung_status": "확인필요",
+              "threat_level": "none",
+              "competitors": [
+                {
+                  "name": "LG",
+                  "model": "LG Compressor official monitoring 2026-01",
+                  "trust_score": 5,
+                  "source": "https://www.lg.com/global/business/compressor",
+                  "evidence_id": "2026-01:Re:LG:신제품·라인업:https://www.lg.com/global/business/compressor"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            }
+          }
+        },
+        "Ro": {
+          "R290": {
+            "samsung": "보유",
+            "note": "초기값",
+            "samsung_status": "보유",
+            "threat_level": "low",
+            "competitors": [
+              {
+                "name": "GMCC/Midea",
+                "model": "Google Patents GMCC Midea rotary compressor R290 2026",
+                "trust_score": 5,
+                "source": "https://patents.google.com/?q=(GMCC+Midea+rotary+compressor+R290+2026)",
+                "evidence_id": "2026-01:Ro:GMCC/Midea:특허·기술:https://patents.google.com/?q=(GMCC+Midea+rotary+compressor+R290+2026)"
+              }
+            ],
+            "period_evidence_quality": "sufficient"
+          },
+          "R32": {
+            "samsung": "보유",
+            "note": "초기값",
+            "samsung_status": "보유",
+            "threat_level": "low",
+            "competitors": [
+              {
+                "name": "LG",
+                "model": "LG Rotary Compressor official monitoring 2026-01",
+                "trust_score": 5,
+                "source": "https://www.lg.com/global/business/compressor-motor/compressors/rotary-compressor/",
+                "evidence_id": "2026-01:Ro:LG:신제품·라인업:https://www.lg.com/global/business/compressor-motor/compressors/rotary-compressor/"
+              },
+              {
+                "name": "규격/ASHRAE",
+                "model": "ASHRAE standards monitoring 2026-01",
+                "trust_score": 5,
+                "source": "https://www.ashrae.org/technical-resources/standards-and-guidelines",
+                "evidence_id": "2026-01:Ro:규격/ASHRAE:규격·인증:https://www.ashrae.org/technical-resources/standards-and-guidelines"
+              }
+            ],
+            "period_evidence_quality": "sufficient"
+          },
+          "R454C": {
+            "samsung": "미보유",
+            "note": "초기값",
+            "period_evidence_quality": "sufficient"
+          }
+        },
+        "Sc": {
+          "R454B": {
+            "Fixed": {
+              "samsung": "보유",
+              "note": "초기값",
+              "samsung_status": "보유",
+              "threat_level": "low",
+              "competitors": [
+                {
+                  "name": "Copeland/Emerson",
+                  "model": "Copeland official R454B scroll monitoring 2026-01",
+                  "trust_score": 5,
+                  "source": "https://www.copeland.com/",
+                  "evidence_id": "2026-01:Sc:Copeland/Emerson:신냉매·냉매전환:https://www.copeland.com/"
+                },
+                {
+                  "name": "Danfoss",
+                  "model": "Danfoss compressors official monitoring 2026-01",
+                  "trust_score": 5,
+                  "source": "https://www.danfoss.com/en/products/dcs/compressors/",
+                  "evidence_id": "2026-01:Sc:Danfoss:신제품·라인업:https://www.danfoss.com/en/products/dcs/compressors/"
+                },
+                {
+                  "name": "AHR Expo",
+                  "model": "AHR Expo source monitoring 2026-01",
+                  "trust_score": 5,
+                  "source": "https://www.ahrexpo.com/",
+                  "evidence_id": "2026-01:Sc:AHR Expo:전시회·발표:https://www.ahrexpo.com/"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            },
+            "Variable": {
+              "samsung": "대응중",
+              "note": "초기값",
+              "samsung_status": "대응중",
+              "threat_level": "low",
+              "competitors": [
+                {
+                  "name": "Copeland/Emerson",
+                  "model": "Copeland scroll heat pump applications reference 2026-01",
+                  "trust_score": 3,
+                  "source": "https://www.coolingpost.com/products/copeland-scrolls-for-heat-pump-applications/",
+                  "evidence_id": "2026-01:Sc:Copeland/Emerson:성능·효율:https://www.coolingpost.com/products/copeland-scrolls-for-heat-pump-applications/"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            },
+            "TwoStage": {
+              "samsung": "대응중",
+              "note": "초기값",
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R410A": {
+            "Fixed": {
+              "samsung": "보유",
+              "note": "evidence 기반 추론",
+              "samsung_status": "보유",
+              "threat_level": "low",
+              "competitors": [
+                {
+                  "name": "Danfoss",
+                  "model": "Danfoss compressors official monitoring 2026-01",
+                  "trust_score": 5,
+                  "source": "https://www.danfoss.com/en/products/dcs/compressors/",
+                  "evidence_id": "2026-01:Sc:Danfoss:신제품·라인업:https://www.danfoss.com/en/products/dcs/compressors/"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R32": {
+            "samsung": "보유",
+            "note": "초기값",
+            "period_evidence_quality": "sufficient"
+          },
+          "R466A": {
+            "samsung": "확인필요",
+            "note": "초기값",
+            "period_evidence_quality": "sufficient"
+          }
+        }
+      },
+      "threat_count": 13,
+      "signal_count": 7,
+      "critic_score": 10,
+      "hard_fail": false
+    },
+    {
+      "period_id": "2026-02",
+      "evidence_count": 11,
+      "evidence_quality": "sufficient",
+      "data_insufficient": false,
+      "period_context": "backfill",
+      "evidence_threshold_used": 4,
+      "gap_matrix": {
+        "Re": {
+          "R290": {
+            "MBP": {
+              "samsung": "미보유",
+              "note": "초기값",
+              "samsung_status": "미보유",
+              "threat_level": "high",
+              "competitors": [
+                {
+                  "name": "GMCC/Midea",
+                  "model": "GMCC compressor official monitoring 2026-02",
+                  "trust_score": 5,
+                  "source": "https://www.gmcc.com",
+                  "evidence_id": "2026-02:Re:GMCC/Midea:신냉매·냉매전환:https://www.gmcc.com"
+                },
+                {
+                  "name": "LG",
+                  "model": "LG Compressor official monitoring 2026-02",
+                  "trust_score": 5,
+                  "source": "https://www.lg.com/global/business/compressor",
+                  "evidence_id": "2026-02:Re:LG:신제품·라인업:https://www.lg.com/global/business/compressor"
+                },
+                {
+                  "name": "Embraco/Nidec",
+                  "model": "Embraco official R290 monitoring 2026-02",
+                  "trust_score": 5,
+                  "source": "https://www.embraco.com/",
+                  "evidence_id": "2026-02:Re:Embraco/Nidec:신냉매·냉매전환:https://www.embraco.com/"
+                },
+                {
+                  "name": "Secop",
+                  "model": "Secop official sustainable compressor monitoring 2026-02",
+                  "trust_score": 5,
+                  "source": "https://www.secop.com/",
+                  "evidence_id": "2026-02:Re:Secop:신뢰성·내구성:https://www.secop.com/"
+                },
+                {
+                  "name": "업계/R290",
+                  "model": "EPA SNAP monitoring 2026-02",
+                  "trust_score": 5,
+                  "source": "https://www.epa.gov/snap",
+                  "evidence_id": "2026-02:Re:업계/R290:규격·인증:https://www.epa.gov/snap"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            },
+            "LBP": {
+              "samsung": "미보유",
+              "note": "초기값",
+              "period_evidence_quality": "sufficient"
+            },
+            "HBP": {
+              "samsung": "확인필요",
+              "note": "초기값",
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R600a": {
+            "MBP": {
+              "samsung": "보유",
+              "note": "초기값",
+              "samsung_status": "보유",
+              "threat_level": "low",
+              "competitors": [
+                {
+                  "name": "Secop",
+                  "model": "Secop official sustainable compressor monitoring 2026-02",
+                  "trust_score": 5,
+                  "source": "https://www.secop.com/",
+                  "evidence_id": "2026-02:Re:Secop:신뢰성·내구성:https://www.secop.com/"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R134a": {
+            "MBP": {
+              "samsung": "보유",
+              "note": "초기값",
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R1234yf": {
+            "MBP": {
+              "samsung": "미보유",
+              "note": "초기값",
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R32": {
+            "MBP": {
+              "samsung": "확인필요",
+              "note": "evidence 기반 추론",
+              "samsung_status": "확인필요",
+              "threat_level": "none",
+              "competitors": [
+                {
+                  "name": "LG",
+                  "model": "LG Compressor official monitoring 2026-02",
+                  "trust_score": 5,
+                  "source": "https://www.lg.com/global/business/compressor",
+                  "evidence_id": "2026-02:Re:LG:신제품·라인업:https://www.lg.com/global/business/compressor"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            }
+          }
+        },
+        "Ro": {
+          "R290": {
+            "samsung": "보유",
+            "note": "초기값",
+            "samsung_status": "보유",
+            "threat_level": "low",
+            "competitors": [
+              {
+                "name": "GMCC/Midea",
+                "model": "Google Patents GMCC Midea rotary compressor R290 2026",
+                "trust_score": 5,
+                "source": "https://patents.google.com/?q=(GMCC+Midea+rotary+compressor+R290+2026)",
+                "evidence_id": "2026-02:Ro:GMCC/Midea:특허·기술:https://patents.google.com/?q=(GMCC+Midea+rotary+compressor+R290+2026)"
+              }
+            ],
+            "period_evidence_quality": "sufficient"
+          },
+          "R32": {
+            "samsung": "보유",
+            "note": "초기값",
+            "samsung_status": "보유",
+            "threat_level": "low",
+            "competitors": [
+              {
+                "name": "LG",
+                "model": "LG Rotary Compressor official monitoring 2026-02",
+                "trust_score": 5,
+                "source": "https://www.lg.com/global/business/compressor-motor/compressors/rotary-compressor/",
+                "evidence_id": "2026-02:Ro:LG:신제품·라인업:https://www.lg.com/global/business/compressor-motor/compressors/rotary-compressor/"
+              }
+            ],
+            "period_evidence_quality": "sufficient"
+          },
+          "R454C": {
+            "samsung": "미보유",
+            "note": "초기값",
+            "period_evidence_quality": "sufficient"
+          }
+        },
+        "Sc": {
+          "R454B": {
+            "Fixed": {
+              "samsung": "보유",
+              "note": "초기값",
+              "samsung_status": "보유",
+              "threat_level": "low",
+              "competitors": [
+                {
+                  "name": "Copeland/Emerson",
+                  "model": "Copeland official R454B scroll monitoring 2026-02",
+                  "trust_score": 5,
+                  "source": "https://www.copeland.com/",
+                  "evidence_id": "2026-02:Sc:Copeland/Emerson:신냉매·냉매전환:https://www.copeland.com/"
+                },
+                {
+                  "name": "Danfoss",
+                  "model": "Danfoss compressors official monitoring 2026-02",
+                  "trust_score": 5,
+                  "source": "https://www.danfoss.com/en/products/dcs/compressors/",
+                  "evidence_id": "2026-02:Sc:Danfoss:신제품·라인업:https://www.danfoss.com/en/products/dcs/compressors/"
+                },
+                {
+                  "name": "규제/EU",
+                  "model": "EU F-Gas monitoring 2026-02",
+                  "trust_score": 5,
+                  "source": "https://climate.ec.europa.eu/eu-action/fluorinated-greenhouse-gases",
+                  "evidence_id": "2026-02:Sc:규제/EU:규격·인증:https://climate.ec.europa.eu/eu-action/fluorinated-greenhouse-gases"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            },
+            "Variable": {
+              "samsung": "대응중",
+              "note": "초기값",
+              "samsung_status": "대응중",
+              "threat_level": "low",
+              "competitors": [
+                {
+                  "name": "Copeland/Emerson",
+                  "model": "Copeland scroll heat pump applications reference 2026-02",
+                  "trust_score": 3,
+                  "source": "https://www.coolingpost.com/products/copeland-scrolls-for-heat-pump-applications/",
+                  "evidence_id": "2026-02:Sc:Copeland/Emerson:성능·효율:https://www.coolingpost.com/products/copeland-scrolls-for-heat-pump-applications/"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            },
+            "TwoStage": {
+              "samsung": "대응중",
+              "note": "초기값",
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R410A": {
+            "Fixed": {
+              "samsung": "보유",
+              "note": "evidence 기반 추론",
+              "samsung_status": "보유",
+              "threat_level": "low",
+              "competitors": [
+                {
+                  "name": "Danfoss",
+                  "model": "Danfoss compressors official monitoring 2026-02",
+                  "trust_score": 5,
+                  "source": "https://www.danfoss.com/en/products/dcs/compressors/",
+                  "evidence_id": "2026-02:Sc:Danfoss:신제품·라인업:https://www.danfoss.com/en/products/dcs/compressors/"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R32": {
+            "samsung": "보유",
+            "note": "초기값",
+            "period_evidence_quality": "sufficient"
+          },
+          "R466A": {
+            "samsung": "확인필요",
+            "note": "초기값",
+            "period_evidence_quality": "sufficient"
+          }
+        }
+      },
+      "threat_count": 13,
+      "signal_count": 8,
+      "critic_score": 10,
+      "hard_fail": false
+    },
+    {
+      "period_id": "2026-03",
+      "evidence_count": 11,
+      "evidence_quality": "sufficient",
+      "data_insufficient": false,
+      "period_context": "backfill",
+      "evidence_threshold_used": 4,
+      "gap_matrix": {
+        "Re": {
+          "R290": {
+            "MBP": {
+              "samsung": "미보유",
+              "note": "초기값",
+              "samsung_status": "미보유",
+              "threat_level": "high",
+              "competitors": [
+                {
+                  "name": "GMCC/Midea",
+                  "model": "GMCC compressor official monitoring 2026-03",
+                  "trust_score": 5,
+                  "source": "https://www.gmcc.com",
+                  "evidence_id": "2026-03:Re:GMCC/Midea:신냉매·냉매전환:https://www.gmcc.com"
+                },
+                {
+                  "name": "LG",
+                  "model": "LG Compressor official monitoring 2026-03",
+                  "trust_score": 5,
+                  "source": "https://www.lg.com/global/business/compressor",
+                  "evidence_id": "2026-03:Re:LG:신제품·라인업:https://www.lg.com/global/business/compressor"
+                },
+                {
+                  "name": "Embraco/Nidec",
+                  "model": "Embraco official R290 monitoring 2026-03",
+                  "trust_score": 5,
+                  "source": "https://www.embraco.com/",
+                  "evidence_id": "2026-03:Re:Embraco/Nidec:신냉매·냉매전환:https://www.embraco.com/"
+                },
+                {
+                  "name": "Secop",
+                  "model": "Secop official sustainable compressor monitoring 2026-03",
+                  "trust_score": 5,
+                  "source": "https://www.secop.com/",
+                  "evidence_id": "2026-03:Re:Secop:신뢰성·내구성:https://www.secop.com/"
+                },
+                {
+                  "name": "업계/R290",
+                  "model": "EPA SNAP monitoring 2026-03",
+                  "trust_score": 5,
+                  "source": "https://www.epa.gov/snap",
+                  "evidence_id": "2026-03:Re:업계/R290:규격·인증:https://www.epa.gov/snap"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            },
+            "LBP": {
+              "samsung": "미보유",
+              "note": "초기값",
+              "period_evidence_quality": "sufficient"
+            },
+            "HBP": {
+              "samsung": "확인필요",
+              "note": "초기값",
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R600a": {
+            "MBP": {
+              "samsung": "보유",
+              "note": "초기값",
+              "samsung_status": "보유",
+              "threat_level": "low",
+              "competitors": [
+                {
+                  "name": "Secop",
+                  "model": "Secop official sustainable compressor monitoring 2026-03",
+                  "trust_score": 5,
+                  "source": "https://www.secop.com/",
+                  "evidence_id": "2026-03:Re:Secop:신뢰성·내구성:https://www.secop.com/"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R134a": {
+            "MBP": {
+              "samsung": "보유",
+              "note": "초기값",
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R1234yf": {
+            "MBP": {
+              "samsung": "미보유",
+              "note": "초기값",
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R32": {
+            "MBP": {
+              "samsung": "확인필요",
+              "note": "evidence 기반 추론",
+              "samsung_status": "확인필요",
+              "threat_level": "none",
+              "competitors": [
+                {
+                  "name": "LG",
+                  "model": "LG Compressor official monitoring 2026-03",
+                  "trust_score": 5,
+                  "source": "https://www.lg.com/global/business/compressor",
+                  "evidence_id": "2026-03:Re:LG:신제품·라인업:https://www.lg.com/global/business/compressor"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            }
+          }
+        },
+        "Ro": {
+          "R290": {
+            "samsung": "보유",
+            "note": "초기값",
+            "samsung_status": "보유",
+            "threat_level": "low",
+            "competitors": [
+              {
+                "name": "GMCC/Midea",
+                "model": "Google Patents GMCC Midea rotary compressor R290 2026",
+                "trust_score": 5,
+                "source": "https://patents.google.com/?q=(GMCC+Midea+rotary+compressor+R290+2026)",
+                "evidence_id": "2026-03:Ro:GMCC/Midea:특허·기술:https://patents.google.com/?q=(GMCC+Midea+rotary+compressor+R290+2026)"
+              }
+            ],
+            "period_evidence_quality": "sufficient"
+          },
+          "R32": {
+            "samsung": "보유",
+            "note": "초기값",
+            "samsung_status": "보유",
+            "threat_level": "low",
+            "competitors": [
+              {
+                "name": "LG",
+                "model": "LG Rotary Compressor official monitoring 2026-03",
+                "trust_score": 5,
+                "source": "https://www.lg.com/global/business/compressor-motor/compressors/rotary-compressor/",
+                "evidence_id": "2026-03:Ro:LG:신제품·라인업:https://www.lg.com/global/business/compressor-motor/compressors/rotary-compressor/"
+              }
+            ],
+            "period_evidence_quality": "sufficient"
+          },
+          "R454C": {
+            "samsung": "미보유",
+            "note": "초기값",
+            "period_evidence_quality": "sufficient"
+          }
+        },
+        "Sc": {
+          "R454B": {
+            "Fixed": {
+              "samsung": "보유",
+              "note": "초기값",
+              "samsung_status": "보유",
+              "threat_level": "low",
+              "competitors": [
+                {
+                  "name": "Copeland/Emerson",
+                  "model": "Copeland official R454B scroll monitoring 2026-03",
+                  "trust_score": 5,
+                  "source": "https://www.copeland.com/",
+                  "evidence_id": "2026-03:Sc:Copeland/Emerson:신냉매·냉매전환:https://www.copeland.com/"
+                },
+                {
+                  "name": "Danfoss",
+                  "model": "Danfoss compressors official monitoring 2026-03",
+                  "trust_score": 5,
+                  "source": "https://www.danfoss.com/en/products/dcs/compressors/",
+                  "evidence_id": "2026-03:Sc:Danfoss:신제품·라인업:https://www.danfoss.com/en/products/dcs/compressors/"
+                },
+                {
+                  "name": "규제/EU",
+                  "model": "EU F-Gas monitoring 2026-03",
+                  "trust_score": 5,
+                  "source": "https://climate.ec.europa.eu/eu-action/fluorinated-greenhouse-gases",
+                  "evidence_id": "2026-03:Sc:규제/EU:규격·인증:https://climate.ec.europa.eu/eu-action/fluorinated-greenhouse-gases"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            },
+            "Variable": {
+              "samsung": "대응중",
+              "note": "초기값",
+              "samsung_status": "대응중",
+              "threat_level": "low",
+              "competitors": [
+                {
+                  "name": "Copeland/Emerson",
+                  "model": "Copeland scroll heat pump applications reference 2026-03",
+                  "trust_score": 3,
+                  "source": "https://www.coolingpost.com/products/copeland-scrolls-for-heat-pump-applications/",
+                  "evidence_id": "2026-03:Sc:Copeland/Emerson:성능·효율:https://www.coolingpost.com/products/copeland-scrolls-for-heat-pump-applications/"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            },
+            "TwoStage": {
+              "samsung": "대응중",
+              "note": "초기값",
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R410A": {
+            "Fixed": {
+              "samsung": "보유",
+              "note": "evidence 기반 추론",
+              "samsung_status": "보유",
+              "threat_level": "low",
+              "competitors": [
+                {
+                  "name": "Danfoss",
+                  "model": "Danfoss compressors official monitoring 2026-03",
+                  "trust_score": 5,
+                  "source": "https://www.danfoss.com/en/products/dcs/compressors/",
+                  "evidence_id": "2026-03:Sc:Danfoss:신제품·라인업:https://www.danfoss.com/en/products/dcs/compressors/"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R32": {
+            "samsung": "보유",
+            "note": "초기값",
+            "period_evidence_quality": "sufficient"
+          },
+          "R466A": {
+            "samsung": "확인필요",
+            "note": "초기값",
+            "period_evidence_quality": "sufficient"
+          }
+        }
+      },
+      "threat_count": 13,
+      "signal_count": 8,
+      "critic_score": 10,
+      "hard_fail": false
+    },
+    {
+      "period_id": "2026-04",
+      "evidence_count": 11,
+      "evidence_quality": "sufficient",
+      "data_insufficient": false,
+      "period_context": "exhibition",
+      "evidence_threshold_used": 8,
+      "gap_matrix": {
+        "Re": {
+          "R290": {
+            "MBP": {
+              "samsung": "미보유",
+              "note": "초기값",
+              "samsung_status": "미보유",
+              "threat_level": "high",
+              "competitors": [
+                {
+                  "name": "GMCC/Midea",
+                  "model": "GMCC compressor official monitoring 2026-04",
+                  "trust_score": 5,
+                  "source": "https://www.gmcc.com",
+                  "evidence_id": "2026-04:Re:GMCC/Midea:신냉매·냉매전환:https://www.gmcc.com"
+                },
+                {
+                  "name": "LG",
+                  "model": "LG Compressor official monitoring 2026-04",
+                  "trust_score": 5,
+                  "source": "https://www.lg.com/global/business/compressor",
+                  "evidence_id": "2026-04:Re:LG:신제품·라인업:https://www.lg.com/global/business/compressor"
+                },
+                {
+                  "name": "Embraco/Nidec",
+                  "model": "Embraco official R290 monitoring 2026-04",
+                  "trust_score": 5,
+                  "source": "https://www.embraco.com/",
+                  "evidence_id": "2026-04:Re:Embraco/Nidec:신냉매·냉매전환:https://www.embraco.com/"
+                },
+                {
+                  "name": "Secop",
+                  "model": "Secop official sustainable compressor monitoring 2026-04",
+                  "trust_score": 5,
+                  "source": "https://www.secop.com/",
+                  "evidence_id": "2026-04:Re:Secop:신뢰성·내구성:https://www.secop.com/"
+                },
+                {
+                  "name": "China Refrigeration Expo",
+                  "model": "China Refrigeration Expo monitoring 2026-04",
+                  "trust_score": 5,
+                  "source": "https://www.cr-expo.com/",
+                  "evidence_id": "2026-04:Re:China Refrigeration Expo:전시회·발표:https://www.cr-expo.com/"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            },
+            "LBP": {
+              "samsung": "미보유",
+              "note": "초기값",
+              "period_evidence_quality": "sufficient"
+            },
+            "HBP": {
+              "samsung": "확인필요",
+              "note": "초기값",
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R600a": {
+            "MBP": {
+              "samsung": "보유",
+              "note": "초기값",
+              "samsung_status": "보유",
+              "threat_level": "low",
+              "competitors": [
+                {
+                  "name": "Secop",
+                  "model": "Secop official sustainable compressor monitoring 2026-04",
+                  "trust_score": 5,
+                  "source": "https://www.secop.com/",
+                  "evidence_id": "2026-04:Re:Secop:신뢰성·내구성:https://www.secop.com/"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R134a": {
+            "MBP": {
+              "samsung": "보유",
+              "note": "초기값",
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R1234yf": {
+            "MBP": {
+              "samsung": "미보유",
+              "note": "초기값",
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R32": {
+            "MBP": {
+              "samsung": "확인필요",
+              "note": "evidence 기반 추론",
+              "samsung_status": "확인필요",
+              "threat_level": "none",
+              "competitors": [
+                {
+                  "name": "LG",
+                  "model": "LG Compressor official monitoring 2026-04",
+                  "trust_score": 5,
+                  "source": "https://www.lg.com/global/business/compressor",
+                  "evidence_id": "2026-04:Re:LG:신제품·라인업:https://www.lg.com/global/business/compressor"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            }
+          }
+        },
+        "Ro": {
+          "R290": {
+            "samsung": "보유",
+            "note": "초기값",
+            "samsung_status": "보유",
+            "threat_level": "low",
+            "competitors": [
+              {
+                "name": "GMCC/Midea",
+                "model": "Google Patents GMCC Midea rotary compressor R290 2026",
+                "trust_score": 5,
+                "source": "https://patents.google.com/?q=(GMCC+Midea+rotary+compressor+R290+2026)",
+                "evidence_id": "2026-04:Ro:GMCC/Midea:특허·기술:https://patents.google.com/?q=(GMCC+Midea+rotary+compressor+R290+2026)"
+              }
+            ],
+            "period_evidence_quality": "sufficient"
+          },
+          "R32": {
+            "samsung": "보유",
+            "note": "초기값",
+            "samsung_status": "보유",
+            "threat_level": "low",
+            "competitors": [
+              {
+                "name": "LG",
+                "model": "LG Rotary Compressor official monitoring 2026-04",
+                "trust_score": 5,
+                "source": "https://www.lg.com/global/business/compressor-motor/compressors/rotary-compressor/",
+                "evidence_id": "2026-04:Ro:LG:신제품·라인업:https://www.lg.com/global/business/compressor-motor/compressors/rotary-compressor/"
+              },
+              {
+                "name": "JARN",
+                "model": "JARN Asia HVACR monitoring 2026-04",
+                "trust_score": 3,
+                "source": "https://www.ejarn.com/",
+                "evidence_id": "2026-04:Ro:JARN:전시회·발표:https://www.ejarn.com/"
+              }
+            ],
+            "period_evidence_quality": "sufficient"
+          },
+          "R454C": {
+            "samsung": "미보유",
+            "note": "초기값",
+            "period_evidence_quality": "sufficient"
+          }
+        },
+        "Sc": {
+          "R454B": {
+            "Fixed": {
+              "samsung": "보유",
+              "note": "초기값",
+              "samsung_status": "보유",
+              "threat_level": "low",
+              "competitors": [
+                {
+                  "name": "Copeland/Emerson",
+                  "model": "Copeland official R454B scroll monitoring 2026-04",
+                  "trust_score": 5,
+                  "source": "https://www.copeland.com/",
+                  "evidence_id": "2026-04:Sc:Copeland/Emerson:신냉매·냉매전환:https://www.copeland.com/"
+                },
+                {
+                  "name": "Danfoss",
+                  "model": "Danfoss compressors official monitoring 2026-04",
+                  "trust_score": 5,
+                  "source": "https://www.danfoss.com/en/products/dcs/compressors/",
+                  "evidence_id": "2026-04:Sc:Danfoss:신제품·라인업:https://www.danfoss.com/en/products/dcs/compressors/"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            },
+            "Variable": {
+              "samsung": "대응중",
+              "note": "초기값",
+              "samsung_status": "대응중",
+              "threat_level": "low",
+              "competitors": [
+                {
+                  "name": "Copeland/Emerson",
+                  "model": "Copeland scroll heat pump applications reference 2026-04",
+                  "trust_score": 3,
+                  "source": "https://www.coolingpost.com/products/copeland-scrolls-for-heat-pump-applications/",
+                  "evidence_id": "2026-04:Sc:Copeland/Emerson:성능·효율:https://www.coolingpost.com/products/copeland-scrolls-for-heat-pump-applications/"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            },
+            "TwoStage": {
+              "samsung": "대응중",
+              "note": "초기값",
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R410A": {
+            "Fixed": {
+              "samsung": "보유",
+              "note": "evidence 기반 추론",
+              "samsung_status": "보유",
+              "threat_level": "low",
+              "competitors": [
+                {
+                  "name": "Danfoss",
+                  "model": "Danfoss compressors official monitoring 2026-04",
+                  "trust_score": 5,
+                  "source": "https://www.danfoss.com/en/products/dcs/compressors/",
+                  "evidence_id": "2026-04:Sc:Danfoss:신제품·라인업:https://www.danfoss.com/en/products/dcs/compressors/"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R32": {
+            "samsung": "보유",
+            "note": "초기값",
+            "period_evidence_quality": "sufficient"
+          },
+          "R466A": {
+            "samsung": "확인필요",
+            "note": "초기값",
+            "period_evidence_quality": "sufficient"
+          }
+        }
+      },
+      "threat_count": 13,
+      "signal_count": 8,
+      "critic_score": 10,
+      "hard_fail": false
+    },
+    {
+      "period_id": "2026-05",
+      "evidence_count": 11,
+      "evidence_quality": "sufficient",
+      "data_insufficient": false,
+      "period_context": "normal",
+      "evidence_threshold_used": 6,
+      "gap_matrix": {
+        "Re": {
+          "R290": {
+            "MBP": {
+              "samsung": "미보유",
+              "note": "초기값",
+              "samsung_status": "미보유",
+              "threat_level": "high",
+              "competitors": [
+                {
+                  "name": "GMCC/Midea",
+                  "model": "GMCC compressor official monitoring 2026-05",
+                  "trust_score": 5,
+                  "source": "https://www.gmcc.com",
+                  "evidence_id": "2026-05:Re:GMCC/Midea:신냉매·냉매전환:https://www.gmcc.com"
+                },
+                {
+                  "name": "LG",
+                  "model": "LG Compressor official monitoring 2026-05",
+                  "trust_score": 5,
+                  "source": "https://www.lg.com/global/business/compressor",
+                  "evidence_id": "2026-05:Re:LG:신제품·라인업:https://www.lg.com/global/business/compressor"
+                },
+                {
+                  "name": "Embraco/Nidec",
+                  "model": "Embraco official R290 monitoring 2026-05",
+                  "trust_score": 5,
+                  "source": "https://www.embraco.com/",
+                  "evidence_id": "2026-05:Re:Embraco/Nidec:신냉매·냉매전환:https://www.embraco.com/"
+                },
+                {
+                  "name": "Secop",
+                  "model": "Secop official sustainable compressor monitoring 2026-05",
+                  "trust_score": 5,
+                  "source": "https://www.secop.com/",
+                  "evidence_id": "2026-05:Re:Secop:신뢰성·내구성:https://www.secop.com/"
+                },
+                {
+                  "name": "업계/R290",
+                  "model": "EPA SNAP monitoring 2026-05",
+                  "trust_score": 5,
+                  "source": "https://www.epa.gov/snap",
+                  "evidence_id": "2026-05:Re:업계/R290:규격·인증:https://www.epa.gov/snap"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            },
+            "LBP": {
+              "samsung": "미보유",
+              "note": "초기값",
+              "period_evidence_quality": "sufficient"
+            },
+            "HBP": {
+              "samsung": "확인필요",
+              "note": "초기값",
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R600a": {
+            "MBP": {
+              "samsung": "보유",
+              "note": "초기값",
+              "samsung_status": "보유",
+              "threat_level": "low",
+              "competitors": [
+                {
+                  "name": "Secop",
+                  "model": "Secop official sustainable compressor monitoring 2026-05",
+                  "trust_score": 5,
+                  "source": "https://www.secop.com/",
+                  "evidence_id": "2026-05:Re:Secop:신뢰성·내구성:https://www.secop.com/"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R134a": {
+            "MBP": {
+              "samsung": "보유",
+              "note": "초기값",
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R1234yf": {
+            "MBP": {
+              "samsung": "미보유",
+              "note": "초기값",
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R32": {
+            "MBP": {
+              "samsung": "확인필요",
+              "note": "evidence 기반 추론",
+              "samsung_status": "확인필요",
+              "threat_level": "none",
+              "competitors": [
+                {
+                  "name": "LG",
+                  "model": "LG Compressor official monitoring 2026-05",
+                  "trust_score": 5,
+                  "source": "https://www.lg.com/global/business/compressor",
+                  "evidence_id": "2026-05:Re:LG:신제품·라인업:https://www.lg.com/global/business/compressor"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            }
+          }
+        },
+        "Ro": {
+          "R290": {
+            "samsung": "보유",
+            "note": "초기값",
+            "samsung_status": "보유",
+            "threat_level": "low",
+            "competitors": [
+              {
+                "name": "GMCC/Midea",
+                "model": "Google Patents GMCC Midea rotary compressor R290 2026",
+                "trust_score": 5,
+                "source": "https://patents.google.com/?q=(GMCC+Midea+rotary+compressor+R290+2026)",
+                "evidence_id": "2026-05:Ro:GMCC/Midea:특허·기술:https://patents.google.com/?q=(GMCC+Midea+rotary+compressor+R290+2026)"
+              }
+            ],
+            "period_evidence_quality": "sufficient"
+          },
+          "R32": {
+            "samsung": "보유",
+            "note": "초기값",
+            "samsung_status": "보유",
+            "threat_level": "low",
+            "competitors": [
+              {
+                "name": "LG",
+                "model": "LG Rotary Compressor official monitoring 2026-05",
+                "trust_score": 5,
+                "source": "https://www.lg.com/global/business/compressor-motor/compressors/rotary-compressor/",
+                "evidence_id": "2026-05:Ro:LG:신제품·라인업:https://www.lg.com/global/business/compressor-motor/compressors/rotary-compressor/"
+              }
+            ],
+            "period_evidence_quality": "sufficient"
+          },
+          "R454C": {
+            "samsung": "미보유",
+            "note": "초기값",
+            "period_evidence_quality": "sufficient"
+          }
+        },
+        "Sc": {
+          "R454B": {
+            "Fixed": {
+              "samsung": "보유",
+              "note": "초기값",
+              "samsung_status": "보유",
+              "threat_level": "low",
+              "competitors": [
+                {
+                  "name": "Copeland/Emerson",
+                  "model": "Copeland official R454B scroll monitoring 2026-05",
+                  "trust_score": 5,
+                  "source": "https://www.copeland.com/",
+                  "evidence_id": "2026-05:Sc:Copeland/Emerson:신냉매·냉매전환:https://www.copeland.com/"
+                },
+                {
+                  "name": "Danfoss",
+                  "model": "Danfoss compressors official monitoring 2026-05",
+                  "trust_score": 5,
+                  "source": "https://www.danfoss.com/en/products/dcs/compressors/",
+                  "evidence_id": "2026-05:Sc:Danfoss:신제품·라인업:https://www.danfoss.com/en/products/dcs/compressors/"
+                },
+                {
+                  "name": "규제/EU",
+                  "model": "EU F-Gas monitoring 2026-05",
+                  "trust_score": 5,
+                  "source": "https://climate.ec.europa.eu/eu-action/fluorinated-greenhouse-gases",
+                  "evidence_id": "2026-05:Sc:규제/EU:규격·인증:https://climate.ec.europa.eu/eu-action/fluorinated-greenhouse-gases"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            },
+            "Variable": {
+              "samsung": "대응중",
+              "note": "초기값",
+              "samsung_status": "대응중",
+              "threat_level": "low",
+              "competitors": [
+                {
+                  "name": "Copeland/Emerson",
+                  "model": "Copeland scroll heat pump applications reference 2026-05",
+                  "trust_score": 3,
+                  "source": "https://www.coolingpost.com/products/copeland-scrolls-for-heat-pump-applications/",
+                  "evidence_id": "2026-05:Sc:Copeland/Emerson:성능·효율:https://www.coolingpost.com/products/copeland-scrolls-for-heat-pump-applications/"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            },
+            "TwoStage": {
+              "samsung": "대응중",
+              "note": "초기값",
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R410A": {
+            "Fixed": {
+              "samsung": "보유",
+              "note": "evidence 기반 추론",
+              "samsung_status": "보유",
+              "threat_level": "low",
+              "competitors": [
+                {
+                  "name": "Danfoss",
+                  "model": "Danfoss compressors official monitoring 2026-05",
+                  "trust_score": 5,
+                  "source": "https://www.danfoss.com/en/products/dcs/compressors/",
+                  "evidence_id": "2026-05:Sc:Danfoss:신제품·라인업:https://www.danfoss.com/en/products/dcs/compressors/"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R32": {
+            "samsung": "보유",
+            "note": "초기값",
+            "period_evidence_quality": "sufficient"
+          },
+          "R466A": {
+            "samsung": "확인필요",
+            "note": "초기값",
+            "period_evidence_quality": "sufficient"
+          }
+        }
+      },
+      "threat_count": 13,
+      "signal_count": 8,
+      "critic_score": 10,
+      "hard_fail": false
+    },
+    {
+      "period_id": "2026-06",
+      "evidence_count": 11,
+      "evidence_quality": "sufficient",
+      "data_insufficient": false,
+      "period_context": "normal",
+      "evidence_threshold_used": 6,
+      "gap_matrix": {
+        "Re": {
+          "R290": {
+            "MBP": {
+              "samsung": "미보유",
+              "note": "초기값",
+              "samsung_status": "미보유",
+              "threat_level": "high",
+              "competitors": [
+                {
+                  "name": "GMCC/Midea",
+                  "model": "GMCC compressor official monitoring 2026-06",
+                  "trust_score": 5,
+                  "source": "https://www.gmcc.com",
+                  "evidence_id": "2026-06:Re:GMCC/Midea:신냉매·냉매전환:https://www.gmcc.com"
+                },
+                {
+                  "name": "LG",
+                  "model": "LG Compressor official monitoring 2026-06",
+                  "trust_score": 5,
+                  "source": "https://www.lg.com/global/business/compressor",
+                  "evidence_id": "2026-06:Re:LG:신제품·라인업:https://www.lg.com/global/business/compressor"
+                },
+                {
+                  "name": "Embraco/Nidec",
+                  "model": "Embraco official R290 monitoring 2026-06",
+                  "trust_score": 5,
+                  "source": "https://www.embraco.com/",
+                  "evidence_id": "2026-06:Re:Embraco/Nidec:신냉매·냉매전환:https://www.embraco.com/"
+                },
+                {
+                  "name": "Secop",
+                  "model": "Secop official sustainable compressor monitoring 2026-06",
+                  "trust_score": 5,
+                  "source": "https://www.secop.com/",
+                  "evidence_id": "2026-06:Re:Secop:신뢰성·내구성:https://www.secop.com/"
+                },
+                {
+                  "name": "업계/R290",
+                  "model": "EPA SNAP monitoring 2026-06",
+                  "trust_score": 5,
+                  "source": "https://www.epa.gov/snap",
+                  "evidence_id": "2026-06:Re:업계/R290:규격·인증:https://www.epa.gov/snap"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            },
+            "LBP": {
+              "samsung": "미보유",
+              "note": "초기값",
+              "period_evidence_quality": "sufficient"
+            },
+            "HBP": {
+              "samsung": "확인필요",
+              "note": "초기값",
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R600a": {
+            "MBP": {
+              "samsung": "보유",
+              "note": "초기값",
+              "samsung_status": "보유",
+              "threat_level": "low",
+              "competitors": [
+                {
+                  "name": "Secop",
+                  "model": "Secop official sustainable compressor monitoring 2026-06",
+                  "trust_score": 5,
+                  "source": "https://www.secop.com/",
+                  "evidence_id": "2026-06:Re:Secop:신뢰성·내구성:https://www.secop.com/"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R134a": {
+            "MBP": {
+              "samsung": "보유",
+              "note": "초기값",
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R1234yf": {
+            "MBP": {
+              "samsung": "미보유",
+              "note": "초기값",
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R32": {
+            "MBP": {
+              "samsung": "확인필요",
+              "note": "evidence 기반 추론",
+              "samsung_status": "확인필요",
+              "threat_level": "none",
+              "competitors": [
+                {
+                  "name": "LG",
+                  "model": "LG Compressor official monitoring 2026-06",
+                  "trust_score": 5,
+                  "source": "https://www.lg.com/global/business/compressor",
+                  "evidence_id": "2026-06:Re:LG:신제품·라인업:https://www.lg.com/global/business/compressor"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            }
+          }
+        },
+        "Ro": {
+          "R290": {
+            "samsung": "보유",
+            "note": "초기값",
+            "samsung_status": "보유",
+            "threat_level": "low",
+            "competitors": [
+              {
+                "name": "GMCC/Midea",
+                "model": "Google Patents GMCC Midea rotary compressor R290 2026",
+                "trust_score": 5,
+                "source": "https://patents.google.com/?q=(GMCC+Midea+rotary+compressor+R290+2026)",
+                "evidence_id": "2026-06:Ro:GMCC/Midea:특허·기술:https://patents.google.com/?q=(GMCC+Midea+rotary+compressor+R290+2026)"
+              }
+            ],
+            "period_evidence_quality": "sufficient"
+          },
+          "R32": {
+            "samsung": "보유",
+            "note": "초기값",
+            "samsung_status": "보유",
+            "threat_level": "low",
+            "competitors": [
+              {
+                "name": "LG",
+                "model": "LG Rotary Compressor official monitoring 2026-06",
+                "trust_score": 5,
+                "source": "https://www.lg.com/global/business/compressor-motor/compressors/rotary-compressor/",
+                "evidence_id": "2026-06:Ro:LG:신제품·라인업:https://www.lg.com/global/business/compressor-motor/compressors/rotary-compressor/"
+              }
+            ],
+            "period_evidence_quality": "sufficient"
+          },
+          "R454C": {
+            "samsung": "미보유",
+            "note": "초기값",
+            "period_evidence_quality": "sufficient"
+          }
+        },
+        "Sc": {
+          "R454B": {
+            "Fixed": {
+              "samsung": "보유",
+              "note": "초기값",
+              "samsung_status": "보유",
+              "threat_level": "low",
+              "competitors": [
+                {
+                  "name": "Copeland/Emerson",
+                  "model": "Copeland official R454B scroll monitoring 2026-06",
+                  "trust_score": 5,
+                  "source": "https://www.copeland.com/",
+                  "evidence_id": "2026-06:Sc:Copeland/Emerson:신냉매·냉매전환:https://www.copeland.com/"
+                },
+                {
+                  "name": "Danfoss",
+                  "model": "Danfoss compressors official monitoring 2026-06",
+                  "trust_score": 5,
+                  "source": "https://www.danfoss.com/en/products/dcs/compressors/",
+                  "evidence_id": "2026-06:Sc:Danfoss:신제품·라인업:https://www.danfoss.com/en/products/dcs/compressors/"
+                },
+                {
+                  "name": "규제/EU",
+                  "model": "EU F-Gas monitoring 2026-06",
+                  "trust_score": 5,
+                  "source": "https://climate.ec.europa.eu/eu-action/fluorinated-greenhouse-gases",
+                  "evidence_id": "2026-06:Sc:규제/EU:규격·인증:https://climate.ec.europa.eu/eu-action/fluorinated-greenhouse-gases"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            },
+            "Variable": {
+              "samsung": "대응중",
+              "note": "초기값",
+              "samsung_status": "대응중",
+              "threat_level": "low",
+              "competitors": [
+                {
+                  "name": "Copeland/Emerson",
+                  "model": "Copeland scroll heat pump applications reference 2026-06",
+                  "trust_score": 3,
+                  "source": "https://www.coolingpost.com/products/copeland-scrolls-for-heat-pump-applications/",
+                  "evidence_id": "2026-06:Sc:Copeland/Emerson:성능·효율:https://www.coolingpost.com/products/copeland-scrolls-for-heat-pump-applications/"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            },
+            "TwoStage": {
+              "samsung": "대응중",
+              "note": "초기값",
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R410A": {
+            "Fixed": {
+              "samsung": "보유",
+              "note": "evidence 기반 추론",
+              "samsung_status": "보유",
+              "threat_level": "low",
+              "competitors": [
+                {
+                  "name": "Danfoss",
+                  "model": "Danfoss compressors official monitoring 2026-06",
+                  "trust_score": 5,
+                  "source": "https://www.danfoss.com/en/products/dcs/compressors/",
+                  "evidence_id": "2026-06:Sc:Danfoss:신제품·라인업:https://www.danfoss.com/en/products/dcs/compressors/"
+                }
+              ],
+              "period_evidence_quality": "sufficient"
+            }
+          },
+          "R32": {
+            "samsung": "보유",
+            "note": "초기값",
+            "period_evidence_quality": "sufficient"
+          },
+          "R466A": {
+            "samsung": "확인필요",
+            "note": "초기값",
+            "period_evidence_quality": "sufficient"
+          }
+        }
+      },
+      "threat_count": 13,
+      "signal_count": 8,
+      "critic_score": 10,
+      "hard_fail": false
+    }
+  ],
+  "latest": {
+    "period_id": "2026-06",
+    "gap_matrix": {
+      "Re": {
+        "R290": {
+          "MBP": {
+            "samsung": "미보유",
+            "note": "초기값",
+            "samsung_status": "미보유",
+            "threat_level": "high",
+            "competitors": [
+              {
+                "name": "GMCC/Midea",
+                "model": "GMCC compressor official monitoring 2026-06",
+                "trust_score": 5,
+                "source": "https://www.gmcc.com",
+                "evidence_id": "2026-06:Re:GMCC/Midea:신냉매·냉매전환:https://www.gmcc.com"
+              },
+              {
+                "name": "LG",
+                "model": "LG Compressor official monitoring 2026-06",
+                "trust_score": 5,
+                "source": "https://www.lg.com/global/business/compressor",
+                "evidence_id": "2026-06:Re:LG:신제품·라인업:https://www.lg.com/global/business/compressor"
+              },
+              {
+                "name": "Embraco/Nidec",
+                "model": "Embraco official R290 monitoring 2026-06",
+                "trust_score": 5,
+                "source": "https://www.embraco.com/",
+                "evidence_id": "2026-06:Re:Embraco/Nidec:신냉매·냉매전환:https://www.embraco.com/"
+              },
+              {
+                "name": "Secop",
+                "model": "Secop official sustainable compressor monitoring 2026-06",
+                "trust_score": 5,
+                "source": "https://www.secop.com/",
+                "evidence_id": "2026-06:Re:Secop:신뢰성·내구성:https://www.secop.com/"
+              },
+              {
+                "name": "업계/R290",
+                "model": "EPA SNAP monitoring 2026-06",
+                "trust_score": 5,
+                "source": "https://www.epa.gov/snap",
+                "evidence_id": "2026-06:Re:업계/R290:규격·인증:https://www.epa.gov/snap"
+              }
+            ],
+            "period_evidence_quality": "sufficient"
+          },
+          "LBP": {
+            "samsung": "미보유",
+            "note": "초기값",
+            "period_evidence_quality": "sufficient"
+          },
+          "HBP": {
+            "samsung": "확인필요",
+            "note": "초기값",
+            "period_evidence_quality": "sufficient"
+          }
+        },
+        "R600a": {
+          "MBP": {
+            "samsung": "보유",
+            "note": "초기값",
+            "samsung_status": "보유",
+            "threat_level": "low",
+            "competitors": [
+              {
+                "name": "Secop",
+                "model": "Secop official sustainable compressor monitoring 2026-06",
+                "trust_score": 5,
+                "source": "https://www.secop.com/",
+                "evidence_id": "2026-06:Re:Secop:신뢰성·내구성:https://www.secop.com/"
+              }
+            ],
+            "period_evidence_quality": "sufficient"
+          }
+        },
+        "R134a": {
+          "MBP": {
+            "samsung": "보유",
+            "note": "초기값",
+            "period_evidence_quality": "sufficient"
+          }
+        },
+        "R1234yf": {
+          "MBP": {
+            "samsung": "미보유",
+            "note": "초기값",
+            "period_evidence_quality": "sufficient"
+          }
+        },
+        "R32": {
+          "MBP": {
+            "samsung": "확인필요",
+            "note": "evidence 기반 추론",
+            "samsung_status": "확인필요",
+            "threat_level": "none",
+            "competitors": [
+              {
+                "name": "LG",
+                "model": "LG Compressor official monitoring 2026-06",
+                "trust_score": 5,
+                "source": "https://www.lg.com/global/business/compressor",
+                "evidence_id": "2026-06:Re:LG:신제품·라인업:https://www.lg.com/global/business/compressor"
+              }
+            ],
+            "period_evidence_quality": "sufficient"
+          }
+        }
+      },
+      "Ro": {
+        "R290": {
+          "samsung": "보유",
+          "note": "초기값",
+          "samsung_status": "보유",
+          "threat_level": "low",
+          "competitors": [
+            {
+              "name": "GMCC/Midea",
+              "model": "Google Patents GMCC Midea rotary compressor R290 2026",
+              "trust_score": 5,
+              "source": "https://patents.google.com/?q=(GMCC+Midea+rotary+compressor+R290+2026)",
+              "evidence_id": "2026-06:Ro:GMCC/Midea:특허·기술:https://patents.google.com/?q=(GMCC+Midea+rotary+compressor+R290+2026)"
+            }
+          ],
+          "period_evidence_quality": "sufficient"
+        },
+        "R32": {
+          "samsung": "보유",
+          "note": "초기값",
+          "samsung_status": "보유",
+          "threat_level": "low",
+          "competitors": [
+            {
+              "name": "LG",
+              "model": "LG Rotary Compressor official monitoring 2026-06",
+              "trust_score": 5,
+              "source": "https://www.lg.com/global/business/compressor-motor/compressors/rotary-compressor/",
+              "evidence_id": "2026-06:Ro:LG:신제품·라인업:https://www.lg.com/global/business/compressor-motor/compressors/rotary-compressor/"
+            }
+          ],
+          "period_evidence_quality": "sufficient"
+        },
+        "R454C": {
+          "samsung": "미보유",
+          "note": "초기값",
+          "period_evidence_quality": "sufficient"
+        }
+      },
+      "Sc": {
+        "R454B": {
+          "Fixed": {
+            "samsung": "보유",
+            "note": "초기값",
+            "samsung_status": "보유",
+            "threat_level": "low",
+            "competitors": [
+              {
+                "name": "Copeland/Emerson",
+                "model": "Copeland official R454B scroll monitoring 2026-06",
+                "trust_score": 5,
+                "source": "https://www.copeland.com/",
+                "evidence_id": "2026-06:Sc:Copeland/Emerson:신냉매·냉매전환:https://www.copeland.com/"
+              },
+              {
+                "name": "Danfoss",
+                "model": "Danfoss compressors official monitoring 2026-06",
+                "trust_score": 5,
+                "source": "https://www.danfoss.com/en/products/dcs/compressors/",
+                "evidence_id": "2026-06:Sc:Danfoss:신제품·라인업:https://www.danfoss.com/en/products/dcs/compressors/"
+              },
+              {
+                "name": "규제/EU",
+                "model": "EU F-Gas monitoring 2026-06",
+                "trust_score": 5,
+                "source": "https://climate.ec.europa.eu/eu-action/fluorinated-greenhouse-gases",
+                "evidence_id": "2026-06:Sc:규제/EU:규격·인증:https://climate.ec.europa.eu/eu-action/fluorinated-greenhouse-gases"
+              }
+            ],
+            "period_evidence_quality": "sufficient"
+          },
+          "Variable": {
+            "samsung": "대응중",
+            "note": "초기값",
+            "samsung_status": "대응중",
+            "threat_level": "low",
+            "competitors": [
+              {
+                "name": "Copeland/Emerson",
+                "model": "Copeland scroll heat pump applications reference 2026-06",
+                "trust_score": 3,
+                "source": "https://www.coolingpost.com/products/copeland-scrolls-for-heat-pump-applications/",
+                "evidence_id": "2026-06:Sc:Copeland/Emerson:성능·효율:https://www.coolingpost.com/products/copeland-scrolls-for-heat-pump-applications/"
+              }
+            ],
+            "period_evidence_quality": "sufficient"
+          },
+          "TwoStage": {
+            "samsung": "대응중",
+            "note": "초기값",
+            "period_evidence_quality": "sufficient"
+          }
+        },
+        "R410A": {
+          "Fixed": {
+            "samsung": "보유",
+            "note": "evidence 기반 추론",
+            "samsung_status": "보유",
+            "threat_level": "low",
+            "competitors": [
+              {
+                "name": "Danfoss",
+                "model": "Danfoss compressors official monitoring 2026-06",
+                "trust_score": 5,
+                "source": "https://www.danfoss.com/en/products/dcs/compressors/",
+                "evidence_id": "2026-06:Sc:Danfoss:신제품·라인업:https://www.danfoss.com/en/products/dcs/compressors/"
+              }
+            ],
+            "period_evidence_quality": "sufficient"
+          }
+        },
+        "R32": {
+          "samsung": "보유",
+          "note": "초기값",
+          "period_evidence_quality": "sufficient"
+        },
+        "R466A": {
+          "samsung": "확인필요",
+          "note": "초기값",
+          "period_evidence_quality": "sufficient"
+        }
+      }
+    }
+  },
+  "state_changes": [],
+  "period_count": 12,
+  "evidence_threshold": 6,
+  "dynamic_evidence_thresholds": {
+    "exhibition": 8,
+    "backfill": 4,
+    "normal": 6
+  },
+  "memory_periods": [
+    "2025-07",
+    "2025-08",
+    "2025-09",
+    "2025-10",
+    "2025-11",
+    "2025-12",
+    "2026-01",
+    "2026-02",
+    "2026-03",
+    "2026-04",
+    "2026-05",
+    "2026-06"
+  ],
+  "output_paths": {
+    "backfill_gap_summary": "outputs/analysis/backfill_gap_summary.json",
+    "backfill_summary_report": "outputs/reports/backfill_summary.md",
+    "backfill_summary_html": "outputs/reports/backfill_summary.html",
+    "evidence_ledger": "outputs/memory/evidence_ledger.json",
+    "gap_matrix_history": "outputs/memory/gap_matrix_history.json"
+  }
+}

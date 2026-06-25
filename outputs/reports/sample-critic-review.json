@@ -1,0 +1,12 @@
+{
+  "score": 88,
+  "passed": true,
+  "findings": [
+    "출처 URL 섹션이 포함되어 있습니다.",
+    "Samsung Gap 관점 섹션이 포함되어 있습니다.",
+    "분량은 MVP 기준 허용 범위입니다."
+  ],
+  "required_fixes": [
+    "누락 모니터링 대상 확인: Danfoss, Embraco, LG, Nidec"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "approve": true,
+  "score": 10,
+  "reasons": [],
+  "audit_log": {
+    "period_id": "2026-06",
+    "score": 10,
+    "hard_fail": false,
+    "guardian_severity": "pass",
+    "approve": true,
+    "reasons": [],
+    "conditions": {
+      "critic_score>=9": true,
+      "hard_fail=False": true,
+      "guardian=pass": true
+    }
+  }
+}

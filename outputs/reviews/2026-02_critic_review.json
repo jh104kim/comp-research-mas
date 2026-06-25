@@ -1,0 +1,30 @@
+{
+  "score": 10,
+  "passed": true,
+  "findings": [
+    "Re/Ro/Sc + 8개 카테고리 구조 준수",
+    "삼성 비교 관점이 최우선 경쟁사별 구체 상태와 위협도를 포함",
+    "Gap Matrix에 Re/Ro/Sc, 냉매, 위협도 행 포함",
+    "evidence_count >= 4 (backfill)",
+    "Re/Ro/Sc 타입별 최우선 경쟁사 기준 충족",
+    "trust_score >= 4 출처 최소 2개 포함"
+  ],
+  "required_fixes": [],
+  "writer_directives": [],
+  "debate_points": [],
+  "rubric_breakdown": {
+    "period_context": "backfill",
+    "evidence_threshold_used": 4,
+    "structure": 2,
+    "samsung_comparison": 3,
+    "gap_matrix": 2,
+    "evidence_volume": 1,
+    "primary_type_coverage": 1,
+    "source_trust": 1,
+    "total": 10
+  },
+  "low_confidence": false,
+  "hard_fail": false,
+  "hard_fail_reasons": [],
+  "iteration": 0
+}

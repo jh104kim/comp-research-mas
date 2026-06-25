@@ -1,0 +1,1546 @@
+{
+  "week_id": "2026-26",
+  "period_id": "2025-12",
+  "queries": [
+    {
+      "query_id": "Re_GMCC_Midea_신제품라인업",
+      "week_id": "2026-26",
+      "compressor_type": "Re",
+      "competitor": "GMCC/Midea",
+      "category": "신제품·라인업",
+      "refrigerants": [
+        "R290",
+        "R600a",
+        "R134a",
+        "R1234yf"
+      ],
+      "keywords": [
+        "GMCC Midea reciprocating compressor R290 R600a 신제품·라인업 2025-12",
+        "GMCC compressor R290 R600a R134a R1234yf reciprocating news 2025-12",
+        "GMCC Midea reciprocating compressor 2025 Q4",
+        "GMCC Midea R290 R600a reciprocating 2025-12",
+        "GMCC Midea R290 R600a reciprocating 2025 Q4"
+      ],
+      "priority": "primary",
+      "preferred_sources": [
+        "GMCC Official",
+        "Embraco Official",
+        "LG Compressor Official",
+        "Secop Official",
+        "Google Patents",
+        "Espacenet",
+        "Hydrocarbons21",
+        "NaturalRefrigerants.com"
+      ],
+      "date_range": {
+        "from": "2025-12-01",
+        "to": "2025-12-31"
+      }
+    },
+    {
+      "query_id": "Re_GMCC_Midea_신냉매냉매전환",
+      "week_id": "2026-26",
+      "compressor_type": "Re",
+      "competitor": "GMCC/Midea",
+      "category": "신냉매·냉매전환",
+      "refrigerants": [
+        "R290",
+        "R600a",
+        "R134a",
+        "R1234yf"
+      ],
+      "keywords": [
+        "GMCC Midea reciprocating compressor R290 R600a 신냉매·냉매전환 2025-12",
+        "GMCC compressor R290 R600a R134a R1234yf reciprocating news 2025-12",
+        "GMCC Midea reciprocating compressor 2025 Q4",
+        "GMCC Midea R290 R600a reciprocating 2025-12",
+        "GMCC Midea R290 R600a reciprocating 2025 Q4"
+      ],
+      "priority": "primary",
+      "preferred_sources": [
+        "GMCC Official",
+        "Embraco Official",
+        "LG Compressor Official",
+        "Secop Official",
+        "Google Patents",
+        "Espacenet",
+        "Hydrocarbons21",
+        "NaturalRefrigerants.com"
+      ],
+      "date_range": {
+        "from": "2025-12-01",
+        "to": "2025-12-31"
+      }
+    },
+    {
+      "query_id": "Re_GMCC_Midea_성능효율",
+      "week_id": "2026-26",
+      "compressor_type": "Re",
+      "competitor": "GMCC/Midea",
+      "category": "성능·효율",
+      "refrigerants": [
+        "R290",
+        "R600a",
+        "R134a",
+        "R1234yf"
+      ],
+      "keywords": [
+        "GMCC Midea reciprocating compressor R290 R600a 성능·효율 2025-12",
+        "GMCC compressor R290 R600a R134a R1234yf reciprocating news 2025-12",
+        "GMCC Midea reciprocating compressor 2025 Q4",
+        "GMCC Midea R290 R600a reciprocating 2025-12",
+        "GMCC Midea R290 R600a reciprocating 2025 Q4"
+      ],
+      "priority": "primary",
+      "preferred_sources": [
+        "GMCC Official",
+        "Embraco Official",
+        "LG Compressor Official",
+        "Secop Official",
+        "Google Patents",
+        "Espacenet",
+        "Hydrocarbons21",
+        "NaturalRefrigerants.com"
+      ],
+      "date_range": {
+        "from": "2025-12-01",
+        "to": "2025-12-31"
+      }
+    },
+    {
+      "query_id": "Re_GMCC_Midea_규격인증",
+      "week_id": "2026-26",
+      "compressor_type": "Re",
+      "competitor": "GMCC/Midea",
+      "category": "규격·인증",
+      "refrigerants": [
+        "R290",
+        "R600a",
+        "R134a",
+        "R1234yf"
+      ],
+      "keywords": [
+        "GMCC Midea reciprocating compressor R290 R600a 규격·인증 2025-12",
+        "GMCC compressor R290 R600a R134a R1234yf reciprocating news 2025-12",
+        "GMCC Midea reciprocating compressor 2025 Q4",
+        "GMCC Midea R290 R600a reciprocating 2025-12",
+        "GMCC Midea R290 R600a reciprocating 2025 Q4"
+      ],
+      "priority": "primary",
+      "preferred_sources": [
+        "GMCC Official",
+        "EPA SNAP",
+        "EU F-Gas Regulation",
+        "ASHRAE",
+        "Embraco Official",
+        "LG Compressor Official",
+        "Secop Official",
+        "Google Patents"
+      ],
+      "date_range": {
+        "from": "2025-12-01",
+        "to": "2025-12-31"
+      }
+    },
+    {
+      "query_id": "Re_LG_신제품라인업",
+      "week_id": "2026-26",
+      "compressor_type": "Re",
+      "competitor": "LG",
+      "category": "신제품·라인업",
+      "refrigerants": [
+        "R290",
+        "R600a",
+        "R134a",
+        "R1234yf"
+      ],
+      "keywords": [
+        "LG reciprocating compressor R290 R600a 신제품·라인업 2025-12",
+        "LG compressor R290 R600a R134a R1234yf reciprocating news 2025-12",
+        "LG reciprocating compressor 2025 Q4",
+        "LG R290 R600a reciprocating 2025-12",
+        "LG R290 R600a reciprocating 2025 Q4"
+      ],
+      "priority": "primary",
+      "preferred_sources": [
+        "LG Compressor Official",
+        "Embraco Official",
+        "GMCC Official",
+        "Secop Official",
+        "Google Patents",
+        "Espacenet",
+        "Hydrocarbons21",
+        "NaturalRefrigerants.com"
+      ],
+      "date_range": {
+        "from": "2025-12-01",
+        "to": "2025-12-31"
+      }
+    },
+    {
+      "query_id": "Re_LG_신냉매냉매전환",
+      "week_id": "2026-26",
+      "compressor_type": "Re",
+      "competitor": "LG",
+      "category": "신냉매·냉매전환",
+      "refrigerants": [
+        "R290",
+        "R600a",
+        "R134a",
+        "R1234yf"
+      ],
+      "keywords": [
+        "LG reciprocating compressor R290 R600a 신냉매·냉매전환 2025-12",
+        "LG compressor R290 R600a R134a R1234yf reciprocating news 2025-12",
+        "LG reciprocating compressor 2025 Q4",
+        "LG R290 R600a reciprocating 2025-12",
+        "LG R290 R600a reciprocating 2025 Q4"
+      ],
+      "priority": "primary",
+      "preferred_sources": [
+        "LG Compressor Official",
+        "Embraco Official",
+        "GMCC Official",
+        "Secop Official",
+        "Google Patents",
+        "Espacenet",
+        "Hydrocarbons21",
+        "NaturalRefrigerants.com"
+      ],
+      "date_range": {
+        "from": "2025-12-01",
+        "to": "2025-12-31"
+      }
+    },
+    {
+      "query_id": "Re_LG_성능효율",
+      "week_id": "2026-26",
+      "compressor_type": "Re",
+      "competitor": "LG",
+      "category": "성능·효율",
+      "refrigerants": [
+        "R290",
+        "R600a",
+        "R134a",
+        "R1234yf"
+      ],
+      "keywords": [
+        "LG reciprocating compressor R290 R600a 성능·효율 2025-12",
+        "LG compressor R290 R600a R134a R1234yf reciprocating news 2025-12",
+        "LG reciprocating compressor 2025 Q4",
+        "LG R290 R600a reciprocating 2025-12",
+        "LG R290 R600a reciprocating 2025 Q4"
+      ],
+      "priority": "primary",
+      "preferred_sources": [
+        "LG Compressor Official",
+        "Embraco Official",
+        "GMCC Official",
+        "Secop Official",
+        "Google Patents",
+        "Espacenet",
+        "Hydrocarbons21",
+        "NaturalRefrigerants.com"
+      ],
+      "date_range": {
+        "from": "2025-12-01",
+        "to": "2025-12-31"
+      }
+    },
+    {
+      "query_id": "Re_LG_규격인증",
+      "week_id": "2026-26",
+      "compressor_type": "Re",
+      "competitor": "LG",
+      "category": "규격·인증",
+      "refrigerants": [
+        "R290",
+        "R600a",
+        "R134a",
+        "R1234yf"
+      ],
+      "keywords": [
+        "LG reciprocating compressor R290 R600a 규격·인증 2025-12",
+        "LG compressor R290 R600a R134a R1234yf reciprocating news 2025-12",
+        "LG reciprocating compressor 2025 Q4",
+        "LG R290 R600a reciprocating 2025-12",
+        "LG R290 R600a reciprocating 2025 Q4"
+      ],
+      "priority": "primary",
+      "preferred_sources": [
+        "LG Compressor Official",
+        "EPA SNAP",
+        "EU F-Gas Regulation",
+        "ASHRAE",
+        "Embraco Official",
+        "GMCC Official",
+        "Secop Official",
+        "Google Patents"
+      ],
+      "date_range": {
+        "from": "2025-12-01",
+        "to": "2025-12-31"
+      }
+    },
+    {
+      "query_id": "Re_Embraco_Nidec_신제품라인업",
+      "week_id": "2026-26",
+      "compressor_type": "Re",
+      "competitor": "Embraco/Nidec",
+      "category": "신제품·라인업",
+      "refrigerants": [
+        "R290",
+        "R600a",
+        "R134a",
+        "R1234yf"
+      ],
+      "keywords": [
+        "Embraco Nidec reciprocating compressor R290 R600a 신제품·라인업 2025-12",
+        "Embraco compressor R290 R600a R134a R1234yf reciprocating news 2025-12",
+        "Embraco Nidec reciprocating compressor 2025 Q4",
+        "Embraco Nidec R290 R600a reciprocating 2025-12",
+        "Embraco Nidec R290 R600a reciprocating 2025 Q4"
+      ],
+      "priority": "secondary",
+      "preferred_sources": [
+        "Embraco Official",
+        "GMCC Official",
+        "LG Compressor Official",
+        "Secop Official",
+        "Google Patents",
+        "Espacenet",
+        "Hydrocarbons21",
+        "NaturalRefrigerants.com"
+      ],
+      "date_range": {
+        "from": "2025-12-01",
+        "to": "2025-12-31"
+      }
+    },
+    {
+      "query_id": "Re_Embraco_Nidec_성능효율",
+      "week_id": "2026-26",
+      "compressor_type": "Re",
+      "competitor": "Embraco/Nidec",
+      "category": "성능·효율",
+      "refrigerants": [
+        "R290",
+        "R600a",
+        "R134a",
+        "R1234yf"
+      ],
+      "keywords": [
+        "Embraco Nidec reciprocating compressor R290 R600a 성능·효율 2025-12",
+        "Embraco compressor R290 R600a R134a R1234yf reciprocating news 2025-12",
+        "Embraco Nidec reciprocating compressor 2025 Q4",
+        "Embraco Nidec R290 R600a reciprocating 2025-12",
+        "Embraco Nidec R290 R600a reciprocating 2025 Q4"
+      ],
+      "priority": "secondary",
+      "preferred_sources": [
+        "Embraco Official",
+        "GMCC Official",
+        "LG Compressor Official",
+        "Secop Official",
+        "Google Patents",
+        "Espacenet",
+        "Hydrocarbons21",
+        "NaturalRefrigerants.com"
+      ],
+      "date_range": {
+        "from": "2025-12-01",
+        "to": "2025-12-31"
+      }
+    },
+    {
+      "query_id": "Re_Secop_신제품라인업",
+      "week_id": "2026-26",
+      "compressor_type": "Re",
+      "competitor": "Secop",
+      "category": "신제품·라인업",
+      "refrigerants": [
+        "R290",
+        "R600a",
+        "R134a",
+        "R1234yf"
+      ],
+      "keywords": [
+        "Secop reciprocating compressor R290 R600a 신제품·라인업 2025-12",
+        "Secop compressor R290 R600a R134a R1234yf reciprocating news 2025-12",
+        "Secop reciprocating compressor 2025 Q4",
+        "Secop R290 R600a reciprocating 2025-12",
+        "Secop R290 R600a reciprocating 2025 Q4"
+      ],
+      "priority": "secondary",
+      "preferred_sources": [
+        "Secop Official",
+        "Embraco Official",
+        "GMCC Official",
+        "LG Compressor Official",
+        "Google Patents",
+        "Espacenet",
+        "Hydrocarbons21",
+        "NaturalRefrigerants.com"
+      ],
+      "date_range": {
+        "from": "2025-12-01",
+        "to": "2025-12-31"
+      }
+    },
+    {
+      "query_id": "Re_Secop_성능효율",
+      "week_id": "2026-26",
+      "compressor_type": "Re",
+      "competitor": "Secop",
+      "category": "성능·효율",
+      "refrigerants": [
+        "R290",
+        "R600a",
+        "R134a",
+        "R1234yf"
+      ],
+      "keywords": [
+        "Secop reciprocating compressor R290 R600a 성능·효율 2025-12",
+        "Secop compressor R290 R600a R134a R1234yf reciprocating news 2025-12",
+        "Secop reciprocating compressor 2025 Q4",
+        "Secop R290 R600a reciprocating 2025-12",
+        "Secop R290 R600a reciprocating 2025 Q4"
+      ],
+      "priority": "secondary",
+      "preferred_sources": [
+        "Secop Official",
+        "Embraco Official",
+        "GMCC Official",
+        "LG Compressor Official",
+        "Google Patents",
+        "Espacenet",
+        "Hydrocarbons21",
+        "NaturalRefrigerants.com"
+      ],
+      "date_range": {
+        "from": "2025-12-01",
+        "to": "2025-12-31"
+      }
+    },
+    {
+      "query_id": "Re_Panasonic_신제품라인업",
+      "week_id": "2026-26",
+      "compressor_type": "Re",
+      "competitor": "Panasonic",
+      "category": "신제품·라인업",
+      "refrigerants": [
+        "R290",
+        "R600a",
+        "R134a",
+        "R1234yf"
+      ],
+      "keywords": [
+        "Panasonic reciprocating compressor R290 R600a 신제품·라인업 2025-12",
+        "Panasonic compressor R290 R600a R134a R1234yf reciprocating news 2025-12",
+        "Panasonic reciprocating compressor 2025 Q4",
+        "Panasonic R290 R600a reciprocating 2025-12",
+        "Panasonic R290 R600a reciprocating 2025 Q4"
+      ],
+      "priority": "secondary",
+      "preferred_sources": [
+        "Embraco Official",
+        "GMCC Official",
+        "LG Compressor Official",
+        "Secop Official",
+        "Google Patents",
+        "Espacenet",
+        "Hydrocarbons21",
+        "NaturalRefrigerants.com"
+      ],
+      "date_range": {
+        "from": "2025-12-01",
+        "to": "2025-12-31"
+      }
+    },
+    {
+      "query_id": "Re_Panasonic_성능효율",
+      "week_id": "2026-26",
+      "compressor_type": "Re",
+      "competitor": "Panasonic",
+      "category": "성능·효율",
+      "refrigerants": [
+        "R290",
+        "R600a",
+        "R134a",
+        "R1234yf"
+      ],
+      "keywords": [
+        "Panasonic reciprocating compressor R290 R600a 성능·효율 2025-12",
+        "Panasonic compressor R290 R600a R134a R1234yf reciprocating news 2025-12",
+        "Panasonic reciprocating compressor 2025 Q4",
+        "Panasonic R290 R600a reciprocating 2025-12",
+        "Panasonic R290 R600a reciprocating 2025 Q4"
+      ],
+      "priority": "secondary",
+      "preferred_sources": [
+        "Embraco Official",
+        "GMCC Official",
+        "LG Compressor Official",
+        "Secop Official",
+        "Google Patents",
+        "Espacenet",
+        "Hydrocarbons21",
+        "NaturalRefrigerants.com"
+      ],
+      "date_range": {
+        "from": "2025-12-01",
+        "to": "2025-12-31"
+      }
+    },
+    {
+      "query_id": "Ro_GMCC_Midea_신제품라인업",
+      "week_id": "2026-26",
+      "compressor_type": "Ro",
+      "competitor": "GMCC/Midea",
+      "category": "신제품·라인업",
+      "refrigerants": [
+        "R290",
+        "R32",
+        "R454C"
+      ],
+      "keywords": [
+        "GMCC Midea rotary compressor R290 R32 신제품·라인업 2025-12",
+        "GMCC compressor R290 R32 R454C rotary news 2025-12",
+        "GMCC Midea rotary compressor 2025 Q4",
+        "GMCC Midea R290 R32 rotary 2025-12",
+        "GMCC Midea R290 R32 rotary 2025 Q4"
+      ],
+      "priority": "primary",
+      "preferred_sources": [
+        "GMCC Official",
+        "EPA SNAP",
+        "EU F-Gas Regulation",
+        "ASHRAE",
+        "Embraco Official",
+        "Copeland Official",
+        "LG Compressor Official",
+        "Secop Official"
+      ],
+      "date_range": {
+        "from": "2025-12-01",
+        "to": "2025-12-31"
+      }
+    },
+    {
+      "query_id": "Ro_GMCC_Midea_신냉매냉매전환",
+      "week_id": "2026-26",
+      "compressor_type": "Ro",
+      "competitor": "GMCC/Midea",
+      "category": "신냉매·냉매전환",
+      "refrigerants": [
+        "R290",
+        "R32",
+        "R454C"
+      ],
+      "keywords": [
+        "GMCC Midea rotary compressor R290 R32 신냉매·냉매전환 2025-12",
+        "GMCC compressor R290 R32 R454C rotary news 2025-12",
+        "GMCC Midea rotary compressor 2025 Q4",
+        "GMCC Midea R290 R32 rotary 2025-12",
+        "GMCC Midea R290 R32 rotary 2025 Q4"
+      ],
+      "priority": "primary",
+      "preferred_sources": [
+        "GMCC Official",
+        "EPA SNAP",
+        "EU F-Gas Regulation",
+        "ASHRAE",
+        "Embraco Official",
+        "Copeland Official",
+        "LG Compressor Official",
+        "Secop Official"
+      ],
+      "date_range": {
+        "from": "2025-12-01",
+        "to": "2025-12-31"
+      }
+    },
+    {
+      "query_id": "Ro_GMCC_Midea_성능효율",
+      "week_id": "2026-26",
+      "compressor_type": "Ro",
+      "competitor": "GMCC/Midea",
+      "category": "성능·효율",
+      "refrigerants": [
+        "R290",
+        "R32",
+        "R454C"
+      ],
+      "keywords": [
+        "GMCC Midea rotary compressor R290 R32 성능·효율 2025-12",
+        "GMCC compressor R290 R32 R454C rotary news 2025-12",
+        "GMCC Midea rotary compressor 2025 Q4",
+        "GMCC Midea R290 R32 rotary 2025-12",
+        "GMCC Midea R290 R32 rotary 2025 Q4"
+      ],
+      "priority": "primary",
+      "preferred_sources": [
+        "GMCC Official",
+        "EPA SNAP",
+        "EU F-Gas Regulation",
+        "ASHRAE",
+        "Embraco Official",
+        "Copeland Official",
+        "LG Compressor Official",
+        "Secop Official"
+      ],
+      "date_range": {
+        "from": "2025-12-01",
+        "to": "2025-12-31"
+      }
+    },
+    {
+      "query_id": "Ro_GMCC_Midea_규격인증",
+      "week_id": "2026-26",
+      "compressor_type": "Ro",
+      "competitor": "GMCC/Midea",
+      "category": "규격·인증",
+      "refrigerants": [
+        "R290",
+        "R32",
+        "R454C"
+      ],
+      "keywords": [
+        "GMCC Midea rotary compressor R290 R32 규격·인증 2025-12",
+        "GMCC compressor R290 R32 R454C rotary news 2025-12",
+        "GMCC Midea rotary compressor 2025 Q4",
+        "GMCC Midea R290 R32 rotary 2025-12",
+        "GMCC Midea R290 R32 rotary 2025 Q4"
+      ],
+      "priority": "primary",
+      "preferred_sources": [
+        "GMCC Official",
+        "EPA SNAP",
+        "EU F-Gas Regulation",
+        "ASHRAE",
+        "Embraco Official",
+        "Copeland Official",
+        "LG Compressor Official",
+        "Secop Official"
+      ],
+      "date_range": {
+        "from": "2025-12-01",
+        "to": "2025-12-31"
+      }
+    },
+    {
+      "query_id": "Ro_LG_신제품라인업",
+      "week_id": "2026-26",
+      "compressor_type": "Ro",
+      "competitor": "LG",
+      "category": "신제품·라인업",
+      "refrigerants": [
+        "R290",
+        "R32",
+        "R454C"
+      ],
+      "keywords": [
+        "LG rotary compressor R290 R32 신제품·라인업 2025-12",
+        "LG compressor R290 R32 R454C rotary news 2025-12",
+        "LG rotary compressor 2025 Q4",
+        "LG R290 R32 rotary 2025-12",
+        "LG R290 R32 rotary 2025 Q4"
+      ],
+      "priority": "primary",
+      "preferred_sources": [
+        "LG Compressor Official",
+        "EPA SNAP",
+        "EU F-Gas Regulation",
+        "ASHRAE",
+        "Embraco Official",
+        "Copeland Official",
+        "GMCC Official",
+        "Secop Official"
+      ],
+      "date_range": {
+        "from": "2025-12-01",
+        "to": "2025-12-31"
+      }
+    },
+    {
+      "query_id": "Ro_LG_신냉매냉매전환",
+      "week_id": "2026-26",
+      "compressor_type": "Ro",
+      "competitor": "LG",
+      "category": "신냉매·냉매전환",
+      "refrigerants": [
+        "R290",
+        "R32",
+        "R454C"
+      ],
+      "keywords": [
+        "LG rotary compressor R290 R32 신냉매·냉매전환 2025-12",
+        "LG compressor R290 R32 R454C rotary news 2025-12",
+        "LG rotary compressor 2025 Q4",
+        "LG R290 R32 rotary 2025-12",
+        "LG R290 R32 rotary 2025 Q4"
+      ],
+      "priority": "primary",
+      "preferred_sources": [
+        "LG Compressor Official",
+        "EPA SNAP",
+        "EU F-Gas Regulation",
+        "ASHRAE",
+        "Embraco Official",
+        "Copeland Official",
+        "GMCC Official",
+        "Secop Official"
+      ],
+      "date_range": {
+        "from": "2025-12-01",
+        "to": "2025-12-31"
+      }
+    },
+    {
+      "query_id": "Ro_LG_성능효율",
+      "week_id": "2026-26",
+      "compressor_type": "Ro",
+      "competitor": "LG",
+      "category": "성능·효율",
+      "refrigerants": [
+        "R290",
+        "R32",
+        "R454C"
+      ],
+      "keywords": [
+        "LG rotary compressor R290 R32 성능·효율 2025-12",
+        "LG compressor R290 R32 R454C rotary news 2025-12",
+        "LG rotary compressor 2025 Q4",
+        "LG R290 R32 rotary 2025-12",
+        "LG R290 R32 rotary 2025 Q4"
+      ],
+      "priority": "primary",
+      "preferred_sources": [
+        "LG Compressor Official",
+        "EPA SNAP",
+        "EU F-Gas Regulation",
+        "ASHRAE",
+        "Embraco Official",
+        "Copeland Official",
+        "GMCC Official",
+        "Secop Official"
+      ],
+      "date_range": {
+        "from": "2025-12-01",
+        "to": "2025-12-31"
+      }
+    },
+    {
+      "query_id": "Ro_LG_규격인증",
+      "week_id": "2026-26",
+      "compressor_type": "Ro",
+      "competitor": "LG",
+      "category": "규격·인증",
+      "refrigerants": [
+        "R290",
+        "R32",
+        "R454C"
+      ],
+      "keywords": [
+        "LG rotary compressor R290 R32 규격·인증 2025-12",
+        "LG compressor R290 R32 R454C rotary news 2025-12",
+        "LG rotary compressor 2025 Q4",
+        "LG R290 R32 rotary 2025-12",
+        "LG R290 R32 rotary 2025 Q4"
+      ],
+      "priority": "primary",
+      "preferred_sources": [
+        "LG Compressor Official",
+        "EPA SNAP",
+        "EU F-Gas Regulation",
+        "ASHRAE",
+        "Embraco Official",
+        "Copeland Official",
+        "GMCC Official",
+        "Secop Official"
+      ],
+      "date_range": {
+        "from": "2025-12-01",
+        "to": "2025-12-31"
+      }
+    },
+    {
+      "query_id": "Ro_Highly_신제품라인업",
+      "week_id": "2026-26",
+      "compressor_type": "Ro",
+      "competitor": "Highly",
+      "category": "신제품·라인업",
+      "refrigerants": [
+        "R290",
+        "R32",
+        "R454C"
+      ],
+      "keywords": [
+        "Highly rotary compressor R290 R32 신제품·라인업 2025-12",
+        "Highly compressor R290 R32 R454C rotary news 2025-12",
+        "Highly rotary compressor 2025 Q4",
+        "Highly R290 R32 rotary 2025-12",
+        "Highly R290 R32 rotary 2025 Q4"
+      ],
+      "priority": "secondary",
+      "preferred_sources": [
+        "EPA SNAP",
+        "EU F-Gas Regulation",
+        "ASHRAE",
+        "Embraco Official",
+        "Copeland Official",
+        "GMCC Official",
+        "LG Compressor Official",
+        "Secop Official"
+      ],
+      "date_range": {
+        "from": "2025-12-01",
+        "to": "2025-12-31"
+      }
+    },
+    {
+      "query_id": "Ro_Highly_성능효율",
+      "week_id": "2026-26",
+      "compressor_type": "Ro",
+      "competitor": "Highly",
+      "category": "성능·효율",
+      "refrigerants": [
+        "R290",
+        "R32",
+        "R454C"
+      ],
+      "keywords": [
+        "Highly rotary compressor R290 R32 성능·효율 2025-12",
+        "Highly compressor R290 R32 R454C rotary news 2025-12",
+        "Highly rotary compressor 2025 Q4",
+        "Highly R290 R32 rotary 2025-12",
+        "Highly R290 R32 rotary 2025 Q4"
+      ],
+      "priority": "secondary",
+      "preferred_sources": [
+        "EPA SNAP",
+        "EU F-Gas Regulation",
+        "ASHRAE",
+        "Embraco Official",
+        "Copeland Official",
+        "GMCC Official",
+        "LG Compressor Official",
+        "Secop Official"
+      ],
+      "date_range": {
+        "from": "2025-12-01",
+        "to": "2025-12-31"
+      }
+    },
+    {
+      "query_id": "Ro_Panasonic_신제품라인업",
+      "week_id": "2026-26",
+      "compressor_type": "Ro",
+      "competitor": "Panasonic",
+      "category": "신제품·라인업",
+      "refrigerants": [
+        "R290",
+        "R32",
+        "R454C"
+      ],
+      "keywords": [
+        "Panasonic rotary compressor R290 R32 신제품·라인업 2025-12",
+        "Panasonic compressor R290 R32 R454C rotary news 2025-12",
+        "Panasonic rotary compressor 2025 Q4",
+        "Panasonic R290 R32 rotary 2025-12",
+        "Panasonic R290 R32 rotary 2025 Q4"
+      ],
+      "priority": "secondary",
+      "preferred_sources": [
+        "EPA SNAP",
+        "EU F-Gas Regulation",
+        "ASHRAE",
+        "Embraco Official",
+        "Copeland Official",
+        "GMCC Official",
+        "LG Compressor Official",
+        "Secop Official"
+      ],
+      "date_range": {
+        "from": "2025-12-01",
+        "to": "2025-12-31"
+      }
+    },
+    {
+      "query_id": "Ro_Panasonic_성능효율",
+      "week_id": "2026-26",
+      "compressor_type": "Ro",
+      "competitor": "Panasonic",
+      "category": "성능·효율",
+      "refrigerants": [
+        "R290",
+        "R32",
+        "R454C"
+      ],
+      "keywords": [
+        "Panasonic rotary compressor R290 R32 성능·효율 2025-12",
+        "Panasonic compressor R290 R32 R454C rotary news 2025-12",
+        "Panasonic rotary compressor 2025 Q4",
+        "Panasonic R290 R32 rotary 2025-12",
+        "Panasonic R290 R32 rotary 2025 Q4"
+      ],
+      "priority": "secondary",
+      "preferred_sources": [
+        "EPA SNAP",
+        "EU F-Gas Regulation",
+        "ASHRAE",
+        "Embraco Official",
+        "Copeland Official",
+        "GMCC Official",
+        "LG Compressor Official",
+        "Secop Official"
+      ],
+      "date_range": {
+        "from": "2025-12-01",
+        "to": "2025-12-31"
+      }
+    },
+    {
+      "query_id": "Sc_Copeland_Emerson_신제품라인업",
+      "week_id": "2026-26",
+      "compressor_type": "Sc",
+      "competitor": "Copeland/Emerson",
+      "category": "신제품·라인업",
+      "refrigerants": [
+        "R454B",
+        "R32",
+        "R410A",
+        "R466A"
+      ],
+      "keywords": [
+        "Copeland Emerson scroll compressor R454B R32 신제품·라인업 2025-12",
+        "Copeland compressor R454B R32 R410A R466A scroll news 2025-12",
+        "Copeland Emerson scroll compressor 2025 Q4",
+        "Copeland Emerson R454B R32 scroll 2025-12",
+        "Copeland Emerson R454B R32 scroll 2025 Q4"
+      ],
+      "priority": "primary",
+      "preferred_sources": [
+        "Copeland Official",
+        "EPA SNAP",
+        "EU F-Gas Regulation",
+        "ASHRAE",
+        "GMCC Official",
+        "Danfoss Compressor Official",
+        "LG Compressor Official",
+        "Google Patents"
+      ],
+      "date_range": {
+        "from": "2025-12-01",
+        "to": "2025-12-31"
+      }
+    },
+    {
+      "query_id": "Sc_Copeland_Emerson_신냉매냉매전환",
+      "week_id": "2026-26",
+      "compressor_type": "Sc",
+      "competitor": "Copeland/Emerson",
+      "category": "신냉매·냉매전환",
+      "refrigerants": [
+        "R454B",
+        "R32",
+        "R410A",
+        "R466A"
+      ],
+      "keywords": [
+        "Copeland Emerson scroll compressor R454B R32 신냉매·냉매전환 2025-12",
+        "Copeland compressor R454B R32 R410A R466A scroll news 2025-12",
+        "Copeland Emerson scroll compressor 2025 Q4",
+        "Copeland Emerson R454B R32 scroll 2025-12",
+        "Copeland Emerson R454B R32 scroll 2025 Q4"
+      ],
+      "priority": "primary",
+      "preferred_sources": [
+        "Copeland Official",
+        "EPA SNAP",
+        "EU F-Gas Regulation",
+        "ASHRAE",
+        "GMCC Official",
+        "Danfoss Compressor Official",
+        "LG Compressor Official",
+        "Google Patents"
+      ],
+      "date_range": {
+        "from": "2025-12-01",
+        "to": "2025-12-31"
+      }
+    },
+    {
+      "query_id": "Sc_Copeland_Emerson_성능효율",
+      "week_id": "2026-26",
+      "compressor_type": "Sc",
+      "competitor": "Copeland/Emerson",
+      "category": "성능·효율",
+      "refrigerants": [
+        "R454B",
+        "R32",
+        "R410A",
+        "R466A"
+      ],
+      "keywords": [
+        "Copeland Emerson scroll compressor R454B R32 성능·효율 2025-12",
+        "Copeland compressor R454B R32 R410A R466A scroll news 2025-12",
+        "Copeland Emerson scroll compressor 2025 Q4",
+        "Copeland Emerson R454B R32 scroll 2025-12",
+        "Copeland Emerson R454B R32 scroll 2025 Q4"
+      ],
+      "priority": "primary",
+      "preferred_sources": [
+        "Copeland Official",
+        "EPA SNAP",
+        "EU F-Gas Regulation",
+        "ASHRAE",
+        "GMCC Official",
+        "Danfoss Compressor Official",
+        "LG Compressor Official",
+        "Google Patents"
+      ],
+      "date_range": {
+        "from": "2025-12-01",
+        "to": "2025-12-31"
+      }
+    },
+    {
+      "query_id": "Sc_Copeland_Emerson_규격인증",
+      "week_id": "2026-26",
+      "compressor_type": "Sc",
+      "competitor": "Copeland/Emerson",
+      "category": "규격·인증",
+      "refrigerants": [
+        "R454B",
+        "R32",
+        "R410A",
+        "R466A"
+      ],
+      "keywords": [
+        "Copeland Emerson scroll compressor R454B R32 규격·인증 2025-12",
+        "Copeland compressor R454B R32 R410A R466A scroll news 2025-12",
+        "Copeland Emerson scroll compressor 2025 Q4",
+        "Copeland Emerson R454B R32 scroll 2025-12",
+        "Copeland Emerson R454B R32 scroll 2025 Q4"
+      ],
+      "priority": "primary",
+      "preferred_sources": [
+        "Copeland Official",
+        "EPA SNAP",
+        "EU F-Gas Regulation",
+        "ASHRAE",
+        "GMCC Official",
+        "Danfoss Compressor Official",
+        "LG Compressor Official",
+        "Google Patents"
+      ],
+      "date_range": {
+        "from": "2025-12-01",
+        "to": "2025-12-31"
+      }
+    },
+    {
+      "query_id": "Sc_GMCC_Midea_신제품라인업",
+      "week_id": "2026-26",
+      "compressor_type": "Sc",
+      "competitor": "GMCC/Midea",
+      "category": "신제품·라인업",
+      "refrigerants": [
+        "R454B",
+        "R32",
+        "R410A",
+        "R466A"
+      ],
+      "keywords": [
+        "GMCC Midea scroll compressor R454B R32 신제품·라인업 2025-12",
+        "GMCC compressor R454B R32 R410A R466A scroll news 2025-12",
+        "GMCC Midea scroll compressor 2025 Q4",
+        "GMCC Midea R454B R32 scroll 2025-12",
+        "GMCC Midea R454B R32 scroll 2025 Q4"
+      ],
+      "priority": "secondary",
+      "preferred_sources": [
+        "GMCC Official",
+        "EPA SNAP",
+        "EU F-Gas Regulation",
+        "ASHRAE",
+        "Copeland Official",
+        "Danfoss Compressor Official",
+        "LG Compressor Official",
+        "Google Patents"
+      ],
+      "date_range": {
+        "from": "2025-12-01",
+        "to": "2025-12-31"
+      }
+    },
+    {
+      "query_id": "Sc_GMCC_Midea_성능효율",
+      "week_id": "2026-26",
+      "compressor_type": "Sc",
+      "competitor": "GMCC/Midea",
+      "category": "성능·효율",
+      "refrigerants": [
+        "R454B",
+        "R32",
+        "R410A",
+        "R466A"
+      ],
+      "keywords": [
+        "GMCC Midea scroll compressor R454B R32 성능·효율 2025-12",
+        "GMCC compressor R454B R32 R410A R466A scroll news 2025-12",
+        "GMCC Midea scroll compressor 2025 Q4",
+        "GMCC Midea R454B R32 scroll 2025-12",
+        "GMCC Midea R454B R32 scroll 2025 Q4"
+      ],
+      "priority": "secondary",
+      "preferred_sources": [
+        "GMCC Official",
+        "EPA SNAP",
+        "EU F-Gas Regulation",
+        "ASHRAE",
+        "Copeland Official",
+        "Danfoss Compressor Official",
+        "LG Compressor Official",
+        "Google Patents"
+      ],
+      "date_range": {
+        "from": "2025-12-01",
+        "to": "2025-12-31"
+      }
+    },
+    {
+      "query_id": "Sc_Danfoss_신제품라인업",
+      "week_id": "2026-26",
+      "compressor_type": "Sc",
+      "competitor": "Danfoss",
+      "category": "신제품·라인업",
+      "refrigerants": [
+        "R454B",
+        "R32",
+        "R410A",
+        "R466A"
+      ],
+      "keywords": [
+        "Danfoss scroll compressor R454B R32 신제품·라인업 2025-12",
+        "Danfoss compressor R454B R32 R410A R466A scroll news 2025-12",
+        "Danfoss scroll compressor 2025 Q4",
+        "Danfoss R454B R32 scroll 2025-12",
+        "Danfoss R454B R32 scroll 2025 Q4"
+      ],
+      "priority": "secondary",
+      "preferred_sources": [
+        "Danfoss Compressor Official",
+        "EPA SNAP",
+        "EU F-Gas Regulation",
+        "ASHRAE",
+        "Copeland Official",
+        "GMCC Official",
+        "LG Compressor Official",
+        "Google Patents"
+      ],
+      "date_range": {
+        "from": "2025-12-01",
+        "to": "2025-12-31"
+      }
+    },
+    {
+      "query_id": "Sc_Danfoss_성능효율",
+      "week_id": "2026-26",
+      "compressor_type": "Sc",
+      "competitor": "Danfoss",
+      "category": "성능·효율",
+      "refrigerants": [
+        "R454B",
+        "R32",
+        "R410A",
+        "R466A"
+      ],
+      "keywords": [
+        "Danfoss scroll compressor R454B R32 성능·효율 2025-12",
+        "Danfoss compressor R454B R32 R410A R466A scroll news 2025-12",
+        "Danfoss scroll compressor 2025 Q4",
+        "Danfoss R454B R32 scroll 2025-12",
+        "Danfoss R454B R32 scroll 2025 Q4"
+      ],
+      "priority": "secondary",
+      "preferred_sources": [
+        "Danfoss Compressor Official",
+        "EPA SNAP",
+        "EU F-Gas Regulation",
+        "ASHRAE",
+        "Copeland Official",
+        "GMCC Official",
+        "LG Compressor Official",
+        "Google Patents"
+      ],
+      "date_range": {
+        "from": "2025-12-01",
+        "to": "2025-12-31"
+      }
+    },
+    {
+      "query_id": "Sc_LG_신제품라인업",
+      "week_id": "2026-26",
+      "compressor_type": "Sc",
+      "competitor": "LG",
+      "category": "신제품·라인업",
+      "refrigerants": [
+        "R454B",
+        "R32",
+        "R410A",
+        "R466A"
+      ],
+      "keywords": [
+        "LG scroll compressor R454B R32 신제품·라인업 2025-12",
+        "LG compressor R454B R32 R410A R466A scroll news 2025-12",
+        "LG scroll compressor 2025 Q4",
+        "LG R454B R32 scroll 2025-12",
+        "LG R454B R32 scroll 2025 Q4"
+      ],
+      "priority": "secondary",
+      "preferred_sources": [
+        "LG Compressor Official",
+        "EPA SNAP",
+        "EU F-Gas Regulation",
+        "ASHRAE",
+        "Copeland Official",
+        "GMCC Official",
+        "Danfoss Compressor Official",
+        "Google Patents"
+      ],
+      "date_range": {
+        "from": "2025-12-01",
+        "to": "2025-12-31"
+      }
+    },
+    {
+      "query_id": "Sc_LG_성능효율",
+      "week_id": "2026-26",
+      "compressor_type": "Sc",
+      "competitor": "LG",
+      "category": "성능·효율",
+      "refrigerants": [
+        "R454B",
+        "R32",
+        "R410A",
+        "R466A"
+      ],
+      "keywords": [
+        "LG scroll compressor R454B R32 성능·효율 2025-12",
+        "LG compressor R454B R32 R410A R466A scroll news 2025-12",
+        "LG scroll compressor 2025 Q4",
+        "LG R454B R32 scroll 2025-12",
+        "LG R454B R32 scroll 2025 Q4"
+      ],
+      "priority": "secondary",
+      "preferred_sources": [
+        "LG Compressor Official",
+        "EPA SNAP",
+        "EU F-Gas Regulation",
+        "ASHRAE",
+        "Copeland Official",
+        "GMCC Official",
+        "Danfoss Compressor Official",
+        "Google Patents"
+      ],
+      "date_range": {
+        "from": "2025-12-01",
+        "to": "2025-12-31"
+      }
+    }
+  ],
+  "source_priority": {
+    "tier1": [
+      "NaturalRefrigerants.com",
+      "Cooling Post",
+      "Chillventa"
+    ],
+    "tier2": [
+      "ACHR News",
+      "AHR Expo",
+      "ASHRAE"
+    ],
+    "tier3": [
+      "JARN",
+      "China Refrigeration Expo"
+    ],
+    "academic": [
+      "International Journal of Refrigeration",
+      "Applied Thermal Engineering"
+    ]
+  },
+  "source_whitelist": [
+    {
+      "url": "https://www.embraco.com",
+      "name": "Embraco Official",
+      "type": "official",
+      "focus": [
+        "Re",
+        "R290",
+        "R600a",
+        "R134a"
+      ],
+      "group": "competitors_official",
+      "trust_score": 5
+    },
+    {
+      "url": "https://www.copeland.com",
+      "name": "Copeland Official",
+      "type": "official",
+      "focus": [
+        "Sc",
+        "R454B",
+        "R410A",
+        "R32"
+      ],
+      "group": "competitors_official",
+      "trust_score": 5
+    },
+    {
+      "url": "https://www.gmcc.com",
+      "name": "GMCC Official",
+      "type": "official",
+      "focus": [
+        "Re",
+        "Ro",
+        "Sc",
+        "R290",
+        "R454B"
+      ],
+      "group": "competitors_official",
+      "trust_score": 5
+    },
+    {
+      "url": "https://www.danfoss.com/en/products/dcs/compressors",
+      "name": "Danfoss Compressor Official",
+      "type": "official",
+      "focus": [
+        "Sc",
+        "R454B",
+        "R410A"
+      ],
+      "group": "competitors_official",
+      "trust_score": 5
+    },
+    {
+      "url": "https://www.lg.com/global/business/compressor",
+      "name": "LG Compressor Official",
+      "type": "official",
+      "focus": [
+        "Re",
+        "Ro",
+        "Sc",
+        "R290",
+        "R32",
+        "R454B"
+      ],
+      "group": "competitors_official",
+      "trust_score": 5
+    },
+    {
+      "url": "https://www.secop.com",
+      "name": "Secop Official",
+      "type": "official",
+      "focus": [
+        "Re",
+        "R290",
+        "R600a"
+      ],
+      "group": "competitors_official",
+      "trust_score": 5
+    },
+    {
+      "url": "https://www.epa.gov/snap",
+      "name": "EPA SNAP",
+      "type": "official",
+      "focus": [
+        "regulation",
+        "refrigerant"
+      ],
+      "group": "regulations",
+      "trust_score": 5
+    },
+    {
+      "url": "https://climate.ec.europa.eu/eu-action/fluorinated-greenhouse-gases",
+      "name": "EU F-Gas Regulation",
+      "type": "official",
+      "focus": [
+        "regulation",
+        "R454B",
+        "A2L"
+      ],
+      "group": "regulations",
+      "trust_score": 5
+    },
+    {
+      "url": "https://patents.google.com",
+      "name": "Google Patents",
+      "type": "patent",
+      "focus": [
+        "Re",
+        "Ro",
+        "Sc",
+        "all_refrigerants"
+      ],
+      "group": "patents",
+      "trust_score": 5
+    },
+    {
+      "url": "https://worldwide.espacenet.com",
+      "name": "Espacenet",
+      "type": "patent",
+      "focus": [
+        "Re",
+        "Ro",
+        "Sc",
+        "all_refrigerants"
+      ],
+      "group": "patents",
+      "trust_score": 5
+    },
+    {
+      "url": "https://hydrocarbons21.com",
+      "name": "Hydrocarbons21",
+      "type": "trade_media",
+      "focus": [
+        "Re",
+        "Ro",
+        "R290",
+        "R600a"
+      ],
+      "group": "natural_refrigerants",
+      "trust_score": 4
+    },
+    {
+      "url": "https://www.naturalrefrigerants.com",
+      "name": "NaturalRefrigerants.com",
+      "type": "trade_media",
+      "focus": [
+        "R290",
+        "R600a",
+        "natural_refrigerants"
+      ],
+      "group": "trade_media",
+      "trust_score": 3
+    },
+    {
+      "url": "https://www.coolingpost.com",
+      "name": "Cooling Post",
+      "type": "trade_media",
+      "focus": [
+        "all"
+      ],
+      "group": "trade_media",
+      "trust_score": 3
+    },
+    {
+      "url": "https://www.r744.com",
+      "name": "R744.com",
+      "type": "trade_media",
+      "focus": [
+        "CO2",
+        "R744",
+        "heat_pump"
+      ],
+      "group": "trade_media",
+      "trust_score": 3
+    },
+    {
+      "url": "https://www.chillventa.de",
+      "name": "Chillventa",
+      "type": "exhibition",
+      "focus": [
+        "all"
+      ],
+      "group": "exhibitions",
+      "trust_score": 5
+    },
+    {
+      "url": "https://www.ahrexpo.com",
+      "name": "AHR Expo",
+      "type": "exhibition",
+      "focus": [
+        "Sc",
+        "R454B",
+        "R32",
+        "heat_pump"
+      ],
+      "group": "exhibitions",
+      "trust_score": 5
+    },
+    {
+      "url": "https://www.cr-expo.com",
+      "name": "China Refrigeration Expo",
+      "type": "exhibition",
+      "focus": [
+        "Re",
+        "Ro",
+        "Sc",
+        "China"
+      ],
+      "group": "exhibitions",
+      "trust_score": 5
+    },
+    {
+      "url": "https://www.achrnews.com",
+      "name": "ACHR News",
+      "type": "trade_media",
+      "focus": [
+        "North_America",
+        "Sc",
+        "regulation"
+      ],
+      "group": "industry_media",
+      "trust_score": 3
+    },
+    {
+      "url": "https://www.ejarn.com",
+      "name": "JARN",
+      "type": "trade_media",
+      "focus": [
+        "Japan",
+        "Asia",
+        "China"
+      ],
+      "group": "industry_media",
+      "trust_score": 3
+    },
+    {
+      "url": "https://www.ashrae.org",
+      "name": "ASHRAE",
+      "type": "official",
+      "focus": [
+        "standard",
+        "refrigerant",
+        "A2L"
+      ],
+      "group": "standards",
+      "trust_score": 5
+    },
+    {
+      "url": "https://www.sciencedirect.com/journal/international-journal-of-refrigeration",
+      "name": "International Journal of Refrigeration",
+      "type": "academic",
+      "focus": [
+        "academic",
+        "refrigeration"
+      ],
+      "group": "academic_title_abstract_only",
+      "trust_score": 4
+    },
+    {
+      "url": "https://www.sciencedirect.com/journal/applied-thermal-engineering",
+      "name": "Applied Thermal Engineering",
+      "type": "academic",
+      "focus": [
+        "academic",
+        "thermal_engineering"
+      ],
+      "group": "academic_title_abstract_only",
+      "trust_score": 4
+    }
+  ],
+  "source_boosts": []
+}

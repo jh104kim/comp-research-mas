@@ -1,0 +1,132 @@
+{
+  "week_id": "2026-26",
+  "period_id": "2026-06",
+  "results": [
+    {
+      "query_id": "Re_GMCC_Midea_신제품라인업",
+      "week_id": "2026-26",
+      "compressor_type": "Re",
+      "competitor": "GMCC/Midea",
+      "category": "신제품·라인업",
+      "refrigerants": [
+        "R290",
+        "R600a"
+      ],
+      "source_url": "https://example.com/Re_GMCC_Midea_신제품라인업",
+      "source_date": "2026-06-20",
+      "source_type": "official",
+      "title": "GMCC/Midea Re 신제품·라인업 update",
+      "summary": "GMCC/Midea Re 신제품·라인업 관련 선별 stub 결과. 삼성 미보유 구간 진입 신호.",
+      "raw_text": "GMCC/Midea Re 신제품·라인업. 삼성 상태: 미보유. 삼성 미보유 구간 진입 신호.",
+      "samsung_status": "미보유"
+    },
+    {
+      "query_id": "Re_LG_신제품라인업",
+      "week_id": "2026-26",
+      "compressor_type": "Re",
+      "competitor": "LG",
+      "category": "신제품·라인업",
+      "refrigerants": [
+        "R290",
+        "R600a"
+      ],
+      "source_url": "https://example.com/Re_LG_신제품라인업",
+      "source_date": "2026-06-20",
+      "source_type": "trade_media",
+      "title": "LG Re 신제품·라인업 update",
+      "summary": "LG Re 신제품·라인업 관련 선별 stub 결과. 삼성 현황 확인 필요.",
+      "raw_text": "LG Re 신제품·라인업. 삼성 상태: 확인필요. 삼성 현황 확인 필요.",
+      "samsung_status": "확인필요"
+    },
+    {
+      "query_id": "Ro_GMCC_Midea_신제품라인업",
+      "week_id": "2026-26",
+      "compressor_type": "Ro",
+      "competitor": "GMCC/Midea",
+      "category": "신제품·라인업",
+      "refrigerants": [
+        "R290",
+        "R32"
+      ],
+      "source_url": "https://example.com/Ro_GMCC_Midea_신제품라인업",
+      "source_date": "2026-06-20",
+      "source_type": "trade_media",
+      "title": "GMCC/Midea Ro 신제품·라인업 update",
+      "summary": "GMCC/Midea Ro 신제품·라인업 관련 선별 stub 결과. 삼성 현황 확인 필요.",
+      "raw_text": "GMCC/Midea Ro 신제품·라인업. 삼성 상태: 확인필요. 삼성 현황 확인 필요.",
+      "samsung_status": "확인필요"
+    },
+    {
+      "query_id": "Ro_LG_신제품라인업",
+      "week_id": "2026-26",
+      "compressor_type": "Ro",
+      "competitor": "LG",
+      "category": "신제품·라인업",
+      "refrigerants": [
+        "R290",
+        "R32"
+      ],
+      "source_url": "https://example.com/Ro_LG_신제품라인업",
+      "source_date": "2026-06-20",
+      "source_type": "exhibition",
+      "title": "LG Ro 신제품·라인업 update",
+      "summary": "LG Ro 신제품·라인업 관련 선별 stub 결과. CE 인증 기반 확인 필요.",
+      "raw_text": "LG Ro 신제품·라인업. 삼성 상태: 확인필요. CE 인증 기반 확인 필요.",
+      "samsung_status": "확인필요"
+    },
+    {
+      "query_id": "Sc_Copeland_Emerson_신제품라인업",
+      "week_id": "2026-26",
+      "compressor_type": "Sc",
+      "competitor": "Copeland/Emerson",
+      "category": "신제품·라인업",
+      "refrigerants": [
+        "R454B",
+        "R32"
+      ],
+      "source_url": "https://example.com/Sc_Copeland_Emerson_신제품라인업",
+      "source_date": "2026-06-20",
+      "source_type": "trade_media",
+      "title": "Copeland/Emerson Sc 신제품·라인업 update",
+      "summary": "Copeland/Emerson Sc 신제품·라인업 관련 선별 stub 결과. 삼성 대응 중 구간의 북미 경쟁 심화.",
+      "raw_text": "Copeland/Emerson Sc 신제품·라인업. 삼성 상태: 대응중. 삼성 대응 중 구간의 북미 경쟁 심화.",
+      "samsung_status": "대응중"
+    },
+    {
+      "query_id": "Sc_Copeland_Emerson_신냉매냉매전환",
+      "week_id": "2026-26",
+      "compressor_type": "Sc",
+      "competitor": "Copeland/Emerson",
+      "category": "신냉매·냉매전환",
+      "refrigerants": [
+        "R454B",
+        "R32"
+      ],
+      "source_url": "https://example.com/Sc_Copeland_Emerson_신냉매냉매전환",
+      "source_date": "2026-06-20",
+      "source_type": "trade_media",
+      "title": "Copeland/Emerson Sc 신냉매·냉매전환 update",
+      "summary": "Copeland/Emerson Sc 신냉매·냉매전환 관련 선별 stub 결과. 삼성 대응 중 구간의 북미 경쟁 심화.",
+      "raw_text": "Copeland/Emerson Sc 신냉매·냉매전환. 삼성 상태: 대응중. 삼성 대응 중 구간의 북미 경쟁 심화.",
+      "samsung_status": "대응중"
+    },
+    {
+      "query_id": "Re_GMCC_Midea_신제품라인업",
+      "week_id": "2026-26",
+      "compressor_type": "Re",
+      "competitor": "GMCC/Midea",
+      "category": "신제품·라인업",
+      "refrigerants": [
+        "R290",
+        "R600a"
+      ],
+      "source_url": "https://example.com/Re_GMCC_Midea_신제품라인업?dup=news",
+      "source_date": "2026-06-20",
+      "source_type": "news",
+      "title": "GMCC/Midea Re 신제품·라인업 update",
+      "summary": "GMCC/Midea Re 신제품·라인업 관련 선별 stub 결과. 삼성 미보유 구간 진입 신호.",
+      "raw_text": "GMCC/Midea Re 신제품·라인업. 삼성 상태: 미보유. 삼성 미보유 구간 진입 신호.",
+      "samsung_status": "미보유"
+    }
+  ]
+}

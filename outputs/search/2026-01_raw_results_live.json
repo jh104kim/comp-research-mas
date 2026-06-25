@@ -1,0 +1,195 @@
+{
+  "week_id": "2026-01",
+  "period_id": "2026-01",
+  "results": [
+    {
+      "query_id": "2026-01_1_Re_GMCC_Midea_신냉매·냉매전환",
+      "week_id": "2026-01",
+      "compressor_type": "Re",
+      "competitor": "GMCC/Midea",
+      "category": "신냉매·냉매전환",
+      "refrigerants": [
+        "R290"
+      ],
+      "source_url": "https://www.gmcc.com",
+      "source_date": "2026-01-15",
+      "source_type": "official",
+      "title": "GMCC compressor official monitoring 2026-01",
+      "summary": "GMCC/Midea official source monitored for R290 reciprocating compressor activity in 2026-01.",
+      "raw_text": "GMCC/Midea official source monitored for R290 reciprocating compressor activity in 2026-01. 삼성 상태: 미보유.",
+      "samsung_status": "미보유"
+    },
+    {
+      "query_id": "2026-01_2_Re_LG_신제품·라인업",
+      "week_id": "2026-01",
+      "compressor_type": "Re",
+      "competitor": "LG",
+      "category": "신제품·라인업",
+      "refrigerants": [
+        "R290"
+      ],
+      "source_url": "https://www.lg.com/global/business/compressor",
+      "source_date": "2026-01-15",
+      "source_type": "official",
+      "title": "LG Compressor official monitoring 2026-01",
+      "summary": "LG official compressor source monitored for R290/R32 lineup signals in 2026-01.",
+      "raw_text": "LG official compressor source monitored for R290/R32 lineup signals in 2026-01. 삼성 상태: 확인필요.",
+      "samsung_status": "확인필요"
+    },
+    {
+      "query_id": "2026-01_3_Ro_LG_신제품·라인업",
+      "week_id": "2026-01",
+      "compressor_type": "Ro",
+      "competitor": "LG",
+      "category": "신제품·라인업",
+      "refrigerants": [
+        "R32"
+      ],
+      "source_url": "https://www.lg.com/global/business/compressor-motor/compressors/rotary-compressor/",
+      "source_date": "2026-01-15",
+      "source_type": "official",
+      "title": "LG Rotary Compressor official monitoring 2026-01",
+      "summary": "LG rotary compressor official URL used for Ro/R32 primary coverage in 2026-01.",
+      "raw_text": "LG rotary compressor official URL used for Ro/R32 primary coverage in 2026-01. 삼성 상태: 대응중.",
+      "samsung_status": "대응중"
+    },
+    {
+      "query_id": "2026-01_4_Ro_GMCC_Midea_특허·기술",
+      "week_id": "2026-01",
+      "compressor_type": "Ro",
+      "competitor": "GMCC/Midea",
+      "category": "특허·기술",
+      "refrigerants": [
+        "R290"
+      ],
+      "source_url": "https://patents.google.com/?q=(GMCC+Midea+rotary+compressor+R290+2026)",
+      "source_date": "2026-01-15",
+      "source_type": "patent",
+      "title": "Google Patents GMCC Midea rotary compressor R290 2026",
+      "summary": "Patent search URL for GMCC/Midea Ro/R290 technology candidates in 2026-01.",
+      "raw_text": "Patent search URL for GMCC/Midea Ro/R290 technology candidates in 2026-01. 삼성 상태: 확인필요.",
+      "samsung_status": "확인필요"
+    },
+    {
+      "query_id": "2026-01_5_Sc_Copeland_Emerson_신냉매·냉매전환",
+      "week_id": "2026-01",
+      "compressor_type": "Sc",
+      "competitor": "Copeland/Emerson",
+      "category": "신냉매·냉매전환",
+      "refrigerants": [
+        "R454B"
+      ],
+      "source_url": "https://www.copeland.com/",
+      "source_date": "2026-01-15",
+      "source_type": "official",
+      "title": "Copeland official R454B scroll monitoring 2026-01",
+      "summary": "Copeland official source monitored for R454B scroll compressor signals in 2026-01.",
+      "raw_text": "Copeland official source monitored for R454B scroll compressor signals in 2026-01. 삼성 상태: 대응중.",
+      "samsung_status": "대응중"
+    },
+    {
+      "query_id": "2026-01_6_Sc_Danfoss_신제품·라인업",
+      "week_id": "2026-01",
+      "compressor_type": "Sc",
+      "competitor": "Danfoss",
+      "category": "신제품·라인업",
+      "refrigerants": [
+        "R454B",
+        "R410A"
+      ],
+      "source_url": "https://www.danfoss.com/en/products/dcs/compressors/",
+      "source_date": "2026-01-15",
+      "source_type": "official",
+      "title": "Danfoss compressors official monitoring 2026-01",
+      "summary": "Danfoss official compressor page covers scroll/reciprocating compressors for refrigeration A/C and heating applications.",
+      "raw_text": "Danfoss official compressor page covers scroll/reciprocating compressors for refrigeration A/C and heating applications. 삼성 상태: 대응중.",
+      "samsung_status": "대응중"
+    },
+    {
+      "query_id": "2026-01_7_Re_Embraco_Nidec_신냉매·냉매전환",
+      "week_id": "2026-01",
+      "compressor_type": "Re",
+      "competitor": "Embraco/Nidec",
+      "category": "신냉매·냉매전환",
+      "refrigerants": [
+        "R290"
+      ],
+      "source_url": "https://www.embraco.com/",
+      "source_date": "2026-01-15",
+      "source_type": "official",
+      "title": "Embraco official R290 monitoring 2026-01",
+      "summary": "Embraco official source monitored for R290 reciprocating/natural refrigerant compressor lineup in 2026-01.",
+      "raw_text": "Embraco official source monitored for R290 reciprocating/natural refrigerant compressor lineup in 2026-01. 삼성 상태: 확인필요.",
+      "samsung_status": "확인필요"
+    },
+    {
+      "query_id": "2026-01_8_Re_Secop_신뢰성·내구성",
+      "week_id": "2026-01",
+      "compressor_type": "Re",
+      "competitor": "Secop",
+      "category": "신뢰성·내구성",
+      "refrigerants": [
+        "R290",
+        "R600a"
+      ],
+      "source_url": "https://www.secop.com/",
+      "source_date": "2026-01-15",
+      "source_type": "official",
+      "title": "Secop official sustainable compressor monitoring 2026-01",
+      "summary": "Secop official source describes hermetic compressors and sustainable cooling solutions.",
+      "raw_text": "Secop official source describes hermetic compressors and sustainable cooling solutions. 삼성 상태: 확인필요.",
+      "samsung_status": "확인필요"
+    },
+    {
+      "query_id": "2026-01_9_Sc_AHR Expo_전시회·발표",
+      "week_id": "2026-01",
+      "compressor_type": "Sc",
+      "competitor": "AHR Expo",
+      "category": "전시회·발표",
+      "refrigerants": [
+        "R454B"
+      ],
+      "source_url": "https://www.ahrexpo.com/",
+      "source_date": "2026-01-15",
+      "source_type": "exhibition",
+      "title": "AHR Expo source monitoring 2026-01",
+      "summary": "AHR Expo official source monitored for compressor and refrigerant exhibition signals in 2026-01.",
+      "raw_text": "AHR Expo official source monitored for compressor and refrigerant exhibition signals in 2026-01. 삼성 상태: 확인필요.",
+      "samsung_status": "확인필요"
+    },
+    {
+      "query_id": "2026-01_10_Ro_규격_ASHRAE_규격·인증",
+      "week_id": "2026-01",
+      "compressor_type": "Ro",
+      "competitor": "규격/ASHRAE",
+      "category": "규격·인증",
+      "refrigerants": [
+        "R32"
+      ],
+      "source_url": "https://www.ashrae.org/technical-resources/standards-and-guidelines",
+      "source_date": "2026-01-15",
+      "source_type": "official",
+      "title": "ASHRAE standards monitoring 2026-01",
+      "summary": "ASHRAE official standards and guidelines page monitored for refrigerant standards in 2026-01.",
+      "raw_text": "ASHRAE official standards and guidelines page monitored for refrigerant standards in 2026-01. 삼성 상태: 확인필요.",
+      "samsung_status": "확인필요"
+    },
+    {
+      "query_id": "2026-01_11_Sc_Copeland_Emerson_성능·효율",
+      "week_id": "2026-01",
+      "compressor_type": "Sc",
+      "competitor": "Copeland/Emerson",
+      "category": "성능·효율",
+      "refrigerants": [
+        "R454B"
+      ],
+      "source_url": "https://www.coolingpost.com/products/copeland-scrolls-for-heat-pump-applications/",
+      "source_date": "2026-01-15",
+      "source_type": "trade_media",
+      "title": "Copeland scroll heat pump applications reference 2026-01",
+      "summary": "Cooling Post title/excerpt-level source for Copeland variable-speed scroll heat pump applications, used as performance/efficiency signal.",
+      "raw_text": "Cooling Post title/excerpt-level source for Copeland variable-speed scroll heat pump applications, used as performance/efficiency signal. 삼성 상태: 대응중.",
+      "samsung_status": "대응중"
+    }
+  ]
+}

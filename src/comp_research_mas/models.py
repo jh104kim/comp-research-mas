@@ -125,6 +125,9 @@ class EvidenceItem:
     low_confidence: bool = False
     dynamic_tags: list[str] = field(default_factory=list)
     evidence_id: str = ""
+    modality: str = "text"
+    extraction_confidence: float = 1.0
+    source_page: str = ""
 
     def to_dict(self) -> dict[str, Any]:
         data = asdict(self)

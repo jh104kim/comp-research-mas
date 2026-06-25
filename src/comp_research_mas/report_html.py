@@ -310,7 +310,11 @@ def _critic_review_summary(state: dict[str, Any]) -> str:
     context = str(breakdown.get("period_context") or _period_context_from_state(state))
     threshold = breakdown.get("evidence_threshold_used", "n/a")
     low = _badge("low_confidence", "data_insufficient") if (state.get("feedback") or {}).get("low_confidence") or any(e.get("low_confidence") for e in _evidence(state)) else ""
-    return f'<section class="card critic-review-summary"><h2>Critic Review Summary</h2><p>{_period_context_badge(context)} <span class="pill" style="background:#F7F7F7;color:#222">evidence_threshold_used={_esc(threshold)}</span> {low}</p><div class="rubric-bars">{"".join(rows)}</div></section>'
+    debate_rounds = state.get("debate_rounds") or []
+    debate_html = ""
+    if debate_rounds:
+        debate_html = '<h3>Debate Rounds</h3><ul>' + ''.join(f'<li>{_badge(r.get("decision", "unknown"), "low" if r.get("decision") == "accepted" else "medium")} {_esc(r.get("applied_section"))}: {_esc(r.get("before_score"))} → {_esc(r.get("after_score"))}</li>' for r in debate_rounds) + '</ul>'
+    return f'<section class="card critic-review-summary"><h2>Critic Review Summary</h2><p>{_period_context_badge(context)} <span class="pill" style="background:#F7F7F7;color:#222">evidence_threshold_used={_esc(threshold)}</span> {low}</p><div class="rubric-bars">{"".join(rows)}</div>{debate_html}</section>'
 
 def _css() -> str:
     return f"""

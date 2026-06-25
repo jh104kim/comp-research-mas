@@ -1,0 +1,634 @@
+{
+  "period_id": "2025-10",
+  "week_id": "2025-10",
+  "evidence": [
+    {
+      "compressor_type": "Re",
+      "competitor": "GMCC/Midea",
+      "refrigerant": [
+        "R290"
+      ],
+      "category": "신제품·라인업",
+      "samsung_status": "확인필요",
+      "trust_score": 5,
+      "source_type": "official",
+      "threat_level": "none",
+      "week_id": "2025-10",
+      "period_id": "2025-10",
+      "source_url": "https://www.gmcc.com",
+      "source_date": "확인필요",
+      "raw_text": "GMCC 공식 사이트 기반 공식 출처 후보. R290 Re 라인업 직접 발표는 현재 제목/요약 수준에서 확인 필요. 삼성 상태: 확인필요.",
+      "summary": "",
+      "product_or_series": "GMCC Official site",
+      "condition_or_capacity": "확인필요",
+      "application": "Residential/Unitary/Heat pump",
+      "source_name": "GMCC Official site",
+      "is_primary": true,
+      "low_confidence": false,
+      "dynamic_tags": [
+        "Re",
+        "신제품·라인업",
+        "official",
+        "R290"
+      ],
+      "evidence_id": "2025-10:Re:GMCC/Midea:신제품·라인업:https://www.gmcc.com",
+      "modality": "text",
+      "extraction_confidence": 1.0,
+      "source_page": "",
+      "period_evidence_quality": "sufficient"
+    },
+    {
+      "compressor_type": "Re",
+      "competitor": "LG",
+      "refrigerant": [
+        "R290"
+      ],
+      "category": "신제품·라인업",
+      "samsung_status": "확인필요",
+      "trust_score": 5,
+      "source_type": "official",
+      "threat_level": "none",
+      "week_id": "2025-10",
+      "period_id": "2025-10",
+      "source_url": "https://www.lg.com/global/business/compressor",
+      "source_date": "확인필요",
+      "raw_text": "LG Compressor 공식 URL 기반. R290 Re 세부 모델/출시일은 제목+요약 수집 단계에서 확인 필요. 삼성 상태: 확인필요.",
+      "summary": "",
+      "product_or_series": "LG Compressor Official",
+      "condition_or_capacity": "확인필요",
+      "application": "Residential/Unitary/Heat pump",
+      "source_name": "LG Compressor Official",
+      "is_primary": true,
+      "low_confidence": false,
+      "dynamic_tags": [
+        "Re",
+        "신제품·라인업",
+        "official",
+        "R290"
+      ],
+      "evidence_id": "2025-10:Re:LG:신제품·라인업:https://www.lg.com/global/business/compressor",
+      "modality": "text",
+      "extraction_confidence": 1.0,
+      "source_page": "",
+      "period_evidence_quality": "sufficient"
+    },
+    {
+      "compressor_type": "Sc",
+      "competitor": "Copeland/Emerson",
+      "refrigerant": [
+        "R454B"
+      ],
+      "category": "신냉매·냉매전환",
+      "samsung_status": "대응중",
+      "trust_score": 5,
+      "source_type": "official",
+      "threat_level": "medium",
+      "week_id": "2025-10",
+      "period_id": "2025-10",
+      "source_url": "https://www.copeland.com/",
+      "source_date": "확인필요",
+      "raw_text": "Copeland 공식 URL 기반. R454B scroll 관련 공식 세부 발표는 추가 확인 필요. 삼성 상태: 대응중.",
+      "summary": "",
+      "product_or_series": "Copeland Official",
+      "condition_or_capacity": "확인필요",
+      "application": "Residential/Unitary/Heat pump",
+      "source_name": "Copeland Official",
+      "is_primary": true,
+      "low_confidence": false,
+      "dynamic_tags": [
+        "Sc",
+        "신냉매·냉매전환",
+        "official",
+        "R454B"
+      ],
+      "evidence_id": "2025-10:Sc:Copeland/Emerson:신냉매·냉매전환:https://www.copeland.com/",
+      "modality": "text",
+      "extraction_confidence": 1.0,
+      "source_page": "",
+      "period_evidence_quality": "sufficient"
+    },
+    {
+      "compressor_type": "Sc",
+      "competitor": "Danfoss",
+      "refrigerant": [
+        "R454B",
+        "R410A"
+      ],
+      "category": "신제품·라인업",
+      "samsung_status": "대응중",
+      "trust_score": 5,
+      "source_type": "official",
+      "threat_level": "medium",
+      "week_id": "2025-10",
+      "period_id": "2025-10",
+      "source_url": "https://www.danfoss.com/en/products/dcs/compressors/",
+      "source_date": "확인필요",
+      "raw_text": "Danfoss 공식 compressor 페이지. Scroll compressor와 heat pump/refrigeration application을 공식 출처로 확인. 삼성 상태: 대응중.",
+      "summary": "",
+      "product_or_series": "Compressors for refrigeration, A/C and heating | Danfoss",
+      "condition_or_capacity": "확인필요",
+      "application": "Residential/Unitary/Heat pump",
+      "source_name": "Compressors for refrigeration, A/C and heating | Danfoss",
+      "is_primary": false,
+      "low_confidence": false,
+      "dynamic_tags": [
+        "Sc",
+        "신제품·라인업",
+        "official",
+        "R454B",
+        "R410A"
+      ],
+      "evidence_id": "2025-10:Sc:Danfoss:신제품·라인업:https://www.danfoss.com/en/products/dcs/compressors/",
+      "modality": "text",
+      "extraction_confidence": 1.0,
+      "source_page": "",
+      "period_evidence_quality": "sufficient"
+    },
+    {
+      "compressor_type": "Re",
+      "competitor": "Embraco/Nidec",
+      "refrigerant": [
+        "R290"
+      ],
+      "category": "신냉매·냉매전환",
+      "samsung_status": "확인필요",
+      "trust_score": 5,
+      "source_type": "official",
+      "threat_level": "none",
+      "week_id": "2025-10",
+      "period_id": "2025-10",
+      "source_url": "https://www.embraco.com/",
+      "source_date": "확인필요",
+      "raw_text": "Embraco 공식 URL 기반. R290 Re 관련 구체 모델은 추가 확인 필요. 삼성 상태: 확인필요.",
+      "summary": "",
+      "product_or_series": "Embraco",
+      "condition_or_capacity": "확인필요",
+      "application": "Residential/Unitary/Heat pump",
+      "source_name": "Embraco",
+      "is_primary": false,
+      "low_confidence": false,
+      "dynamic_tags": [
+        "Re",
+        "신냉매·냉매전환",
+        "official",
+        "R290"
+      ],
+      "evidence_id": "2025-10:Re:Embraco/Nidec:신냉매·냉매전환:https://www.embraco.com/",
+      "modality": "text",
+      "extraction_confidence": 1.0,
+      "source_page": "",
+      "period_evidence_quality": "sufficient"
+    },
+    {
+      "compressor_type": "Re",
+      "competitor": "Secop",
+      "refrigerant": [
+        "R290",
+        "R600a"
+      ],
+      "category": "신냉매·냉매전환",
+      "samsung_status": "확인필요",
+      "trust_score": 5,
+      "source_type": "official",
+      "threat_level": "none",
+      "week_id": "2025-10",
+      "period_id": "2025-10",
+      "source_url": "https://www.secop.com/",
+      "source_date": "확인필요",
+      "raw_text": "Secop 공식 URL 기반. R290/R600a Re 자연냉매 경쟁사 모니터링 출처로 사용. 삼성 상태: 확인필요.",
+      "summary": "",
+      "product_or_series": "Advanced Compressors Technology & Sustainable Cooling Solutions | Secop",
+      "condition_or_capacity": "확인필요",
+      "application": "Residential/Unitary/Heat pump",
+      "source_name": "Advanced Compressors Technology & Sustainable Cooling Solutions | Secop",
+      "is_primary": false,
+      "low_confidence": false,
+      "dynamic_tags": [
+        "Re",
+        "신냉매·냉매전환",
+        "official",
+        "R290",
+        "R600a"
+      ],
+      "evidence_id": "2025-10:Re:Secop:신냉매·냉매전환:https://www.secop.com/",
+      "modality": "text",
+      "extraction_confidence": 1.0,
+      "source_page": "",
+      "period_evidence_quality": "sufficient"
+    },
+    {
+      "compressor_type": "Re",
+      "competitor": "업계/R290",
+      "refrigerant": [
+        "R290"
+      ],
+      "category": "규격·인증",
+      "samsung_status": "확인필요",
+      "trust_score": 3,
+      "source_type": "trade_media",
+      "threat_level": "none",
+      "week_id": "2025-10",
+      "period_id": "2025-10",
+      "source_url": "https://naturalrefrigerants.com/news/heat-pump-watch-r290-eu-residential-heat-pumps-certificates/",
+      "source_date": "2026-04-15",
+      "raw_text": "R290 EU residential heat pump certifications trend. 2025-10 백필의 냉매전환/규격 추세 참고 근거이며 직접 경쟁사 모델 발표는 아님. 삼성 상태: 확인필요.",
+      "summary": "",
+      "product_or_series": "R290 Accounted for 38% of New EU Residential Heat Pump Certifications in 2024, According to Heat Pumps Watch",
+      "condition_or_capacity": "확인필요",
+      "application": "Residential/Unitary/Heat pump",
+      "source_name": "R290 Accounted for 38% of New EU Residential Heat Pump Certifications in 2024, According to Heat Pumps Watch",
+      "is_primary": false,
+      "low_confidence": false,
+      "dynamic_tags": [
+        "Re",
+        "규격·인증",
+        "trade_media",
+        "R290"
+      ],
+      "evidence_id": "2025-10:Re:업계/R290:규격·인증:https://naturalrefrigerants.com/news/heat-pump-watch-r290-eu-residential-heat-pumps-certificates/",
+      "modality": "text",
+      "extraction_confidence": 1.0,
+      "source_page": "",
+      "period_evidence_quality": "sufficient"
+    },
+    {
+      "compressor_type": "Re",
+      "competitor": "Embraco/Nidec",
+      "refrigerant": [
+        "R290"
+      ],
+      "category": "전시회·발표",
+      "samsung_status": "확인필요",
+      "trust_score": 3,
+      "source_type": "trade_media",
+      "threat_level": "none",
+      "week_id": "2025-10",
+      "period_id": "2025-10",
+      "source_url": "https://hydrocarbons21.com/embraco-debuts-r290-condensing-units-for-european-market-targeting-foodservice/",
+      "source_date": "2022-08-17",
+      "raw_text": "Embraco R290 condensing units and Chillventa mention. 2025-10 Chillventa context의 historical R290 경쟁사 근거로 사용. 삼성 상태: 확인필요.",
+      "summary": "",
+      "product_or_series": "Embraco Launches R290 Condensing Units for European Market, Targeting Foodservice",
+      "condition_or_capacity": "확인필요",
+      "application": "Residential/Unitary/Heat pump",
+      "source_name": "Embraco Launches R290 Condensing Units for European Market, Targeting Foodservice",
+      "is_primary": false,
+      "low_confidence": false,
+      "dynamic_tags": [
+        "Re",
+        "전시회·발표",
+        "trade_media",
+        "R290"
+      ],
+      "evidence_id": "2025-10:Re:Embraco/Nidec:전시회·발표:https://hydrocarbons21.com/embraco-debuts-r290-condensing-units-for-european-market-targeting-foodservice/",
+      "modality": "text",
+      "extraction_confidence": 1.0,
+      "source_page": "",
+      "period_evidence_quality": "sufficient"
+    },
+    {
+      "compressor_type": "Re",
+      "competitor": "업계/R290",
+      "refrigerant": [
+        "R290"
+      ],
+      "category": "특허·기술",
+      "samsung_status": "확인필요",
+      "trust_score": 5,
+      "source_type": "patent",
+      "threat_level": "none",
+      "week_id": "2025-10",
+      "period_id": "2025-10",
+      "source_url": "https://patents.google.com/?q=(compressor+R290+2025)",
+      "source_date": "확인필요",
+      "raw_text": "R290 compressor patent 후보 검색. 삼성 상태: 확인필요.",
+      "summary": "",
+      "product_or_series": "Google Patents search: compressor R290 2025",
+      "condition_or_capacity": "확인필요",
+      "application": "Residential/Unitary/Heat pump",
+      "source_name": "Google Patents search: compressor R290 2025",
+      "is_primary": false,
+      "low_confidence": false,
+      "dynamic_tags": [
+        "Re",
+        "특허·기술",
+        "patent",
+        "R290"
+      ],
+      "evidence_id": "2025-10:Re:업계/R290:특허·기술:https://patents.google.com/?q=(compressor+R290+2025)",
+      "modality": "text",
+      "extraction_confidence": 1.0,
+      "source_page": "",
+      "period_evidence_quality": "sufficient"
+    },
+    {
+      "compressor_type": "Ro",
+      "competitor": "LG",
+      "refrigerant": [
+        "R32"
+      ],
+      "category": "신제품·라인업",
+      "samsung_status": "대응중",
+      "trust_score": 5,
+      "source_type": "official",
+      "threat_level": "medium",
+      "week_id": "2025-10",
+      "period_id": "2025-10",
+      "source_url": "https://www.lg.com/global/business/compressor-motor/compressors/rotary-compressor/",
+      "source_date": "확인필요",
+      "raw_text": "LG 공식 rotary compressor 제품 페이지 URL. 페이지 직접 접근은 403이었으나 검색 결과와 공식 URL이 확인되어 제목+요약 수준으로만 기록. 삼성 상태: 대응중.",
+      "summary": "",
+      "product_or_series": "LG Rotary Compressor Official Page",
+      "condition_or_capacity": "확인필요",
+      "application": "Residential/Unitary/Heat pump",
+      "source_name": "LG Rotary Compressor Official Page",
+      "is_primary": true,
+      "low_confidence": false,
+      "dynamic_tags": [
+        "Ro",
+        "신제품·라인업",
+        "official",
+        "R32"
+      ],
+      "evidence_id": "2025-10:Ro:LG:신제품·라인업:https://www.lg.com/global/business/compressor-motor/compressors/rotary-compressor/",
+      "modality": "text",
+      "extraction_confidence": 1.0,
+      "source_page": "",
+      "period_evidence_quality": "sufficient"
+    },
+    {
+      "compressor_type": "Ro",
+      "competitor": "LG",
+      "refrigerant": [
+        "R32"
+      ],
+      "category": "성능·효율",
+      "samsung_status": "대응중",
+      "trust_score": 5,
+      "source_type": "official",
+      "threat_level": "medium",
+      "week_id": "2025-10",
+      "period_id": "2025-10",
+      "source_url": "https://www.lg.com/global/images/business/compressor-motor/resource-download/pdf-file/2025_LG_CM_Catalog_Rotary%20compressor_preview.pdf",
+      "source_date": "2025",
+      "raw_text": "2025 LG 공식 rotary compressor catalog preview URL. Ro/R32 성능·효율 세부 표는 전문 수집 대상이 아니므로 확인 필요로 표시. 삼성 상태: 대응중.",
+      "summary": "",
+      "product_or_series": "2025 LG CM Catalog Rotary compressor preview",
+      "condition_or_capacity": "확인필요",
+      "application": "Residential/Unitary/Heat pump",
+      "source_name": "2025 LG CM Catalog Rotary compressor preview",
+      "is_primary": true,
+      "low_confidence": false,
+      "dynamic_tags": [
+        "Ro",
+        "성능·효율",
+        "official",
+        "R32"
+      ],
+      "evidence_id": "2025-10:Ro:LG:성능·효율:https://www.lg.com/global/images/business/compressor-motor/resource-download/pdf-file/2025_LG_CM_Catalog_Rotary%20compressor_preview.pdf",
+      "modality": "text",
+      "extraction_confidence": 1.0,
+      "source_page": "",
+      "period_evidence_quality": "sufficient"
+    },
+    {
+      "compressor_type": "Sc",
+      "competitor": "Copeland/Emerson",
+      "refrigerant": [
+        "R454B"
+      ],
+      "category": "성능·효율",
+      "samsung_status": "대응중",
+      "trust_score": 3,
+      "source_type": "trade_media",
+      "threat_level": "low",
+      "week_id": "2025-10",
+      "period_id": "2025-10",
+      "source_url": "https://www.coolingpost.com/products/copeland-scrolls-for-heat-pump-applications/",
+      "source_date": "2025-08-15",
+      "raw_text": "2025-08-15 Cooling Post 보도. Copeland variable-speed scroll compressor series는 Sc heat pump application 성능/라인업 신호. 삼성 상태: 대응중.",
+      "summary": "",
+      "product_or_series": "Copeland scrolls for heat pump applications",
+      "condition_or_capacity": "확인필요",
+      "application": "Residential/Unitary/Heat pump",
+      "source_name": "Copeland scrolls for heat pump applications",
+      "is_primary": true,
+      "low_confidence": false,
+      "dynamic_tags": [
+        "Sc",
+        "성능·효율",
+        "trade_media",
+        "R454B"
+      ],
+      "evidence_id": "2025-10:Sc:Copeland/Emerson:성능·효율:https://www.coolingpost.com/products/copeland-scrolls-for-heat-pump-applications/",
+      "modality": "text",
+      "extraction_confidence": 1.0,
+      "source_page": "",
+      "period_evidence_quality": "sufficient"
+    },
+    {
+      "compressor_type": "Re",
+      "competitor": "규제/EPA",
+      "refrigerant": [
+        "R290",
+        "R454B"
+      ],
+      "category": "규격·인증",
+      "samsung_status": "확인필요",
+      "trust_score": 5,
+      "source_type": "official",
+      "threat_level": "none",
+      "week_id": "2025-10",
+      "period_id": "2025-10",
+      "source_url": "https://www.epa.gov/snap",
+      "source_date": "확인필요",
+      "raw_text": "EPA SNAP 공식 페이지. R290/R454B 등 대체 냉매 승인·규격 추적의 공식 근거. 삼성 상태: 확인필요.",
+      "summary": "",
+      "product_or_series": "Significant New Alternatives Policy (SNAP) Program | US EPA",
+      "condition_or_capacity": "확인필요",
+      "application": "Residential/Unitary/Heat pump",
+      "source_name": "Significant New Alternatives Policy (SNAP) Program | US EPA",
+      "is_primary": false,
+      "low_confidence": false,
+      "dynamic_tags": [
+        "Re",
+        "규격·인증",
+        "official",
+        "R290",
+        "R454B"
+      ],
+      "evidence_id": "2025-10:Re:규제/EPA:규격·인증:https://www.epa.gov/snap",
+      "modality": "text",
+      "extraction_confidence": 1.0,
+      "source_page": "",
+      "period_evidence_quality": "sufficient"
+    },
+    {
+      "compressor_type": "Ro",
+      "competitor": "GMCC/Midea",
+      "refrigerant": [
+        "R290"
+      ],
+      "category": "특허·기술",
+      "samsung_status": "확인필요",
+      "trust_score": 5,
+      "source_type": "patent",
+      "threat_level": "none",
+      "week_id": "2025-10",
+      "period_id": "2025-10",
+      "source_url": "https://patents.google.com/?q=(GMCC+Midea+rotary+compressor+R290+2025)",
+      "source_date": "확인필요",
+      "raw_text": "GMCC/Midea Ro/R290 특허 후보 검색. 삼성 상태: 확인필요.",
+      "summary": "",
+      "product_or_series": "Google Patents search: GMCC Midea rotary compressor R290 2025",
+      "condition_or_capacity": "확인필요",
+      "application": "Residential/Unitary/Heat pump",
+      "source_name": "Google Patents search: GMCC Midea rotary compressor R290 2025",
+      "is_primary": true,
+      "low_confidence": false,
+      "dynamic_tags": [
+        "Ro",
+        "특허·기술",
+        "patent",
+        "R290"
+      ],
+      "evidence_id": "2025-10:Ro:GMCC/Midea:특허·기술:https://patents.google.com/?q=(GMCC+Midea+rotary+compressor+R290+2025)",
+      "modality": "text",
+      "extraction_confidence": 1.0,
+      "source_page": "",
+      "period_evidence_quality": "sufficient"
+    },
+    {
+      "compressor_type": "Sc",
+      "competitor": "Copeland/Emerson",
+      "refrigerant": [
+        "R454B"
+      ],
+      "category": "특허·기술",
+      "samsung_status": "대응중",
+      "trust_score": 5,
+      "source_type": "patent",
+      "threat_level": "medium",
+      "week_id": "2025-10",
+      "period_id": "2025-10",
+      "source_url": "https://patents.google.com/?q=(Copeland+scroll+compressor+R454B+patent)",
+      "source_date": "확인필요",
+      "raw_text": "Copeland/Emerson Sc/R454B 특허 후보 검색. 삼성 상태: 대응중.",
+      "summary": "",
+      "product_or_series": "Google Patents search: Copeland scroll compressor R454B patent",
+      "condition_or_capacity": "확인필요",
+      "application": "Residential/Unitary/Heat pump",
+      "source_name": "Google Patents search: Copeland scroll compressor R454B patent",
+      "is_primary": true,
+      "low_confidence": false,
+      "dynamic_tags": [
+        "Sc",
+        "특허·기술",
+        "patent",
+        "R454B"
+      ],
+      "evidence_id": "2025-10:Sc:Copeland/Emerson:특허·기술:https://patents.google.com/?q=(Copeland+scroll+compressor+R454B+patent)",
+      "modality": "text",
+      "extraction_confidence": 1.0,
+      "source_page": "",
+      "period_evidence_quality": "sufficient"
+    }
+  ],
+  "sources": [
+    {
+      "source_name": "GMCC Official site",
+      "source_url": "https://www.gmcc.com",
+      "source_date": "확인필요",
+      "source_type": "official"
+    },
+    {
+      "source_name": "LG Compressor Official",
+      "source_url": "https://www.lg.com/global/business/compressor",
+      "source_date": "확인필요",
+      "source_type": "official"
+    },
+    {
+      "source_name": "Copeland Official",
+      "source_url": "https://www.copeland.com/",
+      "source_date": "확인필요",
+      "source_type": "official"
+    },
+    {
+      "source_name": "Compressors for refrigeration, A/C and heating | Danfoss",
+      "source_url": "https://www.danfoss.com/en/products/dcs/compressors/",
+      "source_date": "확인필요",
+      "source_type": "official"
+    },
+    {
+      "source_name": "Embraco",
+      "source_url": "https://www.embraco.com/",
+      "source_date": "확인필요",
+      "source_type": "official"
+    },
+    {
+      "source_name": "Advanced Compressors Technology & Sustainable Cooling Solutions | Secop",
+      "source_url": "https://www.secop.com/",
+      "source_date": "확인필요",
+      "source_type": "official"
+    },
+    {
+      "source_name": "R290 Accounted for 38% of New EU Residential Heat Pump Certifications in 2024, According to Heat Pumps Watch",
+      "source_url": "https://naturalrefrigerants.com/news/heat-pump-watch-r290-eu-residential-heat-pumps-certificates/",
+      "source_date": "2026-04-15",
+      "source_type": "trade_media"
+    },
+    {
+      "source_name": "Embraco Launches R290 Condensing Units for European Market, Targeting Foodservice",
+      "source_url": "https://hydrocarbons21.com/embraco-debuts-r290-condensing-units-for-european-market-targeting-foodservice/",
+      "source_date": "2022-08-17",
+      "source_type": "trade_media"
+    },
+    {
+      "source_name": "Google Patents search: compressor R290 2025",
+      "source_url": "https://patents.google.com/?q=(compressor+R290+2025)",
+      "source_date": "확인필요",
+      "source_type": "patent"
+    },
+    {
+      "source_name": "LG Rotary Compressor Official Page",
+      "source_url": "https://www.lg.com/global/business/compressor-motor/compressors/rotary-compressor/",
+      "source_date": "확인필요",
+      "source_type": "official"
+    },
+    {
+      "source_name": "2025 LG CM Catalog Rotary compressor preview",
+      "source_url": "https://www.lg.com/global/images/business/compressor-motor/resource-download/pdf-file/2025_LG_CM_Catalog_Rotary%20compressor_preview.pdf",
+      "source_date": "2025",
+      "source_type": "official"
+    },
+    {
+      "source_name": "Copeland scrolls for heat pump applications",
+      "source_url": "https://www.coolingpost.com/products/copeland-scrolls-for-heat-pump-applications/",
+      "source_date": "2025-08-15",
+      "source_type": "trade_media"
+    },
+    {
+      "source_name": "Significant New Alternatives Policy (SNAP) Program | US EPA",
+      "source_url": "https://www.epa.gov/snap",
+      "source_date": "확인필요",
+      "source_type": "official"
+    },
+    {
+      "source_name": "Google Patents search: GMCC Midea rotary compressor R290 2025",
+      "source_url": "https://patents.google.com/?q=(GMCC+Midea+rotary+compressor+R290+2025)",
+      "source_date": "확인필요",
+      "source_type": "patent"
+    },
+    {
+      "source_name": "Google Patents search: Copeland scroll compressor R454B patent",
+      "source_url": "https://patents.google.com/?q=(Copeland+scroll+compressor+R454B+patent)",
+      "source_date": "확인필요",
+      "source_type": "patent"
+    }
+  ],
+  "report_meta": {
+    "total_evidence_count": 15,
+    "critic_score": 10,
+    "hard_fail": false
+  }
+}

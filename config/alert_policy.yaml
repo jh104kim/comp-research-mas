@@ -1,0 +1,8 @@
+alerts:
+  high:
+    action: slack_immediate
+    dry_run: true
+  medium:
+    action: monthly_report
+  low:
+    action: ledger_only

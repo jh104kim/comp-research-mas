@@ -1,0 +1,15 @@
+{
+  "dry_run": true,
+  "message": "[High Threat] 2026-06: 1건 감지",
+  "items": [
+    {
+      "competitor": "GMCC/Midea",
+      "type": "Re",
+      "refrigerant": [
+        "R290",
+        "R600a"
+      ],
+      "source": "https://example.com/Re_GMCC_Midea_신제품라인업"
+    }
+  ]
+}

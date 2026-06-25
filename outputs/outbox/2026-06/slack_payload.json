@@ -1,0 +1,4 @@
+{
+  "dry_run": true,
+  "message": "[자동 승인] 월간 리포트 발송 완료 2026-06\ncritic_score: 10 / high_threat: 1건 / signal: 3건\nMarkdown: outputs/reports/2026-06_compressor_monthly.md\nHTML: outputs/reports/2026-06_compressor_monthly.html\n자동 승인 조건 충족: score=10, hard_fail=False, guardian=pass"
+}

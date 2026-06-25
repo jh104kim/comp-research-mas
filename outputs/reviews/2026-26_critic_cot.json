@@ -1,0 +1,128 @@
+{
+  "week_id": "2026-26",
+  "period_id": "2026-26",
+  "score": 10,
+  "feedback": {
+    "score": 10,
+    "passed": true,
+    "findings": [
+      "Re/Ro/Sc + 8개 카테고리 구조 준수",
+      "삼성 비교 관점이 최우선 경쟁사별 구체 상태와 위협도를 포함",
+      "Gap Matrix에 Re/Ro/Sc, 냉매, 위협도 행 포함",
+      "evidence_count >= 6 (normal)",
+      "Re/Ro/Sc 타입별 최우선 경쟁사 기준 충족",
+      "trust_score >= 4 출처 최소 2개 포함"
+    ],
+    "required_fixes": [],
+    "writer_directives": [],
+    "debate_points": [],
+    "rubric_breakdown": {
+      "period_context": "normal",
+      "evidence_threshold_used": 6,
+      "structure": 2,
+      "samsung_comparison": 3,
+      "gap_matrix": 2,
+      "evidence_volume": 1,
+      "primary_type_coverage": 1,
+      "source_trust": 1,
+      "total": 10
+    },
+    "low_confidence": false,
+    "hard_fail": false,
+    "hard_fail_reasons": [],
+    "iteration": 0
+  },
+  "reasoning_log": [
+    {
+      "node": "source_planner",
+      "step": "query plan 생성",
+      "judgment": "proceed",
+      "reasoning": "타입×경쟁사×카테고리 기준으로 최우선 경쟁사 query를 먼저 만든다",
+      "tool_used": false,
+      "rag_used": false,
+      "conclusion": "week_id=2026-26 query_plan 생성"
+    },
+    {
+      "node": "research_adapter",
+      "step": "STEP3 stub 검색 실행",
+      "judgment": "proceed",
+      "reasoning": "이상 신호 트리거용 stub 데이터를 포함하되 실제 검색은 STEP 5로 미룬다",
+      "tool_used": false,
+      "rag_used": false,
+      "conclusion": "STEP3 raw_results 생성"
+    },
+    {
+      "node": "evidence_normalizer",
+      "step": "raw_results 정규화",
+      "judgment": "proceed",
+      "reasoning": "raw result를 EvidenceItem으로 변환하고 중복 제거한다. evidence_count=8",
+      "tool_used": false,
+      "rag_used": false,
+      "conclusion": "evidence 생성"
+    },
+    {
+      "node": "source_planner",
+      "step": "동적 재계획",
+      "judgment": "proceed",
+      "reasoning": "evidence_count가 10 미만이라 primary query를 확장하고 재실행",
+      "tool_used": false,
+      "rag_used": false,
+      "conclusion": "replanned evidence_count=8"
+    },
+    {
+      "node": "memory",
+      "step": "Evidence Ledger append",
+      "judgment": "proceed",
+      "reasoning": "주차별 evidence를 outputs/memory/evidence_ledger.json에 누적 저장",
+      "tool_used": false,
+      "rag_used": false,
+      "conclusion": "outputs/memory/evidence_ledger.json"
+    },
+    {
+      "node": "analyst",
+      "step": "Gap Matrix 분석",
+      "judgment": "proceed",
+      "reasoning": "EvidenceItem[]과 baseline/history를 교차 분석해 threat와 signal을 산출한다",
+      "tool_used": false,
+      "rag_used": false,
+      "conclusion": "AnalysisBundle 생성"
+    },
+    {
+      "node": "memory",
+      "step": "Gap history append",
+      "judgment": "proceed",
+      "reasoning": "주차별 Gap Matrix를 outputs/memory/gap_matrix_history.json에 누적 저장",
+      "tool_used": false,
+      "rag_used": false,
+      "conclusion": "outputs/memory/gap_matrix_history.json"
+    },
+    {
+      "node": "writer",
+      "step": "RAG 기반 리포트 작성",
+      "judgment": "rag_reference",
+      "reasoning": "Evidence Ledger와 이전 리포트를 참조하고 debate_points를 검토해 작성 방향을 결정한다",
+      "tool_used": false,
+      "rag_used": true,
+      "conclusion": "draft 생성",
+      "persona_role": "압축기 시장 인텔리전스 리포트 작성가"
+    },
+    {
+      "node": "critic",
+      "step": "품질 평가",
+      "judgment": "initial_score",
+      "reasoning": "구조/삼성 비교/Gap Matrix/evidence/출처 신뢰도/최우선 경쟁사 커버리지를 10점 rubric으로 평가하고 재작성 전후 score를 비교",
+      "tool_used": false,
+      "rag_used": false,
+      "conclusion": "score=10, previous_score=None, hard_fail=False, human_review_flag=False"
+    },
+    {
+      "node": "save_output",
+      "step": "산출물 저장",
+      "judgment": "proceed",
+      "reasoning": "report/review/evidence/analysis/memory 경로를 저장한다",
+      "tool_used": false,
+      "rag_used": false,
+      "conclusion": "최종 output_paths 생성"
+    }
+  ]
+}

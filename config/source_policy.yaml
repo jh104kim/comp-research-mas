@@ -1,0 +1,6 @@
+policy:
+  whitelist_only: true
+  broad_crawling: false
+  collect_level: title_summary_only
+  min_trust_score: 3
+  robots_txt: respect

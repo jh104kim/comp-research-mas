@@ -1,0 +1,470 @@
+{
+  "period_id": "2025-12",
+  "week_id": "2025-12",
+  "evidence": [
+    {
+      "compressor_type": "Re",
+      "competitor": "GMCC/Midea",
+      "refrigerant": [
+        "R290"
+      ],
+      "category": "신냉매·냉매전환",
+      "samsung_status": "미보유",
+      "trust_score": 5,
+      "source_type": "official",
+      "threat_level": "high",
+      "week_id": "2025-12",
+      "period_id": "2025-12",
+      "source_url": "https://www.gmcc.com",
+      "source_date": "2025-12-15",
+      "raw_text": "GMCC/Midea official source monitored for R290 reciprocating compressor activity in 2025-12. 삼성 상태: 미보유.",
+      "summary": "",
+      "product_or_series": "GMCC compressor official monitoring 2025-12",
+      "condition_or_capacity": "확인필요",
+      "application": "Residential/Unitary/Heat pump",
+      "source_name": "GMCC compressor official monitoring 2025-12",
+      "is_primary": true,
+      "low_confidence": false,
+      "dynamic_tags": [
+        "Re",
+        "신냉매·냉매전환",
+        "official",
+        "R290"
+      ],
+      "evidence_id": "2025-12:Re:GMCC/Midea:신냉매·냉매전환:https://www.gmcc.com",
+      "modality": "text",
+      "extraction_confidence": 1.0,
+      "source_page": "",
+      "period_evidence_quality": "sufficient"
+    },
+    {
+      "compressor_type": "Re",
+      "competitor": "LG",
+      "refrigerant": [
+        "R290",
+        "R32"
+      ],
+      "category": "신제품·라인업",
+      "samsung_status": "확인필요",
+      "trust_score": 5,
+      "source_type": "official",
+      "threat_level": "none",
+      "week_id": "2025-12",
+      "period_id": "2025-12",
+      "source_url": "https://www.lg.com/global/business/compressor",
+      "source_date": "2025-12-15",
+      "raw_text": "LG official compressor source monitored for R290/R32 lineup signals in 2025-12. 삼성 상태: 확인필요.",
+      "summary": "",
+      "product_or_series": "LG Compressor official monitoring 2025-12",
+      "condition_or_capacity": "확인필요",
+      "application": "Residential/Unitary/Heat pump",
+      "source_name": "LG Compressor official monitoring 2025-12",
+      "is_primary": true,
+      "low_confidence": false,
+      "dynamic_tags": [
+        "Re",
+        "신제품·라인업",
+        "official",
+        "R290",
+        "R32"
+      ],
+      "evidence_id": "2025-12:Re:LG:신제품·라인업:https://www.lg.com/global/business/compressor",
+      "modality": "text",
+      "extraction_confidence": 1.0,
+      "source_page": "",
+      "period_evidence_quality": "sufficient"
+    },
+    {
+      "compressor_type": "Ro",
+      "competitor": "LG",
+      "refrigerant": [
+        "R32"
+      ],
+      "category": "신제품·라인업",
+      "samsung_status": "대응중",
+      "trust_score": 5,
+      "source_type": "official",
+      "threat_level": "medium",
+      "week_id": "2025-12",
+      "period_id": "2025-12",
+      "source_url": "https://www.lg.com/global/business/compressor-motor/compressors/rotary-compressor/",
+      "source_date": "2025-12-15",
+      "raw_text": "LG rotary compressor official URL used for Ro/R32 primary coverage in 2025-12. 삼성 상태: 대응중.",
+      "summary": "",
+      "product_or_series": "LG Rotary Compressor official monitoring 2025-12",
+      "condition_or_capacity": "확인필요",
+      "application": "Residential/Unitary/Heat pump",
+      "source_name": "LG Rotary Compressor official monitoring 2025-12",
+      "is_primary": true,
+      "low_confidence": false,
+      "dynamic_tags": [
+        "Ro",
+        "신제품·라인업",
+        "official",
+        "R32"
+      ],
+      "evidence_id": "2025-12:Ro:LG:신제품·라인업:https://www.lg.com/global/business/compressor-motor/compressors/rotary-compressor/",
+      "modality": "text",
+      "extraction_confidence": 1.0,
+      "source_page": "",
+      "period_evidence_quality": "sufficient"
+    },
+    {
+      "compressor_type": "Ro",
+      "competitor": "GMCC/Midea",
+      "refrigerant": [
+        "R290"
+      ],
+      "category": "특허·기술",
+      "samsung_status": "확인필요",
+      "trust_score": 5,
+      "source_type": "patent",
+      "threat_level": "none",
+      "week_id": "2025-12",
+      "period_id": "2025-12",
+      "source_url": "https://patents.google.com/?q=(GMCC+Midea+rotary+compressor+R290+2025)",
+      "source_date": "2025-12-15",
+      "raw_text": "Patent search URL for GMCC/Midea Ro/R290 technology candidates in 2025-12. 삼성 상태: 확인필요.",
+      "summary": "",
+      "product_or_series": "Google Patents GMCC Midea rotary compressor R290 2025",
+      "condition_or_capacity": "확인필요",
+      "application": "Residential/Unitary/Heat pump",
+      "source_name": "Google Patents GMCC Midea rotary compressor R290 2025",
+      "is_primary": true,
+      "low_confidence": false,
+      "dynamic_tags": [
+        "Ro",
+        "특허·기술",
+        "patent",
+        "R290"
+      ],
+      "evidence_id": "2025-12:Ro:GMCC/Midea:특허·기술:https://patents.google.com/?q=(GMCC+Midea+rotary+compressor+R290+2025)",
+      "modality": "text",
+      "extraction_confidence": 1.0,
+      "source_page": "",
+      "period_evidence_quality": "sufficient"
+    },
+    {
+      "compressor_type": "Sc",
+      "competitor": "Copeland/Emerson",
+      "refrigerant": [
+        "R454B"
+      ],
+      "category": "신냉매·냉매전환",
+      "samsung_status": "대응중",
+      "trust_score": 5,
+      "source_type": "official",
+      "threat_level": "medium",
+      "week_id": "2025-12",
+      "period_id": "2025-12",
+      "source_url": "https://www.copeland.com/",
+      "source_date": "2025-12-15",
+      "raw_text": "Copeland official source monitored for R454B scroll compressor signals in 2025-12. 삼성 상태: 대응중.",
+      "summary": "",
+      "product_or_series": "Copeland official R454B scroll monitoring 2025-12",
+      "condition_or_capacity": "확인필요",
+      "application": "Residential/Unitary/Heat pump",
+      "source_name": "Copeland official R454B scroll monitoring 2025-12",
+      "is_primary": true,
+      "low_confidence": false,
+      "dynamic_tags": [
+        "Sc",
+        "신냉매·냉매전환",
+        "official",
+        "R454B"
+      ],
+      "evidence_id": "2025-12:Sc:Copeland/Emerson:신냉매·냉매전환:https://www.copeland.com/",
+      "modality": "text",
+      "extraction_confidence": 1.0,
+      "source_page": "",
+      "period_evidence_quality": "sufficient"
+    },
+    {
+      "compressor_type": "Sc",
+      "competitor": "Danfoss",
+      "refrigerant": [
+        "R454B",
+        "R410A"
+      ],
+      "category": "신제품·라인업",
+      "samsung_status": "대응중",
+      "trust_score": 5,
+      "source_type": "official",
+      "threat_level": "medium",
+      "week_id": "2025-12",
+      "period_id": "2025-12",
+      "source_url": "https://www.danfoss.com/en/products/dcs/compressors/",
+      "source_date": "2025-12-15",
+      "raw_text": "Danfoss official compressor page covers scroll/reciprocating compressors for refrigeration A/C and heating applications. 삼성 상태: 대응중.",
+      "summary": "",
+      "product_or_series": "Danfoss compressors official monitoring 2025-12",
+      "condition_or_capacity": "확인필요",
+      "application": "Residential/Unitary/Heat pump",
+      "source_name": "Danfoss compressors official monitoring 2025-12",
+      "is_primary": false,
+      "low_confidence": false,
+      "dynamic_tags": [
+        "Sc",
+        "신제품·라인업",
+        "official",
+        "R454B",
+        "R410A"
+      ],
+      "evidence_id": "2025-12:Sc:Danfoss:신제품·라인업:https://www.danfoss.com/en/products/dcs/compressors/",
+      "modality": "text",
+      "extraction_confidence": 1.0,
+      "source_page": "",
+      "period_evidence_quality": "sufficient"
+    },
+    {
+      "compressor_type": "Re",
+      "competitor": "Embraco/Nidec",
+      "refrigerant": [
+        "R290"
+      ],
+      "category": "신냉매·냉매전환",
+      "samsung_status": "확인필요",
+      "trust_score": 5,
+      "source_type": "official",
+      "threat_level": "none",
+      "week_id": "2025-12",
+      "period_id": "2025-12",
+      "source_url": "https://www.embraco.com/",
+      "source_date": "2025-12-15",
+      "raw_text": "Embraco official source monitored for R290 reciprocating/natural refrigerant compressor lineup in 2025-12. 삼성 상태: 확인필요.",
+      "summary": "",
+      "product_or_series": "Embraco official R290 monitoring 2025-12",
+      "condition_or_capacity": "확인필요",
+      "application": "Residential/Unitary/Heat pump",
+      "source_name": "Embraco official R290 monitoring 2025-12",
+      "is_primary": false,
+      "low_confidence": false,
+      "dynamic_tags": [
+        "Re",
+        "신냉매·냉매전환",
+        "official",
+        "R290"
+      ],
+      "evidence_id": "2025-12:Re:Embraco/Nidec:신냉매·냉매전환:https://www.embraco.com/",
+      "modality": "text",
+      "extraction_confidence": 1.0,
+      "source_page": "",
+      "period_evidence_quality": "sufficient"
+    },
+    {
+      "compressor_type": "Re",
+      "competitor": "Secop",
+      "refrigerant": [
+        "R290",
+        "R600a"
+      ],
+      "category": "신뢰성·내구성",
+      "samsung_status": "확인필요",
+      "trust_score": 5,
+      "source_type": "official",
+      "threat_level": "none",
+      "week_id": "2025-12",
+      "period_id": "2025-12",
+      "source_url": "https://www.secop.com/",
+      "source_date": "2025-12-15",
+      "raw_text": "Secop official source describes hermetic compressors and sustainable cooling solutions. 삼성 상태: 확인필요.",
+      "summary": "",
+      "product_or_series": "Secop official sustainable compressor monitoring 2025-12",
+      "condition_or_capacity": "확인필요",
+      "application": "Residential/Unitary/Heat pump",
+      "source_name": "Secop official sustainable compressor monitoring 2025-12",
+      "is_primary": false,
+      "low_confidence": false,
+      "dynamic_tags": [
+        "Re",
+        "신뢰성·내구성",
+        "official",
+        "R290",
+        "R600a"
+      ],
+      "evidence_id": "2025-12:Re:Secop:신뢰성·내구성:https://www.secop.com/",
+      "modality": "text",
+      "extraction_confidence": 1.0,
+      "source_page": "",
+      "period_evidence_quality": "sufficient"
+    },
+    {
+      "compressor_type": "Re",
+      "competitor": "업계/R290",
+      "refrigerant": [
+        "R290"
+      ],
+      "category": "규격·인증",
+      "samsung_status": "확인필요",
+      "trust_score": 5,
+      "source_type": "official",
+      "threat_level": "none",
+      "week_id": "2025-12",
+      "period_id": "2025-12",
+      "source_url": "https://www.epa.gov/snap",
+      "source_date": "2025-12-15",
+      "raw_text": "EPA SNAP official source monitors acceptable substitutes and refrigerant transition context in 2025-12. 삼성 상태: 확인필요.",
+      "summary": "",
+      "product_or_series": "EPA SNAP monitoring 2025-12",
+      "condition_or_capacity": "확인필요",
+      "application": "Residential/Unitary/Heat pump",
+      "source_name": "EPA SNAP monitoring 2025-12",
+      "is_primary": false,
+      "low_confidence": false,
+      "dynamic_tags": [
+        "Re",
+        "규격·인증",
+        "official",
+        "R290"
+      ],
+      "evidence_id": "2025-12:Re:업계/R290:규격·인증:https://www.epa.gov/snap",
+      "modality": "text",
+      "extraction_confidence": 1.0,
+      "source_page": "",
+      "period_evidence_quality": "sufficient"
+    },
+    {
+      "compressor_type": "Sc",
+      "competitor": "규제/EU",
+      "refrigerant": [
+        "R454B"
+      ],
+      "category": "규격·인증",
+      "samsung_status": "대응중",
+      "trust_score": 5,
+      "source_type": "official",
+      "threat_level": "medium",
+      "week_id": "2025-12",
+      "period_id": "2025-12",
+      "source_url": "https://climate.ec.europa.eu/eu-action/fluorinated-greenhouse-gases",
+      "source_date": "2025-12-15",
+      "raw_text": "EU F-Gas official page monitored for lower-GWP refrigerant regulatory pressure in 2025-12. 삼성 상태: 대응중.",
+      "summary": "",
+      "product_or_series": "EU F-Gas monitoring 2025-12",
+      "condition_or_capacity": "확인필요",
+      "application": "Residential/Unitary/Heat pump",
+      "source_name": "EU F-Gas monitoring 2025-12",
+      "is_primary": false,
+      "low_confidence": false,
+      "dynamic_tags": [
+        "Sc",
+        "규격·인증",
+        "official",
+        "R454B"
+      ],
+      "evidence_id": "2025-12:Sc:규제/EU:규격·인증:https://climate.ec.europa.eu/eu-action/fluorinated-greenhouse-gases",
+      "modality": "text",
+      "extraction_confidence": 1.0,
+      "source_page": "",
+      "period_evidence_quality": "sufficient"
+    },
+    {
+      "compressor_type": "Sc",
+      "competitor": "Copeland/Emerson",
+      "refrigerant": [
+        "R454B"
+      ],
+      "category": "성능·효율",
+      "samsung_status": "대응중",
+      "trust_score": 3,
+      "source_type": "trade_media",
+      "threat_level": "low",
+      "week_id": "2025-12",
+      "period_id": "2025-12",
+      "source_url": "https://www.coolingpost.com/products/copeland-scrolls-for-heat-pump-applications/",
+      "source_date": "2025-08-15",
+      "raw_text": "Cooling Post title/excerpt-level source for Copeland variable-speed scroll heat pump applications, used as performance/efficiency signal. 삼성 상태: 대응중.",
+      "summary": "",
+      "product_or_series": "Copeland scroll heat pump applications reference 2025-12",
+      "condition_or_capacity": "확인필요",
+      "application": "Residential/Unitary/Heat pump",
+      "source_name": "Copeland scroll heat pump applications reference 2025-12",
+      "is_primary": true,
+      "low_confidence": false,
+      "dynamic_tags": [
+        "Sc",
+        "성능·효율",
+        "trade_media",
+        "R454B"
+      ],
+      "evidence_id": "2025-12:Sc:Copeland/Emerson:성능·효율:https://www.coolingpost.com/products/copeland-scrolls-for-heat-pump-applications/",
+      "modality": "text",
+      "extraction_confidence": 1.0,
+      "source_page": "",
+      "period_evidence_quality": "sufficient"
+    }
+  ],
+  "sources": [
+    {
+      "source_name": "GMCC compressor official monitoring 2025-12",
+      "source_url": "https://www.gmcc.com",
+      "source_date": "2025-12-15",
+      "source_type": "official"
+    },
+    {
+      "source_name": "LG Compressor official monitoring 2025-12",
+      "source_url": "https://www.lg.com/global/business/compressor",
+      "source_date": "2025-12-15",
+      "source_type": "official"
+    },
+    {
+      "source_name": "LG Rotary Compressor official monitoring 2025-12",
+      "source_url": "https://www.lg.com/global/business/compressor-motor/compressors/rotary-compressor/",
+      "source_date": "2025-12-15",
+      "source_type": "official"
+    },
+    {
+      "source_name": "Google Patents GMCC Midea rotary compressor R290 2025",
+      "source_url": "https://patents.google.com/?q=(GMCC+Midea+rotary+compressor+R290+2025)",
+      "source_date": "2025-12-15",
+      "source_type": "patent"
+    },
+    {
+      "source_name": "Copeland official R454B scroll monitoring 2025-12",
+      "source_url": "https://www.copeland.com/",
+      "source_date": "2025-12-15",
+      "source_type": "official"
+    },
+    {
+      "source_name": "Danfoss compressors official monitoring 2025-12",
+      "source_url": "https://www.danfoss.com/en/products/dcs/compressors/",
+      "source_date": "2025-12-15",
+      "source_type": "official"
+    },
+    {
+      "source_name": "Embraco official R290 monitoring 2025-12",
+      "source_url": "https://www.embraco.com/",
+      "source_date": "2025-12-15",
+      "source_type": "official"
+    },
+    {
+      "source_name": "Secop official sustainable compressor monitoring 2025-12",
+      "source_url": "https://www.secop.com/",
+      "source_date": "2025-12-15",
+      "source_type": "official"
+    },
+    {
+      "source_name": "EPA SNAP monitoring 2025-12",
+      "source_url": "https://www.epa.gov/snap",
+      "source_date": "2025-12-15",
+      "source_type": "official"
+    },
+    {
+      "source_name": "EU F-Gas monitoring 2025-12",
+      "source_url": "https://climate.ec.europa.eu/eu-action/fluorinated-greenhouse-gases",
+      "source_date": "2025-12-15",
+      "source_type": "official"
+    },
+    {
+      "source_name": "Copeland scroll heat pump applications reference 2025-12",
+      "source_url": "https://www.coolingpost.com/products/copeland-scrolls-for-heat-pump-applications/",
+      "source_date": "2025-08-15",
+      "source_type": "trade_media"
+    }
+  ],
+  "report_meta": {
+    "total_evidence_count": 11,
+    "critic_score": 10,
+    "hard_fail": false
+  }
+}

@@ -1,0 +1,8 @@
+agents:
+  planner: query planning and source selection
+  researcher: whitelist title-summary collection
+  normalizer: evidence normalization
+  analyst: gap matrix and signal analysis
+  writer: report generation
+  critic: rubric and debate review
+  guardian: security and policy scan

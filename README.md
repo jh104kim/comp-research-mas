@@ -1,122 +1,118 @@
-# C&M 압축기 경쟁사 모니터링 MAS
+# 압축기 경쟁사 모니터링 MAS
 
-C&M 압축기 경쟁사 모니터링 Multi-Agent System(MAS) 프로젝트입니다.
+C&M 압축기 경쟁사/냉매/규제/특허 동향을 월간으로 수집하고, 삼성 관점 Gap Matrix와 HTML KPI Dashboard를 생성하는 다중 에이전트 시스템입니다.
 
-## 목표
+## 목적
 
-- 경쟁사 신제품, 스펙, 특허, 인증, 냉매 전환, 전시회 동향을 월간 단위로 선별 수집
-- Re(Reciprocating) / Ro(Rotary) / Sc(Scroll) 전 타입을 포괄
-- 냉매를 특정 타입에 고정하지 않고 삼성 경쟁 라인업 관점으로 추적
-- Samsung Gap, 삼성 대비 성능·스펙 우위/열위, 대응 필요성을 중심으로 분석
-- 월간 리포트를 Markdown/JSON으로 생성하고, 향후 Obsidian/email로 자동 전달
+- 2025-07~2026-06 기간의 Re/Ro/Sc 압축기 경쟁 동향 누적 분석
+- R290, R600a, R32, R454B/R454C 등 냉매 전환 신호 추적
+- GMCC/Midea, LG, Copeland/Emerson, Embraco/Nidec, Secop, Danfoss 등 경쟁사 커버리지 확보
+- 공식/전시/특허/규제/업계 미디어 기반 evidence ledger 유지
+- Writer/Critic/Guardian gate로 보고서 품질과 보안 검증
 
-## 현재 구현 단계
+## Phase A~I 아키텍처
 
-- STEP 1 구현 완료
-  - LangGraph 기반 Writer + Critic self-refine loop
-  - Re/Ro/Sc × 8개 카테고리 × 경쟁사별 삼성 비교 관점 고정 출력
-  - Critic 0~10점, 7점 미만 최대 2회 재작성
-  - ★ 최우선 경쟁사 누락 감점/hard fail 검증
-- STEP 2 구현 완료
-  - Query planner
-  - Research adapter stub
-  - Evidence normalizer
-  - Dynamic tags
-  - ReportMetadata
-  - STEP 1 Writer/Critic 자동 연결
-- STEP 3 구현 완료
-  - Analyst Agent 추가
-  - `config/gap_matrix_baseline.yaml` 기준선 기반 Gap Matrix 산출
-  - AnalysisBundle 생성
-  - high threat / new_signals 감지
-  - Writer AnalysisBundle 우선 작성
-  - Critic 분석 품질 평가 및 hard fail 추가
+- Phase A: stub URL placeholder, dynamic evidence threshold, critic rubric 강화
+- Phase B/B-2: 2025-10 live pilot + targeted enrichment
+- Phase C: 2025-07~2026-06 전체 backfill live-shaped 실행
+- Phase D: Chroma-compatible local VectorStore + FileVectorStore fallback
+- Phase E: Critic↔Writer DebateRound schema와 HTML 표시
+- Phase F: high threat alert dry-run payload
+- Phase G: yaml 기반 orchestration config
+- Phase H: Stub/Claude/Codex LLMAdapter dry-run 구조
+- Phase I: PDF/OCR multimodal EvidenceItem 확장
 
-- STEP 3 Retrofit 완료
-  - Planning: evidence_count 기준 동적 재계획/re-run
-  - Memory: evidence ledger와 gap matrix history 누적 저장
-  - CoT: reasoning_log와 critic_cot 저장
-  - RAG: Evidence Ledger 기반 관련 근거 참조 및 evidence_ids 표시
-  - Threat 기준 상향 조정으로 과탐지 완화
-- STEP 4 구현 완료
-  - 월간 Orchestrator/Scheduler
-  - period_id(YYYY-MM) 전환, week_id 하위 호환
-  - Human Review Gate / alert / run log
-  - agentic autonomous judgment reasoning_log
-  - STEP 5 Hermes Adapter 계약 문서화
-- STEP 5 구현 완료
-  - Guardian Agent 분리
-  - personas metadata/interface
-  - HermesResearchAdapter external raw_results injection + validation + stub fallback
-  - Semantic Memory Lite(FileVectorStore) + RAG upgrade
-  - Debate pattern 강화
-  - notifier dry_run outbox
-  - monthly output filenames
-- STEP 6 구현 완료
-  - HermesLiveAdapter 자율 연결 방식 선택(injected JSON 우선, fallback 유지)
-  - auto_approver 자동 승인 조건(score>=9, hard_fail=False, guardian=pass)
-  - live_sender Gmail/Slack/Obsidian 실제 발송 코드 + dry_run sample
-  - run-step6-sample / run-step6-live CLI
-  - Airbnb 스타일 HTML 리포트 동시 생성(.md + .html)
-- 다음 작업: 환경변수 주입 확인 후 STEP 6 live 실행 또는 STEP 7 운영화
-  - Planning/Memory/CoT/RAG 구조 유지
-  - 스케줄러/재시도/로그 관리
-  - human review gate 유지
-  - STEP 5에서는 실제 검색/발송 없이 dry_run과 외부 결과 주입 계약까지 수행
+## 에이전트 구성
 
-## 확정 의사결정
+1. Query Planner: period/source/query plan 생성
+2. Research Adapter: whitelist source title+summary raw JSON 수집/주입
+3. Evidence Normalizer: canonical status, refrigerant, trust_score 정규화
+4. Analyst: Gap Matrix, high threat, new signal 생성
+5. Writer: 월간 보고서 작성
+6. Critic: 10점 rubric, debate_points, hard_fail 판단
+7. Notifier/Live Sender: Gmail/Slack/Obsidian payload 및 live gate
+8. Guardian: 비밀값/내부정보 패턴 scan
 
-- 삼성 비교 기준선은 `보유 / 미보유 / 대응 중 / 확인 필요`만 사용합니다.
-- 내부 스펙·모델명 직접 기재는 금지합니다.
-- 본문 리포트는 임원용 1~2페이지 요약으로 제한합니다.
-- 상세 근거는 JSON evidence appendix로 분리 저장합니다.
-- repo 내부는 LLM adapter interface만 구현하고 실제 Codex/Hermes 호출은 repo 밖 위임 레이어가 담당합니다.
-
-## 빠른 실행, 현재 MVP
+## 설치
 
 ```bash
-cd /mnt/f/ai-app-dev/10-comp-research-mas
-uv run python -m comp_research_mas.cli run-sample
+uv sync --extra test
+```
+
+## 주요 CLI
+
+```bash
+# 2025-10 query plan 확인
+uv run python -m comp_research_mas.cli run-backfill --from-period 2025-10 --to-period 2025-10 --dry-run --show-query-plan
+
+# injected raw 결과로 backfill 실행
+uv run python -m comp_research_mas.cli run-backfill --from-period 2025-10 --to-period 2025-10 --no-dry-run --injected-results-path outputs/search/2025-10_raw_results_merged.json
+
+# 전체 테스트
 uv run --extra test pytest -q
+
+# Vector DB
+uv run python -m comp_research_mas.cli rebuild-vector-store
+uv run python -m comp_research_mas.cli vector-search "R290 GMCC" --top-k 3
+
+# Alert / Config / LLM / Multimodal
+uv run python -m comp_research_mas.cli alert-dry-run --period-id 2026-06
+uv run python -m comp_research_mas.cli config-validate
+uv run python -m comp_research_mas.cli llm-dry-run --provider claude
+uv run python -m comp_research_mas.cli parse-sample-pdf --path tests/fixtures/sample_catalog.pdf
+
+# Guardian
+uv run python -m comp_research_mas.cli guardian-scan --path outputs/
 ```
 
-결과:
-- `outputs/reports/sample-weekly-report.md`
-- `outputs/reports/sample-critic-review.json`
+## 설정 파일
 
-## 경로
+- `config/source_whitelist.yaml`: 허용 소스와 trust_score
+- `config/exhibition_calendar.yaml`: 전시회 월 source boost
+- `config/alert_policy.yaml`: high/medium/low alert 정책
+- `config/competitors.yaml`: primary/secondary 경쟁사
+- `config/compressor_types.yaml`: Re/Ro/Sc와 냉매
+- `config/agent_roles.yaml`: 에이전트 역할 정의
+- `config/source_policy.yaml`: whitelist-only, title-summary-only 정책
+- `config/rubric.yaml`: critic 10점 rubric
 
-Windows:
+## 출력 구조
 
-```text
-F:\ai-app-dev\10-comp-research-mas
-```
+- `outputs/search/*.json`: raw search/injected results
+- `outputs/evidence/*_evidence.json`: 정규화 evidence
+- `outputs/analysis/*_analysis_bundle.json`: Gap Matrix/Signal
+- `outputs/reviews/*_critic_review.json`: Critic rubric 결과
+- `outputs/reports/*.md|*.html`: 월간/백필 리포트
+- `outputs/memory/evidence_ledger.json`: 누적 evidence ledger
+- `outputs/memory/gap_matrix_history.json`: 누적 Gap Matrix history
+- `outputs/vector_store/chroma/index.json`: local vector index
+- `outputs/outbox/*`: Gmail/Slack/Obsidian/alert payload
+- `outputs/logs/*`: Guardian/alert/live sender 로그
 
-WSL:
+## 환경변수
 
-```text
-/mnt/f/ai-app-dev/10-comp-research-mas
-```
+비밀값은 repo에 저장하지 않습니다. 필요한 키 이름만 사용합니다.
 
-## 주요 문서
+- `GMAIL_SENDER`
+- `GMAIL_APP_PASSWORD`
+- `SLACK_WEBHOOK_URL`
+- `OBSIDIAN_VAULT_PATH`
+- `COMP_RESEARCH_LLM_PROVIDER=stub|claude|codex`
 
-- `docs/PROJECT_PLAN.md` - 신규 공식 구축 계획, MAS/Agentic workflow/STEP별 gate
-- `docs/MAS_SPEC.md` - 에이전트 역할과 리포트 구조 정의
-- `docs/PROJECT_PLAN_REDEFINED.md` - 메타 프롬프트 반영 설계 초안
-- `docs/PHASE1_MVP.md` - STEP 1 Writer+Critic self-refine 구현 기준
-- `docs/STEP2_SEARCH_AGENT_PLAN.md` - STEP 2 Search Agent 구현 기준과 완료 결과
-- `config/gap_matrix_baseline.yaml` - STEP 3 Gap Matrix 기준선
-- `docs/STEP5_HERMES_ADAPTER_SPEC.md` - STEP 5 실제 Hermes Research Adapter 계약
-- `config/source_whitelist.yaml` - STEP 5 허용 소스와 검색 안전 규칙
-- `AGENTS.md` - repo 내 에이전트 작업 규칙
+## 제한사항
 
-## STEP Gate 원칙
+- broad crawling 금지
+- whitelist source만 사용
+- 제목+요약/초록 수준 수집 원칙
+- 학술/특허/규제 전문 분석은 별도 단계 필요
+- live LLM/Gmail/Slack은 approval/환경변수 gate를 통과해야 함
+- 삼성 내부 스펙/미공개 로드맵/비밀값 저장 금지
 
-각 STEP 완료 후 다음을 보고하고, 삿뽀로 확인 후 다음 STEP으로 넘어갑니다.
+## 현재 검증 상태
 
-- 실행 명령
-- 생성 파일
-- Critic 점수
-- 테스트 결과
-- 누락/제한/리스크
-- 다음 STEP 진행 여부 확인
+- Backfill period_count: 12
+- Total evidence: 136
+- Latest period: 2026-06
+- Latest critic_score: 10
+- Test: 63 passed
+- Guardian outputs scan: pass

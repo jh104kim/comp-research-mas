@@ -1,0 +1,80 @@
+[ALERT][2026-06-25T14:18:58][human_review] 2026-07 Writer 실패: human review 필요
+[ALERT][2026-06-25T14:18:58][human_review] 2026-07 Human Review Gate 발동: critic_score < 7, hard_fail = True
+[ALERT][2026-06-25T14:20:08][human_review] 2026-07 Writer 실패: human review 필요
+[ALERT][2026-06-25T14:20:08][human_review] 2026-07 Human Review Gate 발동: critic_score < 7, hard_fail = True
+[ALERT][2026-06-25T14:20:59][human_review] 2026-07 Writer 실패: human review 필요
+[ALERT][2026-06-25T14:20:59][human_review] 2026-07 Human Review Gate 발동: critic_score < 7, hard_fail = True
+[ALERT][2026-06-25T14:21:57][human_review] 2026-07 Writer 실패: human review 필요
+[ALERT][2026-06-25T14:21:57][human_review] 2026-07 Human Review Gate 발동: critic_score < 7, hard_fail = True
+[ALERT][2026-06-25T14:22:21][human_review] 2026-07 Writer 실패: human review 필요
+[ALERT][2026-06-25T14:22:21][human_review] 2026-07 Human Review Gate 발동: critic_score < 7, hard_fail = True
+[ALERT][2026-06-25T14:23:44][human_review] 2026-07 Writer 실패: human review 필요
+[ALERT][2026-06-25T14:23:44][human_review] 2026-07 Human Review Gate 발동: critic_score < 7, hard_fail = True
+[ALERT][2026-06-25T14:35:35][human_review] 2026-07 Writer 실패: human review 필요
+[ALERT][2026-06-25T14:35:35][human_review] 2026-07 Human Review Gate 발동: critic_score < 7, hard_fail = True
+[ALERT][2026-06-25T14:50:33][human_review] 2026-07 Writer 실패: human review 필요
+[ALERT][2026-06-25T14:50:33][human_review] 2026-07 Human Review Gate 발동: critic_score < 7, hard_fail = True
+[ALERT][2026-06-25T14:51:16][human_review] 2026-07 Writer 실패: human review 필요
+[ALERT][2026-06-25T14:51:16][human_review] 2026-07 Human Review Gate 발동: critic_score < 7, hard_fail = True
+[ALERT][2026-06-25T14:52:10][human_review] 2026-07 Writer 실패: human review 필요
+[ALERT][2026-06-25T14:52:10][human_review] 2026-07 Human Review Gate 발동: critic_score < 7, hard_fail = True
+[ALERT][2026-06-25T14:53:05][human_review] 2026-07 Writer 실패: human review 필요
+[ALERT][2026-06-25T14:53:05][human_review] 2026-07 Human Review Gate 발동: critic_score < 7, hard_fail = True
+[ALERT][2026-06-25T14:53:54][human_review] 2026-07 Writer 실패: human review 필요
+[ALERT][2026-06-25T14:53:54][human_review] 2026-07 Human Review Gate 발동: critic_score < 7, hard_fail = True
+[ALERT][2026-06-25T15:10:20][human_review] 2026-07 Writer 실패: human review 필요
+[ALERT][2026-06-25T15:10:20][human_review] 2026-07 Human Review Gate 발동: critic_score < 7, hard_fail = True
+[ALERT][2026-06-25T15:11:40][human_review] 2026-07 Writer 실패: human review 필요
+[ALERT][2026-06-25T15:11:40][human_review] 2026-07 Human Review Gate 발동: critic_score < 7, hard_fail = True
+[ALERT][2026-06-25T15:12:13][human_review] 2026-07 Writer 실패: human review 필요
+[ALERT][2026-06-25T15:12:13][human_review] 2026-07 Human Review Gate 발동: critic_score < 7, hard_fail = True
+[ALERT][2026-06-25T15:13:48][human_review] 2026-07 Writer 실패: human review 필요
+[ALERT][2026-06-25T15:13:48][human_review] 2026-07 Human Review Gate 발동: critic_score < 7, hard_fail = True
+[ALERT][2026-06-25T15:14:50][human_review] 2026-07 Writer 실패: human review 필요
+[ALERT][2026-06-25T15:14:50][human_review] 2026-07 Human Review Gate 발동: critic_score < 7, hard_fail = True
+[ALERT][2026-06-25T15:15:28][human_review] 2026-07 Writer 실패: human review 필요
+[ALERT][2026-06-25T15:15:28][human_review] 2026-07 Human Review Gate 발동: critic_score < 7, hard_fail = True
+[ALERT][2026-06-25T15:20:10][human_review] 2026-07 Writer 실패: human review 필요
+[ALERT][2026-06-25T15:20:10][human_review] 2026-07 Human Review Gate 발동: critic_score < 7, hard_fail = True
+[ALERT][2026-06-25T15:45:50][human_review] 2026-07 Writer 실패: human review 필요
+[ALERT][2026-06-25T15:45:50][human_review] 2026-07 Human Review Gate 발동: critic_score < 7, hard_fail = True
+[ALERT][2026-06-25T15:47:34][human_review] 2026-07 Writer 실패: human review 필요
+[ALERT][2026-06-25T15:47:34][human_review] 2026-07 Human Review Gate 발동: critic_score < 7, hard_fail = True
+[ALERT][2026-06-25T16:05:42][human_review] 2026-07 Writer 실패: human review 필요
+[ALERT][2026-06-25T16:05:42][human_review] 2026-07 Human Review Gate 발동: critic_score < 7, hard_fail = True
+[ALERT][2026-06-25T16:10:55][human_review] 2026-07 Writer 실패: human review 필요
+[ALERT][2026-06-25T16:10:55][human_review] 2026-07 Human Review Gate 발동: critic_score < 7, hard_fail = True
+[ALERT][2026-06-25T16:15:57][human_review] 2026-07 Writer 실패: human review 필요
+[ALERT][2026-06-25T16:15:57][human_review] 2026-07 Human Review Gate 발동: critic_score < 7, hard_fail = True
+[ALERT][2026-06-25T16:16:58][human_review] 2026-07 Writer 실패: human review 필요
+[ALERT][2026-06-25T16:16:58][human_review] 2026-07 Human Review Gate 발동: critic_score < 7, hard_fail = True
+[ALERT][2026-06-25T16:18:26][human_review] 2026-07 Writer 실패: human review 필요
+[ALERT][2026-06-25T16:18:26][human_review] 2026-07 Human Review Gate 발동: critic_score < 7, hard_fail = True
+[ALERT][2026-06-25T16:24:09][human_review] 2026-07 Writer 실패: human review 필요
+[ALERT][2026-06-25T16:24:09][human_review] 2026-07 Human Review Gate 발동: critic_score < 7, hard_fail = True
+[ALERT][2026-06-25T16:42:45][human_review] 2026-07 Writer 실패: human review 필요
+[ALERT][2026-06-25T16:42:45][human_review] 2026-07 Human Review Gate 발동: critic_score < 7, hard_fail = True
+[ALERT][2026-06-25T16:44:12][human_review] 2026-07 Writer 실패: human review 필요
+[ALERT][2026-06-25T16:44:12][human_review] 2026-07 Human Review Gate 발동: critic_score < 7, hard_fail = True
+[ALERT][2026-06-25T16:46:42][human_review] 2026-07 Writer 실패: human review 필요
+[ALERT][2026-06-25T16:46:42][human_review] 2026-07 Human Review Gate 발동: critic_score < 7, hard_fail = True
+[ALERT][2026-06-25T17:03:23][human_review] 2026-07 Writer 실패: human review 필요
+[ALERT][2026-06-25T17:03:23][human_review] 2026-07 Human Review Gate 발동: critic_score < 7, hard_fail = True
+[ALERT][2026-06-25T17:04:42][human_review] 2026-07 Writer 실패: human review 필요
+[ALERT][2026-06-25T17:04:42][human_review] 2026-07 Human Review Gate 발동: critic_score < 7, hard_fail = True
+[ALERT][2026-06-25T17:05:58][human_review] 2026-07 Writer 실패: human review 필요
+[ALERT][2026-06-25T17:05:58][human_review] 2026-07 Human Review Gate 발동: critic_score < 7, hard_fail = True
+[ALERT][2026-06-25T17:21:29][human_review] 2026-07 Writer 실패: human review 필요
+[ALERT][2026-06-25T17:21:29][human_review] 2026-07 Human Review Gate 발동: critic_score < 7, hard_fail = True
+[ALERT][2026-06-25T17:22:18][human_review] 2026-07 Writer 실패: human review 필요
+[ALERT][2026-06-25T17:22:18][human_review] 2026-07 Human Review Gate 발동: critic_score < 7, hard_fail = True
+[ALERT][2026-06-25T17:23:43][human_review] 2026-07 Writer 실패: human review 필요
+[ALERT][2026-06-25T17:23:43][human_review] 2026-07 Human Review Gate 발동: critic_score < 7, hard_fail = True
+[ALERT][2026-06-25T17:38:14][human_review] 2026-07 Writer 실패: human review 필요
+[ALERT][2026-06-25T17:38:14][human_review] 2026-07 Human Review Gate 발동: critic_score < 7, hard_fail = True
+[ALERT][2026-06-25T17:55:30][human_review] 2026-07 Writer 실패: human review 필요
+[ALERT][2026-06-25T17:55:30][human_review] 2026-07 Human Review Gate 발동: critic_score < 7, hard_fail = True
+[ALERT][2026-06-25T17:56:34][human_review] 2026-07 Writer 실패: human review 필요
+[ALERT][2026-06-25T17:56:34][human_review] 2026-07 Human Review Gate 발동: critic_score < 7, hard_fail = True
+[ALERT][2026-06-25T18:00:08][human_review] 2026-07 Writer 실패: human review 필요
+[ALERT][2026-06-25T18:00:08][human_review] 2026-07 Human Review Gate 발동: critic_score < 7, hard_fail = True

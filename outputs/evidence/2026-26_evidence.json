@@ -1,0 +1,435 @@
+{
+  "week_id": "2026-26",
+  "period_id": "2026-26",
+  "evidence": [
+    {
+      "compressor_type": "Re",
+      "competitor": "GMCC/Midea",
+      "refrigerant": [
+        "R290",
+        "R600a"
+      ],
+      "category": "신제품·라인업",
+      "samsung_status": "미보유",
+      "trust_score": 5,
+      "source_type": "official",
+      "threat_level": "high",
+      "week_id": "2026-26",
+      "period_id": "2026-26",
+      "source_url": "https://example.com/Re_GMCC_Midea_신제품라인업",
+      "source_date": "2026-06-20",
+      "raw_text": "GMCC/Midea Re 신제품·라인업. 삼성 상태: 미보유. 삼성 미보유 구간 진입 신호.",
+      "summary": "",
+      "product_or_series": "GMCC/Midea Re 신제품·라인업 update",
+      "condition_or_capacity": "확인필요",
+      "application": "Residential/Unitary/Heat pump",
+      "source_name": "GMCC/Midea Re 신제품·라인업 update",
+      "is_primary": true,
+      "low_confidence": false,
+      "dynamic_tags": [
+        "Re",
+        "신제품·라인업",
+        "official",
+        "R290",
+        "R600a"
+      ],
+      "evidence_id": "2026-26:Re:GMCC/Midea:신제품·라인업:https://example.com/Re_GMCC_Midea_신제품라인업",
+      "modality": "text",
+      "extraction_confidence": 1.0,
+      "source_page": ""
+    },
+    {
+      "compressor_type": "Re",
+      "competitor": "LG",
+      "refrigerant": [
+        "R290",
+        "R600a"
+      ],
+      "category": "신제품·라인업",
+      "samsung_status": "확인필요",
+      "trust_score": 3,
+      "source_type": "trade_media",
+      "threat_level": "none",
+      "week_id": "2026-26",
+      "period_id": "2026-26",
+      "source_url": "https://example.com/Re_LG_신제품라인업",
+      "source_date": "2026-06-20",
+      "raw_text": "LG Re 신제품·라인업. 삼성 상태: 확인필요. 삼성 현황 확인 필요.",
+      "summary": "",
+      "product_or_series": "LG Re 신제품·라인업 update",
+      "condition_or_capacity": "확인필요",
+      "application": "Residential/Unitary/Heat pump",
+      "source_name": "LG Re 신제품·라인업 update",
+      "is_primary": true,
+      "low_confidence": false,
+      "dynamic_tags": [
+        "Re",
+        "신제품·라인업",
+        "trade_media",
+        "R290",
+        "R600a"
+      ],
+      "evidence_id": "2026-26:Re:LG:신제품·라인업:https://example.com/Re_LG_신제품라인업",
+      "modality": "text",
+      "extraction_confidence": 1.0,
+      "source_page": ""
+    },
+    {
+      "compressor_type": "Ro",
+      "competitor": "GMCC/Midea",
+      "refrigerant": [
+        "R290",
+        "R32"
+      ],
+      "category": "신제품·라인업",
+      "samsung_status": "확인필요",
+      "trust_score": 3,
+      "source_type": "trade_media",
+      "threat_level": "none",
+      "week_id": "2026-26",
+      "period_id": "2026-26",
+      "source_url": "https://example.com/Ro_GMCC_Midea_신제품라인업",
+      "source_date": "2026-06-20",
+      "raw_text": "GMCC/Midea Ro 신제품·라인업. 삼성 상태: 확인필요. 삼성 현황 확인 필요.",
+      "summary": "",
+      "product_or_series": "GMCC/Midea Ro 신제품·라인업 update",
+      "condition_or_capacity": "확인필요",
+      "application": "Residential/Unitary/Heat pump",
+      "source_name": "GMCC/Midea Ro 신제품·라인업 update",
+      "is_primary": true,
+      "low_confidence": false,
+      "dynamic_tags": [
+        "Ro",
+        "신제품·라인업",
+        "trade_media",
+        "R290",
+        "R32"
+      ],
+      "evidence_id": "2026-26:Ro:GMCC/Midea:신제품·라인업:https://example.com/Ro_GMCC_Midea_신제품라인업",
+      "modality": "text",
+      "extraction_confidence": 1.0,
+      "source_page": ""
+    },
+    {
+      "compressor_type": "Ro",
+      "competitor": "LG",
+      "refrigerant": [
+        "R290",
+        "R32"
+      ],
+      "category": "신제품·라인업",
+      "samsung_status": "확인필요",
+      "trust_score": 5,
+      "source_type": "exhibition",
+      "threat_level": "none",
+      "week_id": "2026-26",
+      "period_id": "2026-26",
+      "source_url": "https://example.com/Ro_LG_신제품라인업",
+      "source_date": "2026-06-20",
+      "raw_text": "LG Ro 신제품·라인업. 삼성 상태: 확인필요. CE 인증 기반 확인 필요.",
+      "summary": "",
+      "product_or_series": "LG Ro 신제품·라인업 update",
+      "condition_or_capacity": "확인필요",
+      "application": "Residential/Unitary/Heat pump",
+      "source_name": "LG Ro 신제품·라인업 update",
+      "is_primary": true,
+      "low_confidence": false,
+      "dynamic_tags": [
+        "Ro",
+        "신제품·라인업",
+        "exhibition",
+        "R290",
+        "R32",
+        "certification"
+      ],
+      "evidence_id": "2026-26:Ro:LG:신제품·라인업:https://example.com/Ro_LG_신제품라인업",
+      "modality": "text",
+      "extraction_confidence": 1.0,
+      "source_page": ""
+    },
+    {
+      "compressor_type": "Sc",
+      "competitor": "Copeland/Emerson",
+      "refrigerant": [
+        "R454B"
+      ],
+      "category": "신제품·라인업",
+      "samsung_status": "미보유",
+      "trust_score": 5,
+      "source_type": "official",
+      "threat_level": "high",
+      "week_id": "2026-26",
+      "period_id": "2026-26",
+      "source_url": "https://example.com/step3/copeland-r454b-variable",
+      "source_date": "2026-06-20",
+      "raw_text": "Copeland/Emerson Sc R454B Variable Scroll. 삼성 상태: 미보유. ★ 최우선 경쟁사 신규 진입.",
+      "summary": "",
+      "product_or_series": "Copeland R454B Variable Scroll 신규 진입",
+      "condition_or_capacity": "확인필요",
+      "application": "Residential/Unitary/Heat pump",
+      "source_name": "Copeland R454B Variable Scroll 신규 진입",
+      "is_primary": true,
+      "low_confidence": false,
+      "dynamic_tags": [
+        "Sc",
+        "신제품·라인업",
+        "official",
+        "R454B",
+        "variable"
+      ],
+      "evidence_id": "2026-26:Sc:Copeland/Emerson:신제품·라인업:https://example.com/step3/copeland-r454b-variable",
+      "modality": "text",
+      "extraction_confidence": 1.0,
+      "source_page": ""
+    },
+    {
+      "compressor_type": "Sc",
+      "competitor": "Copeland/Emerson",
+      "refrigerant": [
+        "R454B",
+        "R32"
+      ],
+      "category": "신냉매·냉매전환",
+      "samsung_status": "대응중",
+      "trust_score": 3,
+      "source_type": "trade_media",
+      "threat_level": "low",
+      "week_id": "2026-26",
+      "period_id": "2026-26",
+      "source_url": "https://example.com/Sc_Copeland_Emerson_신냉매냉매전환",
+      "source_date": "2026-06-20",
+      "raw_text": "Copeland/Emerson Sc 신냉매·냉매전환. 삼성 상태: 대응중. 삼성 대응 중 구간의 북미 경쟁 심화.",
+      "summary": "",
+      "product_or_series": "Copeland/Emerson Sc 신냉매·냉매전환 update",
+      "condition_or_capacity": "확인필요",
+      "application": "Residential/Unitary/Heat pump",
+      "source_name": "Copeland/Emerson Sc 신냉매·냉매전환 update",
+      "is_primary": true,
+      "low_confidence": false,
+      "dynamic_tags": [
+        "Sc",
+        "신냉매·냉매전환",
+        "trade_media",
+        "R454B",
+        "R32"
+      ],
+      "evidence_id": "2026-26:Sc:Copeland/Emerson:신냉매·냉매전환:https://example.com/Sc_Copeland_Emerson_신냉매냉매전환",
+      "modality": "text",
+      "extraction_confidence": 1.0,
+      "source_page": ""
+    },
+    {
+      "compressor_type": "Re",
+      "competitor": "LG",
+      "refrigerant": [
+        "R290"
+      ],
+      "category": "신냉매·냉매전환",
+      "samsung_status": "미보유",
+      "trust_score": 5,
+      "source_type": "exhibition",
+      "threat_level": "high",
+      "week_id": "2026-26",
+      "period_id": "2026-26",
+      "source_url": "https://example.com/step3/lg-r290-mbp",
+      "source_date": "2026-06-20",
+      "raw_text": "LG Re R290 MBP. 삼성 상태: 미보유. GMCC와 동일 구간 동시 진입 시나리오.",
+      "summary": "",
+      "product_or_series": "LG R290 MBP Re 신규 채택",
+      "condition_or_capacity": "확인필요",
+      "application": "Residential/Unitary/Heat pump",
+      "source_name": "LG R290 MBP Re 신규 채택",
+      "is_primary": true,
+      "low_confidence": false,
+      "dynamic_tags": [
+        "Re",
+        "신냉매·냉매전환",
+        "exhibition",
+        "R290"
+      ],
+      "evidence_id": "2026-26:Re:LG:신냉매·냉매전환:https://example.com/step3/lg-r290-mbp",
+      "modality": "text",
+      "extraction_confidence": 1.0,
+      "source_page": ""
+    },
+    {
+      "compressor_type": "Re",
+      "competitor": "GMCC/Midea",
+      "refrigerant": [
+        "R290"
+      ],
+      "category": "신냉매·냉매전환",
+      "samsung_status": "미보유",
+      "trust_score": 5,
+      "source_type": "official",
+      "threat_level": "high",
+      "week_id": "2026-26",
+      "period_id": "2026-26",
+      "source_url": "https://example.com/step3/gmcc-r290-mbp",
+      "source_date": "2026-06-20",
+      "raw_text": "GMCC/Midea Re R290 MBP. 삼성 상태: 미보유. 동일 모델 2주 내 재등장.",
+      "summary": "",
+      "product_or_series": "GMCC R290 MBP Re 재등장",
+      "condition_or_capacity": "확인필요",
+      "application": "Residential/Unitary/Heat pump",
+      "source_name": "GMCC R290 MBP Re 재등장",
+      "is_primary": true,
+      "low_confidence": false,
+      "dynamic_tags": [
+        "Re",
+        "신냉매·냉매전환",
+        "official",
+        "R290"
+      ],
+      "evidence_id": "2026-26:Re:GMCC/Midea:신냉매·냉매전환:https://example.com/step3/gmcc-r290-mbp",
+      "modality": "text",
+      "extraction_confidence": 1.0,
+      "source_page": ""
+    }
+  ],
+  "gap_table": [
+    {
+      "compressor_type": "Re",
+      "condition_or_capacity": "확인필요",
+      "refrigerant": "R290/R600a",
+      "competitor": "GMCC/Midea",
+      "product_or_series": "GMCC/Midea Re 신제품·라인업 update",
+      "samsung_status": "미보유",
+      "threat_level": "high"
+    },
+    {
+      "compressor_type": "Re",
+      "condition_or_capacity": "확인필요",
+      "refrigerant": "R290/R600a",
+      "competitor": "LG",
+      "product_or_series": "LG Re 신제품·라인업 update",
+      "samsung_status": "확인필요",
+      "threat_level": "none"
+    },
+    {
+      "compressor_type": "Ro",
+      "condition_or_capacity": "확인필요",
+      "refrigerant": "R290/R32",
+      "competitor": "GMCC/Midea",
+      "product_or_series": "GMCC/Midea Ro 신제품·라인업 update",
+      "samsung_status": "확인필요",
+      "threat_level": "none"
+    },
+    {
+      "compressor_type": "Ro",
+      "condition_or_capacity": "확인필요",
+      "refrigerant": "R290/R32",
+      "competitor": "LG",
+      "product_or_series": "LG Ro 신제품·라인업 update",
+      "samsung_status": "확인필요",
+      "threat_level": "none"
+    },
+    {
+      "compressor_type": "Sc",
+      "condition_or_capacity": "확인필요",
+      "refrigerant": "R454B",
+      "competitor": "Copeland/Emerson",
+      "product_or_series": "Copeland R454B Variable Scroll 신규 진입",
+      "samsung_status": "미보유",
+      "threat_level": "high"
+    },
+    {
+      "compressor_type": "Sc",
+      "condition_or_capacity": "확인필요",
+      "refrigerant": "R454B/R32",
+      "competitor": "Copeland/Emerson",
+      "product_or_series": "Copeland/Emerson Sc 신냉매·냉매전환 update",
+      "samsung_status": "대응중",
+      "threat_level": "low"
+    },
+    {
+      "compressor_type": "Re",
+      "condition_or_capacity": "확인필요",
+      "refrigerant": "R290",
+      "competitor": "LG",
+      "product_or_series": "LG R290 MBP Re 신규 채택",
+      "samsung_status": "미보유",
+      "threat_level": "high"
+    },
+    {
+      "compressor_type": "Re",
+      "condition_or_capacity": "확인필요",
+      "refrigerant": "R290",
+      "competitor": "GMCC/Midea",
+      "product_or_series": "GMCC R290 MBP Re 재등장",
+      "samsung_status": "미보유",
+      "threat_level": "high"
+    }
+  ],
+  "sources": [
+    {
+      "source_name": "GMCC/Midea Re 신제품·라인업 update",
+      "source_url": "https://example.com/Re_GMCC_Midea_신제품라인업",
+      "source_date": "2026-06-20",
+      "source_type": "official"
+    },
+    {
+      "source_name": "LG Re 신제품·라인업 update",
+      "source_url": "https://example.com/Re_LG_신제품라인업",
+      "source_date": "2026-06-20",
+      "source_type": "trade_media"
+    },
+    {
+      "source_name": "GMCC/Midea Ro 신제품·라인업 update",
+      "source_url": "https://example.com/Ro_GMCC_Midea_신제품라인업",
+      "source_date": "2026-06-20",
+      "source_type": "trade_media"
+    },
+    {
+      "source_name": "LG Ro 신제품·라인업 update",
+      "source_url": "https://example.com/Ro_LG_신제품라인업",
+      "source_date": "2026-06-20",
+      "source_type": "exhibition"
+    },
+    {
+      "source_name": "Copeland R454B Variable Scroll 신규 진입",
+      "source_url": "https://example.com/step3/copeland-r454b-variable",
+      "source_date": "2026-06-20",
+      "source_type": "official"
+    },
+    {
+      "source_name": "Copeland/Emerson Sc 신냉매·냉매전환 update",
+      "source_url": "https://example.com/Sc_Copeland_Emerson_신냉매냉매전환",
+      "source_date": "2026-06-20",
+      "source_type": "trade_media"
+    },
+    {
+      "source_name": "LG R290 MBP Re 신규 채택",
+      "source_url": "https://example.com/step3/lg-r290-mbp",
+      "source_date": "2026-06-20",
+      "source_type": "exhibition"
+    },
+    {
+      "source_name": "GMCC R290 MBP Re 재등장",
+      "source_url": "https://example.com/step3/gmcc-r290-mbp",
+      "source_date": "2026-06-20",
+      "source_type": "official"
+    }
+  ],
+  "report_meta": {
+    "week_id": "2026-26",
+    "run_date": "2026-06-25",
+    "total_evidence_count": 8,
+    "type_coverage": [
+      "Re",
+      "Ro",
+      "Sc"
+    ],
+    "competitor_coverage": [
+      "Copeland/Emerson",
+      "GMCC/Midea",
+      "LG"
+    ],
+    "primary_missing": [],
+    "high_threat_count": 4,
+    "critic_score": 10,
+    "hard_fail": false,
+    "signal_count": 6,
+    "period_id": "2026-26"
+  }
+}

@@ -1,0 +1,521 @@
+{
+  "gap_matrix": {
+    "Re": {
+      "R290": {
+        "MBP": {
+          "samsung": "미보유",
+          "note": "초기값",
+          "samsung_status": "미보유",
+          "threat_level": "high",
+          "competitors": [
+            {
+              "name": "GMCC/Midea",
+              "model": "GMCC Official site",
+              "trust_score": 5,
+              "source": "https://www.gmcc.com",
+              "evidence_id": "2025-10:Re:GMCC/Midea:신제품·라인업:https://www.gmcc.com"
+            },
+            {
+              "name": "LG",
+              "model": "LG Compressor Official",
+              "trust_score": 5,
+              "source": "https://www.lg.com/global/business/compressor",
+              "evidence_id": "2025-10:Re:LG:신제품·라인업:https://www.lg.com/global/business/compressor"
+            },
+            {
+              "name": "Embraco/Nidec",
+              "model": "Embraco",
+              "trust_score": 5,
+              "source": "https://www.embraco.com/",
+              "evidence_id": "2025-10:Re:Embraco/Nidec:신냉매·냉매전환:https://www.embraco.com/"
+            },
+            {
+              "name": "Secop",
+              "model": "Advanced Compressors Technology & Sustainable Cooling Solutions | Secop",
+              "trust_score": 5,
+              "source": "https://www.secop.com/",
+              "evidence_id": "2025-10:Re:Secop:신냉매·냉매전환:https://www.secop.com/"
+            },
+            {
+              "name": "업계/R290",
+              "model": "R290 Accounted for 38% of New EU Residential Heat Pump Certifications in 2024, According to Heat Pumps Watch",
+              "trust_score": 3,
+              "source": "https://naturalrefrigerants.com/news/heat-pump-watch-r290-eu-residential-heat-pumps-certificates/",
+              "evidence_id": "2025-10:Re:업계/R290:규격·인증:https://naturalrefrigerants.com/news/heat-pump-watch-r290-eu-residential-heat-pumps-certificates/"
+            },
+            {
+              "name": "Embraco/Nidec",
+              "model": "Embraco Launches R290 Condensing Units for European Market, Targeting Foodservice",
+              "trust_score": 3,
+              "source": "https://hydrocarbons21.com/embraco-debuts-r290-condensing-units-for-european-market-targeting-foodservice/",
+              "evidence_id": "2025-10:Re:Embraco/Nidec:전시회·발표:https://hydrocarbons21.com/embraco-debuts-r290-condensing-units-for-european-market-targeting-foodservice/"
+            },
+            {
+              "name": "업계/R290",
+              "model": "Google Patents search: compressor R290 2025",
+              "trust_score": 5,
+              "source": "https://patents.google.com/?q=(compressor+R290+2025)",
+              "evidence_id": "2025-10:Re:업계/R290:특허·기술:https://patents.google.com/?q=(compressor+R290+2025)"
+            },
+            {
+              "name": "규제/EPA",
+              "model": "Significant New Alternatives Policy (SNAP) Program | US EPA",
+              "trust_score": 5,
+              "source": "https://www.epa.gov/snap",
+              "evidence_id": "2025-10:Re:규제/EPA:규격·인증:https://www.epa.gov/snap"
+            }
+          ],
+          "period_evidence_quality": "sufficient"
+        },
+        "LBP": {
+          "samsung": "미보유",
+          "note": "초기값",
+          "period_evidence_quality": "sufficient"
+        },
+        "HBP": {
+          "samsung": "확인필요",
+          "note": "초기값",
+          "period_evidence_quality": "sufficient"
+        }
+      },
+      "R600a": {
+        "MBP": {
+          "samsung": "보유",
+          "note": "초기값",
+          "samsung_status": "보유",
+          "threat_level": "low",
+          "competitors": [
+            {
+              "name": "Secop",
+              "model": "Advanced Compressors Technology & Sustainable Cooling Solutions | Secop",
+              "trust_score": 5,
+              "source": "https://www.secop.com/",
+              "evidence_id": "2025-10:Re:Secop:신냉매·냉매전환:https://www.secop.com/"
+            }
+          ],
+          "period_evidence_quality": "sufficient"
+        }
+      },
+      "R134a": {
+        "MBP": {
+          "samsung": "보유",
+          "note": "초기값",
+          "period_evidence_quality": "sufficient"
+        }
+      },
+      "R1234yf": {
+        "MBP": {
+          "samsung": "미보유",
+          "note": "초기값",
+          "period_evidence_quality": "sufficient"
+        }
+      },
+      "R454B": {
+        "MBP": {
+          "samsung": "확인필요",
+          "note": "evidence 기반 추론",
+          "samsung_status": "확인필요",
+          "threat_level": "none",
+          "competitors": [
+            {
+              "name": "규제/EPA",
+              "model": "Significant New Alternatives Policy (SNAP) Program | US EPA",
+              "trust_score": 5,
+              "source": "https://www.epa.gov/snap",
+              "evidence_id": "2025-10:Re:규제/EPA:규격·인증:https://www.epa.gov/snap"
+            }
+          ],
+          "period_evidence_quality": "sufficient"
+        }
+      }
+    },
+    "Ro": {
+      "R290": {
+        "samsung": "보유",
+        "note": "초기값",
+        "samsung_status": "보유",
+        "threat_level": "low",
+        "competitors": [
+          {
+            "name": "GMCC/Midea",
+            "model": "Google Patents search: GMCC Midea rotary compressor R290 2025",
+            "trust_score": 5,
+            "source": "https://patents.google.com/?q=(GMCC+Midea+rotary+compressor+R290+2025)",
+            "evidence_id": "2025-10:Ro:GMCC/Midea:특허·기술:https://patents.google.com/?q=(GMCC+Midea+rotary+compressor+R290+2025)"
+          }
+        ],
+        "period_evidence_quality": "sufficient"
+      },
+      "R32": {
+        "samsung": "보유",
+        "note": "초기값",
+        "samsung_status": "보유",
+        "threat_level": "low",
+        "competitors": [
+          {
+            "name": "LG",
+            "model": "LG Rotary Compressor Official Page",
+            "trust_score": 5,
+            "source": "https://www.lg.com/global/business/compressor-motor/compressors/rotary-compressor/",
+            "evidence_id": "2025-10:Ro:LG:신제품·라인업:https://www.lg.com/global/business/compressor-motor/compressors/rotary-compressor/"
+          },
+          {
+            "name": "LG",
+            "model": "2025 LG CM Catalog Rotary compressor preview",
+            "trust_score": 5,
+            "source": "https://www.lg.com/global/images/business/compressor-motor/resource-download/pdf-file/2025_LG_CM_Catalog_Rotary%20compressor_preview.pdf",
+            "evidence_id": "2025-10:Ro:LG:성능·효율:https://www.lg.com/global/images/business/compressor-motor/resource-download/pdf-file/2025_LG_CM_Catalog_Rotary%20compressor_preview.pdf"
+          }
+        ],
+        "period_evidence_quality": "sufficient"
+      },
+      "R454C": {
+        "samsung": "미보유",
+        "note": "초기값",
+        "period_evidence_quality": "sufficient"
+      }
+    },
+    "Sc": {
+      "R454B": {
+        "Fixed": {
+          "samsung": "보유",
+          "note": "초기값",
+          "samsung_status": "보유",
+          "threat_level": "low",
+          "competitors": [
+            {
+              "name": "Copeland/Emerson",
+              "model": "Copeland Official",
+              "trust_score": 5,
+              "source": "https://www.copeland.com/",
+              "evidence_id": "2025-10:Sc:Copeland/Emerson:신냉매·냉매전환:https://www.copeland.com/"
+            },
+            {
+              "name": "Danfoss",
+              "model": "Compressors for refrigeration, A/C and heating | Danfoss",
+              "trust_score": 5,
+              "source": "https://www.danfoss.com/en/products/dcs/compressors/",
+              "evidence_id": "2025-10:Sc:Danfoss:신제품·라인업:https://www.danfoss.com/en/products/dcs/compressors/"
+            },
+            {
+              "name": "Copeland/Emerson",
+              "model": "Google Patents search: Copeland scroll compressor R454B patent",
+              "trust_score": 5,
+              "source": "https://patents.google.com/?q=(Copeland+scroll+compressor+R454B+patent)",
+              "evidence_id": "2025-10:Sc:Copeland/Emerson:특허·기술:https://patents.google.com/?q=(Copeland+scroll+compressor+R454B+patent)"
+            }
+          ],
+          "period_evidence_quality": "sufficient"
+        },
+        "Variable": {
+          "samsung": "대응중",
+          "note": "초기값",
+          "samsung_status": "대응중",
+          "threat_level": "low",
+          "competitors": [
+            {
+              "name": "Copeland/Emerson",
+              "model": "Copeland scrolls for heat pump applications",
+              "trust_score": 3,
+              "source": "https://www.coolingpost.com/products/copeland-scrolls-for-heat-pump-applications/",
+              "evidence_id": "2025-10:Sc:Copeland/Emerson:성능·효율:https://www.coolingpost.com/products/copeland-scrolls-for-heat-pump-applications/"
+            }
+          ],
+          "period_evidence_quality": "sufficient"
+        },
+        "TwoStage": {
+          "samsung": "대응중",
+          "note": "초기값",
+          "period_evidence_quality": "sufficient"
+        }
+      },
+      "R410A": {
+        "Fixed": {
+          "samsung": "보유",
+          "note": "evidence 기반 추론",
+          "samsung_status": "보유",
+          "threat_level": "low",
+          "competitors": [
+            {
+              "name": "Danfoss",
+              "model": "Compressors for refrigeration, A/C and heating | Danfoss",
+              "trust_score": 5,
+              "source": "https://www.danfoss.com/en/products/dcs/compressors/",
+              "evidence_id": "2025-10:Sc:Danfoss:신제품·라인업:https://www.danfoss.com/en/products/dcs/compressors/"
+            }
+          ],
+          "period_evidence_quality": "sufficient"
+        }
+      },
+      "R32": {
+        "samsung": "보유",
+        "note": "초기값",
+        "period_evidence_quality": "sufficient"
+      },
+      "R466A": {
+        "samsung": "확인필요",
+        "note": "초기값",
+        "period_evidence_quality": "sufficient"
+      }
+    }
+  },
+  "threat_summary": [
+    {
+      "compressor_type": "Re",
+      "refrigerant": "R290",
+      "condition": "MBP",
+      "competitor": "GMCC/Midea",
+      "threat_level": "high",
+      "trust_score": 5,
+      "evidence_ids": [
+        "2025-10:Re:GMCC/Midea:신제품·라인업:https://www.gmcc.com"
+      ]
+    },
+    {
+      "compressor_type": "Re",
+      "refrigerant": "R290",
+      "condition": "MBP",
+      "competitor": "LG",
+      "threat_level": "high",
+      "trust_score": 5,
+      "evidence_ids": [
+        "2025-10:Re:LG:신제품·라인업:https://www.lg.com/global/business/compressor"
+      ]
+    },
+    {
+      "compressor_type": "Re",
+      "refrigerant": "R290",
+      "condition": "MBP",
+      "competitor": "Embraco/Nidec",
+      "threat_level": "high",
+      "trust_score": 5,
+      "evidence_ids": [
+        "2025-10:Re:Embraco/Nidec:신냉매·냉매전환:https://www.embraco.com/"
+      ]
+    },
+    {
+      "compressor_type": "Re",
+      "refrigerant": "R290",
+      "condition": "MBP",
+      "competitor": "Secop",
+      "threat_level": "high",
+      "trust_score": 5,
+      "evidence_ids": [
+        "2025-10:Re:Secop:신냉매·냉매전환:https://www.secop.com/"
+      ]
+    },
+    {
+      "compressor_type": "Re",
+      "refrigerant": "R290",
+      "condition": "MBP",
+      "competitor": "업계/R290",
+      "threat_level": "high",
+      "trust_score": 5,
+      "evidence_ids": [
+        "2025-10:Re:업계/R290:특허·기술:https://patents.google.com/?q=(compressor+R290+2025)"
+      ]
+    },
+    {
+      "compressor_type": "Re",
+      "refrigerant": "R290",
+      "condition": "MBP",
+      "competitor": "규제/EPA",
+      "threat_level": "high",
+      "trust_score": 5,
+      "evidence_ids": [
+        "2025-10:Re:규제/EPA:규격·인증:https://www.epa.gov/snap"
+      ]
+    },
+    {
+      "compressor_type": "Re",
+      "refrigerant": "R290",
+      "condition": "MBP",
+      "competitor": "업계/R290",
+      "threat_level": "medium",
+      "trust_score": 3,
+      "evidence_ids": [
+        "2025-10:Re:업계/R290:규격·인증:https://naturalrefrigerants.com/news/heat-pump-watch-r290-eu-residential-heat-pumps-certificates/"
+      ]
+    },
+    {
+      "compressor_type": "Re",
+      "refrigerant": "R290",
+      "condition": "MBP",
+      "competitor": "Embraco/Nidec",
+      "threat_level": "medium",
+      "trust_score": 3,
+      "evidence_ids": [
+        "2025-10:Re:Embraco/Nidec:전시회·발표:https://hydrocarbons21.com/embraco-debuts-r290-condensing-units-for-european-market-targeting-foodservice/"
+      ]
+    },
+    {
+      "compressor_type": "Sc",
+      "refrigerant": "R454B",
+      "condition": "Fixed",
+      "competitor": "Copeland/Emerson",
+      "threat_level": "low",
+      "trust_score": 5,
+      "evidence_ids": [
+        "2025-10:Sc:Copeland/Emerson:신냉매·냉매전환:https://www.copeland.com/"
+      ]
+    },
+    {
+      "compressor_type": "Sc",
+      "refrigerant": "R454B",
+      "condition": "Fixed",
+      "competitor": "Danfoss",
+      "threat_level": "low",
+      "trust_score": 5,
+      "evidence_ids": [
+        "2025-10:Sc:Danfoss:신제품·라인업:https://www.danfoss.com/en/products/dcs/compressors/"
+      ]
+    },
+    {
+      "compressor_type": "Sc",
+      "refrigerant": "R410A",
+      "condition": "Fixed",
+      "competitor": "Danfoss",
+      "threat_level": "low",
+      "trust_score": 5,
+      "evidence_ids": [
+        "2025-10:Sc:Danfoss:신제품·라인업:https://www.danfoss.com/en/products/dcs/compressors/"
+      ]
+    },
+    {
+      "compressor_type": "Re",
+      "refrigerant": "R600a",
+      "condition": "MBP",
+      "competitor": "Secop",
+      "threat_level": "low",
+      "trust_score": 5,
+      "evidence_ids": [
+        "2025-10:Re:Secop:신냉매·냉매전환:https://www.secop.com/"
+      ]
+    },
+    {
+      "compressor_type": "Ro",
+      "refrigerant": "R32",
+      "condition": "default",
+      "competitor": "LG",
+      "threat_level": "low",
+      "trust_score": 5,
+      "evidence_ids": [
+        "2025-10:Ro:LG:신제품·라인업:https://www.lg.com/global/business/compressor-motor/compressors/rotary-compressor/"
+      ]
+    },
+    {
+      "compressor_type": "Ro",
+      "refrigerant": "R32",
+      "condition": "default",
+      "competitor": "LG",
+      "threat_level": "low",
+      "trust_score": 5,
+      "evidence_ids": [
+        "2025-10:Ro:LG:성능·효율:https://www.lg.com/global/images/business/compressor-motor/resource-download/pdf-file/2025_LG_CM_Catalog_Rotary%20compressor_preview.pdf"
+      ]
+    },
+    {
+      "compressor_type": "Ro",
+      "refrigerant": "R290",
+      "condition": "default",
+      "competitor": "GMCC/Midea",
+      "threat_level": "low",
+      "trust_score": 5,
+      "evidence_ids": [
+        "2025-10:Ro:GMCC/Midea:특허·기술:https://patents.google.com/?q=(GMCC+Midea+rotary+compressor+R290+2025)"
+      ]
+    },
+    {
+      "compressor_type": "Sc",
+      "refrigerant": "R454B",
+      "condition": "Fixed",
+      "competitor": "Copeland/Emerson",
+      "threat_level": "low",
+      "trust_score": 5,
+      "evidence_ids": [
+        "2025-10:Sc:Copeland/Emerson:특허·기술:https://patents.google.com/?q=(Copeland+scroll+compressor+R454B+patent)"
+      ]
+    },
+    {
+      "compressor_type": "Sc",
+      "refrigerant": "R454B",
+      "condition": "Variable",
+      "competitor": "Copeland/Emerson",
+      "threat_level": "low",
+      "trust_score": 3,
+      "evidence_ids": [
+        "2025-10:Sc:Copeland/Emerson:성능·효율:https://www.coolingpost.com/products/copeland-scrolls-for-heat-pump-applications/"
+      ]
+    }
+  ],
+  "new_signals": [
+    {
+      "signal_type": "primary_new_entry",
+      "description": "★ 최우선 GMCC/Midea가 Re/R290/MBP 삼성 미보유 구간에 진입",
+      "competitor": "GMCC/Midea",
+      "trust_score": 5,
+      "week_id": "2025-10"
+    },
+    {
+      "signal_type": "new_refrigerant",
+      "description": "삼성 미보유 냉매 R290 구간에서 GMCC/Midea 근거 감지",
+      "competitor": "GMCC/Midea",
+      "trust_score": 5,
+      "week_id": "2025-10"
+    },
+    {
+      "signal_type": "primary_new_entry",
+      "description": "★ 최우선 LG가 Re/R290/MBP 삼성 미보유 구간에 진입",
+      "competitor": "LG",
+      "trust_score": 5,
+      "week_id": "2025-10"
+    },
+    {
+      "signal_type": "new_refrigerant",
+      "description": "삼성 미보유 냉매 R290 구간에서 LG 근거 감지",
+      "competitor": "LG",
+      "trust_score": 5,
+      "week_id": "2025-10"
+    },
+    {
+      "signal_type": "new_refrigerant",
+      "description": "삼성 미보유 냉매 R290 구간에서 Embraco/Nidec 근거 감지",
+      "competitor": "Embraco/Nidec",
+      "trust_score": 5,
+      "week_id": "2025-10"
+    },
+    {
+      "signal_type": "new_refrigerant",
+      "description": "삼성 미보유 냉매 R290 구간에서 Secop 근거 감지",
+      "competitor": "Secop",
+      "trust_score": 5,
+      "week_id": "2025-10"
+    },
+    {
+      "signal_type": "new_refrigerant",
+      "description": "삼성 미보유 냉매 R290 구간에서 업계/R290 근거 감지",
+      "competitor": "업계/R290",
+      "trust_score": 5,
+      "week_id": "2025-10"
+    },
+    {
+      "signal_type": "new_refrigerant",
+      "description": "삼성 미보유 냉매 R290 구간에서 규제/EPA 근거 감지",
+      "competitor": "규제/EPA",
+      "trust_score": 5,
+      "week_id": "2025-10"
+    },
+    {
+      "signal_type": "multi_competitor_entry",
+      "description": "Re/R290/MBP 삼성 미보유 구간에 복수 경쟁사 동시 진입: Embraco/Nidec, GMCC/Midea, LG, Secop, 규제/EPA, 업계/R290",
+      "competitor": "Embraco/Nidec, GMCC/Midea, LG, Secop, 규제/EPA, 업계/R290",
+      "trust_score": 5,
+      "week_id": "2025-10"
+    }
+  ],
+  "week_id": "2025-10",
+  "baseline_used": "gap_matrix_baseline.yaml",
+  "period_id": "2025-10",
+  "evidence_quality": "sufficient",
+  "evidence_count": 15
+}

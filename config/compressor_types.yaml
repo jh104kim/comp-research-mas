@@ -1,0 +1,8 @@
+types:
+  Re: Reciprocating
+  Ro: Rotary
+  Sc: Scroll
+refrigerants:
+  Re: [R290, R600a, R134a, R1234yf]
+  Ro: [R290, R32, R454C]
+  Sc: [R454B, R32, R410A, R466A]

@@ -1,0 +1,11 @@
+{
+  "from": "jh104.kim@gmail.com",
+  "to": "jh104.kim@samsung.com",
+  "subject": "[최종완료] 압축기 경쟁사 모니터링 MAS — Phase A~I 완료",
+  "attachments": [
+    "outputs/reports/2026-06_compressor_monthly.md",
+    "outputs/reports/2026-06_compressor_monthly.html",
+    "outputs/reports/backfill_summary.html"
+  ],
+  "body_preview": "압축기 경쟁사 모니터링 MAS Phase A~I 완료\n\n전체 기간: 2025-07~2026-06\nperiod_count: 12\n총 evidence: 136건\n최신 period: 2026-06\n\n첨부: 최신 월간 리포트 md/html, backfill_summary.html\n"
+}

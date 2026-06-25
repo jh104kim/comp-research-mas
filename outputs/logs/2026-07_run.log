@@ -1,0 +1,6 @@
+period_id=2026-07
+manual=True
+status=human_review_required
+score=0
+hard_fail=True
+auto_publish_blocked=True

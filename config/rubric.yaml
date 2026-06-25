@@ -1,0 +1,7 @@
+items:
+  structure: {points: 2}
+  samsung_comparison: {points: 3}
+  gap_matrix: {points: 2}
+  evidence_volume: {points: 1}
+  primary_type_coverage: {points: 1}
+  source_trust: {points: 1}

@@ -1,0 +1,21 @@
+{
+  "dry_run": true,
+  "results": {
+    "gmail": {
+      "sent": false,
+      "dry_run": true,
+      "channel": "gmail"
+    },
+    "obsidian": {
+      "sent": false,
+      "dry_run": true,
+      "channel": "obsidian",
+      "target": "/mnt/f/ai-obsidian/지식창고/2026-06_compressor_monthly.md"
+    },
+    "slack": {
+      "sent": false,
+      "dry_run": true,
+      "channel": "slack"
+    }
+  }
+}

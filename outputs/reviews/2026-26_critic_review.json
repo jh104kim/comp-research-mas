@@ -1,0 +1,67 @@
+{
+  "score": 10,
+  "feedback": {
+    "score": 10,
+    "passed": true,
+    "findings": [
+      "Re/Ro/Sc + 8개 카테고리 구조 준수",
+      "삼성 비교 관점이 최우선 경쟁사별 구체 상태와 위협도를 포함",
+      "Gap Matrix에 Re/Ro/Sc, 냉매, 위협도 행 포함",
+      "evidence_count >= 6 (normal)",
+      "Re/Ro/Sc 타입별 최우선 경쟁사 기준 충족",
+      "trust_score >= 4 출처 최소 2개 포함"
+    ],
+    "required_fixes": [],
+    "writer_directives": [],
+    "debate_points": [],
+    "rubric_breakdown": {
+      "period_context": "normal",
+      "evidence_threshold_used": 6,
+      "structure": 2,
+      "samsung_comparison": 3,
+      "gap_matrix": 2,
+      "evidence_volume": 1,
+      "primary_type_coverage": 1,
+      "source_trust": 1,
+      "total": 10
+    },
+    "low_confidence": false,
+    "hard_fail": false,
+    "hard_fail_reasons": [],
+    "iteration": 0
+  },
+  "iteration": 0,
+  "status": "saved",
+  "hard_fail": false,
+  "error_log": [],
+  "writer_directives": [
+    "high threat 항목을 핵심 동향 최상단에 배치",
+    "new_signals를 핵심 동향 별도 섹션에 배치"
+  ],
+  "analysis_path": "outputs/analysis/2026-26_analysis_bundle.json",
+  "evidence_ledger_path": "outputs/memory/evidence_ledger.json",
+  "gap_history_path": "outputs/memory/gap_matrix_history.json",
+  "critic_cot_path": "outputs/reviews/2026-26_critic_cot.json",
+  "reasoning_log_count": 10,
+  "report_meta": {
+    "week_id": "2026-26",
+    "run_date": "2026-06-25",
+    "total_evidence_count": 8,
+    "type_coverage": [
+      "Re",
+      "Ro",
+      "Sc"
+    ],
+    "competitor_coverage": [
+      "Copeland/Emerson",
+      "GMCC/Midea",
+      "LG"
+    ],
+    "primary_missing": [],
+    "high_threat_count": 4,
+    "critic_score": 10,
+    "hard_fail": false,
+    "signal_count": 6,
+    "period_id": "2026-26"
+  }
+}
