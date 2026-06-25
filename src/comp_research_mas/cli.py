@@ -14,6 +14,8 @@ from .llm_adapter import llm_dry_run
 from .multimodal import parse_pdf_catalog
 from .orchestrability import validate_runtime_config
 from .vector_store import ChromaVectorStore
+from .special_report import generate_special_report
+from .env_utils import load_root_env
 
 
 def _print_state(state: dict) -> int:
@@ -106,6 +108,10 @@ def main(argv: list[str] | None = None) -> int:
     mm_cmd.add_argument("--path", default="tests/fixtures/sample_catalog.pdf")
     mm_cmd.add_argument("--period-id", default="2026-06")
 
+    special = sub.add_parser("build-special-report", help="Build 2026 special competitor insight report")
+    special.add_argument("--send-email", action="store_true")
+    special.add_argument("--to", default="jh104.kim@samsung.com")
+
     run = sub.add_parser("run", help="Run legacy Phase 1 with a manual search results markdown file")
     run.add_argument("input_path")
     run.add_argument("--output-dir", default="outputs/reports")
@@ -168,6 +174,41 @@ def main(argv: list[str] | None = None) -> int:
         print(f"compressor_type={item.compressor_type}")
         print(f"refrigerant={','.join(item.refrigerant)}")
         print(f"confidence={item.extraction_confidence}")
+        return 0
+    if args.command == "build-special-report":
+        summary = generate_special_report(Path.cwd())
+        print(f"special_report_md={summary['output_paths']['md']}")
+        print(f"special_report_html={summary['output_paths']['html']}")
+        print(f"special_report_total_evidence={summary['total_evidence']}")
+        if args.send_email:
+            import json
+            import os
+            import smtplib
+            from email.message import EmailMessage
+            load_root_env()
+            html_path = Path(summary['output_paths']['html'])
+            md_path = Path(summary['output_paths']['md'])
+            smtp_host = os.environ.get('SMTP_HOST') or 'smtp.gmail.com'
+            smtp_user = os.environ.get('SMTP_USER') or os.environ.get('GMAIL_SENDER') or 'jh104.kim@gmail.com'
+            smtp_password = os.environ.get('SMTP_PASSWORD') or os.environ.get('GMAIL_APP_PASSWORD')
+            sender = os.environ.get('GMAIL_SENDER') or smtp_user
+            if not smtp_password:
+                raise SystemExit('SMTP_PASSWORD or GMAIL_APP_PASSWORD missing')
+            msg = EmailMessage()
+            msg['From'] = sender
+            msg['To'] = args.to
+            msg['Subject'] = '[특별리포트] 2026년 기준 압축기 경쟁사 인사이트 보고서'
+            msg.set_content(f"2026년 기준 압축기 경쟁사 특별 리포트 송부드립니다.\n\n- 총 evidence: {summary['total_evidence']}건\n- 2025 H2: {summary['counts'].get('2025 H2')}건\n- 2026 H1: {summary['counts'].get('2026 H1')}건\n\n첨부: HTML 리포트, Markdown 리포트\n")
+            msg.add_attachment(html_path.read_bytes(), maintype='text', subtype='html', filename=html_path.name)
+            msg.add_attachment(md_path.read_bytes(), maintype='text', subtype='markdown', filename=md_path.name)
+            with smtplib.SMTP_SSL(smtp_host, 465, timeout=30) as smtp:
+                smtp.login(smtp_user, smtp_password)
+                smtp.send_message(msg)
+            result_path = Path('outputs/outbox/final_delivery/special_report_email_result.json')
+            result_path.parent.mkdir(parents=True, exist_ok=True)
+            result_path.write_text(json.dumps({'sent': True, 'to': args.to, 'attachments': [str(html_path), str(md_path)]}, ensure_ascii=False, indent=2), encoding='utf-8')
+            print(f"email_sent=True")
+            print(f"email_result_path={result_path}")
         return 0
 
     if args.command == "run-sample":

@@ -33,11 +33,18 @@ C&M 압축기 경쟁사/냉매/규제/특허 동향을 월간으로 수집하고
 7. Notifier/Live Sender: Gmail/Slack/Obsidian payload 및 live gate
 8. Guardian: 비밀값/내부정보 패턴 scan
 
-## 설치
+## 설치 / 다른 PC에서 실행
+
+다른 위치에서 clone 후 아래 순서로 설치하면 됩니다.
 
 ```bash
+git clone https://github.com/jh104kim/comp-research-mas.git
+cd comp-research-mas
 uv sync --extra test
+uv run --extra test pytest -q
 ```
+
+기존 커밋에 `outputs/` 산출물이 포함되어 있으므로 clone 직후에도 기존 월간/백필/특별 리포트 파일을 바로 열람할 수 있습니다. 다만 Gmail/Slack/OpenAI 같은 live 기능은 루트 `.env`에 개인 키를 별도로 넣어야 합니다. `.env`는 git에 커밋하지 않습니다.
 
 ## 주요 CLI
 
@@ -50,6 +57,12 @@ uv run python -m comp_research_mas.cli run-backfill --from-period 2025-10 --to-p
 
 # 전체 테스트
 uv run --extra test pytest -q
+
+# 2026년 기준 특별 리포트 생성
+uv run python -m comp_research_mas.cli build-special-report
+
+# 특별 리포트 생성 후 이메일 발송(.env 필요)
+uv run python -m comp_research_mas.cli build-special-report --send-email --to jh104.kim@samsung.com
 
 # Vector DB
 uv run python -m comp_research_mas.cli rebuild-vector-store
@@ -82,7 +95,9 @@ uv run python -m comp_research_mas.cli guardian-scan --path outputs/
 - `outputs/evidence/*_evidence.json`: 정규화 evidence
 - `outputs/analysis/*_analysis_bundle.json`: Gap Matrix/Signal
 - `outputs/reviews/*_critic_review.json`: Critic rubric 결과
-- `outputs/reports/*.md|*.html`: 월간/백필 리포트
+- `outputs/reports/*.md|*.html`: 월간/백필/특별 리포트
+- `outputs/reports/2026-special-competitor-insight-report.html`: 2026년 기준 특별 리포트
+- `outputs/analysis/2026_special_report_summary.json`: 특별 리포트 집계 요약
 - `outputs/memory/evidence_ledger.json`: 누적 evidence ledger
 - `outputs/memory/gap_matrix_history.json`: 누적 Gap Matrix history
 - `outputs/vector_store/chroma/index.json`: local vector index
@@ -116,3 +131,5 @@ uv run python -m comp_research_mas.cli guardian-scan --path outputs/
 - Latest critic_score: 10
 - Test: 63 passed
 - Guardian outputs scan: pass
+- Special report: `outputs/reports/2026-special-competitor-insight-report.html`
+- Special report evidence: 136건 (2025 H2 70건, 2026 H1 66건)

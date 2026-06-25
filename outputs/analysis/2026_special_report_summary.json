@@ -1,0 +1,67 @@
+{
+  "generated_at": "2026-06-25T20:43:10",
+  "period_groups": {
+    "2025 H2": [
+      "2025-07",
+      "2025-08",
+      "2025-09",
+      "2025-10",
+      "2025-11",
+      "2025-12"
+    ],
+    "2026 H1": [
+      "2026-01",
+      "2026-02",
+      "2026-03",
+      "2026-04",
+      "2026-05",
+      "2026-06"
+    ]
+  },
+  "counts": {
+    "2025 H2": 70,
+    "2026 H1": 66
+  },
+  "total_evidence": 136,
+  "by_competitor": {
+    "GMCC/Midea": 24,
+    "LG": 25,
+    "Copeland/Emerson": 25,
+    "Danfoss": 12,
+    "Embraco/Nidec": 13,
+    "Secop": 12,
+    "업계/R290": 11,
+    "규제/EU": 9,
+    "규제/EPA": 1,
+    "AHR Expo": 1,
+    "규격/ASHRAE": 1,
+    "China Refrigeration Expo": 1,
+    "JARN": 1
+  },
+  "by_compressor_type": {
+    "Re": 62,
+    "Ro": 27,
+    "Sc": 47
+  },
+  "by_category": {
+    "신냉매·냉매전환": 36,
+    "신제품·라인업": 37,
+    "특허·기술": 14,
+    "신뢰성·내구성": 11,
+    "규격·인증": 21,
+    "성능·효율": 13,
+    "전시회·발표": 4
+  },
+  "by_refrigerant": {
+    "R290": 74,
+    "R32": 26,
+    "R454B": 48,
+    "R410A": 12,
+    "R600a": 12
+  },
+  "output_paths": {
+    "md": "/mnt/f/ai-app-dev/10-comp-research-mas/outputs/reports/2026-special-competitor-insight-report.md",
+    "html": "/mnt/f/ai-app-dev/10-comp-research-mas/outputs/reports/2026-special-competitor-insight-report.html",
+    "summary": "/mnt/f/ai-app-dev/10-comp-research-mas/outputs/analysis/2026_special_report_summary.json"
+  }
+}
