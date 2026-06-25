@@ -73,12 +73,12 @@ def write_step_report(evidence: list[EvidenceItem], *, analysis_bundle: dict[str
 
     lines: list[str] = []
     lines.append(f"# {REPORT_TITLE}")
-    lines.append(f"날짜: {evidence[0].week_id if evidence else (analysis_bundle or {}).get('week_id', 'STEP SAMPLE')}")
+    lines.append(f"기간: {(analysis_bundle or {}).get('period_id') or (evidence[0].period_id if evidence else (analysis_bundle or {}).get('week_id', 'STEP SAMPLE'))}")
     lines.append("")
-    lines.append("## 이번 주 핵심 동향 요약")
+    lines.append("## 이번 달 핵심 동향 요약")
     prev_report = previous_report_text()
     if prev_report:
-        lines.append("- 지난 주 대비 변화: 이전 리포트가 존재하여 Gap Matrix/신규 신호 중심으로 변화 항목을 우선 비교")
+        lines.append("- 지난 달 대비 변화: 이전 리포트가 존재하여 Gap Matrix/신규 신호 중심으로 변화 항목을 우선 비교")
     if writer_directives:
         lines.append("- Orchestrator 지시: " + " / ".join(writer_directives))
     if debate_decisions:
@@ -116,9 +116,9 @@ def write_step_report(evidence: list[EvidenceItem], *, analysis_bundle: dict[str
         ctype_items = [item for item in evidence if item.compressor_type == ctype]
         if ctype_items:
             summary = "; ".join(f"{item.competitor} {DISPLAY_STATUS[item.samsung_status]}" for item in ctype_items[:3])
-            lines.append(f"- 이번 주 확인 사항: {summary}")
+            lines.append(f"- 이번 달 확인 사항: {summary}")
         else:
-            lines.append("- 해당 없음 — 이번 주 확인된 고신뢰 근거 없음")
+            lines.append("- 해당 없음 — 이번 달 확인된 고신뢰 근거 없음")
         lines.append("")
         for category in CATEGORIES:
             lines.append(f"### {category}")
@@ -162,7 +162,7 @@ def write_step_report(evidence: list[EvidenceItem], *, analysis_bundle: dict[str
     if not evidence and not analysis_bundle:
         lines.append("| - | - | - | - | 확인 필요 | none |")
     lines.append("")
-    lines.append("## 다음 주 모니터링 포인트")
+    lines.append("## 다음 달 모니터링 포인트")
     lines.append("- high/medium threat 및 신규 신호의 공식 출처 재검증")
     lines.append("- STEP 4에서 실제 Hermes Research Adapter 연결 검토")
     if feedback and feedback.get("required_fixes"):

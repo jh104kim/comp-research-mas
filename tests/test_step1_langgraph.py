@@ -37,7 +37,7 @@ def test_writer_includes_primary_competitors_even_without_evidence():
         assert f"## {ctype}" in draft
         for competitor in competitors:
             assert f"#### {competitor}" in draft
-    assert "해당 없음 — 이번 주 확인된 고신뢰 근거 없음" in draft
+    assert "해당 없음 — 이번 달 확인된 고신뢰 근거 없음" in draft
 
 
 def test_critic_scores_and_hard_fail():

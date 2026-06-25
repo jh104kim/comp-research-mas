@@ -9,7 +9,7 @@ from .models import (
     TYPE_LABELS,
 )
 
-REPORT_TITLE = "압축기 경쟁사 주간 모니터링 리포트"
+REPORT_TITLE = "압축기 경쟁사 월간 모니터링 리포트"
 PASS_SCORE = 7
 MAX_ITERATIONS = 2
 DEFAULT_WEEK_ID = "2026-26"

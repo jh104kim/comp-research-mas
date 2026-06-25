@@ -12,8 +12,9 @@ GMAIL_RECIPIENT = "jh104.kim@samsung.com"
 
 
 def _extract_summary(markdown: str) -> str:
-    marker = "## 이번 주 핵심 동향 요약"
-    if marker not in markdown:
+    markers = ["## 이번 달 핵심 동향 요약", "## 이번 주 핵심 동향 요약"]
+    marker = next((m for m in markers if m in markdown), "")
+    if not marker:
         return markdown[:1000]
     after = markdown.split(marker, 1)[1]
     end = after.find("\n## ")

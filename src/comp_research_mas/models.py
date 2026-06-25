@@ -60,7 +60,7 @@ COMPETITOR_ALIASES: dict[str, str] = {
     "Embraco Nidec": "Embraco/Nidec",
 }
 
-NO_EVIDENCE_TEXT = "해당 없음 — 이번 주 확인된 고신뢰 근거 없음"
+NO_EVIDENCE_TEXT = "해당 없음 — 이번 달 확인된 고신뢰 근거 없음"
 SAMSUNG_STATUSES = ("보유", "미보유", "대응중", "확인필요")
 SOURCE_TYPES = ("official", "exhibition", "patent", "academic", "trade_media", "news")
 THREAT_LEVELS = ("high", "medium", "low", "none")
