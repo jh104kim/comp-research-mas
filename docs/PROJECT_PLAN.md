@@ -405,7 +405,7 @@ STEP 5 이메일 발송 전에는 아래 조건을 만족해야 한다.
 
 ## 11. 바로 다음 작업
 
-STEP 3는 구현 완료되었다. 다음 작업은 STEP 4 Orchestrator + 실제 Hermes Research Adapter 연결이다.
+STEP 4는 구현 완료되었다. 다음 작업은 STEP 5 실제 Hermes Research Adapter 연결이다.
 
 STEP 3 완료 반영:
 - `config/gap_matrix_baseline.yaml` 추가, config 원본은 업데이트하지 않고 outputs/analysis에만 분석 결과 저장
