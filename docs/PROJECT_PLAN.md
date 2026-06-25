@@ -13,7 +13,7 @@ Phase A~I까지 C&M 압축기 경쟁사 모니터링 MAS를 확장했다.
 - E: DebateRound schema와 HTML Critic Review 표시
 - F: high threat alert dry-run Slack payload
 - G: yaml orchestration config + validation
-- H: Stub/Claude/Codex LLMAdapter dry-run
+- H: Stub/OpenAI/Codex LLMAdapter dry-run
 - I: PDF/OCR multimodal EvidenceItem
 
 ## 운영 원칙

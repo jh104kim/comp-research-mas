@@ -19,7 +19,7 @@ C&M 압축기 경쟁사/냉매/규제/특허 동향을 월간으로 수집하고
 - Phase E: Critic↔Writer DebateRound schema와 HTML 표시
 - Phase F: high threat alert dry-run payload
 - Phase G: yaml 기반 orchestration config
-- Phase H: Stub/Claude/Codex LLMAdapter dry-run 구조
+- Phase H: Stub/OpenAI/Codex LLMAdapter dry-run 구조
 - Phase I: PDF/OCR multimodal EvidenceItem 확장
 
 ## 에이전트 구성
@@ -58,7 +58,7 @@ uv run python -m comp_research_mas.cli vector-search "R290 GMCC" --top-k 3
 # Alert / Config / LLM / Multimodal
 uv run python -m comp_research_mas.cli alert-dry-run --period-id 2026-06
 uv run python -m comp_research_mas.cli config-validate
-uv run python -m comp_research_mas.cli llm-dry-run --provider claude
+uv run python -m comp_research_mas.cli llm-dry-run --provider openai
 uv run python -m comp_research_mas.cli parse-sample-pdf --path tests/fixtures/sample_catalog.pdf
 
 # Guardian
@@ -97,7 +97,7 @@ uv run python -m comp_research_mas.cli guardian-scan --path outputs/
 - `GMAIL_APP_PASSWORD`
 - `SLACK_WEBHOOK_URL`
 - `OBSIDIAN_VAULT_PATH`
-- `COMP_RESEARCH_LLM_PROVIDER=stub|claude|codex`
+- `COMP_RESEARCH_LLM_PROVIDER=stub|openai|codex`
 
 ## 제한사항
 

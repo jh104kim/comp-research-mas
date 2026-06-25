@@ -8,6 +8,7 @@ from pathlib import Path
 from typing import Any
 from urllib import request
 
+from .env_utils import load_root_env
 from .notifier import GMAIL_RECIPIENT, OBSIDIAN_TAGS, _extract_summary, prepare_notifier_dry_run
 
 DEFAULT_GMAIL_SENDER = "jh104.kim@gmail.com"
@@ -66,11 +67,14 @@ def build_live_payloads(state: dict[str, Any]) -> dict[str, dict[str, Any]]:
 
 
 def send_gmail(payload: dict[str, Any], *, dry_run: bool) -> dict[str, Any]:
+    load_root_env()
     if dry_run:
         return {"sent": False, "dry_run": True, "channel": "gmail"}
-    password = os.environ.get("GMAIL_APP_PASSWORD")
+    smtp_host = os.environ.get("SMTP_HOST") or "smtp.gmail.com"
+    smtp_user = os.environ.get("SMTP_USER") or os.environ.get("GMAIL_SENDER") or payload["from"]
+    password = os.environ.get("SMTP_PASSWORD") or os.environ.get("GMAIL_APP_PASSWORD")
     if not password:
-        raise LiveSendError("GMAIL_APP_PASSWORD missing")
+        raise LiveSendError("SMTP_PASSWORD or GMAIL_APP_PASSWORD missing")
     attachments = [Path(p) for p in payload.get("attachments", [payload["attachment"]])]
     if not any(path.exists() and path.suffix == ".md" for path in attachments):
         raise LiveSendError("Gmail attachment .md missing")
@@ -88,8 +92,8 @@ def send_gmail(payload: dict[str, Any], *, dry_run: bool) -> dict[str, Any]:
             msg.add_attachment(attachment.read_bytes(), maintype="text", subtype="markdown", filename=attachment.name)
         elif attachment.suffix == ".html":
             msg.add_attachment(attachment.read_bytes(), maintype="text", subtype="html", filename=attachment.name)
-    with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp:
-        smtp.login(payload["from"], password)
+    with smtplib.SMTP_SSL(smtp_host, 465) as smtp:
+        smtp.login(smtp_user, password)
         smtp.send_message(msg)
     return {"sent": True, "dry_run": False, "channel": "gmail"}
 

@@ -55,7 +55,7 @@ def test_yaml_orchestrability_config_valid():
 
 def test_llm_adapter_dry_run():
     assert llm_dry_run("stub")["provider"] == "stub"
-    assert llm_dry_run("claude")["dry_run"] is True
+    assert llm_dry_run("openai")["provider"] == "openai"
 
 
 def test_multimodal_pdf_and_ocr_evidence():

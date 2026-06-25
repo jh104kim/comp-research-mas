@@ -1,4 +1,9 @@
 {
-  "sent": false,
-  "reason": "GMAIL_APP_PASSWORD missing"
+  "sent": true,
+  "to": "jh104.kim@samsung.com",
+  "attachments": [
+    "outputs/reports/2026-06_compressor_monthly.md",
+    "outputs/reports/2026-06_compressor_monthly.html",
+    "outputs/reports/backfill_summary.html"
+  ]
 }
