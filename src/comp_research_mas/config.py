@@ -1,0 +1,17 @@
+from __future__ import annotations
+
+from .models import CATEGORIES, PRIMARY_COMPETITORS, SECONDARY_COMPETITORS, TYPE_LABELS
+
+REPORT_TITLE = "압축기 경쟁사 주간 모니터링 리포트"
+PASS_SCORE = 7
+MAX_ITERATIONS = 2
+
+__all__ = [
+    "CATEGORIES",
+    "PRIMARY_COMPETITORS",
+    "SECONDARY_COMPETITORS",
+    "TYPE_LABELS",
+    "REPORT_TITLE",
+    "PASS_SCORE",
+    "MAX_ITERATIONS",
+]

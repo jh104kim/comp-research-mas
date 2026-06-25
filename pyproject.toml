@@ -4,13 +4,11 @@ version = "0.1.0"
 description = "C&M compressor competitor monitoring MAS"
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+  "langgraph>=1.0.0",
+]
 
 [project.optional-dependencies]
-langgraph = [
-  "langgraph>=1.0.0",
-  "langchain>=1.0.0",
-]
 test = [
   "pytest>=8.0.0",
 ]

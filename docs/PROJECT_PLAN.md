@@ -405,14 +405,16 @@ STEP 5 이메일 발송 전에는 아래 조건을 만족해야 한다.
 
 ## 11. 바로 다음 작업
 
-다음 구현 작업은 STEP 1 재구현이다.
+STEP 1은 구현 완료되었다. 다음 작업은 STEP 2 Search Agent 추가다.
 
-우선순위:
-1. `models.py`에 EvidenceItem / WorkflowState schema 추가
-2. `writer.py`를 Re/Ro/Sc × 8개 카테고리 고정 출력으로 교체
-3. `critic.py`를 10점 rubric + hard fail로 교체
-4. `graph.py`에 LangGraph self-refine loop 구현
-5. `cli.py`에 `run-step1-sample` 추가
-6. sample raw_data 교체
-7. `llm_adapter.py`에 interface/stub만 추가하고 실제 호출은 구현하지 않음
-8. pytest로 구조와 refine 조건 검증
+STEP 2 우선순위:
+1. `query_planner.py` 추가: 타입 × 경쟁사 × 카테고리 query plan 생성
+2. `research_adapter.py` 추가: Hermes 리서치 위임 interface/stub 구현
+3. `evidence_normalizer.py` 추가: raw result → EvidenceItem 변환
+4. `config/monitors.yaml`을 ★ 최우선 경쟁사 중심으로 정리
+5. `cli.py`에 `run-step2-sample` 추가
+6. `outputs/search/*` 산출물 저장
+7. STEP 2 결과를 STEP 1 Writer/Critic으로 연결
+8. pytest로 query planner, normalizer, pipeline 검증
+
+상세 계획: `docs/STEP2_SEARCH_AGENT_PLAN.md`
