@@ -416,16 +416,24 @@ STEP 3 완료 반영:
 - Critic이 Gap Matrix 정확성, high threat 반영, AnalysisBundle hard fail 조건을 평가
 - 산출물: `outputs/analysis/YYYY-WW_analysis_bundle.json`
 
+STEP 3 Retrofit 완료 반영:
+- Planning: `evidence_count < threshold`이면 Query Planner가 primary query를 확장하고 stub 검색을 1회 재실행한다.
+- Memory: `outputs/memory/evidence_ledger.json`, `outputs/memory/gap_matrix_history.json`에 주차별 이력을 누적한다.
+- CoT: `WorkflowState.reasoning_log`와 `outputs/reviews/YYYY-MM-DD_critic_cot.json`에 노드별 판단 근거를 저장한다.
+- RAG: Writer가 Evidence Ledger에서 타입+경쟁사+카테고리 기준 관련 evidence를 검색하고 `evidence_ids`를 표기한다.
+- Threat 기준 상향: high는 `미보유 + trust_score=5`로 제한하고, 신호 감지는 기본 trust_score=5만 허용한다. `primary_new_entry`는 trust_score>=4부터 허용한다.
+- 실제 Hermes 검색 연결은 STEP 5로 연기한다.
+
 STEP 4 우선순위:
-1. 실제 Hermes 리서치 실행은 repo 밖 adapter layer에서 연결
-2. Research Adapter interface 입력/출력 계약 고정
+1. Orchestrator 구조 정비: Planning/Memory/CoT/RAG가 각 노드에서 일관되게 동작하는지 유지
+2. Research Adapter interface 입력/출력 계약 문서화
 3. Scheduler/Orchestrator 실행 로그와 재시도 정책 구현
 4. robots.txt/소스 whitelist/human review gate 유지
-5. 실제 검색 결과를 STEP 3 AnalysisBundle까지 E2E 검증
-6. 실패/부분 성공 시 fallback 및 alert 정책 정의
+5. 실패/부분 성공 시 fallback 및 alert 정책 정의
+6. STEP 5 실제 Hermes 검색 연결 준비
 
 STEP 4 전 확인 필요:
-- 실제 Hermes 리서치 도구 호출 위치와 인증 방식
-- 검색 소스 whitelist 최종 범위
 - 자동 실행 주기와 Slack/Obsidian 알림 범위
+- 실패 알림 대상과 재시도 횟수
 - 내부 삼성 매핑 레이어 도입 여부와 저장 위치
+- STEP 5 실제 Hermes 리서치 도구 호출 위치와 인증 방식

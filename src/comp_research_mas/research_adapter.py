@@ -17,7 +17,7 @@ class StubResearchAdapter(ResearchAdapter):
 
     def search(self, query_plan: dict[str, Any]) -> dict[str, Any]:
         results = []
-        primary = [q for q in query_plan["queries"] if q["priority"] == "primary"]
+        primary = [q for q in query_plan["queries"] if str(q["priority"]).startswith("primary")]
         selected = []
         offsets = {"Re": 0, "Ro": 2, "Sc": 0}
         for ctype in ("Re", "Ro", "Sc"):

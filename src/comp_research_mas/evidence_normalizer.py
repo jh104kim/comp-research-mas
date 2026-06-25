@@ -56,12 +56,14 @@ def trust_score(source_type: str) -> int:
 
 
 def threat_level(samsung_status: str, score: int) -> str:
-    if samsung_status == "미보유" and score >= 4:
+    if samsung_status == "미보유" and score == 5:
         return "high"
-    if samsung_status == "미보유" and score == 3:
+    if samsung_status == "미보유" and score in {3, 4}:
         return "medium"
-    if samsung_status == "대응중":
+    if samsung_status == "대응중" and score >= 4:
         return "medium"
+    if samsung_status == "대응중" and score == 3:
+        return "low"
     if samsung_status == "보유":
         return "low"
     return "none"
@@ -114,7 +116,7 @@ def normalize_raw_results(raw_results: dict[str, Any]) -> list[EvidenceItem]:
             product_or_series=raw.get("title", "확인필요"),
             source_name=raw.get("title", raw.get("source_url", "source")),
             is_primary=competitor in PRIMARY_COMPETITORS.get(ctype, []),
-            low_confidence=score < 3,
+            low_confidence=score < 3 or (status == "미보유" and score == 3),
             dynamic_tags=[],
         )
         candidates.append(EvidenceItem(**{**item.to_dict(), "dynamic_tags": dynamic_tags(raw, item)}))

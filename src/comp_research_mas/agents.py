@@ -6,6 +6,8 @@ from typing import Any
 from .config import MAX_ITERATIONS, PASS_SCORE, REPORT_TITLE
 from .models import CATEGORIES, NO_EVIDENCE_TEXT, PRIMARY_COMPETITORS, TYPE_LABELS, AnalysisBundle, EvidenceItem, ReportMetadata, SignalItem, ThreatItem, WorkflowState
 from .tools import evidence_to_dicts, parse_step1_raw_data
+from .rag import retrieve_related_evidence
+from .memory_store import previous_report_text
 
 DISPLAY_STATUS = {"보유": "보유", "미보유": "미보유", "대응중": "대응 중", "확인필요": "확인 필요"}
 
@@ -20,12 +22,16 @@ def load_raw_data_node(state: WorkflowState) -> WorkflowState:
 def writer_node(state: WorkflowState) -> WorkflowState:
     evidence = [EvidenceItem(**item) for item in state.get("evidence", [])]
     draft = write_step_report(evidence, analysis_bundle=state.get("analysis_bundle"), writer_directives=state.get("writer_directives", []), feedback=state.get("feedback"), iteration=int(state.get("iteration", 0)))
-    return {**state, "draft": draft, "status": "drafted"}
+    from .workflow_utils import append_reasoning
+    reasoning_log = append_reasoning(state, node="writer", step="RAG 기반 리포트 작성", reasoning="Evidence Ledger와 이전 리포트를 참조해 타입/경쟁사/카테고리별 근거를 보강한다", conclusion="draft 생성")
+    return {**state, "draft": draft, "reasoning_log": reasoning_log, "status": "drafted"}
 
 
 def critic_node(state: WorkflowState) -> WorkflowState:
     review = critique_step_report(state.get("draft", ""), state.get("evidence", []), int(state.get("iteration", 0)), analysis_bundle=state.get("analysis_bundle"))
-    return {**state, "score": review["score"], "feedback": review, "hard_fail": review["hard_fail"], "error_log": list(state.get("error_log", [])) + review["hard_fail_reasons"], "status": "reviewed"}
+    from .workflow_utils import append_reasoning
+    reasoning_log = append_reasoning(state, node="critic", step="품질 평가", reasoning="구조/삼성 비교/Gap Matrix/high threat/출처/최우선 경쟁사 기준으로 10점 rubric 평가", conclusion=f"score={review['score']}, hard_fail={review['hard_fail']}")
+    return {**state, "score": review["score"], "feedback": review, "hard_fail": review["hard_fail"], "error_log": list(state.get("error_log", [])) + review["hard_fail_reasons"], "reasoning_log": reasoning_log, "status": "reviewed"}
 
 
 def human_review_flag_node(state: WorkflowState) -> WorkflowState:
@@ -61,6 +67,9 @@ def write_step_report(evidence: list[EvidenceItem], *, analysis_bundle: dict[str
     lines.append(f"날짜: {evidence[0].week_id if evidence else (analysis_bundle or {}).get('week_id', 'STEP SAMPLE')}")
     lines.append("")
     lines.append("## 이번 주 핵심 동향 요약")
+    prev_report = previous_report_text()
+    if prev_report:
+        lines.append("- 지난 주 대비 변화: 이전 리포트가 존재하여 Gap Matrix/신규 신호 중심으로 변화 항목을 우선 비교")
     if writer_directives:
         lines.append("- Orchestrator 지시: " + " / ".join(writer_directives))
     if analysis_bundle:
@@ -115,6 +124,10 @@ def write_step_report(evidence: list[EvidenceItem], *, analysis_bundle: dict[str
                         lines.append(f"  - 위협도/신뢰도: {item.threat_level} / {item.trust_score}{(' / ' + low_note) if low_note else ''}")
                         lines.append(f"  - 동적 태그: {', '.join(item.dynamic_tags)}")
                         lines.append(f"  - 출처: {item.source_name} / {item.source_date}")
+                        related = retrieve_related_evidence(compressor_type=item.compressor_type, competitor=item.competitor, category=item.category)
+                        ref_ids = [r.get("evidence_id") for r in related if r.get("evidence_id")]
+                        if ref_ids:
+                            lines.append(f"  - RAG 참조 evidence_ids: {', '.join(ref_ids[:3])}")
                 else:
                     lines.append(f"- 내용: {NO_EVIDENCE_TEXT}")
                     lines.append("  - 삼성 비교 관점: 확인 필요")

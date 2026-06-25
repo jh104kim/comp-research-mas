@@ -49,3 +49,24 @@ def save_query_plan(plan: dict[str, Any], output_dir: str | Path = "outputs/sear
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(plan, ensure_ascii=False, indent=2), encoding="utf-8")
     return path
+
+
+def replan_query_plan(plan: dict[str, Any], *, evidence_count: int, threshold: int = 8) -> dict[str, Any]:
+    """Dynamic replanning for deterministic retrofit.
+
+    If evidence coverage is low, broaden primary queries to all categories and
+    mark the plan as replanned. The live Hermes connection remains a later step.
+    """
+    if evidence_count >= threshold or plan.get("replanned"):
+        return plan
+    week_id = plan["week_id"]
+    existing_ids = {q["query_id"] for q in plan["queries"]}
+    queries = list(plan["queries"])
+    for ctype in ("Re", "Ro", "Sc"):
+        for competitor in PRIMARY_COMPETITORS[ctype]:
+            for category in CATEGORIES:
+                q = _query(week_id, ctype, competitor, category, "primary-replan")
+                if q["query_id"] not in existing_ids:
+                    queries.append(q)
+                    existing_ids.add(q["query_id"])
+    return {**plan, "queries": queries, "replanned": True, "replan_reason": f"evidence_count {evidence_count} < threshold {threshold}"}

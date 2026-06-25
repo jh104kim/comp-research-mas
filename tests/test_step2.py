@@ -37,7 +37,8 @@ def test_trust_and_threat_rules():
     assert trust_score("trade_media") == 3
     assert threat_level("미보유", 5) == "high"
     assert threat_level("미보유", 3) == "medium"
-    assert threat_level("대응중", 3) == "medium"
+    assert threat_level("대응중", 4) == "medium"
+    assert threat_level("대응중", 3) == "low"
     assert threat_level("보유", 5) == "low"
     assert threat_level("확인필요", 5) == "none"
 

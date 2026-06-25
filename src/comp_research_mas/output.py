@@ -21,21 +21,47 @@ def save_step_outputs(state: WorkflowState, *, output_root: str | Path = "output
     week_id = state.get("week_id", "unknown")
     report_path = report_dir / f"{today}_compressor_weekly.md"
     review_path = review_dir / f"{today}_critic_review.json"
+    critic_cot_path = review_dir / f"{today}_critic_cot.json"
     evidence_path = evidence_dir / f"{week_id}_evidence.json"
 
     final_status = "saved" if not state.get("hard_fail") else "saved_human_review_required"
     meta = build_report_metadata({**state, "run_date": today, "status": final_status})
-    state = {**state, "report_meta": meta.to_dict()}
+    state = {**state, "report_meta": meta.to_dict(), "critic_cot_path": str(critic_cot_path)}
 
     report_path.write_text(state.get("draft", ""), encoding="utf-8")
-    review_payload: dict[str, Any] = {"score": state.get("score", 0), "feedback": state.get("feedback", {}), "iteration": state.get("iteration", 0), "status": final_status, "hard_fail": state.get("hard_fail", False), "error_log": state.get("error_log", []), "writer_directives": state.get("writer_directives", []), "analysis_path": state.get("analysis_path"), "report_meta": state.get("report_meta")}
+    review_payload: dict[str, Any] = {
+        "score": state.get("score", 0),
+        "feedback": state.get("feedback", {}),
+        "iteration": state.get("iteration", 0),
+        "status": final_status,
+        "hard_fail": state.get("hard_fail", False),
+        "error_log": state.get("error_log", []),
+        "writer_directives": state.get("writer_directives", []),
+        "analysis_path": state.get("analysis_path"),
+        "evidence_ledger_path": state.get("evidence_ledger_path"),
+        "gap_history_path": state.get("gap_history_path"),
+        "critic_cot_path": str(critic_cot_path),
+        "reasoning_log_count": len(state.get("reasoning_log", [])),
+        "report_meta": state.get("report_meta"),
+    }
     review_path.write_text(json.dumps(review_payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    critic_cot_payload = {
+        "week_id": week_id,
+        "score": state.get("score", 0),
+        "feedback": state.get("feedback", {}),
+        "reasoning_log": state.get("reasoning_log", []),
+    }
+    critic_cot_path.write_text(json.dumps(critic_cot_payload, ensure_ascii=False, indent=2), encoding="utf-8")
     evidence_payload = {"week_id": week_id, "evidence": state.get("evidence", []), "gap_table": state.get("gap_table", []), "sources": state.get("sources", []), "report_meta": state.get("report_meta")}
     evidence_path.write_text(json.dumps(evidence_payload, ensure_ascii=False, indent=2), encoding="utf-8")
 
-    output_paths = {"report": str(report_path), "review": str(review_path), "evidence": str(evidence_path)}
+    output_paths = {"report": str(report_path), "review": str(review_path), "critic_cot": str(critic_cot_path), "evidence": str(evidence_path)}
     if state.get("analysis_path"):
         output_paths["analysis"] = str(state["analysis_path"])
+    if state.get("evidence_ledger_path"):
+        output_paths["evidence_ledger"] = str(state["evidence_ledger_path"])
+    if state.get("gap_history_path"):
+        output_paths["gap_history"] = str(state["gap_history_path"])
     return {**state, "status": final_status, "output_paths": output_paths}
 
 

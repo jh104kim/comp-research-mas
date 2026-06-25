@@ -9,7 +9,7 @@ from comp_research_mas.models import EvidenceItem
 def test_gap_matrix_baseline_loads():
     baseline = load_gap_baseline("config/gap_matrix_baseline.yaml")
     assert baseline["Re"]["R290"]["MBP"]["samsung"] == "미보유"
-    assert baseline["Sc"]["R454B"]["Variable"]["samsung"] == "미보유"
+    assert baseline["Sc"]["R454B"]["Variable"]["samsung"] == "대응중"
 
 
 def _step3_evidence():
@@ -24,7 +24,7 @@ def test_analysis_bundle_schema_gap_and_signals():
     bundle = build_analysis_bundle(_step3_evidence(), "2026-26")
     data = bundle.to_dict()
     assert data["baseline_used"] == "gap_matrix_baseline.yaml"
-    assert data["gap_matrix"]["Sc"]["R454B"]["Variable"]["threat_level"] == "high"
+    assert data["gap_matrix"]["Re"]["R290"]["MBP"]["threat_level"] == "high"
     assert any(t["threat_level"] == "high" for t in data["threat_summary"])
     signal_types = {s["signal_type"] for s in data["new_signals"]}
     assert "primary_new_entry" in signal_types
@@ -36,7 +36,8 @@ def test_analysis_bundle_schema_gap_and_signals():
 def test_analyst_threat_rules():
     assert analyst_threat_level("미보유", 5) == "high"
     assert analyst_threat_level("미보유", 3) == "medium"
-    assert analyst_threat_level("대응중", 3) == "medium"
+    assert analyst_threat_level("대응중", 4) == "medium"
+    assert analyst_threat_level("대응중", 3) == "low"
     assert analyst_threat_level("보유", 5) == "low"
     assert analyst_threat_level("확인필요", 5) == "none"
 

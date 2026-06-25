@@ -213,3 +213,8 @@ class WorkflowState(TypedDict, total=False):
     analysis_bundle: dict[str, Any] | None
     analysis_path: str
     writer_directives: list[str]
+    reasoning_log: list[dict[str, str]]
+    evidence_ledger_path: str
+    gap_history_path: str
+    critic_cot_path: str
+    replan_count: int

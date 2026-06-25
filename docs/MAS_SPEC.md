@@ -180,3 +180,38 @@ Level 1: 압축기 타입, Re / Ro / Sc
 ## 5. 공식 구현 계획
 
 상세 구현 순서와 애매한 질문은 `docs/PROJECT_PLAN.md`를 기준으로 한다.
+
+
+## 6. Planning / Memory / CoT / RAG Retrofit
+
+### Planning
+
+- Query Planner는 최초 evidence_count가 임계값보다 작으면 primary query를 확장하고 1회 재실행한다.
+- Analyst가 empty이면 evidence 기반 fallback을 명시한다.
+
+### Memory
+
+- Evidence Ledger: `outputs/memory/evidence_ledger.json`
+- Gap Matrix History: `outputs/memory/gap_matrix_history.json`
+- 모든 memory 산출물은 로컬 outputs에만 저장하고 commit하지 않는다.
+
+### CoT / Reasoning Log
+
+- `WorkflowState.reasoning_log`에 노드별 판단 근거를 저장한다.
+- Critic CoT는 `outputs/reviews/YYYY-MM-DD_critic_cot.json`에 저장한다.
+
+### RAG
+
+- Writer는 Evidence Ledger에서 타입+경쟁사+카테고리 기준 관련 evidence를 검색한다.
+- 리포트에는 참조 evidence_ids를 명시한다.
+
+### Threat 기준
+
+- 미보유 + trust_score=5: high
+- 미보유 + trust_score=4: medium
+- 미보유 + trust_score=3: medium + low_confidence
+- 대응중 + trust_score>=4: medium
+- 대응중 + trust_score=3: low
+- 보유: low
+- 확인필요: none
+- 이상 신호는 기본 trust_score=5만 허용한다. 단, primary_new_entry는 trust_score>=4부터 허용한다.

@@ -8,6 +8,7 @@ from typing import Any
 
 import yaml
 
+from .memory_store import previous_gap_matrix
 from .models import AnalysisBundle, EvidenceItem, PRIMARY_COMPETITORS, SignalItem, ThreatItem
 
 BASELINE_PATH = Path("config/gap_matrix_baseline.yaml")
@@ -18,15 +19,23 @@ def load_gap_baseline(path: str | Path = BASELINE_PATH) -> dict[str, Any]:
 
 
 def analyst_threat_level(samsung_status: str, trust_score: int) -> str:
-    if samsung_status == "미보유" and trust_score >= 4:
+    if samsung_status == "미보유" and trust_score == 5:
         return "high"
-    if samsung_status == "미보유" and trust_score >= 3:
+    if samsung_status == "미보유" and trust_score in {3, 4}:
         return "medium"
-    if samsung_status == "대응중":
+    if samsung_status == "대응중" and trust_score >= 4:
         return "medium"
+    if samsung_status == "대응중" and trust_score == 3:
+        return "low"
     if samsung_status == "보유":
         return "low"
     return "none"
+
+
+def signal_allowed(signal_type: str, trust_score: int) -> bool:
+    if signal_type == "primary_new_entry":
+        return trust_score >= 4
+    return trust_score == 5
 
 
 def infer_condition(item: EvidenceItem, baseline: dict[str, Any]) -> str:
@@ -63,8 +72,23 @@ def baseline_status(matrix: dict[str, Any], ctype: str, refrigerant: str, condit
     return "확인필요"
 
 
+def _previous_cell_status(prev_matrix: dict[str, Any] | None, ctype: str, ref: str, condition: str) -> str | None:
+    if not prev_matrix:
+        return None
+    node = prev_matrix.get(ctype, {}).get(ref)
+    if not isinstance(node, dict):
+        return None
+    if "samsung_status" in node or "samsung" in node:
+        return node.get("samsung_status") or node.get("samsung")
+    cell = node.get(condition)
+    if isinstance(cell, dict):
+        return cell.get("samsung_status") or cell.get("samsung")
+    return None
+
+
 def build_analysis_bundle(evidence: list[EvidenceItem], week_id: str, baseline_path: str | Path = BASELINE_PATH) -> AnalysisBundle:
     baseline = load_gap_baseline(baseline_path)
+    prev_matrix = previous_gap_matrix(week_id)
     matrix = copy.deepcopy(baseline)
     threats: list[ThreatItem] = []
     signals: list[SignalItem] = []
@@ -92,21 +116,23 @@ def build_analysis_bundle(evidence: list[EvidenceItem], week_id: str, baseline_p
             entries_by_gap[(item.compressor_type, ref, condition)].append(item)
             if level in {"high", "medium", "low"}:
                 threats.append(ThreatItem(item.compressor_type, ref, condition, item.competitor, level, item.trust_score, [item.to_dict()["evidence_id"]]))
-            if samsung == "미보유" and item.competitor in PRIMARY_COMPETITORS.get(item.compressor_type, []):
+            if samsung == "미보유" and item.competitor in PRIMARY_COMPETITORS.get(item.compressor_type, []) and signal_allowed("primary_new_entry", item.trust_score):
                 signals.append(SignalItem("primary_new_entry", f"★ 최우선 {item.competitor}가 {item.compressor_type}/{ref}/{condition} 삼성 미보유 구간에 진입", item.competitor, item.trust_score, week_id))
-            if samsung == "미보유":
+            if samsung == "미보유" and signal_allowed("new_refrigerant", item.trust_score):
                 signals.append(SignalItem("new_refrigerant", f"삼성 미보유 냉매 {ref} 구간에서 {item.competitor} 근거 감지", item.competitor, item.trust_score, week_id))
-            if "재등장" in item.raw_text or "2주" in item.raw_text or "spec_change" in item.dynamic_tags:
+            if ("재등장" in item.raw_text or "2주" in item.raw_text or "spec_change" in item.dynamic_tags) and signal_allowed("spec_change", item.trust_score):
                 signals.append(SignalItem("spec_change", f"동일 모델 단기 재등장/스펙 급변 후보: {item.product_or_series}", item.competitor, item.trust_score, week_id))
+            prev_status = _previous_cell_status(prev_matrix, item.compressor_type, ref, condition)
+            if prev_status and prev_status != samsung and signal_allowed("spec_change", item.trust_score):
+                signals.append(SignalItem("spec_change", f"전주 대비 Gap 상태 변경: {item.compressor_type}/{ref}/{condition} {prev_status}→{samsung}", item.competitor, item.trust_score, week_id))
 
     for (ctype, ref, condition), items in entries_by_gap.items():
         competitors = sorted({item.competitor for item in items})
         samsung = baseline_status(matrix, ctype, ref, condition)
-        if samsung == "미보유" and len(competitors) >= 2:
-            max_score = max(item.trust_score for item in items)
+        max_score = max(item.trust_score for item in items)
+        if samsung == "미보유" and len(competitors) >= 2 and signal_allowed("multi_competitor_entry", max_score):
             signals.append(SignalItem("multi_competitor_entry", f"{ctype}/{ref}/{condition} 삼성 미보유 구간에 복수 경쟁사 동시 진입: {', '.join(competitors)}", ", ".join(competitors), max_score, week_id))
 
-    # Deduplicate signals by type/description.
     seen = set()
     unique_signals = []
     for signal in signals:
