@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from collections import defaultdict
+from datetime import date
 from typing import Any
 
 from .config import MAX_ITERATIONS, PASS_SCORE, REPORT_TITLE
@@ -10,6 +11,30 @@ from .rag import retrieve_related_evidence
 from .memory_store import previous_report_text
 
 DISPLAY_STATUS = {"보유": "보유", "미보유": "미보유", "대응중": "대응 중", "확인필요": "확인 필요"}
+
+EVIDENCE_THRESHOLD = {"exhibition": 8, "backfill": 4, "normal": 6}
+PRIMARY_TYPE_COVERAGE = {
+    "Re": ["GMCC/Midea", "LG"],
+    "Ro": ["GMCC/Midea", "LG"],
+    "Sc": ["Copeland/Emerson"],
+}
+EXHIBITION_MONTHS = {1, 4, 10}
+
+
+def get_period_context(period_id: str) -> str:
+    """Return normal/exhibition/backfill context for dynamic evidence thresholds."""
+    try:
+        year_s, month_s = str(period_id).split("-")[:2]
+        year, month = int(year_s), int(month_s)
+    except Exception:
+        return "normal"
+    if month in EXHIBITION_MONTHS:
+        return "exhibition"
+    today = date.today()
+    months_old = (today.year - year) * 12 + (today.month - month)
+    if year <= 2025 or months_old >= 2:
+        return "backfill"
+    return "normal"
 
 
 def load_raw_data_node(state: WorkflowState) -> WorkflowState:
@@ -211,11 +236,14 @@ def critique_step1_report(draft: str, evidence_dicts: list[dict[str, Any]], iter
 
 def critique_step_report(draft: str, evidence_dicts: list[dict[str, Any]], iteration: int = 0, *, analysis_bundle: dict[str, Any] | None = None) -> dict[str, Any]:
     evidence = [EvidenceItem(**item) for item in evidence_dicts]
+    period_id = _infer_period_id(evidence, analysis_bundle)
+    period_context = get_period_context(period_id)
+    evidence_threshold = EVIDENCE_THRESHOLD[period_context]
     findings: list[str] = []
     fixes: list[str] = []
     hard_fail_reasons: list[str] = []
-    score = 0
-    breakdown: dict[str, int] = {}
+    score: float = 0
+    breakdown: dict[str, Any] = {"period_context": period_context, "evidence_threshold_used": evidence_threshold}
     writer_directives: list[str] = []
 
     structure_score, structure_fix = _score_structure(draft)
@@ -245,14 +273,23 @@ def critique_step_report(draft: str, evidence_dicts: list[dict[str, Any]], itera
         fixes.append(gap_fix)
         writer_directives.append("삼성 Gap 종합 현황 표 재작성")
 
-    evidence_score, evidence_fix = _score_evidence_quality(evidence)
-    breakdown["evidence"] = evidence_score
-    score += evidence_score
-    if evidence_score == 1:
-        findings.append("evidence_count >= 6 및 GMCC/LG/Copeland 근거 포함")
+    volume_score, volume_fix, low_confidence = _score_evidence_volume(evidence, evidence_threshold)
+    breakdown["evidence_volume"] = volume_score
+    score += volume_score
+    if volume_score == 1:
+        findings.append(f"evidence_count >= {evidence_threshold} ({period_context})")
     else:
-        fixes.append(evidence_fix)
-        writer_directives.append("근거 부족: GMCC·LG·Copeland 최소 1개씩 재검색/보강")
+        fixes.append(volume_fix)
+        writer_directives.append(f"재검색 권장: {period_context} 기준 evidence threshold {evidence_threshold} 미달")
+
+    type_score, type_fix = _score_primary_type_coverage(evidence)
+    breakdown["primary_type_coverage"] = type_score
+    score += type_score
+    if type_score == 1:
+        findings.append("Re/Ro/Sc 타입별 최우선 경쟁사 기준 충족")
+    else:
+        fixes.append(type_fix)
+        writer_directives.append("재검색 권장: Re/Ro/Sc 타입별 최우선 경쟁사 coverage 보강")
 
     source_score, source_fix = _score_source_trust(evidence)
     breakdown["source_trust"] = source_score
@@ -261,16 +298,7 @@ def critique_step_report(draft: str, evidence_dicts: list[dict[str, Any]], itera
         findings.append("trust_score >= 4 출처 최소 2개 포함")
     else:
         fixes.append(source_fix)
-        writer_directives.append("출처 목록: trust_score >= 4 공식/전시/학술/특허 출처 보강")
-
-    primary_score, primary_fix = _score_primary_coverage(draft)
-    breakdown["primary_competitor_coverage"] = primary_score
-    score += primary_score
-    if primary_score == 1:
-        findings.append("GMCC·LG(Re/Ro) + Copeland(Sc) 실제 내용 포함")
-    else:
-        fixes.append(primary_fix)
-        writer_directives.append("최우선 경쟁사 섹션: 해당 없음 외 실제 내용 보강")
+        writer_directives.append("재검색 권장: trust_score >= 4 공식/전시/학술/특허 출처 보강")
 
     high_threats = (analysis_bundle or {}).get("threat_summary", []) if analysis_bundle else []
     has_high = any(t.get("threat_level") == "high" for t in high_threats) or any(item.threat_level == "high" for item in evidence)
@@ -284,9 +312,11 @@ def critique_step_report(draft: str, evidence_dicts: list[dict[str, Any]], itera
         hard_fail_reasons.append("타입 전체 누락")
     if "삼성 비교 관점" not in draft:
         hard_fail_reasons.append("삼성 관점 전체 누락")
-    if primary_score == 0 and all(f"#### {competitor}" not in draft for comps in PRIMARY_COMPETITORS.values() for competitor in comps):
+    primary_all_missing = all(item.competitor not in _primary_competitors_set() for item in evidence) and all(f"#### {competitor}" not in draft for comps in PRIMARY_COMPETITORS.values() for competitor in comps)
+    if primary_all_missing:
         hard_fail_reasons.append("★ 최우선 경쟁사 전체 누락")
 
+    breakdown["total"] = score
     hard_fail = bool(hard_fail_reasons)
     debate_points = build_debate_points(score, fixes, hard_fail, breakdown=breakdown)
     return {
@@ -297,10 +327,23 @@ def critique_step_report(draft: str, evidence_dicts: list[dict[str, Any]], itera
         "writer_directives": writer_directives,
         "debate_points": debate_points,
         "rubric_breakdown": breakdown,
+        "low_confidence": low_confidence or source_score == 0.5 or type_score < 1,
         "hard_fail": hard_fail,
         "hard_fail_reasons": hard_fail_reasons,
         "iteration": iteration,
     }
+
+
+def _infer_period_id(evidence: list[EvidenceItem], analysis_bundle: dict[str, Any] | None = None) -> str:
+    if analysis_bundle and analysis_bundle.get("period_id"):
+        return str(analysis_bundle["period_id"])
+    if evidence:
+        return evidence[0].period_id or evidence[0].week_id
+    return "unknown"
+
+
+def _primary_competitors_set() -> set[str]:
+    return {competitor for competitors in PRIMARY_TYPE_COVERAGE.values() for competitor in competitors}
 
 
 def _score_structure(draft: str) -> tuple[int, str]:
@@ -349,19 +392,34 @@ def _score_gap_matrix(draft: str) -> tuple[int, str]:
     return 1, "Gap Matrix에 일부 타입/냉매/위협도 행이 누락되었습니다."
 
 
-def _score_evidence_quality(evidence: list[EvidenceItem]) -> tuple[int, str]:
-    names = {item.competitor for item in evidence}
-    ok_competitors = {"GMCC/Midea", "LG", "Copeland/Emerson"}.issubset(names)
-    if len(evidence) >= 6 and ok_competitors:
+def _score_evidence_volume(evidence: list[EvidenceItem], threshold: int) -> tuple[float, str, bool]:
+    count = len(evidence)
+    if count >= threshold:
+        return 1, "", False
+    if count >= max(1, threshold // 2):
+        return 0.5, f"evidence_count {count}건이 threshold {threshold} 미만입니다(low_confidence).", True
+    return 0, f"evidence_count {count}건이 threshold {threshold}의 절반 미만입니다.", True
+
+
+def _score_primary_type_coverage(evidence: list[EvidenceItem]) -> tuple[float, str]:
+    missing: list[str] = []
+    for ctype, competitors in PRIMARY_TYPE_COVERAGE.items():
+        if not any(item.compressor_type == ctype and item.competitor in competitors for item in evidence):
+            missing.append(f"{ctype}:{'/'.join(competitors)}")
+    if not missing:
         return 1, ""
-    return 0, "evidence_count가 6 미만이거나 GMCC·LG·Copeland 근거가 부족합니다."
+    if len(missing) < len(PRIMARY_TYPE_COVERAGE):
+        return 0.5, "타입별 최우선 경쟁사 coverage 일부 부족: " + ", ".join(missing)
+    return 0, "Re/Ro/Sc 타입별 최우선 경쟁사 coverage 전체 부족"
 
 
-def _score_source_trust(evidence: list[EvidenceItem]) -> tuple[int, str]:
+def _score_source_trust(evidence: list[EvidenceItem]) -> tuple[float, str]:
     high_sources = {(item.source_name, item.source_url) for item in evidence if item.trust_score >= 4}
     if len(high_sources) >= 2:
         return 1, ""
-    return 0, "trust_score >= 4 출처가 2개 미만입니다."
+    if len(high_sources) == 1:
+        return 0.5, "trust_score >= 4 출처가 1개뿐입니다(low_confidence)."
+    return 0, "trust_score >= 4 출처가 없습니다."
 
 
 def _score_primary_coverage(draft: str) -> tuple[int, str]:
@@ -399,7 +457,7 @@ def _primary_blocks(draft: str) -> dict[tuple[str, str], str]:
     return blocks
 
 
-def build_debate_points(score: int, fixes: list[str], hard_fail: bool, *, breakdown: dict[str, int] | None = None) -> list[dict[str, str]]:
+def build_debate_points(score: float, fixes: list[str], hard_fail: bool, *, breakdown: dict[str, Any] | None = None) -> list[dict[str, str]]:
     if score >= 9 or not fixes:
         return []
     severity = "minor" if score >= 7 else "major"

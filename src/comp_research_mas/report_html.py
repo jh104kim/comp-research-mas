@@ -171,12 +171,32 @@ def _recommended_action(status: str, threat: str) -> tuple[str, str]:
     return "모니터링 유지", "P2"
 
 
+def _is_stub_url(url: Any) -> bool:
+    value = str(url or "")
+    return "example.com" in value or value.startswith("manual://")
+
+
+def _stub_source_badge() -> str:
+    return '<span class="badge stub-source" style="background:#EBEBEB;color:#717171;font-style:italic">stub 데이터 — 실제 출처 없음</span>'
+
+
 def _source_link(item: dict[str, Any]) -> str:
     url = item.get("source_url") or item.get("source") or ""
     name = item.get("source_name") or item.get("title") or item.get("source_type") or "출처"
-    if str(url).startswith("https://"):
+    if _is_stub_url(url):
+        return _stub_source_badge()
+    if str(url).startswith(("https://", "http://")):
         return f'<a href="{_esc(url)}" target="_blank" rel="noopener">{_esc(name)}</a>'
     return _esc(name)
+
+
+def _source_url_display(item: dict[str, Any]) -> str:
+    url = item.get("source_url") or item.get("source") or ""
+    if _is_stub_url(url):
+        return _stub_source_badge()
+    if str(url).startswith(("https://", "http://")):
+        return f'<a href="{_esc(url)}" target="_blank" rel="noopener">{_esc(url)}</a>'
+    return _esc(url or "출처 URL 없음")
 
 
 def _markdown_section(draft: str, heading: str) -> str:
@@ -252,6 +272,46 @@ def _category_insight_text(category: str, items: list[dict[str, Any]]) -> list[s
     return lines
 
 
+
+def _period_context_from_state(state: dict[str, Any]) -> str:
+    breakdown = (state.get("feedback") or {}).get("rubric_breakdown") or {}
+    if breakdown.get("period_context"):
+        return str(breakdown["period_context"])
+    period = _period_id(state)
+    try:
+        year_s, month_s = period.split("-")[:2]
+        year, month = int(year_s), int(month_s)
+    except Exception:
+        return "normal"
+    if month in {1, 4, 10}:
+        return "exhibition"
+    now = datetime.now()
+    if year <= 2025 or (now.year - year) * 12 + (now.month - month) >= 2:
+        return "backfill"
+    return "normal"
+
+
+def _period_context_badge(context: str) -> str:
+    label = {"normal": "기본 월간", "exhibition": "🎪 전시회 월 (boost 적용)", "backfill": "📦 과거 데이터"}.get(context, context)
+    level = "medium" if context == "exhibition" else "data_insufficient" if context == "backfill" else "none"
+    return _badge(label, level, cls="period-context")
+
+
+def _critic_review_summary(state: dict[str, Any]) -> str:
+    breakdown = (state.get("feedback") or {}).get("rubric_breakdown") or {}
+    if not breakdown:
+        return '<section class="card"><h2>Critic Review Summary</h2><p class="muted">Critic rubric breakdown 없음</p></section>'
+    max_scores = {"structure": 2, "samsung_comparison": 3, "gap_matrix": 2, "evidence_volume": 1, "primary_type_coverage": 1, "source_trust": 1}
+    rows = []
+    for key, max_score in max_scores.items():
+        value = float(breakdown.get(key, 0) or 0)
+        pct = 0 if max_score == 0 else max(0, min(100, value / max_score * 100))
+        rows.append(f'<div class="rubric-row"><span>{_esc(key)}</span><div class="rubric-track"><div class="rubric-fill" style="width:{pct:.0f}%"></div></div><strong>{_esc(value)}/{max_score}</strong></div>')
+    context = str(breakdown.get("period_context") or _period_context_from_state(state))
+    threshold = breakdown.get("evidence_threshold_used", "n/a")
+    low = _badge("low_confidence", "data_insufficient") if (state.get("feedback") or {}).get("low_confidence") or any(e.get("low_confidence") for e in _evidence(state)) else ""
+    return f'<section class="card critic-review-summary"><h2>Critic Review Summary</h2><p>{_period_context_badge(context)} <span class="pill" style="background:#F7F7F7;color:#222">evidence_threshold_used={_esc(threshold)}</span> {low}</p><div class="rubric-bars">{"".join(rows)}</div></section>'
+
 def _css() -> str:
     return f"""
 <style>
@@ -283,6 +343,7 @@ table{{width:100%;border-collapse:separate;border-spacing:0;border:1px solid var
 details{{border-top:1px solid var(--line);padding:14px 0}} summary{{font-weight:900;cursor:pointer}}
 .footer-sources{{background:#F7F7F7}} .source-group{{margin:18px 0}} .source-used{{outline:2px solid var(--samsung-blue)}}
 .trend-list li{{margin-bottom:8px}} .insight-columns{{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}}
+.rubric-row{{display:grid;grid-template-columns:190px 1fr 70px;gap:12px;align-items:center;margin:10px 0}} .rubric-track{{height:12px;border-radius:999px;background:#EBEBEB;overflow:hidden}} .rubric-fill{{height:100%;background:linear-gradient(90deg,var(--samsung-blue),var(--category-purple));border-radius:999px}}
 @media(max-width:980px){{.kpi-grid{{grid-template-columns:repeat(2,1fr)}}.grid-2,.grid-3,.insight-columns{{grid-template-columns:1fr}}.heatmap-row{{grid-template-columns:1fr}}.hero h1{{font-size:30px}}}}
 </style>
 """
@@ -340,16 +401,18 @@ def build_executive_dashboard(state: dict[str, Any]) -> str:
     for row in rows[:18]:
         action, priority = _recommended_action(row.get("samsung_status", "확인필요"), row.get("threat_level", "none"))
         q_badge = _badge("데이터 부족", "data_insufficient") if row.get("period_evidence_quality") == "data_insufficient" else ""
+        source_item = (row.get("competitors") or [{}])[0] if row.get("competitors") else {}
         decision_rows.append(
-            f'<tr class="{_threat_class(row.get("threat_level"))}"><td>{_esc(row.get("compressor_type"))}</td><td>{_esc(row.get("refrigerant"))}</td><td>{_esc(row.get("condition"))}</td><td>{_badge(row.get("threat_level"), row.get("threat_level"))}</td><td>{_esc(row.get("competitor_names"))} {q_badge}</td><td>{_badge(_status_label(row.get("samsung_status", "확인필요")), row.get("samsung_status"))}</td><td>{_esc(action)}</td><td>{_badge(priority, "high" if priority == "P0" else "medium" if priority == "P1" else "none")}</td></tr>'
+            f'<tr class="{_threat_class(row.get("threat_level"))}"><td>{_esc(row.get("compressor_type"))}</td><td>{_esc(row.get("refrigerant"))}</td><td>{_esc(row.get("condition"))}</td><td>{_badge(row.get("threat_level"), row.get("threat_level"))}</td><td>{_esc(row.get("competitor_names"))} {q_badge}</td><td>{_badge(_status_label(row.get("samsung_status", "확인필요")), row.get("samsung_status"))}</td><td>{_source_link(source_item)}</td><td>{_esc(action)}</td><td>{_badge(priority, "high" if priority == "P0" else "medium" if priority == "P1" else "none")}</td></tr>'
         )
     if not decision_rows:
-        decision_rows.append('<tr><td colspan="8">이번 달 확인된 Gap Matrix 근거 없음</td></tr>')
+        decision_rows.append('<tr><td colspan="9">이번 달 확인된 Gap Matrix 근거 없음</td></tr>')
     return f"""
 <section class="layer active" id="layer-dashboard" data-target-group="main-layer">
   <div class="kpi-grid">{kpi_html}</div>
   {insight_html}
-  <section class="card"><h2>Decision Matrix</h2><p class="muted">권장액션 정책: 미보유+high → 즉시 라인업 검토 · 미보유+medium → 6개월 내 대응 계획 · 대응중+medium → 진행 상황 점검 · 보유+low → 유지</p><table class="decision-matrix"><thead><tr><th>타입</th><th>냉매</th><th>조건</th><th>위협도</th><th>경쟁사</th><th>삼성현황</th><th>권장액션</th><th>우선순위</th></tr></thead><tbody>{''.join(decision_rows)}</tbody></table></section>
+  {_critic_review_summary(state)}
+  <section class="card"><h2>Decision Matrix</h2><p class="muted">권장액션 정책: 미보유+high → 즉시 라인업 검토 · 미보유+medium → 6개월 내 대응 계획 · 대응중+medium → 진행 상황 점검 · 보유+low → 유지</p><table class="decision-matrix"><thead><tr><th>타입</th><th>냉매</th><th>조건</th><th>위협도</th><th>경쟁사</th><th>삼성현황</th><th>출처</th><th>권장액션</th><th>우선순위</th></tr></thead><tbody>{''.join(decision_rows)}</tbody></table></section>
   {_build_trend_insights(state)}
   {_build_positioning_map(state)}
   {_build_monthly_changes(state)}
@@ -490,7 +553,7 @@ def build_category_insights(state: dict[str, Any]) -> str:
         source_cards = []
         for item in items:
             low = int(item.get("trust_score", 0)) < 4
-            source_cards.append(f'<div class="source-card"><strong>{_source_link(item)}</strong> {_badge(item.get("source_type", "source"), item.get("source_type"))} {_badge("trust=" + str(item.get("trust_score")), "medium" if low else "low")} { _badge("저신뢰 — 단정 금지", "medium") if low else ""}<br><span class="muted">URL: {_esc(item.get("source_url"))} · 날짜: {_esc(item.get("source_date"))}</span></div>')
+            source_cards.append(f'<div class="source-card"><strong>{_source_link(item)}</strong> {_badge(item.get("source_type", "source"), item.get("source_type"))} {_badge("trust=" + str(item.get("trust_score")), "medium" if low else "low")} { _badge("저신뢰 — 단정 금지", "medium") if low else ""}<br><span class="muted">URL: {_source_url_display(item)} · 날짜: {_esc(item.get("source_date"))}</span></div>')
         source_html = ''.join(source_cards) or '<p class="muted">이번 달 확인된 고신뢰 근거 없음</p>'
         panels.append(f"""
 <div class="tab-panel {'active' if idx == 0 else ''}" id="cat-{_slug(cat)}" data-target-group="category-tabs">
@@ -528,7 +591,7 @@ def build_competitor_deepdive(state: dict[str, Any]) -> str:
             body = ''.join(f'<li>{_esc(i.get("raw_text") or i.get("summary"))} {_badge(i.get("threat_level", "none"), i.get("threat_level", "none"))} {_source_link(i)}</li>' for i in cat_items) or '<li class="muted">이번 달 확인된 고신뢰 근거 없음</li>'
             cat_details.append(f'<details><summary>{_esc(cat)}</summary><ul>{body}</ul></details>')
         ahead = [i for i in items if i.get("samsung_status") in {"미보유", "대응중"}]
-        source_cards = ''.join(f'<div class="source-card">{_source_link(i)} {_badge(i.get("source_type", "source"), i.get("source_type"))} {_badge("trust=" + str(i.get("trust_score")), "medium" if int(i.get("trust_score",0)) < 4 else "low")}<br><span class="muted">{_esc(i.get("source_url"))} · {_esc(i.get("source_date"))}</span></div>' for i in items) or '<p class="muted">이번 달 확인된 고신뢰 근거 없음</p>'
+        source_cards = ''.join(f'<div class="source-card">{_source_link(i)} {_badge(i.get("source_type", "source"), i.get("source_type"))} {_badge("trust=" + str(i.get("trust_score")), "medium" if int(i.get("trust_score",0)) < 4 else "low")}<br><span class="muted">{_source_url_display(i)} · {_esc(i.get("source_date"))}</span></div>' for i in items) or '<p class="muted">이번 달 확인된 고신뢰 근거 없음</p>'
         sections.append(f"""
 <details class="competitor-deepdive"{open_attr}><summary>{'★ ' if comp in _primary_competitors() else ''}{_esc(comp)} 심화 보고서</summary>
   {_competitor_profile(comp, items)}
@@ -631,7 +694,7 @@ def build_full_report(state: dict[str, Any]) -> str:
 <html lang="ko">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">{_css()}<title>{_esc(title)}</title></head>
 <body>
-  <header class="hero"><div class="container"><h1>{_esc(title)}</h1><div class="hero-meta"><span class="pill">기간 { _esc(period) }</span><span class="pill">생성 { _esc(generated_at) }</span><span class="pill">Auto-approve { _esc('승인' if auto else '미승인/미평가') }</span><span class="pill">Guardian { _esc(guardian) }</span><span class="pill">Data { _esc(quality) }</span></div></div></header>
+  <header class="hero"><div class="container"><h1>{_esc(title)}</h1><div class="hero-meta"><span class="pill">기간 { _esc(period) }</span><span class="pill">생성 { _esc(generated_at) }</span><span class="pill">Auto-approve { _esc('승인' if auto else '미승인/미평가') }</span><span class="pill">Guardian { _esc(guardian) }</span><span class="pill">Data { _esc(quality) }</span>{_period_context_badge(_period_context_from_state(state))}</div></div></header>
   <main class="container"><nav class="layer-nav">{nav}</nav>{build_executive_dashboard(state)}{build_comparison_analysis(state)}{build_category_insights(state)}{build_competitor_deepdive(state)}{build_source_reference(state)}</main>{_js()}
 </body></html>
 """

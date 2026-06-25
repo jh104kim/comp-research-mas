@@ -7,6 +7,7 @@ from typing import Any
 
 import yaml
 
+from .agents import EVIDENCE_THRESHOLD, get_period_context
 from .analyst import build_analysis_bundle
 from .evidence_normalizer import normalize_raw_results
 from .memory_store import append_evidence_ledger, append_gap_history, read_gap_history
@@ -21,7 +22,7 @@ RESEARCH_PERIODS = [
     "2026-04", "2026-05", "2026-06",
 ]
 
-DEFAULT_EVIDENCE_THRESHOLD = 10
+DEFAULT_EVIDENCE_THRESHOLD = EVIDENCE_THRESHOLD["normal"]
 EXHIBITION_CALENDAR_PATH = Path("config/exhibition_calendar.yaml")
 
 
@@ -56,7 +57,7 @@ def build_backfill_plan(periods: list[str]) -> dict[str, Any]:
         for query in plan["queries"]:
             query["date_range"] = _period_date_range(period)
             query["keywords"] = _period_keywords(query, period)
-        period_plans.append({"period_id": period, "evidence_quality_threshold": DEFAULT_EVIDENCE_THRESHOLD, "source_boosts": boosts, "query_plan": plan})
+        period_plans.append({"period_id": period, "period_context": get_period_context(period), "evidence_quality_threshold": EVIDENCE_THRESHOLD[get_period_context(period)], "source_boosts": boosts, "query_plan": plan})
     return {"periods": period_plans, "period_count": len(period_plans)}
 
 
@@ -78,9 +79,10 @@ def run_backfill(*, from_period: str = "2025-07", to_period: str = "2026-06", dr
         raw_results["period_id"] = period
         save_raw_results(raw_results)
         evidence = normalize_raw_results(raw_results)
-        evidence_quality = _evidence_quality(len(evidence), evidence_threshold)
+        threshold = EVIDENCE_THRESHOLD[get_period_context(period)] if evidence_threshold == DEFAULT_EVIDENCE_THRESHOLD else evidence_threshold
+        evidence_quality = _evidence_quality(len(evidence), threshold)
         evidence_dicts = [_tag_evidence_quality(item.to_dict(), evidence_quality) for item in evidence]
-        ledger_path = append_evidence_ledger(query_plan["week_id"], evidence_dicts, [{"node": "backfill", "step": "period research", "judgment": evidence_quality, "reasoning": f"evidence_count={len(evidence)} threshold={evidence_threshold}", "tool_used": False, "rag_used": False, "conclusion": period}], period_id=period)
+        ledger_path = append_evidence_ledger(query_plan["week_id"], evidence_dicts, [{"node": "backfill", "step": "period research", "judgment": evidence_quality, "reasoning": f"evidence_count={len(evidence)} threshold={threshold}", "tool_used": False, "rag_used": False, "conclusion": period}], period_id=period)
         bundle = build_analysis_bundle(evidence, query_plan["week_id"])
         bundle_dict = bundle.to_dict()
         bundle_dict["period_id"] = period
@@ -98,6 +100,8 @@ def run_backfill(*, from_period: str = "2025-07", to_period: str = "2026-06", dr
             "evidence_quality": evidence_quality,
             "data_insufficient": evidence_quality == "data_insufficient",
             "source_boosts": period_item["source_boosts"],
+            "period_context": get_period_context(period),
+            "evidence_threshold_used": threshold,
             "gap_matrix": bundle_dict["gap_matrix"],
             "threat_count": len(bundle_dict.get("threat_summary", [])),
             "signal_count": len(bundle_dict.get("new_signals", [])),
@@ -114,6 +118,7 @@ def run_backfill(*, from_period: str = "2025-07", to_period: str = "2026-06", dr
         "state_changes": changes,
         "period_count": len(snapshots),
         "evidence_threshold": evidence_threshold,
+        "dynamic_evidence_thresholds": EVIDENCE_THRESHOLD,
         "memory_periods": sorted(read_gap_history().get("periods", {}).keys()),
     }
     summary_path = Path("outputs/analysis/backfill_gap_summary.json")

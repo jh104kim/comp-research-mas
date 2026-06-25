@@ -10,10 +10,11 @@ from comp_research_mas.models import CATEGORIES
 
 def _sample_state():
     evidence = [
-        {"compressor_type": "Re", "competitor": "GMCC/Midea", "category": "신냉매·냉매전환", "threat_level": "high", "trust_score": 5, "raw_text": "GMCC R290 MBP 신규 진입. 삼성 미보유", "summary": "GMCC R290", "samsung_status": "미보유", "source_name": "GMCC Official", "source_url": "https://www.gmcc.com", "source_type": "official", "source_date": "2026-06-20", "refrigerant": ["R290"], "product_or_series": "R290 MBP", "condition_or_capacity": "MBP", "dynamic_tags": ["R290", "variable"]},
+        {"compressor_type": "Re", "competitor": "GMCC/Midea", "category": "신냉매·냉매전환", "threat_level": "high", "trust_score": 5, "raw_text": "GMCC R290 MBP 신규 진입. 삼성 미보유", "summary": "GMCC R290", "samsung_status": "미보유", "source_name": "GMCC Official", "source_url": "https://example.com/gmcc-r290", "source_type": "official", "source_date": "2026-06-20", "refrigerant": ["R290"], "product_or_series": "R290 MBP", "condition_or_capacity": "MBP", "dynamic_tags": ["R290", "variable"]},
         {"compressor_type": "Ro", "competitor": "LG", "category": "성능·효율", "threat_level": "medium", "trust_score": 5, "raw_text": "LG Ro R32 효율 개선. 삼성 대응 중", "summary": "LG R32", "samsung_status": "대응중", "source_name": "LG Compressor Official", "source_url": "https://www.lg.com/global/business/compressor", "source_type": "official", "source_date": "2026-06-21", "refrigerant": ["R32"], "product_or_series": "R32 Rotary", "condition_or_capacity": "default", "dynamic_tags": ["R32", "performance"]},
         {"compressor_type": "Sc", "competitor": "Copeland/Emerson", "category": "신제품·라인업", "threat_level": "high", "trust_score": 5, "raw_text": "Copeland R454B Variable Scroll 신규. 삼성 미보유", "summary": "Copeland R454B", "samsung_status": "미보유", "source_name": "Copeland Official", "source_url": "https://www.copeland.com", "source_type": "official", "source_date": "2026-06-22", "refrigerant": ["R454B"], "product_or_series": "R454B Variable", "condition_or_capacity": "Variable", "dynamic_tags": ["R454B", "variable"]},
         {"compressor_type": "Sc", "competitor": "Danfoss", "category": "규격·인증", "threat_level": "low", "trust_score": 3, "raw_text": "Danfoss 인증 동향 참고만", "summary": "Danfoss cert", "samsung_status": "보유", "source_name": "Cooling Post", "source_url": "https://www.coolingpost.com", "source_type": "trade_media", "source_date": "2026-06-23", "refrigerant": ["R454B"], "product_or_series": "cert", "condition_or_capacity": "Fixed", "dynamic_tags": ["certification"]},
+        {"compressor_type": "Re", "competitor": "Secop", "category": "가격·유통", "threat_level": "none", "trust_score": 3, "raw_text": "수동 입력 stub", "summary": "manual stub", "samsung_status": "확인필요", "source_name": "수동 입력", "source_url": "manual://sample", "source_type": "trade_media", "source_date": "확인필요", "refrigerant": ["R600a"], "product_or_series": "manual", "condition_or_capacity": "LBP", "dynamic_tags": []},
     ]
     return {
         "period_id": "2026-06",
@@ -32,6 +33,7 @@ def _sample_state():
         },
         "evidence": evidence,
         "sources": [{"source_name": e["source_name"], "source_url": e["source_url"], "source_type": e["source_type"], "source_date": e["source_date"]} for e in evidence],
+        "feedback": {"low_confidence": True, "rubric_breakdown": {"structure": 2, "samsung_comparison": 3, "gap_matrix": 2, "evidence_volume": 0.5, "primary_type_coverage": 1, "source_trust": 1, "period_context": "backfill", "evidence_threshold_used": 4, "total": 9.5}},
         "auto_approve_result": {"audit_log": {"approve": True}},
     }
 
@@ -52,6 +54,18 @@ def test_report_html_kpi_decision_layers_and_self_contained():
     assert "Layer 4 심화 보고서" in html
     assert "<script src=" not in html
     assert "<link rel=" not in html
+    assert "📦 과거 데이터" in html
+    assert "Critic Review Summary" in html
+    assert "rubric-row" in html and "rubric-fill" in html
+
+
+def test_report_html_stub_url_placeholder_and_real_links():
+    html = markdown_to_html("# 압축기 경쟁사 월간 모니터링 리포트", _sample_state())
+    assert "stub 데이터 — 실제 출처 없음" in html
+    assert 'href="https://example.com' not in html
+    assert "manual://sample" not in html
+    assert 'href="https://www.lg.com/global/business/compressor" target="_blank" rel="noopener"' in html
+    assert 'href="https://www.copeland.com" target="_blank" rel="noopener"' in html
 
 
 def test_report_html_category_layer_8_tabs_sources_and_insights():
@@ -62,7 +76,7 @@ def test_report_html_category_layer_8_tabs_sources_and_insights():
     assert html.count('data-group="category-tabs"') >= 8
     assert "출처 목록" in html
     assert "저신뢰 — 단정 금지" in html
-    assert "https://www.gmcc.com" in html
+    assert "https://www.copeland.com" in html
 
 
 def test_report_html_deepdive_reference_sources_and_trends():
