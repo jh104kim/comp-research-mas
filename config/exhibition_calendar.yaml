@@ -1,0 +1,9 @@
+Chillventa:
+  month: 10
+  boost_sources: [Chillventa, NaturalRefrigerants.com, Cooling Post]
+AHR_Expo:
+  month: 1
+  boost_sources: [AHR Expo, ACHR News, ASHRAE]
+China_Refrigeration:
+  month: 4
+  boost_sources: [China Refrigeration Expo, JARN]

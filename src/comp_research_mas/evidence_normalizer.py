@@ -125,7 +125,7 @@ def normalize_raw_results(raw_results: dict[str, Any]) -> list[EvidenceItem]:
 
     deduped: dict[tuple[str, str, str], EvidenceItem] = {}
     for item in candidates:
-        key = (item.competitor, item.category, item.week_id)
+        key = (item.compressor_type, item.competitor, item.category, item.week_id)
         current = deduped.get(key)
         if current is None or item.trust_score > current.trust_score:
             deduped[key] = item

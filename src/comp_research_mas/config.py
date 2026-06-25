@@ -1,5 +1,10 @@
 from __future__ import annotations
 
+from pathlib import Path
+from typing import Any
+
+import yaml
+
 from .models import (
     CATEGORIES,
     COMPETITOR_ALIASES,
@@ -27,6 +32,37 @@ TYPE_REFRIGERANTS = {
     "Sc": ["R454B", "R32", "R410A", "R466A"],
 }
 
+
+
+SOURCE_WHITELIST_PATH = Path("config/source_whitelist.yaml")
+
+def load_source_whitelist(path: str | Path = SOURCE_WHITELIST_PATH) -> dict[str, Any]:
+    return yaml.safe_load(Path(path).read_text(encoding="utf-8"))
+
+def flatten_source_whitelist(path: str | Path = SOURCE_WHITELIST_PATH) -> list[dict[str, Any]]:
+    data = load_source_whitelist(path)
+    entries: list[dict[str, Any]] = []
+    for group, payload in data.get("source_whitelist", {}).items():
+        trust = int(payload.get("trust_score", 3)) if isinstance(payload, dict) else 3
+        sources = payload.get("sources", []) if isinstance(payload, dict) else []
+        for source in sources:
+            item = dict(source)
+            item["group"] = group
+            item["trust_score"] = int(item.get("trust_score", trust))
+            entries.append(item)
+    return entries
+
+def source_names_by_focus(*focus_terms: str, min_trust: int = 3) -> list[str]:
+    terms = {str(term).lower() for term in focus_terms if term}
+    names: list[str] = []
+    for source in flatten_source_whitelist():
+        focus = {str(item).lower() for item in source.get("focus", [])}
+        if source.get("trust_score", 0) < min_trust:
+            continue
+        if "all" in focus or terms & focus:
+            names.append(source["name"])
+    return names
+
 COMPETITOR_KEYWORDS = {
     "GMCC/Midea": ["GMCC", "Midea"],
     "LG": ["LG"],
@@ -52,4 +88,8 @@ __all__ = [
     "SOURCE_PRIORITY",
     "TYPE_REFRIGERANTS",
     "COMPETITOR_KEYWORDS",
+    "SOURCE_WHITELIST_PATH",
+    "load_source_whitelist",
+    "flatten_source_whitelist",
+    "source_names_by_focus",
 ]

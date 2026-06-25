@@ -19,11 +19,19 @@ class StubResearchAdapter(ResearchAdapter):
         results = []
         primary = [q for q in query_plan["queries"] if str(q["priority"]).startswith("primary")]
         selected = []
-        offsets = {"Re": 0, "Ro": 2, "Sc": 0}
         for ctype in ("Re", "Ro", "Sc"):
             ctype_queries = [q for q in primary if q["compressor_type"] == ctype]
-            offset = offsets[ctype]
-            selected.extend(ctype_queries[offset : offset + 2])
+            if ctype == "Sc":
+                selected.extend(ctype_queries[:2])
+                continue
+            seen_competitors: set[str] = set()
+            for q in ctype_queries:
+                if q["competitor"] in seen_competitors:
+                    continue
+                selected.append(q)
+                seen_competitors.add(q["competitor"])
+                if len(seen_competitors) >= 2:
+                    break
         for q in selected:
             results.append(_result_from_query(q))
         if results:

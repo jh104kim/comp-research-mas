@@ -33,4 +33,4 @@ def test_changed_threat_threshold_reduces_high_count():
     state = run_step3("2026-26")
     # After the stricter rule, high is restricted to trust_score=5 + 미보유.
     assert state["report_meta"]["high_threat_count"] == 4
-    assert state["report_meta"]["signal_count"] == 5
+    assert state["report_meta"]["signal_count"] == 6

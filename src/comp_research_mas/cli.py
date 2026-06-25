@@ -7,6 +7,7 @@ from .graph import run_step1, run_step2, run_step3, run_step5, run_step6
 from .orchestrator import run_monthly_orchestrator
 from .pipeline import run_writer_critic_loop
 from .scheduler import run_monthly
+from .backfill_planner import run_backfill
 
 
 def _print_state(state: dict) -> int:
@@ -68,6 +69,12 @@ def main(argv: list[str] | None = None) -> int:
     step6_live.add_argument("--period-id", default="2026-06")
     step6_live.add_argument("--injected-results-path", default=None)
 
+
+    backfill = sub.add_parser("run-backfill", help="Run monthly backfill dry-run for 2025 H2~2026 periods")
+    backfill.add_argument("--from-period", default="2025-07")
+    backfill.add_argument("--to-period", default="2026-06")
+    backfill.add_argument("--dry-run", action=argparse.BooleanOptionalAction, default=True)
+
     run = sub.add_parser("run", help="Run legacy Phase 1 with a manual search results markdown file")
     run.add_argument("input_path")
     run.add_argument("--output-dir", default="outputs/reports")
@@ -111,6 +118,17 @@ def main(argv: list[str] | None = None) -> int:
     if args.command == "run-step6-live":
         print("step=STEP6_LIVE")
         return _print_state(run_step6(period_id=args.period_id, injected_results_path=args.injected_results_path, dry_run=False))
+
+    if args.command == "run-backfill":
+        print("step=BACKFILL")
+        summary = run_backfill(from_period=args.from_period, to_period=args.to_period, dry_run=args.dry_run)
+        print(f"period_count={summary['period_count']}")
+        print(f"latest_period={summary['latest']['period_id']}")
+        for key, value in summary.get("output_paths", {}).items():
+            print(f"{key}_path={value}")
+        insufficient = [s["period_id"] for s in summary["period_snapshots"] if s["data_insufficient"]]
+        print(f"data_insufficient_periods={','.join(insufficient)}")
+        return 0
 
     report, review = run_writer_critic_loop(args.input_path, args.output_dir, week_label=args.week_label)
     print(f"report_title={report.title}")

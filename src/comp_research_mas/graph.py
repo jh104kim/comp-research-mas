@@ -17,7 +17,7 @@ from .auto_approver import auto_approver_node
 from .hermes_adapter import hermes_live_adapter_node
 from .live_sender import live_sender_node
 
-EVIDENCE_REPLAN_THRESHOLD = 8
+EVIDENCE_REPLAN_THRESHOLD = 10
 
 
 def save_output_node(state: WorkflowState) -> WorkflowState:

@@ -1,18 +1,119 @@
 source_whitelist:
-  tier1:
-    - NaturalRefrigerants.com
-    - Cooling Post
-    - Chillventa
-  tier2:
-    - ACHR News
-    - AHR Expo
-    - ASHRAE
-  tier3:
-    - JARN
-    - China Refrigeration Expo
+  competitors_official:
+    trust_score: 5
+    sources:
+      - url: https://www.embraco.com
+        name: Embraco Official
+        type: official
+        focus: [Re, R290, R600a, R134a]
+      - url: https://www.copeland.com
+        name: Copeland Official
+        type: official
+        focus: [Sc, R454B, R410A, R32]
+      - url: https://www.gmcc.com
+        name: GMCC Official
+        type: official
+        focus: [Re, Ro, Sc, R290, R454B]
+      - url: https://www.danfoss.com/en/products/dcs/compressors
+        name: Danfoss Compressor Official
+        type: official
+        focus: [Sc, R454B, R410A]
+      - url: https://www.lg.com/global/business/compressor
+        name: LG Compressor Official
+        type: official
+        focus: [Re, Ro, Sc, R290, R32, R454B]
+      - url: https://www.secop.com
+        name: Secop Official
+        type: official
+        focus: [Re, R290, R600a]
+  regulations:
+    trust_score: 5
+    sources:
+      - url: https://www.epa.gov/snap
+        name: EPA SNAP
+        type: official
+        focus: [regulation, refrigerant]
+      - url: https://climate.ec.europa.eu/eu-action/fluorinated-greenhouse-gases
+        name: EU F-Gas Regulation
+        type: official
+        focus: [regulation, R454B, A2L]
+  patents:
+    trust_score: 5
+    sources:
+      - url: https://patents.google.com
+        name: Google Patents
+        type: patent
+        focus: [Re, Ro, Sc, all_refrigerants]
+      - url: https://worldwide.espacenet.com
+        name: Espacenet
+        type: patent
+        focus: [Re, Ro, Sc, all_refrigerants]
+  natural_refrigerants:
+    trust_score: 4
+    sources:
+      - url: https://hydrocarbons21.com
+        name: Hydrocarbons21
+        type: trade_media
+        focus: [Re, Ro, R290, R600a]
+  trade_media:
+    trust_score: 3
+    sources:
+      - url: https://www.naturalrefrigerants.com
+        name: NaturalRefrigerants.com
+        type: trade_media
+        focus: [R290, R600a, natural_refrigerants]
+      - url: https://www.coolingpost.com
+        name: Cooling Post
+        type: trade_media
+        focus: [all]
+      - url: https://www.r744.com
+        name: R744.com
+        type: trade_media
+        focus: [CO2, R744, heat_pump]
+  exhibitions:
+    trust_score: 5
+    sources:
+      - url: https://www.chillventa.de
+        name: Chillventa
+        type: exhibition
+        focus: [all]
+      - url: https://www.ahrexpo.com
+        name: AHR Expo
+        type: exhibition
+        focus: [Sc, R454B, R32, heat_pump]
+      - url: https://www.cr-expo.com
+        name: China Refrigeration Expo
+        type: exhibition
+        focus: [Re, Ro, Sc, China]
+  industry_media:
+    trust_score: 3
+    sources:
+      - url: https://www.achrnews.com
+        name: ACHR News
+        type: trade_media
+        focus: [North_America, Sc, regulation]
+      - url: https://www.ejarn.com
+        name: JARN
+        type: trade_media
+        focus: [Japan, Asia, China]
+  standards:
+    trust_score: 5
+    sources:
+      - url: https://www.ashrae.org
+        name: ASHRAE
+        type: official
+        focus: [standard, refrigerant, A2L]
   academic_title_abstract_only:
-    - International Journal of Refrigeration
-    - Applied Thermal Engineering
+    trust_score: 4
+    sources:
+      - url: https://www.sciencedirect.com/journal/international-journal-of-refrigeration
+        name: International Journal of Refrigeration
+        type: academic
+        focus: [academic, refrigeration]
+      - url: https://www.sciencedirect.com/journal/applied-thermal-engineering
+        name: Applied Thermal Engineering
+        type: academic
+        focus: [academic, thermal_engineering]
 rules:
   robots_txt: required
   broad_crawling: forbidden
