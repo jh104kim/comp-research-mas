@@ -1,0 +1,27 @@
+[project]
+name = "comp-research-mas"
+version = "0.1.0"
+description = "C&M compressor competitor monitoring MAS"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = []
+
+[project.optional-dependencies]
+langgraph = [
+  "langgraph>=1.0.0",
+  "langchain>=1.0.0",
+]
+test = [
+  "pytest>=8.0.0",
+]
+
+[project.scripts]
+comp-research-mas = "comp_research_mas.cli:main"
+
+[build-system]
+requires = ["uv_build>=0.8.0,<0.9.0"]
+build-backend = "uv_build"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

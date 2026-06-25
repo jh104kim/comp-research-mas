@@ -1,0 +1,17 @@
+# Phase 2 Search Agent query registry draft
+monitors:
+  - group: R290 Re 핵심
+    competitors: [Embraco/Nidec, Secop, GMCC]
+    products: [EM, NEK, NT, KL, NL, DL, PA, KA]
+    refrigerant: R290
+    type: Reciprocating
+  - group: R454B Sc 핵심
+    competitors: [GMCC, Danfoss, LG, Copeland]
+    products: [DSH, YPH, YBH, YHV, ZO]
+    refrigerant: R454B
+    type: Scroll
+  - group: Rotary 별도 관리
+    competitors: [Highly, LG, Panasonic]
+    products: [CMA, E-Series]
+    refrigerant: R290/R454B
+    type: Rotary

@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.venv/
+venv/
+
+# Outputs / local data
+outputs/
+data/raw/
+data/cache/
+*.log
+
+# Secrets
+.env
+.env.*
+!.env.example
+*.token
+*secret*
+*credentials*
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
