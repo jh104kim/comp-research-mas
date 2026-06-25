@@ -74,6 +74,8 @@ def main(argv: list[str] | None = None) -> int:
     backfill.add_argument("--from-period", default="2025-07")
     backfill.add_argument("--to-period", default="2026-06")
     backfill.add_argument("--dry-run", action=argparse.BooleanOptionalAction, default=True)
+    backfill.add_argument("--show-query-plan", action="store_true")
+    backfill.add_argument("--injected-results-path", default=None)
 
     run = sub.add_parser("run", help="Run legacy Phase 1 with a manual search results markdown file")
     run.add_argument("input_path")
@@ -121,7 +123,7 @@ def main(argv: list[str] | None = None) -> int:
 
     if args.command == "run-backfill":
         print("step=BACKFILL")
-        summary = run_backfill(from_period=args.from_period, to_period=args.to_period, dry_run=args.dry_run)
+        summary = run_backfill(from_period=args.from_period, to_period=args.to_period, dry_run=args.dry_run, injected_results_path=args.injected_results_path, show_query_plan=args.show_query_plan)
         print(f"period_count={summary['period_count']}")
         print(f"latest_period={summary['latest']['period_id']}")
         for key, value in summary.get("output_paths", {}).items():

@@ -2,18 +2,19 @@ from __future__ import annotations
 
 import copy
 import json
+from collections import Counter
 from pathlib import Path
 from typing import Any
 
 import yaml
 
-from .agents import EVIDENCE_THRESHOLD, get_period_context
+from .agents import EVIDENCE_THRESHOLD, critique_step_report, get_period_context, write_step_report
 from .analyst import build_analysis_bundle
 from .evidence_normalizer import normalize_raw_results
 from .memory_store import append_evidence_ledger, append_gap_history, read_gap_history
 from .query_planner import build_query_plan, save_query_plan
-from .research_adapter import Step3StubResearchAdapter, save_raw_results
-from .report_html import build_backfill_html
+from .research_adapter import HermesResearchAdapter, Step3StubResearchAdapter, save_raw_results
+from .report_html import build_backfill_html, markdown_to_html
 
 RESEARCH_PERIODS = [
     "2025-07", "2025-08", "2025-09",
@@ -61,7 +62,7 @@ def build_backfill_plan(periods: list[str]) -> dict[str, Any]:
     return {"periods": period_plans, "period_count": len(period_plans)}
 
 
-def run_backfill(*, from_period: str = "2025-07", to_period: str = "2026-06", dry_run: bool = True, evidence_threshold: int = DEFAULT_EVIDENCE_THRESHOLD) -> dict[str, Any]:
+def run_backfill(*, from_period: str = "2025-07", to_period: str = "2026-06", dry_run: bool = True, evidence_threshold: int = DEFAULT_EVIDENCE_THRESHOLD, injected_results_path: str | Path | None = None, show_query_plan: bool = False) -> dict[str, Any]:
     periods = period_range(from_period, to_period)
     plan = build_backfill_plan(periods)
     snapshots: list[dict[str, Any]] = []
@@ -73,23 +74,32 @@ def run_backfill(*, from_period: str = "2025-07", to_period: str = "2026-06", dr
         period = period_item["period_id"]
         query_plan = period_item["query_plan"]
         save_query_plan(query_plan)
-        raw_results = Step3StubResearchAdapter().search(query_plan)
-        if period.startswith("2025-"):
-            raw_results["results"] = _thin_2025_stub_results(raw_results["results"])
-        raw_results["period_id"] = period
-        save_raw_results(raw_results)
+        if injected_results_path and len(plan["periods"]) == 1:
+            raw_results = json.loads(Path(injected_results_path).read_text(encoding="utf-8"))
+            raw_results = HermesResearchAdapter.validate_raw_results(raw_results, {**query_plan, "week_id": period, "period_id": period})
+            raw_results["week_id"] = period
+            raw_results["period_id"] = period
+            _save_raw_results_for_period(raw_results)
+        else:
+            raw_results = Step3StubResearchAdapter().search(query_plan)
+            if period.startswith("2025-"):
+                raw_results["results"] = _thin_2025_stub_results(raw_results["results"])
+            raw_results["week_id"] = period
+            raw_results["period_id"] = period
+            _save_raw_results_for_period(raw_results)
         evidence = normalize_raw_results(raw_results)
         threshold = EVIDENCE_THRESHOLD[get_period_context(period)] if evidence_threshold == DEFAULT_EVIDENCE_THRESHOLD else evidence_threshold
         evidence_quality = _evidence_quality(len(evidence), threshold)
         evidence_dicts = [_tag_evidence_quality(item.to_dict(), evidence_quality) for item in evidence]
         ledger_path = append_evidence_ledger(query_plan["week_id"], evidence_dicts, [{"node": "backfill", "step": "period research", "judgment": evidence_quality, "reasoning": f"evidence_count={len(evidence)} threshold={threshold}", "tool_used": False, "rag_used": False, "conclusion": period}], period_id=period)
-        bundle = build_analysis_bundle(evidence, query_plan["week_id"])
+        bundle = build_analysis_bundle(evidence, period)
         bundle_dict = bundle.to_dict()
         bundle_dict["period_id"] = period
         bundle_dict["evidence_quality"] = evidence_quality
         bundle_dict["evidence_count"] = len(evidence)
         _annotate_matrix_quality(bundle_dict["gap_matrix"], evidence_quality)
-        gap_path = append_gap_history(query_plan["week_id"], bundle_dict, [{"node": "backfill", "step": "gap snapshot", "judgment": evidence_quality, "reasoning": "period별 Gap Matrix 스냅샷 저장", "tool_used": False, "rag_used": False, "conclusion": period}], period_id=period)
+        period_output_paths = _write_period_outputs(period, evidence_dicts, bundle_dict)
+        gap_path = append_gap_history(period, bundle_dict, [{"node": "backfill", "step": "gap snapshot", "judgment": evidence_quality, "reasoning": "period별 Gap Matrix 스냅샷 저장", "tool_used": False, "rag_used": False, "conclusion": period}], period_id=period)
         period_changes = _matrix_changes(previous_matrix, bundle_dict["gap_matrix"], previous_period=snapshots[-1]["period_id"] if snapshots else None, period=period)
         changes.extend(period_changes)
         previous_matrix = copy.deepcopy(bundle_dict["gap_matrix"])
@@ -107,6 +117,10 @@ def run_backfill(*, from_period: str = "2025-07", to_period: str = "2026-06", dr
             "signal_count": len(bundle_dict.get("new_signals", [])),
             "ledger_path": str(ledger_path),
             "gap_history_path": str(gap_path),
+            "output_paths": period_output_paths,
+            "trust_distribution": dict(Counter(item.get("trust_score", 0) for item in evidence_dicts)),
+            "critic_score": period_output_paths.get("critic_score"),
+            "hard_fail": period_output_paths.get("hard_fail"),
         })
 
     summary = {
@@ -120,6 +134,7 @@ def run_backfill(*, from_period: str = "2025-07", to_period: str = "2026-06", dr
         "evidence_threshold": evidence_threshold,
         "dynamic_evidence_thresholds": EVIDENCE_THRESHOLD,
         "memory_periods": sorted(read_gap_history().get("periods", {}).keys()),
+        "query_plan" if show_query_plan and len(plan["periods"]) == 1 else "query_plan_omitted": plan["periods"][0]["query_plan"] if show_query_plan and len(plan["periods"]) == 1 else True,
     }
     summary_path = Path("outputs/analysis/backfill_gap_summary.json")
     summary_path.parent.mkdir(parents=True, exist_ok=True)
@@ -132,6 +147,76 @@ def run_backfill(*, from_period: str = "2025-07", to_period: str = "2026-06", dr
     summary["output_paths"] = {"backfill_gap_summary": str(summary_path), "backfill_summary_report": str(report_path), "backfill_summary_html": str(html_report_path), "evidence_ledger": "outputs/memory/evidence_ledger.json", "gap_matrix_history": "outputs/memory/gap_matrix_history.json"}
     return summary
 
+
+
+def _save_raw_results_for_period(raw_results: dict[str, Any]) -> Path:
+    path = Path("outputs/search") / f"{raw_results['period_id']}_raw_results.json"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(raw_results, ensure_ascii=False, indent=2), encoding="utf-8")
+    return path
+
+
+def _write_period_outputs(period: str, evidence_dicts: list[dict[str, Any]], bundle_dict: dict[str, Any]) -> dict[str, Any]:
+    from .models import EvidenceItem
+    items = [EvidenceItem(**_evidence_model_fields(item)) for item in evidence_dicts]
+    directives: list[str] = []
+    if bundle_dict.get("threat_summary"):
+        directives.append("high threat 항목을 핵심 동향 최상단에 배치")
+    if bundle_dict.get("new_signals"):
+        directives.append("new_signals를 핵심 동향 별도 섹션에 배치")
+    draft = write_step_report(items, analysis_bundle=bundle_dict, writer_directives=directives)
+    review = critique_step_report(draft, [_evidence_model_fields(item) for item in evidence_dicts], analysis_bundle=bundle_dict)
+    state = {
+        "period_id": period,
+        "week_id": period,
+        "draft": draft,
+        "evidence": evidence_dicts,
+        "analysis_bundle": bundle_dict,
+        "feedback": review,
+        "score": review["score"],
+        "hard_fail": review["hard_fail"],
+        "sources": _sources_from_evidence_dicts(evidence_dicts),
+    }
+    report_dir = Path("outputs/reports")
+    evidence_dir = Path("outputs/evidence")
+    analysis_dir = Path("outputs/analysis")
+    review_dir = Path("outputs/reviews")
+    for directory in (report_dir, evidence_dir, analysis_dir, review_dir):
+        directory.mkdir(parents=True, exist_ok=True)
+    report_path = report_dir / f"{period}_compressor_monthly.md"
+    html_path = report_dir / f"{period}_compressor_monthly.html"
+    evidence_path = evidence_dir / f"{period}_evidence.json"
+    analysis_path = analysis_dir / f"{period}_analysis_bundle.json"
+    review_path = review_dir / f"{period}_critic_review.json"
+    report_path.write_text(draft, encoding="utf-8")
+    html_path.write_text(markdown_to_html(draft, state), encoding="utf-8")
+    evidence_path.write_text(json.dumps({"period_id": period, "week_id": period, "evidence": evidence_dicts, "sources": state["sources"], "report_meta": {"total_evidence_count": len(evidence_dicts), "critic_score": review["score"], "hard_fail": review["hard_fail"]}}, ensure_ascii=False, indent=2), encoding="utf-8")
+    analysis_path.write_text(json.dumps(bundle_dict, ensure_ascii=False, indent=2), encoding="utf-8")
+    review_path.write_text(json.dumps(review, ensure_ascii=False, indent=2), encoding="utf-8")
+    return {"report": str(report_path), "report_html": str(html_path), "evidence": str(evidence_path), "analysis": str(analysis_path), "review": str(review_path), "critic_score": review["score"], "hard_fail": review["hard_fail"], "rubric_breakdown": review.get("rubric_breakdown", {})}
+
+
+
+def _evidence_model_fields(item: dict[str, Any]) -> dict[str, Any]:
+    allowed = {
+        "compressor_type", "competitor", "refrigerant", "category", "samsung_status",
+        "trust_score", "source_type", "threat_level", "week_id", "period_id",
+        "source_url", "source_date", "raw_text", "summary", "product_or_series",
+        "condition_or_capacity", "application", "source_name", "is_primary",
+        "low_confidence", "dynamic_tags", "evidence_id",
+    }
+    return {key: value for key, value in item.items() if key in allowed}
+
+def _sources_from_evidence_dicts(evidence: list[dict[str, Any]]) -> list[dict[str, str]]:
+    seen: set[tuple[str, str, str]] = set()
+    sources: list[dict[str, str]] = []
+    for item in evidence:
+        key = (str(item.get("source_name", "")), str(item.get("source_url", "")), str(item.get("source_date", "")))
+        if key in seen:
+            continue
+        seen.add(key)
+        sources.append({"source_name": key[0], "source_url": key[1], "source_date": key[2], "source_type": str(item.get("source_type", ""))})
+    return sources
 
 def _period_date_range(period: str) -> dict[str, str]:
     year, month = period.split("-")
