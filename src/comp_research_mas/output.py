@@ -28,12 +28,15 @@ def save_step_outputs(state: WorkflowState, *, output_root: str | Path = "output
     state = {**state, "report_meta": meta.to_dict()}
 
     report_path.write_text(state.get("draft", ""), encoding="utf-8")
-    review_payload: dict[str, Any] = {"score": state.get("score", 0), "feedback": state.get("feedback", {}), "iteration": state.get("iteration", 0), "status": final_status, "hard_fail": state.get("hard_fail", False), "error_log": state.get("error_log", []), "report_meta": state.get("report_meta")}
+    review_payload: dict[str, Any] = {"score": state.get("score", 0), "feedback": state.get("feedback", {}), "iteration": state.get("iteration", 0), "status": final_status, "hard_fail": state.get("hard_fail", False), "error_log": state.get("error_log", []), "writer_directives": state.get("writer_directives", []), "analysis_path": state.get("analysis_path"), "report_meta": state.get("report_meta")}
     review_path.write_text(json.dumps(review_payload, ensure_ascii=False, indent=2), encoding="utf-8")
     evidence_payload = {"week_id": week_id, "evidence": state.get("evidence", []), "gap_table": state.get("gap_table", []), "sources": state.get("sources", []), "report_meta": state.get("report_meta")}
     evidence_path.write_text(json.dumps(evidence_payload, ensure_ascii=False, indent=2), encoding="utf-8")
 
-    return {**state, "status": final_status, "output_paths": {"report": str(report_path), "review": str(review_path), "evidence": str(evidence_path)}}
+    output_paths = {"report": str(report_path), "review": str(review_path), "evidence": str(evidence_path)}
+    if state.get("analysis_path"):
+        output_paths["analysis"] = str(state["analysis_path"])
+    return {**state, "status": final_status, "output_paths": output_paths}
 
 
 def save_step1_outputs(state: WorkflowState, *, output_root: str | Path = "outputs") -> WorkflowState:

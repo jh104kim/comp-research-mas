@@ -1,0 +1,23 @@
+Re:
+  R290:
+    MBP: {samsung: "미보유", note: "초기값"}
+    LBP: {samsung: "미보유", note: "초기값"}
+    HBP: {samsung: "확인필요", note: "초기값"}
+  R600a:
+    MBP: {samsung: "미보유", note: "초기값"}
+  R134a:
+    MBP: {samsung: "확인필요", note: "초기값"}
+  R1234yf:
+    MBP: {samsung: "확인필요", note: "초기값"}
+Ro:
+  R290: {samsung: "확인필요", note: "초기값"}
+  R32:  {samsung: "대응중", note: "초기값"}
+  R454C: {samsung: "확인필요", note: "초기값"}
+Sc:
+  R454B:
+    Fixed: {samsung: "대응중", note: "초기값"}
+    Variable: {samsung: "미보유", note: "초기값"}
+    TwoStage: {samsung: "미보유", note: "초기값"}
+  R410A: {samsung: "보유", note: "초기값"}
+  R32: {samsung: "대응중", note: "초기값"}
+  R466A: {samsung: "확인필요", note: "초기값"}

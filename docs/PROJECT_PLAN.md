@@ -405,27 +405,27 @@ STEP 5 이메일 발송 전에는 아래 조건을 만족해야 한다.
 
 ## 11. 바로 다음 작업
 
-STEP 2는 구현 완료되었다. 다음 작업은 STEP 3 Analyst Agent 추가다.
+STEP 3는 구현 완료되었다. 다음 작업은 STEP 4 Orchestrator + 실제 Hermes Research Adapter 연결이다.
 
-STEP 2 완료 반영:
-- `EvidenceItem` 확장: 복수 냉매, source_type, trust_score, threat_level, week_id, raw_text, dynamic_tags
-- `ReportMetadata` 추가
-- `WorkflowState` 확장: query_plan, raw_results, week_id, report_meta
-- `query_planner.py`, `research_adapter.py`, `evidence_normalizer.py` 추가
-- STEP 2 graph: source_planner → research_adapter → evidence_normalizer → writer → critic → output
-- `AGENTS.md` 추가로 repo 작업 규칙 고정
+STEP 3 완료 반영:
+- `config/gap_matrix_baseline.yaml` 추가, config 원본은 업데이트하지 않고 outputs/analysis에만 분석 결과 저장
+- `AnalysisBundle`, `ThreatItem`, `SignalItem` schema 추가
+- `analyst.py` 추가: EvidenceItem[] + baseline → Gap Matrix / threat_summary / new_signals
+- STEP 3 graph: source_planner → research_adapter → evidence_normalizer → analyst → writer → critic → output
+- Writer가 AnalysisBundle을 우선 사용하고 high threat/new_signals를 핵심 동향 상단에 배치
+- Critic이 Gap Matrix 정확성, high threat 반영, AnalysisBundle hard fail 조건을 평가
+- 산출물: `outputs/analysis/YYYY-WW_analysis_bundle.json`
 
-STEP 3 우선순위:
-1. `analyst.py` 추가: EvidenceItem[] → AnalysisBundle 변환
-2. 삼성 비교 상태 기반 Gap Matrix 고도화
-3. Re: 냉매 × MBP/LBP/HBP 조건별 mapping
-4. Ro: 냉매 × fixed/inverter 커버리지 mapping
-5. Sc: 냉매 × 용량 구간 × Fixed/Variable/Two-Stage mapping
-6. 이상 신호 감지: high threat, 신규 냉매, 최우선 경쟁사 신규 진입
-7. Writer가 AnalysisBundle을 우선 사용하도록 확장
-8. pytest로 analyst와 STEP 3 graph E2E 검증
+STEP 4 우선순위:
+1. 실제 Hermes 리서치 실행은 repo 밖 adapter layer에서 연결
+2. Research Adapter interface 입력/출력 계약 고정
+3. Scheduler/Orchestrator 실행 로그와 재시도 정책 구현
+4. robots.txt/소스 whitelist/human review gate 유지
+5. 실제 검색 결과를 STEP 3 AnalysisBundle까지 E2E 검증
+6. 실패/부분 성공 시 fallback 및 alert 정책 정의
 
-STEP 3 전 확인 필요:
-- 가격·유통 카테고리 사용 범위
-- 특허·인증 지역 우선순위
+STEP 4 전 확인 필요:
+- 실제 Hermes 리서치 도구 호출 위치와 인증 방식
+- 검색 소스 whitelist 최종 범위
+- 자동 실행 주기와 Slack/Obsidian 알림 범위
 - 내부 삼성 매핑 레이어 도입 여부와 저장 위치

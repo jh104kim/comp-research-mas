@@ -17,6 +17,7 @@ Category = Literal[
 ]
 SourceType = Literal["official", "exhibition", "patent", "academic", "trade_media", "news"]
 ThreatLevel = Literal["high", "medium", "low", "none"]
+SignalType = Literal["primary_new_entry", "multi_competitor_entry", "spec_change", "new_refrigerant"]
 
 CATEGORIES: tuple[str, ...] = (
     "신냉매·냉매전환",
@@ -35,11 +36,7 @@ CATEGORY_ALIASES: dict[str, str] = {
     "냉매 전환": "신냉매·냉매전환",
 }
 
-TYPE_LABELS: dict[str, str] = {
-    "Re": "Reciprocating",
-    "Ro": "Rotary",
-    "Sc": "Scroll",
-}
+TYPE_LABELS: dict[str, str] = {"Re": "Reciprocating", "Ro": "Rotary", "Sc": "Scroll"}
 
 RE_PRIMARY = ["GMCC/Midea", "LG"]
 RE_SECONDARY = ["Embraco/Nidec", "Secop", "Panasonic"]
@@ -48,17 +45,8 @@ RO_SECONDARY = ["Highly", "Panasonic"]
 SC_PRIMARY = ["Copeland/Emerson"]
 SC_SECONDARY = ["GMCC/Midea", "Danfoss", "LG"]
 
-PRIMARY_COMPETITORS: dict[str, list[str]] = {
-    "Re": RE_PRIMARY,
-    "Ro": RO_PRIMARY,
-    "Sc": SC_PRIMARY,
-}
-
-SECONDARY_COMPETITORS: dict[str, list[str]] = {
-    "Re": RE_SECONDARY,
-    "Ro": RO_SECONDARY,
-    "Sc": SC_SECONDARY,
-}
+PRIMARY_COMPETITORS: dict[str, list[str]] = {"Re": RE_PRIMARY, "Ro": RO_PRIMARY, "Sc": SC_PRIMARY}
+SECONDARY_COMPETITORS: dict[str, list[str]] = {"Re": RE_SECONDARY, "Ro": RO_SECONDARY, "Sc": SC_SECONDARY}
 
 COMPETITOR_ALIASES: dict[str, str] = {
     "GMCC": "GMCC/Midea",
@@ -76,14 +64,7 @@ NO_EVIDENCE_TEXT = "해당 없음 — 이번 주 확인된 고신뢰 근거 없�
 SAMSUNG_STATUSES = ("보유", "미보유", "대응중", "확인필요")
 SOURCE_TYPES = ("official", "exhibition", "patent", "academic", "trade_media", "news")
 THREAT_LEVELS = ("high", "medium", "low", "none")
-SOURCE_TRUST_SCORE = {
-    "official": 5,
-    "exhibition": 5,
-    "patent": 5,
-    "academic": 4,
-    "trade_media": 3,
-    "news": 2,
-}
+SOURCE_TRUST_SCORE = {"official": 5, "exhibition": 5, "patent": 5, "academic": 4, "trade_media": 3, "news": 2}
 
 
 @dataclass(frozen=True)
@@ -142,9 +123,57 @@ class EvidenceItem:
     is_primary: bool = False
     low_confidence: bool = False
     dynamic_tags: list[str] = field(default_factory=list)
+    evidence_id: str = ""
+
+    def to_dict(self) -> dict[str, Any]:
+        data = asdict(self)
+        if not data["evidence_id"]:
+            data["evidence_id"] = f"{self.week_id}:{self.compressor_type}:{self.competitor}:{self.category}:{self.source_url}"
+        return data
+
+
+@dataclass(frozen=True)
+class ThreatItem:
+    compressor_type: str
+    refrigerant: str
+    condition: str
+    competitor: str
+    threat_level: Literal["high", "medium", "low"]
+    trust_score: int
+    evidence_ids: list[str]
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)
+
+
+@dataclass(frozen=True)
+class SignalItem:
+    signal_type: SignalType
+    description: str
+    competitor: str
+    trust_score: int
+    week_id: str
+
+    def to_dict(self) -> dict[str, Any]:
+        return asdict(self)
+
+
+@dataclass(frozen=True)
+class AnalysisBundle:
+    gap_matrix: dict[str, Any]
+    threat_summary: list[ThreatItem]
+    new_signals: list[SignalItem]
+    week_id: str
+    baseline_used: str
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "gap_matrix": self.gap_matrix,
+            "threat_summary": [item.to_dict() for item in self.threat_summary],
+            "new_signals": [item.to_dict() for item in self.new_signals],
+            "week_id": self.week_id,
+            "baseline_used": self.baseline_used,
+        }
 
 
 @dataclass(frozen=True)
@@ -158,6 +187,7 @@ class ReportMetadata:
     high_threat_count: int
     critic_score: int
     hard_fail: bool
+    signal_count: int = 0
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)
@@ -180,3 +210,6 @@ class WorkflowState(TypedDict, total=False):
     raw_results: dict[str, Any]
     week_id: str
     report_meta: dict[str, Any] | None
+    analysis_bundle: dict[str, Any] | None
+    analysis_path: str
+    writer_directives: list[str]

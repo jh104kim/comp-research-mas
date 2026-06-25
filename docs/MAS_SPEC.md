@@ -70,14 +70,22 @@
 ### Analyst Agent
 
 - 단순 요약이 아니라 삼성 경쟁 라인업 관점으로 분석한다.
+- `config/gap_matrix_baseline.yaml`을 읽고 EvidenceItem[]과 교차 분석한다.
+- config 원본은 수정하지 않고 분석 결과는 `outputs/analysis/YYYY-WW_analysis_bundle.json`에 저장한다.
 - Re: 냉매별 × MBP/LBP/HBP 경쟁사 보유 모델 vs 삼성 보유/미보유
-- Ro: 냉매별 × fixed/inverter 및 기술 수준 비교
-- Sc: 냉매별 × 용량 구간별 Fixed/Variable/Two-Stage 비교
+- Ro: 냉매별 default 조건 및 기술 수준 비교
+- Sc: 냉매별 Fixed/Variable/TwoStage 비교
+- AnalysisBundle:
+  - gap_matrix
+  - threat_summary
+  - new_signals
+  - week_id
+  - baseline_used
 - 이상 신호를 감지한다:
-  - 급격한 스펙 변경
-  - 삼성 Gap 구간 경쟁사 신규 진입
-  - 삼성 미보유 냉매 경쟁사 선점
-  - 규격/인증 선점
+  - primary_new_entry
+  - multi_competitor_entry
+  - spec_change
+  - new_refrigerant
 
 ### Writer Agent
 
@@ -95,15 +103,15 @@
 | 평가 항목 | 점수 |
 |---|---:|
 | Re/Ro/Sc + 8개 카테고리 + 경쟁사별 구조 준수 | 2 |
-| 삼성 비교 관점 모든 주요 항목 반영 | 3 |
-| 삼성 Gap 표 정확성/구조 | 2 |
+| 삼성 비교 관점 모든 주요 항목 반영 | 2 |
+| Gap Matrix 표 존재 및 정확성 | 2 |
+| high threat 핵심 동향 반영 | 1 |
 | 출처 명시 여부 | 1 |
-| 경쟁사 누락 없는지 | 1 |
-| 분량·가독성 | 1 |
+| ★ 최우선 경쟁사 누락 없는지 | 2 |
 
 - 7점 이상: 통과
 - 7점 미만: Writer 재작성, 최대 2회
-- hard fail: 출처 0개, 타입 전체 누락, 삼성 비교 관점 전체 누락, 민감정보 의심, fabrication risk high
+- hard fail: 출처 0개, 타입 전체 누락, 삼성 비교 관점 전체 누락, AnalysisBundle 있는데 Gap Matrix 표 누락, high threat 핵심 동향 미반영, 민감정보 의심, fabrication risk high
 
 ### Output Agent
 
@@ -152,9 +160,10 @@ Level 1: 압축기 타입, Re / Ro / Sc
 
 ### STEP 3 — Analyst Agent
 
-- 삼성 Gap 자동 산출
-- 정량 성능/효율/냉동능력 비교 필드 준비
-- 이상 신호 감지
+- 삼성 Gap Matrix 자동 산출
+- AnalysisBundle 생성
+- high threat / new_signals 감지
+- Writer/Critic 분석 품질 gate 연결
 
 ### STEP 4 — Orchestrator + Scheduler
 

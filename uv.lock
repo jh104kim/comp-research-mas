@@ -121,6 +121,7 @@ version = "0.1.0"
 source = { editable = "." }
 dependencies = [
     { name = "langgraph" },
+    { name = "pyyaml" },
 ]
 
 [package.optional-dependencies]
@@ -132,6 +133,7 @@ test = [
 requires-dist = [
     { name = "langgraph", specifier = ">=1.0.0" },
     { name = "pytest", marker = "extra == 'test'", specifier = ">=8.0.0" },
+    { name = "pyyaml", specifier = ">=6.0.0" },
 ]
 provides-extras = ["test"]
 
