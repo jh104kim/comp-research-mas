@@ -52,17 +52,48 @@ START
 
 STEP 1에서는 `load_raw_data → writer → critic → conditional_refine → save_output`만 구현한다.
 
-## 2. 모니터링 관점 원칙
+## 2. 확정 의사결정
+
+### 2.1 삼성 비교 기준선
+
+STEP 1~2에서는 삼성 내부 모델명·상세 스펙을 직접 기재하지 않는다. 삼성 비교 상태는 아래 4개 추상 상태만 사용한다.
+
+- `보유`
+- `미보유`
+- `대응 중`
+- `확인 필요`
+
+내부 스펙·모델명 직접 기재는 금지한다. STEP 3 이후 별도 내부 매핑 레이어를 추가할지 검토한다.
+
+### 2.2 리포트 깊이
+
+본문과 evidence appendix를 분리한다.
+
+- 본문 Markdown: 임원용 1~2페이지 요약 중심
+- JSON evidence appendix: 실무자용 상세 근거, source, trust score, raw summary 저장
+
+따라서 Writer는 본문을 길게 늘리지 않고, 상세 근거는 `outputs/evidence/*.json`에 분리한다.
+
+### 2.3 Codex 연결 API
+
+repo 내부에는 실제 키·토큰·LLM 호출을 넣지 않는다.
+
+- STEP 1: LLM adapter interface 껍데기만 구현
+- 실제 Codex/Hermes 호출은 repo 밖 Hermes/Sake/Codex 위임 레이어가 담당
+- 나중에 필요하면 adapter 구현체만 교체한다.
+
+## 3. 모니터링 관점 원칙
 
 1. 삼성(당사) 압축기 라인업과 직·간접 경쟁 관계에 있는 냉매·타입·용도를 포괄 추적한다.
 2. 냉매를 특정 타입에 고정하지 않는다.
 3. 분석 기준은 항상 삼성 Gap, 삼성 대비 성능·스펙 우위/열위, 삼성 대응 필요성이다.
-4. 상업용은 제외하고, 가정용 Residential / Unitary / Heat pump 중심으로 제한한다.
-5. 출처 없는 주장은 리포트 본문에 단정형으로 넣지 않는다.
+4. 삼성 비교는 `보유 / 미보유 / 대응 중 / 확인 필요` 추상 상태만 사용한다.
+5. 상업용은 제외하고, 가정용 Residential / Unitary / Heat pump 중심으로 제한한다.
+6. 출처 없는 주장은 리포트 본문에 단정형으로 넣지 않는다.
 
-## 3. 모니터링 대상
+## 4. 모니터링 대상
 
-### 3.1 Re, Reciprocating
+### 4.1 Re, Reciprocating
 
 경쟁사/시리즈:
 - Embraco/Nidec: EM, NEK, NT, NE, FFI — R290, R600a, R134a 전반
@@ -77,7 +108,7 @@ STEP 1에서는 `load_raw_data → writer → critic → conditional_refine → 
 - MBP/LBP/HBP 조건별 경쟁 현황
 - 삼성 진입 예정 구간의 경쟁사 선점 현황
 
-### 3.2 Ro, Rotary
+### 4.2 Ro, Rotary
 
 경쟁사/시리즈:
 - Highly: R290, R32 Rotary 중심, 별도 관리
@@ -90,7 +121,7 @@ STEP 1에서는 `load_raw_data → writer → critic → conditional_refine → 
 - 인버터 Rotary 기술 수준
 - R290 Rotary 시장 진입 현황
 
-### 3.3 Sc, Scroll
+### 4.3 Sc, Scroll
 
 경쟁사/시리즈:
 - GMCC/Midea: Fixed, Variable, Two-Stage — R454B, R32, R410A
@@ -104,7 +135,7 @@ STEP 1에서는 `load_raw_data → writer → critic → conditional_refine → 
 - 신규 냉매 채택 현황
 - 조건 정규화 기준 COP/냉동능력 비교
 
-## 4. 리포트 고정 구조
+## 5. 리포트 고정 구조
 
 리포트는 반드시 아래 3계층을 따른다.
 
@@ -114,7 +145,7 @@ Level 1: 압축기 타입, Re / Ro / Sc
     Level 3: 경쟁사별 세부 내용 + 삼성 비교 관점
 ```
 
-### 4.1 Level 2 공통 카테고리 8개
+### 5.1 Level 2 공통 카테고리 8개
 
 | 카테고리 | 수집 내용 | 삼성 비교 관점 |
 |---|---|---|
@@ -129,9 +160,9 @@ Level 1: 압축기 타입, Re / Ro / Sc
 
 정보가 없는 카테고리도 공란으로 두지 않고 `해당 없음 — 이번 주 확인된 고신뢰 근거 없음`으로 명시한다.
 
-## 5. 우선 모니터링 소스와 제한
+## 6. 우선 모니터링 소스와 제한
 
-### 5.1 우선 소스
+### 6.1 우선 소스
 
 1순위, 자연냉매/Re/Ro:
 - Chillventa 공식 보도자료
@@ -153,7 +184,7 @@ Level 1: 압축기 타입, Re / Ro / Sc
 - Applied Thermal Engineering
 - 제목+초록만 사용, 전문 크롤링 금지
 
-### 5.2 제한할 것
+### 6.2 제한할 것
 
 - 전체 크롤링 금지: sitemap 전체 순회, 대량 scraping 금지
 - robots.txt 위반 금지
@@ -164,13 +195,13 @@ Level 1: 압축기 타입, Re / Ro / Sc
 - 냉매를 R290/R454B로만 고정 금지
 - Re/Ro/Sc 중 특정 타입만 반복 분석 금지
 
-## 6. STEP 1 상세 계획 — Writer + Critic Self-Refine Loop
+## 7. STEP 1 상세 계획 — Writer + Critic Self-Refine Loop
 
-### 6.1 목표
+### 7.1 목표
 
 수동 입력 raw_data를 받아 고정 리포트 구조로 작성하고, Critic이 품질을 평가해 7점 미만이면 최대 2회 재작성한다.
 
-### 6.2 State 구조
+### 7.2 State 구조
 
 ```python
 class WorkflowState(TypedDict):
@@ -182,7 +213,7 @@ class WorkflowState(TypedDict):
     status: str
 ```
 
-### 6.3 Writer Agent 요구사항
+### 7.3 Writer Agent 요구사항
 
 Writer는 반드시 다음을 만족해야 한다.
 
@@ -194,7 +225,7 @@ Writer는 반드시 다음을 만족해야 한다.
 - `삼성 Gap 종합 현황` 표 생성
 - `출처 목록` 섹션 생성
 
-### 6.4 Critic Agent 10점 기준
+### 7.4 Critic Agent 10점 기준
 
 | 평가 항목 | 점수 |
 |---|---:|
@@ -209,19 +240,20 @@ Writer는 반드시 다음을 만족해야 한다.
 - 7점 미만: Writer 재실행
 - 최대 2회 반복 후 강제 종료, human review flag 저장
 
-### 6.5 STEP 1 구현 파일
+### 7.5 STEP 1 구현 파일
 
 - Modify: `src/comp_research_mas/models.py`
 - Create/Modify: `src/comp_research_mas/agents.py`
 - Create: `src/comp_research_mas/graph.py`
 - Create/Modify: `src/comp_research_mas/tools.py`
+- Create: `src/comp_research_mas/llm_adapter.py`
 - Create/Modify: `src/comp_research_mas/output.py`
 - Create/Modify: `src/comp_research_mas/config.py`
 - Modify: `src/comp_research_mas/cli.py`
 - Replace sample: `examples/manual_search_results/step1_raw_data.md`
 - Modify tests: `tests/test_step1_langgraph.py`
 
-### 6.6 STEP 1 완료 조건
+### 7.6 STEP 1 완료 조건
 
 다음 명령이 통과해야 한다.
 
@@ -243,7 +275,7 @@ uv run --extra test pytest -q
 - 삼성 Gap 종합 현황 표
 - 출처 목록
 
-## 7. 단계별 구축 게이트
+## 8. 단계별 구축 게이트
 
 ### STEP 1 완료 후 확인 필요
 
@@ -304,9 +336,9 @@ Obsidian 후보:
 완료 조건:
 - Obsidian 저장 + 이메일 발송 자동 동작
 
-## 8. 추가 아이디어
+## 9. 추가 아이디어
 
-### 8.1 Source Trust Score
+### 9.1 Source Trust Score
 
 Evidence마다 신뢰도 점수를 둔다.
 
@@ -321,7 +353,7 @@ Evidence마다 신뢰도 점수를 둔다.
 
 Critic은 3점 미만 근거를 단정 표현에 쓰지 못하게 한다.
 
-### 8.2 Evidence Ledger
+### 9.2 Evidence Ledger
 
 리포트와 별도로 JSON evidence ledger를 저장한다.
 
@@ -330,7 +362,7 @@ Critic은 3점 미만 근거를 단정 표현에 쓰지 못하게 한다.
 - 출처 감사 가능
 - Obsidian에는 요약, repo에는 sanitized evidence만 유지
 
-### 8.3 Hard Fail 조건
+### 9.3 Hard Fail 조건
 
 점수와 무관하게 즉시 human review로 보내는 조건:
 - 출처 목록 0개
@@ -339,7 +371,7 @@ Critic은 3점 미만 근거를 단정 표현에 쓰지 못하게 한다.
 - 민감정보 의심 문자열 발견
 - Critic이 `fabrication_risk: high`로 판단
 
-### 8.4 Human Approval Gate
+### 9.4 Human Approval Gate
 
 STEP 5 이메일 발송 전에는 아래 조건을 만족해야 한다.
 - Critic 7점 이상
@@ -347,22 +379,31 @@ STEP 5 이메일 발송 전에는 아래 조건을 만족해야 한다.
 - 출처 3개 이상 또는 “이번 주 신규 고신뢰 근거 없음” 명시
 - 민감정보 검사 통과
 
-## 9. 애매해서 확인 필요한 질문
+## 10. 의사결정 현황과 남은 질문
 
-1. 삼성 비교 기준의 기준선은 무엇인가?
-   - 내부 모델명/스펙을 쓰면 민감할 수 있으므로, 우선은 `삼성 보유/미보유/대응 중/확인 필요` 같은 추상 상태로 둘까요?
-2. 리포트 깊이는 어느 쪽이 맞습니까?
-   - A안: 임원용 1~2페이지 요약
-   - B안: 실무자용 상세 evidence appendix 포함
-3. 가격·유통 정보는 포함해도 됩니까?
+### 확정됨
+
+1. 삼성 비교 기준선
+   - `보유 / 미보유 / 대응 중 / 확인 필요` 추상 상태만 사용.
+   - 내부 스펙·모델명 직접 기재 금지.
+   - STEP 3 이후 별도 내부 매핑 레이어 추가 검토.
+2. 리포트 깊이
+   - 본문은 임원용 1~2페이지 요약.
+   - 상세 근거는 JSON evidence appendix로 분리 저장.
+3. Codex 연결 API
+   - repo 내부는 LLM adapter interface만 구현.
+   - 실제 키·토큰·LLM 호출은 Hermes/Codex 위임 레이어가 담당.
+
+### 남은 질문
+
+1. 가격·유통 정보는 포함해도 됩니까?
    - 공개 리셀러 가격도 노이즈/민감도 리스크가 있습니다.
-4. 특허·인증 지역 우선순위는 어떻게 둘까요?
+2. 특허·인증 지역 우선순위는 어떻게 둘까요?
    - US/EU/CN/KR/JP 중 필수 범위를 정해야 합니다.
-5. 이메일 자동 발송 수신자는 누구로 할까요?
+3. 이메일 자동 발송 수신자는 누구로 할까요?
    - 초기에는 Obsidian 저장까지만 하고 이메일은 승인 후 진행을 권장합니다.
-6. Codex 연결 API의 실제 호출 방식은 이 repo 내부에서 구현할까요, 아니면 Hermes가 실행 시 Codex/Coding agent로 위임하는 방식으로 둘까요?
 
-## 10. 바로 다음 작업
+## 11. 바로 다음 작업
 
 다음 구현 작업은 STEP 1 재구현이다.
 
@@ -373,4 +414,5 @@ STEP 5 이메일 발송 전에는 아래 조건을 만족해야 한다.
 4. `graph.py`에 LangGraph self-refine loop 구현
 5. `cli.py`에 `run-step1-sample` 추가
 6. sample raw_data 교체
-7. pytest로 구조와 refine 조건 검증
+7. `llm_adapter.py`에 interface/stub만 추가하고 실제 호출은 구현하지 않음
+8. pytest로 구조와 refine 조건 검증

@@ -10,7 +10,16 @@
 | 용도 범위 | Residential, Unitary, Heat pump. 상업용 제외 |
 | 실행 주기 | STEP 4부터 매주 월요일 자동 트리거 |
 | 출력 | Markdown 리포트, evidence JSON, critic review JSON, STEP 5부터 Obsidian 저장 + 이메일 발송 |
-| 핵심 원칙 | 전체 크롤링 금지. 고신뢰·고멘션·고인용 소스만 선별. 모든 분석은 삼성 Gap/우위/열위 관점 포함 |
+| 핵심 원칙 | 전체 크롤링 금지. 고신뢰·고멘션·고인용 소스만 선별. 모든 분석은 삼성 Gap/우위/열위 관점 포함. 삼성 비교는 `보유/미보유/대응 중/확인 필요` 추상 상태만 사용 |
+
+## 1.1 확정 의사결정
+
+- 삼성 비교 기준선: `보유 / 미보유 / 대응 중 / 확인 필요`만 사용한다.
+- 내부 스펙·모델명 직접 기재는 금지한다.
+- STEP 3 이후 별도 내부 매핑 레이어 추가를 검토한다.
+- 리포트 본문은 임원용 1~2페이지 요약으로 제한한다.
+- 상세 근거는 JSON evidence appendix로 분리 저장한다.
+- repo 내부는 LLM adapter interface만 구현하고, 실제 키·토큰·LLM 호출은 Hermes/Codex 위임 레이어가 담당한다.
 
 ## 2. 에이전트 역할 정의
 
@@ -72,6 +81,7 @@
 - 정보가 없으면 공란이 아니라 `해당 없음 — 이번 주 확인된 고신뢰 근거 없음`으로 쓴다.
 - 각 항목마다 `내용 / 삼성 비교 관점 / 출처`를 포함한다.
 - 삼성 Gap 종합 현황 표와 다음 주 모니터링 포인트를 작성한다.
+- 본문은 1~2페이지 요약을 목표로 하고 상세 근거는 evidence JSON으로 넘긴다.
 
 ### Critic Agent
 
@@ -95,6 +105,12 @@
 - Markdown, evidence JSON, critic JSON 저장
 - STEP 5부터 Obsidian 저장과 이메일 발송 담당
 - Critic 7점 미만 또는 hard fail이면 자동 발송하지 않고 human review로 남김
+
+### LLM Adapter
+
+- STEP 1에서는 interface/stub만 구현한다.
+- repo 내부에서 실제 Codex 키·토큰·LLM 호출을 수행하지 않는다.
+- 실제 작성/추론 호출은 Hermes/Sake/Codex 위임 레이어가 담당한다.
 
 ## 3. 리포트 구조
 
