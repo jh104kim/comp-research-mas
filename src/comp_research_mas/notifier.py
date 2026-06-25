@@ -5,6 +5,7 @@ from pathlib import Path
 from typing import Any
 
 from .guardian import scan_state, write_guardian_log
+from .report_html import markdown_to_html
 
 OBSIDIAN_TAGS = ["#compressor", "#monthly", "#competitor", "#Re", "#Ro", "#Sc", "#samsung-gap"]
 OBSIDIAN_VAULT_PLACEHOLDER = "[헤르메스가 알고 있는 경로]"
@@ -27,12 +28,17 @@ def prepare_notifier_dry_run(state: dict[str, Any], *, approve_send: bool = Fals
     guardian = scan_state(state)
     write_guardian_log(guardian, period_id)
     dry_run = not approve_send
-    report_path = Path((state.get("output_paths") or {}).get("report", f"outputs/reports/{period_id}_compressor_monthly.md"))
+    output_paths = state.get("output_paths") or {}
+    report_path = Path(output_paths.get("report", f"outputs/reports/{period_id}_compressor_monthly.md"))
+    html_path = Path(output_paths.get("report_html", f"outputs/reports/{period_id}_compressor_monthly.html"))
     report_text = state.get("draft") or (report_path.read_text(encoding="utf-8") if report_path.exists() else "")
+    report_html = html_path.read_text(encoding="utf-8") if html_path.exists() else markdown_to_html(report_text, state)
     outbox = Path("outputs/outbox") / period_id
     outbox.mkdir(parents=True, exist_ok=True)
     report_copy = outbox / "report.md"
+    html_copy = outbox / "report.html"
     report_copy.write_text(report_text, encoding="utf-8")
+    html_copy.write_text(report_html, encoding="utf-8")
 
     meta = state.get("report_meta") or {}
     if not meta and isinstance(state.get("analysis_bundle"), dict):
@@ -46,12 +52,14 @@ def prepare_notifier_dry_run(state: dict[str, Any], *, approve_send: bool = Fals
         "to": GMAIL_RECIPIENT,
         "subject": f"[월간] 압축기 경쟁사 모니터링 {period_id}",
         "body": _extract_summary(report_text),
+        "html_body": report_html,
         "attachment": str(report_path),
-        "attachment_note": "Obsidian 인제스트용 md 파일 첨부",
+        "attachments": [str(report_path), str(html_path)],
+        "attachment_note": "Obsidian 인제스트용 md 파일과 HTML 리포트 첨부",
     }
     slack_payload = {
         "dry_run": dry_run,
-        "message": f"[월간] 압축기 리포트 생성 완료 {period_id}\nhigh_threat: {meta.get('high_threat_count', 0)}건 / signal: {meta.get('signal_count', 0)}건\n파일: {report_path}",
+        "message": f"[월간] 압축기 리포트 생성 완료 {period_id}\nhigh_threat: {meta.get('high_threat_count', 0)}건 / signal: {meta.get('signal_count', 0)}건\nMarkdown: {report_path}\nHTML: {html_path}",
         "human_review": bool(state.get("human_review_flag") or state.get("auto_publish_blocked")),
         "hard_fail": bool(state.get("hard_fail")),
         "reasons": state.get("error_log", []),
@@ -76,7 +84,15 @@ def prepare_notifier_dry_run(state: dict[str, Any], *, approve_send: bool = Fals
         "email_payload_path": str(outbox / "email_payload.json"),
         "slack_payload_path": str(outbox / "slack_payload.json"),
         "obsidian_payload_path": str(outbox / "obsidian_payload.json"),
-        "output_paths": {**state.get("output_paths", {}), "notifier_dry_run": str(log_path), "outbox_report": str(report_copy), "email_payload": str(outbox / "email_payload.json"), "slack_payload": str(outbox / "slack_payload.json"), "obsidian_payload": str(outbox / "obsidian_payload.json")},
+        "output_paths": {
+            **output_paths,
+            "notifier_dry_run": str(log_path),
+            "outbox_report": str(report_copy),
+            "outbox_report_html": str(html_copy),
+            "email_payload": str(outbox / "email_payload.json"),
+            "slack_payload": str(outbox / "slack_payload.json"),
+            "obsidian_payload": str(outbox / "obsidian_payload.json"),
+        },
     }
 
 

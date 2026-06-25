@@ -474,3 +474,12 @@ STEP 6 live 실행 전 확인:
 3. `SLACK_WEBHOOK_URL` 존재 및 업무 채널 webhook 연결
 4. `OBSIDIAN_VAULT_PATH` 확인
 5. Guardian pass 및 critic_score>=9 확인
+
+
+## 13. HTML 리포트 포맷 추가
+
+- `report_html.py`: Markdown 리포트를 self-contained HTML로 변환한다.
+- Airbnb 스타일 디자인 기준을 반영했다: system-ui, #FF5A5F high threat, 카드 레이아웃, Gap Matrix 테이블 스타일, 배지, 푸터.
+- `output.py`: `outputs/reports/YYYY-MM_compressor_monthly.html`을 Markdown과 함께 저장한다.
+- `notifier.py`/`live_sender.py`: Gmail HTML body, `.md` + `.html` 첨부, Slack HTML 경로 표시, outbox `report.html` 생성을 지원한다.
+- Obsidian 저장은 기존처럼 `.md`만 유지한다.

@@ -27,10 +27,17 @@ def _report_path(state: dict[str, Any]) -> Path:
     return Path((state.get("output_paths") or {}).get("report", f"outputs/reports/{period_id}_compressor_monthly.md"))
 
 
+def _html_report_path(state: dict[str, Any]) -> Path:
+    period_id = state.get("period_id", "unknown")
+    return Path((state.get("output_paths") or {}).get("report_html", f"outputs/reports/{period_id}_compressor_monthly.html"))
+
+
 def build_live_payloads(state: dict[str, Any]) -> dict[str, dict[str, Any]]:
     period_id = state.get("period_id", "unknown")
     report_path = _report_path(state)
+    html_path = _html_report_path(state)
     report_text = state.get("draft") or (report_path.read_text(encoding="utf-8") if report_path.exists() else "")
+    html_body = html_path.read_text(encoding="utf-8") if html_path.exists() else ""
     meta = state.get("report_meta") or {}
     if not meta and isinstance(state.get("analysis_bundle"), dict):
         bundle = state["analysis_bundle"]
@@ -42,10 +49,12 @@ def build_live_payloads(state: dict[str, Any]) -> dict[str, dict[str, Any]]:
         "to": GMAIL_RECIPIENT,
         "subject": f"[월간] 압축기 경쟁사 모니터링 {period_id}",
         "body": _extract_summary(report_text),
+        "html_body": html_body,
         "attachment": str(report_path),
+        "attachments": [str(report_path), str(html_path)],
     }
     slack_payload = {
-        "message": f"[자동 승인] 월간 리포트 발송 완료 {period_id}\ncritic_score: {score} / high_threat: {meta.get('high_threat_count', 0)}건 / signal: {meta.get('signal_count', 0)}건\n파일: {report_path}\n자동 승인 조건 충족: score={score}, hard_fail=False, guardian={guardian}",
+        "message": f"[자동 승인] 월간 리포트 발송 완료 {period_id}\ncritic_score: {score} / high_threat: {meta.get('high_threat_count', 0)}건 / signal: {meta.get('signal_count', 0)}건\nMarkdown: {report_path}\nHTML: {html_path}\n자동 승인 조건 충족: score={score}, hard_fail=False, guardian={guardian}",
     }
     obsidian_payload = {
         "vault_path": os.environ.get("OBSIDIAN_VAULT_PATH", "/mnt/f/ai-obsidian/지식창고"),
@@ -62,15 +71,23 @@ def send_gmail(payload: dict[str, Any], *, dry_run: bool) -> dict[str, Any]:
     password = os.environ.get("GMAIL_APP_PASSWORD")
     if not password:
         raise LiveSendError("GMAIL_APP_PASSWORD missing")
-    attachment = Path(payload["attachment"])
-    if not attachment.exists() or attachment.suffix != ".md":
+    attachments = [Path(p) for p in payload.get("attachments", [payload["attachment"]])]
+    if not any(path.exists() and path.suffix == ".md" for path in attachments):
         raise LiveSendError("Gmail attachment .md missing")
+    if not any(path.exists() and path.suffix == ".html" for path in attachments):
+        raise LiveSendError("Gmail attachment .html missing")
     msg = EmailMessage()
     msg["From"] = payload["from"]
     msg["To"] = payload["to"]
     msg["Subject"] = payload["subject"]
     msg.set_content(payload["body"])
-    msg.add_attachment(attachment.read_bytes(), maintype="text", subtype="markdown", filename=attachment.name)
+    if payload.get("html_body"):
+        msg.add_alternative(payload["html_body"], subtype="html")
+    for attachment in attachments:
+        if attachment.suffix == ".md":
+            msg.add_attachment(attachment.read_bytes(), maintype="text", subtype="markdown", filename=attachment.name)
+        elif attachment.suffix == ".html":
+            msg.add_attachment(attachment.read_bytes(), maintype="text", subtype="html", filename=attachment.name)
     with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp:
         smtp.login(payload["from"], password)
         smtp.send_message(msg)

@@ -7,6 +7,7 @@ from typing import Any
 
 from .agents import build_report_metadata
 from .models import WorkflowState
+from .report_html import markdown_to_html
 
 
 def save_step_outputs(state: WorkflowState, *, output_root: str | Path = "outputs") -> WorkflowState:
@@ -22,11 +23,13 @@ def save_step_outputs(state: WorkflowState, *, output_root: str | Path = "output
     period_id = state.get("period_id")
     if period_id and len(str(period_id)) == 7:
         report_path = report_dir / f"{period_id}_compressor_monthly.md"
+        html_path = report_dir / f"{period_id}_compressor_monthly.html"
         review_path = review_dir / f"{period_id}_critic_review.json"
         critic_cot_path = review_dir / f"{period_id}_critic_cot.json"
         evidence_path = evidence_dir / f"{period_id}_evidence.json"
     else:
         report_path = report_dir / f"{today}_compressor_weekly.md"
+        html_path = report_dir / f"{today}_compressor_weekly.html"
         review_path = review_dir / f"{today}_critic_review.json"
         critic_cot_path = review_dir / f"{today}_critic_cot.json"
         evidence_path = evidence_dir / f"{week_id}_evidence.json"
@@ -36,6 +39,7 @@ def save_step_outputs(state: WorkflowState, *, output_root: str | Path = "output
     state = {**state, "report_meta": meta.to_dict(), "critic_cot_path": str(critic_cot_path)}
 
     report_path.write_text(state.get("draft", ""), encoding="utf-8")
+    html_path.write_text(markdown_to_html(state.get("draft", ""), state), encoding="utf-8")
     review_payload: dict[str, Any] = {
         "score": state.get("score", 0),
         "feedback": state.get("feedback", {}),
@@ -64,7 +68,7 @@ def save_step_outputs(state: WorkflowState, *, output_root: str | Path = "output
     evidence_path.write_text(json.dumps(evidence_payload, ensure_ascii=False, indent=2), encoding="utf-8")
 
     output_paths = dict(state.get("output_paths", {}))
-    output_paths.update({"report": str(report_path), "review": str(review_path), "critic_cot": str(critic_cot_path), "evidence": str(evidence_path)})
+    output_paths.update({"report": str(report_path), "report_html": str(html_path), "review": str(review_path), "critic_cot": str(critic_cot_path), "evidence": str(evidence_path)})
     if state.get("analysis_path"):
         output_paths["analysis"] = str(state["analysis_path"])
     if state.get("evidence_ledger_path"):
