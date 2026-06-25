@@ -80,3 +80,22 @@ ResearchAdapter must return:
 uv run python -m comp_research_mas.cli run-monthly --manual --period-id YYYY-MM
 uv run --extra test pytest -q
 ```
+
+
+## STEP 5 Implementation Status
+
+Implemented in repo:
+
+- `HermesResearchAdapter(injected_results_path=None, fallback_to_stub=True)`
+- Raw results schema validation
+- Stub fallback when no injected results are provided
+- No network calls and no credential usage inside repo
+- `run-step5-sample --injected-results-path PATH`
+- `run-step5-live` remains dry-run unless explicit approval is provided
+
+Not implemented by design until STEP 6:
+
+- Actual Hermes web/search/API invocation
+- Gmail live send
+- Slack live webhook send
+- Obsidian live vault write beyond dry-run payload/outbox

@@ -21,10 +21,18 @@ def load_raw_data_node(state: WorkflowState) -> WorkflowState:
 
 def writer_node(state: WorkflowState) -> WorkflowState:
     evidence = [EvidenceItem(**item) for item in state.get("evidence", [])]
-    draft = write_step_report(evidence, analysis_bundle=state.get("analysis_bundle"), writer_directives=state.get("writer_directives", []), feedback=state.get("feedback"), iteration=int(state.get("iteration", 0)))
+    debate_points = (state.get("feedback") or {}).get("debate_points", [])
+    debate_decisions = decide_debate_points(debate_points)
+    draft = write_step_report(evidence, analysis_bundle=state.get("analysis_bundle"), writer_directives=state.get("writer_directives", []), feedback=state.get("feedback"), iteration=int(state.get("iteration", 0)), debate_decisions=debate_decisions)
     from .workflow_utils import append_reasoning
-    reasoning_log = append_reasoning(state, node="writer", step="RAG 기반 리포트 작성", reasoning="Evidence Ledger와 이전 리포트를 참조해 타입/경쟁사/카테고리별 근거를 보강한다", judgment="rag_reference" if evidence else "direct_write", tool_used=False, rag_used=bool(evidence), conclusion="draft 생성")
-    return {**state, "draft": draft, "reasoning_log": reasoning_log, "status": "drafted"}
+    if not debate_points:
+        judgment = "debate_not_needed"
+    elif any(d["decision"] == "accepted" for d in debate_decisions):
+        judgment = "debate_accepted"
+    else:
+        judgment = "debate_rejected"
+    reasoning_log = append_reasoning(state, node="writer", step="RAG 기반 리포트 작성", reasoning="Evidence Ledger와 이전 리포트를 참조하고 debate_points를 검토해 작성 방향을 결정한다", judgment=judgment if debate_points else ("rag_reference" if evidence else "direct_write"), tool_used=False, rag_used=bool(evidence), persona_role="압축기 시장 인텔리전스 리포트 작성가", conclusion="draft 생성")
+    return {**state, "draft": draft, "debate_decisions": debate_decisions, "reasoning_log": reasoning_log, "status": "drafted"}
 
 
 def critic_node(state: WorkflowState) -> WorkflowState:
@@ -56,8 +64,9 @@ def write_step1_report(evidence: list[EvidenceItem], *, feedback: dict[str, Any]
     return write_step_report(evidence, feedback=feedback, iteration=iteration)
 
 
-def write_step_report(evidence: list[EvidenceItem], *, analysis_bundle: dict[str, Any] | None = None, writer_directives: list[str] | None = None, feedback: dict[str, Any] | None = None, iteration: int = 0) -> str:
+def write_step_report(evidence: list[EvidenceItem], *, analysis_bundle: dict[str, Any] | None = None, writer_directives: list[str] | None = None, feedback: dict[str, Any] | None = None, iteration: int = 0, debate_decisions: list[dict[str, Any]] | None = None) -> str:
     writer_directives = writer_directives or []
+    debate_decisions = debate_decisions or []
     by_type_category_competitor: dict[tuple[str, str, str], list[EvidenceItem]] = defaultdict(list)
     for item in evidence:
         by_type_category_competitor[(item.compressor_type, item.category, item.competitor)].append(item)
@@ -72,6 +81,10 @@ def write_step_report(evidence: list[EvidenceItem], *, analysis_bundle: dict[str
         lines.append("- 지난 주 대비 변화: 이전 리포트가 존재하여 Gap Matrix/신규 신호 중심으로 변화 항목을 우선 비교")
     if writer_directives:
         lines.append("- Orchestrator 지시: " + " / ".join(writer_directives))
+    if debate_decisions:
+        accepted = [d for d in debate_decisions if d["decision"] == "accepted"]
+        rejected = [d for d in debate_decisions if d["decision"] == "rejected"]
+        lines.append(f"- Debate 반영: accepted={len(accepted)}, rejected={len(rejected)}")
     if analysis_bundle:
         threats = analysis_bundle.get("threat_summary", [])
         high = [t for t in threats if t.get("threat_level") == "high"]
@@ -228,8 +241,38 @@ def critique_step_report(draft: str, evidence_dicts: list[dict[str, Any]], itera
     if primary_all_missing:
         hard_fail_reasons.append("★ 최우선 경쟁사 전체 누락")
     hard_fail = bool(hard_fail_reasons)
-    return {"score": score, "passed": score >= PASS_SCORE and not hard_fail, "findings": findings, "required_fixes": fixes, "hard_fail": hard_fail, "hard_fail_reasons": hard_fail_reasons, "iteration": iteration}
+    debate_points = build_debate_points(score, fixes, hard_fail)
+    return {"score": score, "passed": score >= PASS_SCORE and not hard_fail, "findings": findings, "required_fixes": fixes, "debate_points": debate_points, "hard_fail": hard_fail, "hard_fail_reasons": hard_fail_reasons, "iteration": iteration}
 
+
+
+def build_debate_points(score: int, fixes: list[str], hard_fail: bool) -> list[dict[str, str]]:
+    if hard_fail or score >= 9 or not fixes:
+        return []
+    severity = "minor" if score >= 7 else "major"
+    points: list[dict[str, str]] = []
+    for fix in fixes:
+        points.append({
+            "section": "report_quality",
+            "issue": fix,
+            "suggestion": "해당 섹션을 evidence/source 기준으로 보강",
+            "severity": severity,
+        })
+    return points
+
+
+def decide_debate_points(debate_points: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    decisions: list[dict[str, Any]] = []
+    for point in debate_points:
+        severity = point.get("severity", "minor")
+        issue = point.get("issue", "")
+        if severity == "major":
+            decisions.append({**point, "decision": "accepted", "reason": "major 이슈는 품질 기준상 수용 우선"})
+        elif "출처" in issue and "https://" not in issue:
+            decisions.append({**point, "decision": "accepted", "reason": "출처 관련 minor 이슈는 보강 필요"})
+        else:
+            decisions.append({**point, "decision": "rejected", "reason": "minor 이슈이며 기존 evidence/구조로 설명 가능"})
+    return decisions
 
 def build_report_metadata(state: WorkflowState) -> ReportMetadata:
     evidence = [EvidenceItem(**item) for item in state.get("evidence", [])]

@@ -3,7 +3,7 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
-from .graph import run_step1, run_step2, run_step3
+from .graph import run_step1, run_step2, run_step3, run_step5
 from .orchestrator import run_monthly_orchestrator
 from .pipeline import run_writer_critic_loop
 from .scheduler import run_monthly
@@ -15,7 +15,7 @@ def _print_state(state: dict) -> int:
     print(f"critic_score={state.get('score')}")
     print(f"iteration={state.get('iteration')}")
     print(f"hard_fail={state.get('hard_fail')}")
-    print(f"auto_publish_blocked={state.get('auto_publish_blocked')}")
+    print(f"auto_publish_blocked={bool(state.get('auto_publish_blocked', False))}")
     meta = state.get("report_meta") or {}
     if meta:
         print(f"evidence_count={meta.get('total_evidence_count')}")
@@ -51,6 +51,15 @@ def main(argv: list[str] | None = None) -> int:
     monthly.add_argument("--period-id", default=None)
     monthly.add_argument("--manual", action="store_true")
 
+    step5 = sub.add_parser("run-step5-sample", help="Run STEP 5 graph with Hermes adapter stub/injected mode and notifier dry-run")
+    step5.add_argument("--period-id", default="2026-06")
+    step5.add_argument("--injected-results-path", default=None)
+
+    step5_live = sub.add_parser("run-step5-live", help="Run STEP 5 live-shaped command; dry-run unless --approve-send")
+    step5_live.add_argument("--period-id", default="2026-06")
+    step5_live.add_argument("--injected-results-path", default=None)
+    step5_live.add_argument("--approve-send", action="store_true")
+
     run = sub.add_parser("run", help="Run legacy Phase 1 with a manual search results markdown file")
     run.add_argument("input_path")
     run.add_argument("--output-dir", default="outputs/reports")
@@ -80,6 +89,14 @@ def main(argv: list[str] | None = None) -> int:
     if args.command == "run-monthly":
         print("step=MONTHLY")
         return _print_state(run_monthly(period_id=args.period_id, manual=args.manual))
+    if args.command == "run-step5-sample":
+        print("step=STEP5")
+        return _print_state(run_step5(period_id=args.period_id, injected_results_path=args.injected_results_path, approve_send=False))
+    if args.command == "run-step5-live":
+        print("step=STEP5_LIVE")
+        if not args.approve_send:
+            print("approve_send=False: STEP 5 live command remains dry-run. STEP 6에서 실제 발송 예정")
+        return _print_state(run_step5(period_id=args.period_id, injected_results_path=args.injected_results_path, approve_send=args.approve_send))
 
     report, review = run_writer_critic_loop(args.input_path, args.output_dir, week_label=args.week_label)
     print(f"report_title={report.title}")

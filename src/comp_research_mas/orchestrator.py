@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import re
 import time
 from pathlib import Path
 from typing import Any, Callable
@@ -10,7 +9,7 @@ from .graph import run_step3
 from .memory_store import read_evidence_ledger
 from .workflow_utils import append_reasoning
 
-SENSITIVE_RE = re.compile(r"(sk-[A-Za-z0-9]|ghp_|github_pat_|xox[baprs]-|AIza|AKIA|BEGIN PRIVATE KEY)")
+from .guardian import scan_state
 
 
 class OrchestratorError(Exception):
@@ -46,9 +45,12 @@ def human_review_gate(state: dict[str, Any]) -> tuple[bool, list[str]]:
         reasons.append("critic_score < 7")
     if state.get("hard_fail"):
         reasons.append("hard_fail = True")
-    draft = state.get("draft", "")
-    if SENSITIVE_RE.search(draft):
+    guardian = state.get("guardian_result") or scan_state(state).to_dict()
+    if guardian.get("severity") == "block":
+        reasons.append("Guardian block 감지")
         reasons.append("민감정보 패턴 감지")
+    elif guardian.get("severity") == "warn":
+        reasons.append("Guardian warn 감지")
     return bool(reasons), reasons
 
 

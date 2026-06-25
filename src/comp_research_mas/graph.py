@@ -9,8 +9,10 @@ from .memory_store import append_evidence_ledger, append_gap_history
 from .models import EvidenceItem, WorkflowState
 from .output import save_step_outputs
 from .query_planner import build_query_plan, replan_query_plan, save_query_plan
-from .research_adapter import Step3StubResearchAdapter, StubResearchAdapter, save_raw_results
+from .research_adapter import HermesResearchAdapter, Step3StubResearchAdapter, StubResearchAdapter, save_raw_results
 from .workflow_utils import append_reasoning
+from .guardian import guardian_node
+from .notifier import notifier_node
 
 EVIDENCE_REPLAN_THRESHOLD = 8
 
@@ -94,6 +96,43 @@ def analyst_node(state: WorkflowState) -> WorkflowState:
     return {**state, "analysis_bundle": bundle.to_dict(), "writer_directives": directives, "analysis_path": str(analysis_path), "gap_history_path": str(gap_history_path), "reasoning_log": reasoning_log, "status": "analyzed"}
 
 
+
+def step5_research_adapter_node(state: WorkflowState) -> WorkflowState:
+    adapter = HermesResearchAdapter(injected_results_path=state.get("injected_results_path"), fallback_to_stub=True)
+    raw_results = adapter.search(state["query_plan"])
+    save_raw_results(raw_results)
+    dist = HermesResearchAdapter.trust_distribution(raw_results)
+    judgment = "additional_search_needed" if dist["high_confidence"] < 3 else "sufficient_sources"
+    reasoning_log = append_reasoning(
+        state,
+        node="research_adapter",
+        step="Hermes adapter 주입/검증/fallback",
+        reasoning=f"고신뢰 결과 {dist['high_confidence']}건 / 전체 {dist['total']}건. 실제 검색 호출은 repo 밖에서 수행",
+        judgment=judgment,
+        tool_used=True,
+        rag_used=False,
+        persona_role="HVACR 시장 정보 수집 전문가",
+        conclusion="raw_results 생성",
+    )
+    return {**state, "raw_results": raw_results, "research_trust_distribution": dist, "reasoning_log": reasoning_log, "status": "researched_step5"}
+
+
+def notifier_dry_run_node(state: WorkflowState) -> WorkflowState:
+    return notifier_node(state)
+
+
+def decide_after_step5_critic(state: WorkflowState) -> str:
+    guardian = state.get("guardian_result") or {}
+    if state.get("hard_fail") or guardian.get("severity") == "block":
+        return "human_review"
+    if int(state.get("score", 0)) >= 9 and not state.get("human_review_flag"):
+        return "notify"
+    if int(state.get("score", 0)) >= 7 and not state.get("human_review_flag"):
+        return "notify"
+    if int(state.get("iteration", 0)) < 2 and (state.get("feedback") or {}).get("debate_points"):
+        return "rewrite"
+    return "human_review"
+
 def build_step2_graph():
     workflow = StateGraph(WorkflowState)
     workflow.add_node("source_planner", source_planner_node)
@@ -140,6 +179,38 @@ def build_step3_graph():
     return workflow.compile()
 
 
+
+def build_step5_graph():
+    workflow = StateGraph(WorkflowState)
+    workflow.add_node("source_planner", source_planner_node)
+    workflow.add_node("research_adapter", step5_research_adapter_node)
+    workflow.add_node("guardian_after_research", guardian_node)
+    workflow.add_node("evidence_normalizer", evidence_normalizer_node)
+    workflow.add_node("analyst", analyst_node)
+    workflow.add_node("writer", writer_node)
+    workflow.add_node("guardian_after_writer", guardian_node)
+    workflow.add_node("critic", critic_node)
+    workflow.add_node("increment_iteration", increment_iteration_node)
+    workflow.add_node("human_review_flag", human_review_flag_node)
+    workflow.add_node("notifier_dry_run", notifier_dry_run_node)
+    workflow.add_node("guardian_before_save", guardian_node)
+    workflow.add_node("save_output", save_output_node)
+    workflow.add_edge(START, "source_planner")
+    workflow.add_edge("source_planner", "research_adapter")
+    workflow.add_edge("research_adapter", "guardian_after_research")
+    workflow.add_edge("guardian_after_research", "evidence_normalizer")
+    workflow.add_edge("evidence_normalizer", "analyst")
+    workflow.add_edge("analyst", "writer")
+    workflow.add_edge("writer", "guardian_after_writer")
+    workflow.add_edge("guardian_after_writer", "critic")
+    workflow.add_conditional_edges("critic", decide_after_step5_critic, {"notify": "notifier_dry_run", "rewrite": "increment_iteration", "human_review": "human_review_flag"})
+    workflow.add_edge("increment_iteration", "writer")
+    workflow.add_edge("human_review_flag", "guardian_before_save")
+    workflow.add_edge("notifier_dry_run", "guardian_before_save")
+    workflow.add_edge("guardian_before_save", "save_output")
+    workflow.add_edge("save_output", END)
+    return workflow.compile()
+
 def run_step1(raw_data: str) -> WorkflowState:
     return build_step1_graph().invoke({"raw_data": raw_data, "week_id": "2026-26", "iteration": 0, "error_log": [], "reasoning_log": []})
 
@@ -150,6 +221,10 @@ def run_step2(week_id: str = "2026-26") -> WorkflowState:
 
 def run_step3(week_id: str = "2026-26", period_id: str | None = None) -> WorkflowState:
     return build_step3_graph().invoke({"week_id": week_id, "period_id": period_id or week_id, "iteration": 0, "error_log": [], "reasoning_log": []})
+
+
+def run_step5(period_id: str = "2026-06", injected_results_path: str | None = None, approve_send: bool = False) -> WorkflowState:
+    return build_step5_graph().invoke({"week_id": "2026-26", "period_id": period_id, "injected_results_path": injected_results_path, "approve_send": approve_send, "iteration": 0, "error_log": [], "reasoning_log": []})
 
 
 def _sources_from_evidence(evidence: list[dict]) -> list[dict]:

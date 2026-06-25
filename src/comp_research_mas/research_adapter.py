@@ -90,6 +90,57 @@ class Step3StubResearchAdapter(ResearchAdapter):
         return {"week_id": week_id, "period_id": query_plan.get("period_id", week_id), "results": base_results + anomaly_results}
 
 
+
+class HermesResearchAdapter(ResearchAdapter):
+    """
+    외부 raw_results 주입·검증·fallback 담당.
+    실제 검색은 repo 밖 Hermes/Sake 레이어가 수행한다.
+    """
+
+    REQUIRED_RESULT_KEYS = {"query_id", "source_url", "source_date", "source_type", "title", "summary", "raw_text", "competitor", "compressor_type", "category", "refrigerants", "samsung_status"}
+
+    def __init__(self, injected_results_path: str | Path | None = None, fallback_to_stub: bool = True):
+        self.injected_results_path = Path(injected_results_path) if injected_results_path else None
+        self.fallback_to_stub = fallback_to_stub
+
+    def search(self, query_plan: dict[str, Any]) -> dict[str, Any]:
+        if self.injected_results_path:
+            raw_results = json.loads(self.injected_results_path.read_text(encoding="utf-8"))
+            return self.validate_raw_results(raw_results, query_plan)
+        if self.fallback_to_stub:
+            return Step3StubResearchAdapter().search(query_plan)
+        raise RuntimeError("HermesResearchAdapter requires injected_results_path when fallback_to_stub=False")
+
+    @classmethod
+    def validate_raw_results(cls, raw_results: dict[str, Any], query_plan: dict[str, Any]) -> dict[str, Any]:
+        if not isinstance(raw_results, dict):
+            raise ValueError("raw_results must be dict")
+        if "results" not in raw_results or not isinstance(raw_results["results"], list):
+            raise ValueError("raw_results.results must be list")
+        raw_results.setdefault("week_id", query_plan.get("week_id", "unknown"))
+        raw_results.setdefault("period_id", query_plan.get("period_id", raw_results["week_id"]))
+        for idx, item in enumerate(raw_results["results"]):
+            missing = sorted(cls.REQUIRED_RESULT_KEYS - set(item))
+            if missing:
+                raise ValueError(f"raw_results.results[{idx}] missing keys: {missing}")
+            if not str(item.get("source_url", "")).startswith(("https://", "manual://", "file://")):
+                raise ValueError(f"raw_results.results[{idx}] invalid source_url")
+        return raw_results
+
+    @staticmethod
+    def trust_distribution(raw_results: dict[str, Any]) -> dict[str, int]:
+        from .models import SOURCE_TRUST_SCORE
+        counts = {"high_confidence": 0, "low_confidence": 0, "total": 0}
+        for item in raw_results.get("results", []):
+            score = SOURCE_TRUST_SCORE.get(item.get("source_type", "news"), 1)
+            counts["total"] += 1
+            if score >= 4:
+                counts["high_confidence"] += 1
+            else:
+                counts["low_confidence"] += 1
+        return counts
+
+
 def _result_from_query(q: dict[str, Any]) -> dict[str, Any]:
     competitor = q["competitor"]
     ctype = q["compressor_type"]

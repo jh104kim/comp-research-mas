@@ -13,17 +13,19 @@ def append_reasoning(
     judgment: str = "proceed",
     tool_used: bool = False,
     rag_used: bool = False,
+    persona_role: str = "",
 ) -> list[dict[str, Any]]:
     log = list(state.get("reasoning_log", []))
-    log.append(
-        {
-            "node": node,
-            "step": step,
-            "judgment": judgment,
-            "reasoning": reasoning,
-            "tool_used": tool_used,
-            "rag_used": rag_used,
-            "conclusion": conclusion,
-        }
-    )
+    entry = {
+        "node": node,
+        "step": step,
+        "judgment": judgment,
+        "reasoning": reasoning,
+        "tool_used": tool_used,
+        "rag_used": rag_used,
+        "conclusion": conclusion,
+    }
+    if persona_role:
+        entry["persona_role"] = persona_role
+    log.append(entry)
     return log

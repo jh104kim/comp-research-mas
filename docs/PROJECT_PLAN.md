@@ -434,15 +434,25 @@ STEP 4 완료 반영:
 - STEP 5 계약 문서: `docs/STEP5_HERMES_ADAPTER_SPEC.md`
 - Source whitelist: `config/source_whitelist.yaml`
 
-STEP 5 우선순위:
-1. Hermes/Sake 외부 실행 레이어에서 실제 검색 tool 호출 구현
-2. `ResearchAdapter` 계약에 맞춰 raw_results 주입
-3. robots.txt/source_whitelist/rate limit 검증
-4. partial results/failure를 STEP 4 fallback과 human review gate에 연결
-5. 실제 검색 결과로 monthly E2E 검증
+STEP 5 완료 반영:
+- `personas.py`: 에이전트별 role/expertise/style/values/behavior metadata를 정의했다.
+- `guardian.py`: block/warn 보안 패턴, scan_text/scan_state/guardian_node, guardian log를 구현했다.
+- `HermesResearchAdapter`: 실제 네트워크 호출 없이 외부 raw_results 주입·schema validation·stub fallback을 구현했다.
+- `vector_store.py`: Semantic Memory Lite(FileVectorStore)를 구현하고 RAG가 이를 사용한다.
+- Debate pattern: Critic debate_points, Writer accepted/rejected/not_needed 판단을 추가했다.
+- `notifier.py`: Gmail/Slack/Obsidian payload dry_run outbox를 생성한다. 실제 발송은 하지 않는다.
+- 월간 output filename: `YYYY-MM_compressor_monthly.md`, `YYYY-MM_critic_review.json`, `YYYY-MM_critic_cot.json`, `YYYY-MM_evidence.json`.
+- STEP 5 graph/CLI: `run-step5-sample`, `run-step5-live`를 추가했다. live도 `--approve-send` 없이는 dry_run이다.
 
-STEP 5 전 확인 필요:
+STEP 6 우선순위:
+1. 실제 Hermes/Sake 검색 실행 레이어를 repo 밖에서 구현하고 raw_results를 주입한다.
+2. `--approve-send` 승인 체계와 감사 로그를 확정한다.
+3. Gmail/Slack/Obsidian live delivery를 최소 권한으로 연결한다.
+4. Guardian block/warn 정책과 source whitelist를 운영 기준으로 확정한다.
+5. 실제 검색 결과로 monthly E2E 및 human review gate를 검증한다.
+
+STEP 6 전 확인 필요:
 - 실제 Hermes 검색 도구 선택과 호출 위치
 - 인증/권한 범위와 비밀 저장 위치
-- 검색 소스 whitelist 최종 확정
-- Slack/Obsidian/Email 알림·발송 범위
+- Slack/Obsidian/Email 실제 발송 승인 방식
+- live delivery 수신자·채널·Vault 경로 최종 확정
