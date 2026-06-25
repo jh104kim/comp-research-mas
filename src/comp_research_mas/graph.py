@@ -13,6 +13,9 @@ from .research_adapter import HermesResearchAdapter, Step3StubResearchAdapter, S
 from .workflow_utils import append_reasoning
 from .guardian import guardian_node
 from .notifier import notifier_node
+from .auto_approver import auto_approver_node
+from .hermes_adapter import hermes_live_adapter_node
+from .live_sender import live_sender_node
 
 EVIDENCE_REPLAN_THRESHOLD = 8
 
@@ -211,6 +214,42 @@ def build_step5_graph():
     workflow.add_edge("save_output", END)
     return workflow.compile()
 
+
+def decide_after_auto_approver(state: WorkflowState) -> str:
+    if state.get("auto_approve") and not state.get("hard_fail"):
+        return "send"
+    return "human_review"
+
+
+def build_step6_graph():
+    workflow = StateGraph(WorkflowState)
+    workflow.add_node("source_planner", source_planner_node)
+    workflow.add_node("hermes_live_adapter", hermes_live_adapter_node)
+    workflow.add_node("guardian_after_research", guardian_node)
+    workflow.add_node("evidence_normalizer", evidence_normalizer_node)
+    workflow.add_node("analyst", analyst_node)
+    workflow.add_node("writer", writer_node)
+    workflow.add_node("guardian_after_writer", guardian_node)
+    workflow.add_node("critic", critic_node)
+    workflow.add_node("auto_approver", auto_approver_node)
+    workflow.add_node("live_sender", live_sender_node)
+    workflow.add_node("human_review_flag", human_review_flag_node)
+    workflow.add_node("save_output", save_output_node)
+    workflow.add_edge(START, "source_planner")
+    workflow.add_edge("source_planner", "hermes_live_adapter")
+    workflow.add_edge("hermes_live_adapter", "guardian_after_research")
+    workflow.add_edge("guardian_after_research", "evidence_normalizer")
+    workflow.add_edge("evidence_normalizer", "analyst")
+    workflow.add_edge("analyst", "writer")
+    workflow.add_edge("writer", "guardian_after_writer")
+    workflow.add_edge("guardian_after_writer", "critic")
+    workflow.add_edge("critic", "auto_approver")
+    workflow.add_conditional_edges("auto_approver", decide_after_auto_approver, {"send": "live_sender", "human_review": "human_review_flag"})
+    workflow.add_edge("live_sender", "save_output")
+    workflow.add_edge("human_review_flag", "save_output")
+    workflow.add_edge("save_output", END)
+    return workflow.compile()
+
 def run_step1(raw_data: str) -> WorkflowState:
     return build_step1_graph().invoke({"raw_data": raw_data, "week_id": "2026-26", "iteration": 0, "error_log": [], "reasoning_log": []})
 
@@ -225,6 +264,10 @@ def run_step3(week_id: str = "2026-26", period_id: str | None = None) -> Workflo
 
 def run_step5(period_id: str = "2026-06", injected_results_path: str | None = None, approve_send: bool = False) -> WorkflowState:
     return build_step5_graph().invoke({"week_id": "2026-26", "period_id": period_id, "injected_results_path": injected_results_path, "approve_send": approve_send, "iteration": 0, "error_log": [], "reasoning_log": []})
+
+
+def run_step6(period_id: str = "2026-06", injected_results_path: str | None = None, dry_run: bool = True) -> WorkflowState:
+    return build_step6_graph().invoke({"week_id": "2026-26", "period_id": period_id, "injected_results_path": injected_results_path, "dry_run": dry_run, "iteration": 0, "error_log": [], "reasoning_log": []})
 
 
 def _sources_from_evidence(evidence: list[dict]) -> list[dict]:

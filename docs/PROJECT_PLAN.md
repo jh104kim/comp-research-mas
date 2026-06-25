@@ -456,3 +456,21 @@ STEP 6 전 확인 필요:
 - 인증/권한 범위와 비밀 저장 위치
 - Slack/Obsidian/Email 실제 발송 승인 방식
 - live delivery 수신자·채널·Vault 경로 최종 확정
+
+
+## 12. STEP 6 완료 반영
+
+- `auto_approver.py`: critic_score>=9, hard_fail=False, guardian=pass 조건을 평가하고 audit log를 저장한다.
+- `live_sender.py`: Gmail SMTP, Slack webhook, Obsidian file write 실제 발송 코드를 구현했다. `run-step6-sample`은 dry_run만 수행한다.
+- `hermes_adapter.py`: HermesLiveAdapter가 injected JSON 파일을 우선 사용하고, 외부 runner 미구성 시 Step3StubResearchAdapter fallback을 사용한다.
+- `build_step6_graph()`: live adapter → guardian → analysis/write/critic → auto_approver → live_sender/save_output 흐름을 추가했다.
+- CLI: `run-step6-sample`, `run-step6-live`를 추가했다.
+- 비밀값은 환경변수(`GMAIL_SENDER`, `GMAIL_APP_PASSWORD`, `SLACK_WEBHOOK_URL`, `OBSIDIAN_VAULT_PATH`)로만 주입한다.
+
+STEP 6 live 실행 전 확인:
+
+1. `GMAIL_SENDER=jh104.kim@gmail.com`
+2. `GMAIL_APP_PASSWORD` 존재
+3. `SLACK_WEBHOOK_URL` 존재 및 업무 채널 webhook 연결
+4. `OBSIDIAN_VAULT_PATH` 확인
+5. Guardian pass 및 critic_score>=9 확인

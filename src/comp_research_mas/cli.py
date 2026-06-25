@@ -3,7 +3,7 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
-from .graph import run_step1, run_step2, run_step3, run_step5
+from .graph import run_step1, run_step2, run_step3, run_step5, run_step6
 from .orchestrator import run_monthly_orchestrator
 from .pipeline import run_writer_critic_loop
 from .scheduler import run_monthly
@@ -60,6 +60,14 @@ def main(argv: list[str] | None = None) -> int:
     step5_live.add_argument("--injected-results-path", default=None)
     step5_live.add_argument("--approve-send", action="store_true")
 
+    step6 = sub.add_parser("run-step6-sample", help="Run STEP 6 graph with auto-approver and live sender dry-run")
+    step6.add_argument("--period-id", default="2026-06")
+    step6.add_argument("--injected-results-path", default=None)
+
+    step6_live = sub.add_parser("run-step6-live", help="Run STEP 6 live: actual send only when auto-approved")
+    step6_live.add_argument("--period-id", default="2026-06")
+    step6_live.add_argument("--injected-results-path", default=None)
+
     run = sub.add_parser("run", help="Run legacy Phase 1 with a manual search results markdown file")
     run.add_argument("input_path")
     run.add_argument("--output-dir", default="outputs/reports")
@@ -97,6 +105,12 @@ def main(argv: list[str] | None = None) -> int:
         if not args.approve_send:
             print("approve_send=False: STEP 5 live command remains dry-run. STEP 6에서 실제 발송 예정")
         return _print_state(run_step5(period_id=args.period_id, injected_results_path=args.injected_results_path, approve_send=args.approve_send))
+    if args.command == "run-step6-sample":
+        print("step=STEP6")
+        return _print_state(run_step6(period_id=args.period_id, injected_results_path=args.injected_results_path, dry_run=True))
+    if args.command == "run-step6-live":
+        print("step=STEP6_LIVE")
+        return _print_state(run_step6(period_id=args.period_id, injected_results_path=args.injected_results_path, dry_run=False))
 
     report, review = run_writer_critic_loop(args.input_path, args.output_dir, week_label=args.week_label)
     print(f"report_title={report.title}")

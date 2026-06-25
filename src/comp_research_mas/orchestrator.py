@@ -5,7 +5,7 @@ from pathlib import Path
 from typing import Any, Callable
 
 from .alert import emit_alert
-from .graph import run_step3
+from .graph import run_step3, run_step6
 from .memory_store import read_evidence_ledger
 from .workflow_utils import append_reasoning
 
@@ -54,7 +54,7 @@ def human_review_gate(state: dict[str, Any]) -> tuple[bool, list[str]]:
     return bool(reasons), reasons
 
 
-def run_monthly_orchestrator(*, period_id: str, manual: bool = False, force_failure: str | None = None) -> dict[str, Any]:
+def run_monthly_orchestrator(*, period_id: str, manual: bool = False, force_failure: str | None = None, step: int = 4, dry_run: bool = True) -> dict[str, Any]:
     log_dir = Path("outputs/logs")
     log_dir.mkdir(parents=True, exist_ok=True)
     run_log_path = log_dir / f"{period_id}_run.log"
@@ -74,7 +74,10 @@ def run_monthly_orchestrator(*, period_id: str, manual: bool = False, force_fail
             alert = emit_alert("human_review", "Writer 실패: human review 필요", period_id=period_id)
             state = {"period_id": period_id, "week_id": "2026-26", "status": "human_review_required", "score": 0, "hard_fail": True, "alerts": [alert], "run_log_path": str(run_log_path), "reasoning_log": []}
         else:
-            state = run_with_retry(lambda: run_step3("2026-26", period_id=period_id), node_name="step3_pipeline")
+            if step >= 6:
+                state = run_with_retry(lambda: run_step6(period_id=period_id, dry_run=dry_run), node_name="step6_pipeline")
+            else:
+                state = run_with_retry(lambda: run_step3("2026-26", period_id=period_id), node_name="step3_pipeline")
             state = {**state, "alerts": list(state.get("alerts", []))}
     except Exception as exc:
         alert = emit_alert("failure", f"실행 실패: {exc}", period_id=period_id)

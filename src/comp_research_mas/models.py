@@ -223,3 +223,17 @@ class WorkflowState(TypedDict, total=False):
     replan_count: int
     alerts: list[dict[str, Any]]
     run_log_path: str
+    guardian_result: dict[str, Any]
+    guardian_log_path: str
+    auto_approve: bool
+    auto_approve_result: dict[str, Any]
+    auto_approve_log_path: str
+    live_send_results: dict[str, Any]
+    live_sender_log_path: str
+    notifier_log_path: str
+    notifier_outbox: str
+    email_payload_path: str
+    slack_payload_path: str
+    obsidian_payload_path: str
+    hermes_live_decision: dict[str, Any]
+    dry_run: bool

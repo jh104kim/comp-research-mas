@@ -81,6 +81,10 @@ def save_step_outputs(state: WorkflowState, *, output_root: str | Path = "output
         output_paths["slack_payload"] = str(state["slack_payload_path"])
     if state.get("obsidian_payload_path"):
         output_paths["obsidian_payload"] = str(state["obsidian_payload_path"])
+    if state.get("auto_approve_log_path"):
+        output_paths["auto_approve"] = str(state["auto_approve_log_path"])
+    if state.get("live_sender_log_path"):
+        output_paths["live_sender"] = str(state["live_sender_log_path"])
     return {**state, "status": final_status, "auto_publish_blocked": bool(state.get("auto_publish_blocked", False)), "output_paths": output_paths}
 
 
