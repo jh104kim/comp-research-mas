@@ -12,6 +12,7 @@ from .evidence_normalizer import normalize_raw_results
 from .memory_store import append_evidence_ledger, append_gap_history, read_gap_history
 from .query_planner import build_query_plan, save_query_plan
 from .research_adapter import Step3StubResearchAdapter, save_raw_results
+from .report_html import build_backfill_html
 
 RESEARCH_PERIODS = [
     "2025-07", "2025-08", "2025-09",
@@ -119,9 +120,11 @@ def run_backfill(*, from_period: str = "2025-07", to_period: str = "2026-06", dr
     summary_path.parent.mkdir(parents=True, exist_ok=True)
     summary_path.write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
     report_path = Path("outputs/reports/backfill_summary.md")
+    html_report_path = Path("outputs/reports/backfill_summary.html")
     report_path.parent.mkdir(parents=True, exist_ok=True)
     report_path.write_text(_backfill_markdown(summary), encoding="utf-8")
-    summary["output_paths"] = {"backfill_gap_summary": str(summary_path), "backfill_summary_report": str(report_path), "evidence_ledger": "outputs/memory/evidence_ledger.json", "gap_matrix_history": "outputs/memory/gap_matrix_history.json"}
+    html_report_path.write_text(build_backfill_html(summary), encoding="utf-8")
+    summary["output_paths"] = {"backfill_gap_summary": str(summary_path), "backfill_summary_report": str(report_path), "backfill_summary_html": str(html_report_path), "evidence_ledger": "outputs/memory/evidence_ledger.json", "gap_matrix_history": "outputs/memory/gap_matrix_history.json"}
     return summary
 
 
