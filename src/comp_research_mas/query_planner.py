@@ -10,7 +10,7 @@ from .models import CATEGORIES, PRIMARY_COMPETITORS, SECONDARY_COMPETITORS
 PRIORITY_CATEGORIES = ("신제품·라인업", "신냉매·냉매전환", "성능·효율", "규격·인증")
 
 
-def build_query_plan(week_id: str = DEFAULT_WEEK_ID) -> dict[str, Any]:
+def build_query_plan(week_id: str = DEFAULT_WEEK_ID, period_id: str | None = None) -> dict[str, Any]:
     queries: list[dict[str, Any]] = []
     for ctype in ("Re", "Ro", "Sc"):
         for competitor in PRIMARY_COMPETITORS[ctype]:
@@ -20,7 +20,7 @@ def build_query_plan(week_id: str = DEFAULT_WEEK_ID) -> dict[str, Any]:
         for competitor in SECONDARY_COMPETITORS[ctype]:
             for category in ("신제품·라인업", "성능·효율"):
                 queries.append(_query(week_id, ctype, competitor, category, "secondary"))
-    return {"week_id": week_id, "queries": queries, "source_priority": SOURCE_PRIORITY}
+    return {"week_id": week_id, "period_id": period_id or week_id, "queries": queries, "source_priority": SOURCE_PRIORITY}
 
 
 def _query(week_id: str, ctype: str, competitor: str, category: str, priority: str) -> dict[str, Any]:
@@ -69,4 +69,4 @@ def replan_query_plan(plan: dict[str, Any], *, evidence_count: int, threshold: i
                 if q["query_id"] not in existing_ids:
                     queries.append(q)
                     existing_ids.add(q["query_id"])
-    return {**plan, "queries": queries, "replanned": True, "replan_reason": f"evidence_count {evidence_count} < threshold {threshold}"}
+    return {**plan, "queries": queries, "period_id": plan.get("period_id", week_id), "replanned": True, "replan_reason": f"evidence_count {evidence_count} < threshold {threshold}"}

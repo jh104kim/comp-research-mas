@@ -112,6 +112,7 @@ class EvidenceItem:
     source_type: SourceType = "trade_media"
     threat_level: ThreatLevel = "none"
     week_id: str = "2026-26"
+    period_id: str = "2026-06"
     source_url: str = "manual://step1"
     source_date: str = "확인필요"
     raw_text: str = ""
@@ -188,6 +189,7 @@ class ReportMetadata:
     critic_score: int
     hard_fail: bool
     signal_count: int = 0
+    period_id: str = ""
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)
@@ -209,6 +211,7 @@ class WorkflowState(TypedDict, total=False):
     query_plan: dict[str, Any]
     raw_results: dict[str, Any]
     week_id: str
+    period_id: str
     report_meta: dict[str, Any] | None
     analysis_bundle: dict[str, Any] | None
     analysis_path: str
@@ -218,3 +221,5 @@ class WorkflowState(TypedDict, total=False):
     gap_history_path: str
     critic_cot_path: str
     replan_count: int
+    alerts: list[dict[str, Any]]
+    run_log_path: str

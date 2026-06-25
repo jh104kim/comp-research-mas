@@ -92,6 +92,7 @@ def dynamic_tags(raw: dict[str, Any], item: EvidenceItem) -> list[str]:
 
 def normalize_raw_results(raw_results: dict[str, Any]) -> list[EvidenceItem]:
     week_id = raw_results["week_id"]
+    period_id = raw_results.get("period_id", week_id)
     candidates: list[EvidenceItem] = []
     for raw in raw_results.get("results", []):
         competitor = normalize_competitor(raw.get("competitor", "확인필요"))
@@ -110,6 +111,7 @@ def normalize_raw_results(raw_results: dict[str, Any]) -> list[EvidenceItem]:
             source_type=source_type,
             threat_level=threat_level(status, score),
             week_id=week_id,
+            period_id=period_id,
             source_url=raw.get("source_url", ""),
             source_date=raw.get("source_date", "확인필요"),
             raw_text=raw.get("raw_text") or raw.get("summary", ""),

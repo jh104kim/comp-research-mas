@@ -215,3 +215,29 @@ Level 1: 압축기 타입, Re / Ro / Sc
 - 보유: low
 - 확인필요: none
 - 이상 신호는 기본 trust_score=5만 허용한다. 단, primary_new_entry는 trust_score>=4부터 허용한다.
+
+
+## 7. STEP 4 Monthly Orchestrator
+
+- Monthly period is `period_id=YYYY-MM`.
+- `week_id` remains for backward compatibility.
+- Scheduler runs on the first Monday of each month and supports manual triggers.
+- Orchestrator controls retry, fallback, human review gate, and alert.
+- Human Review Gate triggers when:
+  - critic score < 7
+  - hard_fail = true
+  - sensitive pattern detected
+- Fallback policy:
+  - Source Planner failure: previous period evidence fallback
+  - Analyst failure: baseline gap matrix fallback
+  - Writer failure: human review
+  - Critic hard fail: auto publish blocked + alert
+- Agent reasoning log includes:
+  - node
+  - step
+  - judgment
+  - reasoning
+  - tool_used
+  - rag_used
+  - conclusion
+- Real Hermes search is deferred to STEP 5.

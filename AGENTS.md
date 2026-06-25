@@ -10,12 +10,13 @@ This repository implements the C&M compressor competitor monitoring MAS.
 - STEP 2: complete — Search Agent stub/query/evidence normalization.
 - STEP 3: complete — Analyst Agent, Gap Matrix, AnalysisBundle, anomaly signals.
 - STEP 3 Retrofit: complete — Planning/Memory/CoT/RAG retrofits with stricter threat thresholds.
+- STEP 4: complete — monthly scheduler/orchestrator, human review gate, alerts, STEP 5 adapter contract.
 
 ## Safety Rules
 
 - Do not store Samsung internal model names, internal specs, customer data, cost, roadmap, credentials, tokens, or API keys.
 - Samsung comparison status must use only: `보유`, `미보유`, `대응중`, `확인필요`.
-- Repo code must only include LLM/research adapter interfaces or stubs. Real Hermes/Codex/search calls stay outside this repo until STEP 5.
+- Repo code must only include LLM/research adapter interfaces or stubs. Real Hermes/Codex/search calls stay outside this repo until STEP 5 implementation is explicitly requested.
 - No broad crawling. No sitemap traversal. Respect robots.txt. Use high-trust selected sources only.
 
 ## Output Rules

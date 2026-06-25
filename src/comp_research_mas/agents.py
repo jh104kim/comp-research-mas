@@ -23,7 +23,7 @@ def writer_node(state: WorkflowState) -> WorkflowState:
     evidence = [EvidenceItem(**item) for item in state.get("evidence", [])]
     draft = write_step_report(evidence, analysis_bundle=state.get("analysis_bundle"), writer_directives=state.get("writer_directives", []), feedback=state.get("feedback"), iteration=int(state.get("iteration", 0)))
     from .workflow_utils import append_reasoning
-    reasoning_log = append_reasoning(state, node="writer", step="RAG 기반 리포트 작성", reasoning="Evidence Ledger와 이전 리포트를 참조해 타입/경쟁사/카테고리별 근거를 보강한다", conclusion="draft 생성")
+    reasoning_log = append_reasoning(state, node="writer", step="RAG 기반 리포트 작성", reasoning="Evidence Ledger와 이전 리포트를 참조해 타입/경쟁사/카테고리별 근거를 보강한다", judgment="rag_reference" if evidence else "direct_write", tool_used=False, rag_used=bool(evidence), conclusion="draft 생성")
     return {**state, "draft": draft, "reasoning_log": reasoning_log, "status": "drafted"}
 
 
@@ -246,7 +246,7 @@ def build_report_metadata(state: WorkflowState) -> ReportMetadata:
     high_count = sum(1 for item in evidence if item.threat_level == "high")
     if isinstance(bundle, dict):
         high_count = max(high_count, sum(1 for item in bundle.get("threat_summary", []) if item.get("threat_level") == "high"))
-    return ReportMetadata(week_id, state.get("run_date", "2026-06-25"), len(evidence), type_coverage, competitor_coverage, primary_missing, high_count, int(state.get("score", 0)), bool(state.get("hard_fail", False)), signal_count)
+    return ReportMetadata(week_id, state.get("run_date", "2026-06-25"), len(evidence), type_coverage, competitor_coverage, primary_missing, high_count, int(state.get("score", 0)), bool(state.get("hard_fail", False)), signal_count, state.get("period_id", week_id))
 
 
 def _sources(evidence: list[EvidenceItem]) -> list[dict[str, str]]:

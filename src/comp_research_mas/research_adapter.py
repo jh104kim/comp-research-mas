@@ -31,7 +31,7 @@ class StubResearchAdapter(ResearchAdapter):
             duplicate["source_type"] = "news"
             duplicate["source_url"] = duplicate["source_url"] + "?dup=news"
             results.append(duplicate)
-        return {"week_id": query_plan["week_id"], "results": results}
+        return {"week_id": query_plan["week_id"], "period_id": query_plan.get("period_id", query_plan["week_id"]), "results": results}
 
 
 class Step3StubResearchAdapter(ResearchAdapter):
@@ -87,7 +87,7 @@ class Step3StubResearchAdapter(ResearchAdapter):
                 "samsung_status": "미보유",
             },
         ]
-        return {"week_id": week_id, "results": base_results + anomaly_results}
+        return {"week_id": week_id, "period_id": query_plan.get("period_id", week_id), "results": base_results + anomaly_results}
 
 
 def _result_from_query(q: dict[str, Any]) -> dict[str, Any]:

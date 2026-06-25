@@ -1,0 +1,21 @@
+source_whitelist:
+  tier1:
+    - NaturalRefrigerants.com
+    - Cooling Post
+    - Chillventa
+  tier2:
+    - ACHR News
+    - AHR Expo
+    - ASHRAE
+  tier3:
+    - JARN
+    - China Refrigeration Expo
+  academic_title_abstract_only:
+    - International Journal of Refrigeration
+    - Applied Thermal Engineering
+rules:
+  robots_txt: required
+  broad_crawling: forbidden
+  sitemap_traversal: forbidden
+  full_text_academic_scraping: forbidden
+  credentials_in_repo: forbidden

@@ -41,9 +41,10 @@ def build_step1_graph():
 def source_planner_node(state: WorkflowState) -> WorkflowState:
     week_id = state.get("week_id", "2026-26")
     reasoning_log = append_reasoning(state, node="source_planner", step="query plan 생성", reasoning="타입×경쟁사×카테고리 기준으로 최우선 경쟁사 query를 먼저 만든다", conclusion=f"week_id={week_id} query_plan 생성")
-    query_plan = build_query_plan(week_id)
+    period_id = state.get("period_id", week_id)
+    query_plan = build_query_plan(week_id, period_id=period_id)
     save_query_plan(query_plan)
-    return {**state, "week_id": week_id, "query_plan": query_plan, "reasoning_log": reasoning_log, "status": "query_planned"}
+    return {**state, "week_id": week_id, "period_id": period_id, "query_plan": query_plan, "reasoning_log": reasoning_log, "status": "query_planned"}
 
 
 def research_adapter_node(state: WorkflowState) -> WorkflowState:
@@ -74,7 +75,7 @@ def evidence_normalizer_node(state: WorkflowState) -> WorkflowState:
         reasoning_log = append_reasoning({**state, "reasoning_log": reasoning_log}, node="source_planner", step="동적 재계획", reasoning=f"evidence_count가 {EVIDENCE_REPLAN_THRESHOLD} 미만이라 primary query를 확장하고 재실행", conclusion=f"replanned evidence_count={len(evidence)}")
         state = {**state, "query_plan": replanned, "raw_results": raw_results, "replan_count": int(state.get("replan_count", 0)) + 1}
     evidence_dicts = [item.to_dict() for item in evidence]
-    ledger_path = append_evidence_ledger(state.get("week_id", "2026-26"), evidence_dicts, reasoning_log)
+    ledger_path = append_evidence_ledger(state.get("week_id", "2026-26"), evidence_dicts, reasoning_log, period_id=state.get("period_id"))
     reasoning_log = append_reasoning({**state, "reasoning_log": reasoning_log}, node="memory", step="Evidence Ledger append", reasoning="주차별 evidence를 outputs/memory/evidence_ledger.json에 누적 저장", conclusion=str(ledger_path))
     return {**state, "evidence": evidence_dicts, "sources": _sources_from_evidence(evidence_dicts), "gap_table": _gap_from_evidence(evidence_dicts), "evidence_ledger_path": str(ledger_path), "reasoning_log": reasoning_log, "status": "evidence_normalized"}
 
@@ -87,7 +88,7 @@ def analyst_node(state: WorkflowState) -> WorkflowState:
     reasoning_log = append_reasoning(state, node="analyst", step="Gap Matrix 분석", reasoning="EvidenceItem[]과 baseline/history를 교차 분석해 threat와 signal을 산출한다", conclusion="AnalysisBundle 생성")
     bundle = build_analysis_bundle(evidence, state.get("week_id", "2026-26"))
     analysis_path = save_analysis_bundle(bundle)
-    gap_history_path = append_gap_history(bundle.week_id, bundle.to_dict(), reasoning_log)
+    gap_history_path = append_gap_history(bundle.week_id, bundle.to_dict(), reasoning_log, period_id=state.get("period_id"))
     directives = orchestrator_directives(bundle)
     reasoning_log = append_reasoning({**state, "reasoning_log": reasoning_log}, node="memory", step="Gap history append", reasoning="주차별 Gap Matrix를 outputs/memory/gap_matrix_history.json에 누적 저장", conclusion=str(gap_history_path))
     return {**state, "analysis_bundle": bundle.to_dict(), "writer_directives": directives, "analysis_path": str(analysis_path), "gap_history_path": str(gap_history_path), "reasoning_log": reasoning_log, "status": "analyzed"}
@@ -147,8 +148,8 @@ def run_step2(week_id: str = "2026-26") -> WorkflowState:
     return build_step2_graph().invoke({"week_id": week_id, "iteration": 0, "error_log": [], "reasoning_log": []})
 
 
-def run_step3(week_id: str = "2026-26") -> WorkflowState:
-    return build_step3_graph().invoke({"week_id": week_id, "iteration": 0, "error_log": [], "reasoning_log": []})
+def run_step3(week_id: str = "2026-26", period_id: str | None = None) -> WorkflowState:
+    return build_step3_graph().invoke({"week_id": week_id, "period_id": period_id or week_id, "iteration": 0, "error_log": [], "reasoning_log": []})
 
 
 def _sources_from_evidence(evidence: list[dict]) -> list[dict]:

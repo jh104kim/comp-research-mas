@@ -424,16 +424,25 @@ STEP 3 Retrofit 완료 반영:
 - Threat 기준 상향: high는 `미보유 + trust_score=5`로 제한하고, 신호 감지는 기본 trust_score=5만 허용한다. `primary_new_entry`는 trust_score>=4부터 허용한다.
 - 실제 Hermes 검색 연결은 STEP 5로 연기한다.
 
-STEP 4 우선순위:
-1. Orchestrator 구조 정비: Planning/Memory/CoT/RAG가 각 노드에서 일관되게 동작하는지 유지
-2. Research Adapter interface 입력/출력 계약 문서화
-3. Scheduler/Orchestrator 실행 로그와 재시도 정책 구현
-4. robots.txt/소스 whitelist/human review gate 유지
-5. 실패/부분 성공 시 fallback 및 alert 정책 정의
-6. STEP 5 실제 Hermes 검색 연결 준비
+STEP 4 완료 반영:
+- 리포트 주기를 월간으로 전환하고 `period_id=YYYY-MM`를 도입했다. `week_id`는 하위 호환 필드로 유지한다.
+- `scheduler.py`: 매월 첫째 월요일 실행 판단, manual trigger, period_id 계산.
+- `orchestrator.py`: retry, fallback, human review gate, alert, run log 제어.
+- `alert.py`: 초기 콘솔+로그 알림.
+- reasoning_log schema를 `judgment/tool_used/rag_used` 포함 구조로 고도화했다.
+- Memory store는 `periods` 기준으로 evidence/gap history를 누적하고 기존 `weeks` 키도 유지한다.
+- STEP 5 계약 문서: `docs/STEP5_HERMES_ADAPTER_SPEC.md`
+- Source whitelist: `config/source_whitelist.yaml`
 
-STEP 4 전 확인 필요:
-- 자동 실행 주기와 Slack/Obsidian 알림 범위
-- 실패 알림 대상과 재시도 횟수
-- 내부 삼성 매핑 레이어 도입 여부와 저장 위치
-- STEP 5 실제 Hermes 리서치 도구 호출 위치와 인증 방식
+STEP 5 우선순위:
+1. Hermes/Sake 외부 실행 레이어에서 실제 검색 tool 호출 구현
+2. `ResearchAdapter` 계약에 맞춰 raw_results 주입
+3. robots.txt/source_whitelist/rate limit 검증
+4. partial results/failure를 STEP 4 fallback과 human review gate에 연결
+5. 실제 검색 결과로 monthly E2E 검증
+
+STEP 5 전 확인 필요:
+- 실제 Hermes 검색 도구 선택과 호출 위치
+- 인증/권한 범위와 비밀 저장 위치
+- 검색 소스 whitelist 최종 확정
+- Slack/Obsidian/Email 알림·발송 범위
